@@ -78,5 +78,5 @@ SALES VALUE : {round(final_result.Turnover.sum(), 2)} €
 ΣΥΜΜΕΤΟΧΗ   : {len(final_result)} ΠΡΟΪΟΝΤΑ
 """
 
-# app.post_message_to_slack(report)
+slack_app.post_message_to_slack(report)
 print(report)
