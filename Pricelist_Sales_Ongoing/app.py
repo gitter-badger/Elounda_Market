@@ -75,7 +75,7 @@ report = f"""
 DATERANGE   : {from_date.strftime("%d-%m-%Y")} / {to_date.strftime("%d-%m-%Y")}
 QUANTITY    : {final_result.SalesQuantity.sum()} TEM 
 SALES VALUE : {round(final_result.Turnover.sum(), 2)} €
-ΣΥΜΜΕΤΟΧΗ   : {len(final_result)} ΠΡΟΪΟΝΤΑ
+ΣΥΜΜΕΤΕΧΟΥΝ   : {len(final_result)} ΠΡΟΪΟΝΤΑ
 """
 
 slack_app.post_message_to_slack(report)

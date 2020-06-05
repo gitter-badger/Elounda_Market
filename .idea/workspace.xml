@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="689fa974-c4bf-47de-84a7-f549a7b79c19" name="Default Changelist" comment="@Kommas (PyCharm Commit and Push Code Lines)">
-      <change afterPath="$PROJECT_DIR$/New_Order/app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/New_Order/body" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/New_Order/excel_export.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PDA_To_CSV/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pda_To_Csv/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pricelist_Sales_Ongoing/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pricelist_Sales_Ongoing/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pricelist_extract_codes_from_pda/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pricelist_Extract_Codes_From_Pda/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pricelist_extract_codes_from_pda/excel_export.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pricelist_Extract_Codes_From_Pda/excel_export.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pricelist_extract_codes_from_pda/sql_select.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pricelist_Extract_Codes_From_Pda/sql_select.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +78,7 @@
       <recent name="$PROJECT_DIR$/Private" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.app (2)">
+  <component name="RunManager" selected="Python.app">
     <configuration name="app (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Elounda_Market" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -149,9 +169,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.app" />
         <item itemvalue="Python.app (2)" />
         <item itemvalue="Python.app (1)" />
-        <item itemvalue="Python.app" />
         <item itemvalue="Python.slack_app" />
       </list>
     </recent_temporary>
@@ -166,7 +186,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1591364411358</updated>
-      <workItem from="1591364438009" duration="3769000" />
+      <workItem from="1591364438009" duration="6158000" />
     </task>
     <task id="LOCAL-00001" summary="@Kommas (PyCharm Commit and Push Code Lines)">
       <created>1591364704130</created>
@@ -196,11 +216,49 @@
       <option name="project" value="LOCAL" />
       <updated>1591367106431</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="@Kommas (PyCharm Commit and Push Code Lines)">
+      <created>1591368532519</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1591368532519</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="@Kommas (PyCharm Commit and Push Code Lines)" />
@@ -219,35 +277,35 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="505" y="155" key="Github.UntrackedFilesDialog/0.0.1440.900@0.0.1440.900" timestamp="1591364465358" />
-    <state width="1398" height="238" key="GridCell.Tab.0.bottom" timestamp="1591366950944">
+    <state width="1398" height="238" key="GridCell.Tab.0.bottom" timestamp="1591384569465">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="238" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1591366950944" />
-    <state width="1398" height="238" key="GridCell.Tab.0.center" timestamp="1591366950941">
+    <state width="1398" height="238" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1591384569465" />
+    <state width="1398" height="238" key="GridCell.Tab.0.center" timestamp="1591384569462">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="238" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1591366950941" />
-    <state width="1398" height="238" key="GridCell.Tab.0.left" timestamp="1591366950940">
+    <state width="1398" height="238" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1591384569462" />
+    <state width="1398" height="238" key="GridCell.Tab.0.left" timestamp="1591384569461">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="238" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1591366950940" />
-    <state width="1398" height="238" key="GridCell.Tab.0.right" timestamp="1591366950942">
+    <state width="1398" height="238" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1591384569461" />
+    <state width="1398" height="238" key="GridCell.Tab.0.right" timestamp="1591384569463">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="238" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1591366950942" />
+    <state width="1398" height="238" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1591384569463" />
     <state x="229" y="89" key="SettingsEditor" timestamp="1591365595075">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="229" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1591365595075" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1591367108493">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1591368534721">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591367108493" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591368534721" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Elounda_Market$app__2_.coverage" NAME="app (2) Coverage Results" MODIFIED="1591368469071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/New_Order" />
     <SUITE FILE_PATH="coverage/Elounda_Market$slack_app.coverage" NAME="slack_app Coverage Results" MODIFIED="1591365519438" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Private" />
-    <SUITE FILE_PATH="coverage/Elounda_Market$app.coverage" NAME="app Coverage Results" MODIFIED="1591365602578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Pricelist_Sales_Ongoing" />
+    <SUITE FILE_PATH="coverage/Elounda_Market$app.coverage" NAME="app Coverage Results" MODIFIED="1591384569448" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Pricelist_Sales_Ongoing" />
     <SUITE FILE_PATH="coverage/Elounda_Market$app__1_.coverage" NAME="app (1) Coverage Results" MODIFIED="1591366950924" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PDA_To_CSV" />
   </component>
 </project>
