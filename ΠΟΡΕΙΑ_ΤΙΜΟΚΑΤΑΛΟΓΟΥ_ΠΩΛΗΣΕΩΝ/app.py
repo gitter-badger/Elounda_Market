@@ -2,7 +2,7 @@
 import pandas as pd
 from pathlib import Path
 from datetime import datetime
-from Pricelist_Sales_Ongoing import  sql_select, excel_export
+from ΠΟΡΕΙΑ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ_ΠΩΛΗΣΕΩΝ import  sql_select, excel_export
 from Private import sql_connect, slack_app
 
 # ----------------MAKE DF REPORT VIEWABLE----------------------------
