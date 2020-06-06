@@ -20,20 +20,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="689fa974-c4bf-47de-84a7-f549a7b79c19" name="Default Changelist" comment="@Kommas (PyCharm Commit and Push Code Lines)">
-      <change afterPath="$PROJECT_DIR$/Duplicated_Barcodes/app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Duplicated_Barcodes/body.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Duplicated_Barcodes/excel_export.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Duplicated_Barcodes/query.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/New_Order/README.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pda_To_Csv/Excel_To_Csv.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pda_To_Csv/README.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pricelist_Sales_Ongoing/README.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pricelist_Sales_Ongoing/excel_export.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ΠΟΡΕΙΑ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ_ΠΩΛΗΣΕΩΝ/README.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/New_Order/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/New_Order/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/New_Order/body" beforeDir="false" afterPath="$PROJECT_DIR$/New_Order/body.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pda_To_Csv/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pda_To_Csv/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pricelist_Sales_Ongoing/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pricelist_Sales_Ongoing/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Duplicated_Barcodes/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/ΕΛΕΓΧΟΣ_ΔΙΠΛΟΚΑΤΑΧΩΡΗΣΗΣ_ΚΩΔΙΚΩΝ/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Duplicated_Barcodes/body.html" beforeDir="false" afterPath="$PROJECT_DIR$/ΕΛΕΓΧΟΣ_ΔΙΠΛΟΚΑΤΑΧΩΡΗΣΗΣ_ΚΩΔΙΚΩΝ/body.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Duplicated_Barcodes/excel_export.py" beforeDir="false" afterPath="$PROJECT_DIR$/ΕΛΕΓΧΟΣ_ΔΙΠΛΟΚΑΤΑΧΩΡΗΣΗΣ_ΚΩΔΙΚΩΝ/excel_export.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Duplicated_Barcodes/query.sql" beforeDir="false" afterPath="$PROJECT_DIR$/ΕΛΕΓΧΟΣ_ΔΙΠΛΟΚΑΤΑΧΩΡΗΣΗΣ_ΚΩΔΙΚΩΝ/query.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/New_Order/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ΝΕΑ_ΠΑΡΑΓΓΕΛΙΑ/README.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/New_Order/body.html" beforeDir="false" afterPath="$PROJECT_DIR$/ΝΕΑ_ΠΑΡΑΓΓΕΛΙΑ/body.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/New_Order/excel_export.py" beforeDir="false" afterPath="$PROJECT_DIR$/ΝΕΑ_ΠΑΡΑΓΓΕΛΙΑ/excel_export.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/New_Order/main_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/ΝΕΑ_ΠΑΡΑΓΓΕΛΙΑ/main_app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pda_To_Csv/Excel_To_Csv.py" beforeDir="false" afterPath="$PROJECT_DIR$/ΑΠΟ_PDA_ΣΕ_CSV_ΜΟΝΟ_BARCODES/Excel_To_Csv.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pda_To_Csv/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ΑΠΟ_PDA_ΣΕ_CSV_ΜΟΝΟ_BARCODES/README.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pda_To_Csv/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/ΑΠΟ_PDA_ΣΕ_CSV_ΜΟΝΟ_BARCODES/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pricelist_Extract_Codes_From_Pda/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/ΔΗΜΙΟΥΡΓΙΑ_EXCEL_ΓΙΑ_ΕΙΣΑΓΩΓΗ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pricelist_Extract_Codes_From_Pda/excel_export.py" beforeDir="false" afterPath="$PROJECT_DIR$/ΔΗΜΙΟΥΡΓΙΑ_EXCEL_ΓΙΑ_ΕΙΣΑΓΩΓΗ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ/excel_export.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pricelist_Extract_Codes_From_Pda/sql_select.py" beforeDir="false" afterPath="$PROJECT_DIR$/ΔΗΜΙΟΥΡΓΙΑ_EXCEL_ΓΙΑ_ΕΙΣΑΓΩΓΗ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ/sql_select.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pricelist_Sales_Ongoing/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ΕΛΕΓΧΟΣ_INTERNET_ΣΤΑ_ΚΑΤΑΣΤΗΜΑΤΑ/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pricelist_Sales_Ongoing/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/ΠΟΡΕΙΑ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ_ΠΩΛΗΣΕΩΝ/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pricelist_Sales_Ongoing/excel_export.py" beforeDir="false" afterPath="$PROJECT_DIR$/ΠΟΡΕΙΑ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ_ΠΩΛΗΣΕΩΝ/excel_export.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pricelist_Sales_Ongoing/sql_select.py" beforeDir="false" afterPath="$PROJECT_DIR$/ΠΟΡΕΙΑ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ_ΠΩΛΗΣΕΩΝ/sql_select.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,29 +94,7 @@
       <recent name="$PROJECT_DIR$/PDA_To_CSV" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.app (3)">
-    <configuration name="app (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Elounda_Market" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/PDA_To_CSV" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PDA_To_CSV/app.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.app (4)">
     <configuration name="app (2)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Elounda_Market" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -154,6 +139,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="app (4)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Elounda_Market" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ΕΛΕΓΧΟΣ_INTERNET_ΣΤΑ_ΚΑΤΑΣΤΗΜΑΤΑ" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ΕΛΕΓΧΟΣ_INTERNET_ΣΤΑ_ΚΑΤΑΣΤΗΜΑΤΑ/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Elounda_Market" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -176,7 +183,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="slack_app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="stores_sensitive_info" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Elounda_Market" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -185,11 +192,11 @@
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Private" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Private/slack_app.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Private/stores_sensitive_info.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -200,11 +207,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.app (4)" />
+        <item itemvalue="Python.stores_sensitive_info" />
         <item itemvalue="Python.app (3)" />
         <item itemvalue="Python.app" />
         <item itemvalue="Python.app (2)" />
-        <item itemvalue="Python.app (1)" />
-        <item itemvalue="Python.slack_app" />
       </list>
     </recent_temporary>
   </component>
@@ -221,7 +228,8 @@
       <workItem from="1591364438009" duration="6205000" />
       <workItem from="1591389385380" duration="2188000" />
       <workItem from="1591436667667" duration="161000" />
-      <workItem from="1591451692748" duration="2148000" />
+      <workItem from="1591451692748" duration="3029000" />
+      <workItem from="1591467749845" duration="3847000" />
     </task>
     <task id="LOCAL-00001" summary="@Kommas (PyCharm Commit and Push Code Lines)">
       <created>1591364704130</created>
@@ -272,7 +280,21 @@
       <option name="project" value="LOCAL" />
       <updated>1591391903903</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="@Kommas (PyCharm Commit and Push Code Lines)">
+      <created>1591457274861</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1591457274861</updated>
+    </task>
+    <task id="LOCAL-00009" summary="@Kommas (PyCharm Commit and Push Code Lines)">
+      <created>1591457402361</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1591457402361</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,36 +367,42 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="505" y="155" key="Github.UntrackedFilesDialog/0.0.1440.900@0.0.1440.900" timestamp="1591364465358" />
-    <state width="1398" height="238" key="GridCell.Tab.0.bottom" timestamp="1591456908452">
+    <state width="1398" height="309" key="GridCell.Tab.0.bottom" timestamp="1591471683754">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="238" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1591456908452" />
-    <state width="1398" height="238" key="GridCell.Tab.0.center" timestamp="1591456908450">
+    <state width="1398" height="309" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1591471683754" />
+    <state width="1398" height="238" key="GridCell.Tab.0.bottom/0.23.1440.844@0.23.1440.844" timestamp="1591462354276" />
+    <state width="1398" height="309" key="GridCell.Tab.0.center" timestamp="1591471683752">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="238" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1591456908450" />
-    <state width="1398" height="238" key="GridCell.Tab.0.left" timestamp="1591456908449">
+    <state width="1398" height="309" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1591471683752" />
+    <state width="1398" height="238" key="GridCell.Tab.0.center/0.23.1440.844@0.23.1440.844" timestamp="1591462354270" />
+    <state width="1398" height="309" key="GridCell.Tab.0.left" timestamp="1591471683751">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="238" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1591456908449" />
-    <state width="1398" height="238" key="GridCell.Tab.0.right" timestamp="1591456908451">
+    <state width="1398" height="309" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1591471683751" />
+    <state width="1398" height="238" key="GridCell.Tab.0.left/0.23.1440.844@0.23.1440.844" timestamp="1591462354268" />
+    <state width="1398" height="309" key="GridCell.Tab.0.right" timestamp="1591471683753">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="238" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1591456908451" />
+    <state width="1398" height="309" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1591471683753" />
+    <state width="1398" height="238" key="GridCell.Tab.0.right/0.23.1440.844@0.23.1440.844" timestamp="1591462354273" />
     <state x="229" y="89" key="SettingsEditor" timestamp="1591365595075">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="229" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1591365595075" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1591391908211">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1591457403938">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591391908211" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591457403938" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Elounda_Market$app__2_.coverage" NAME="app (2) Coverage Results" MODIFIED="1591368469071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/New_Order" />
     <SUITE FILE_PATH="coverage/Elounda_Market$slack_app.coverage" NAME="slack_app Coverage Results" MODIFIED="1591365519438" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Private" />
+    <SUITE FILE_PATH="coverage/Elounda_Market$app__4_.coverage" NAME="app (4) Coverage Results" MODIFIED="1591471683731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ΕΛΕΓΧΟΣ_INTERNET_ΣΤΑ_ΚΑΤΑΣΤΗΜΑΤΑ" />
     <SUITE FILE_PATH="coverage/Elounda_Market$app__3_.coverage" NAME="app (3) Coverage Results" MODIFIED="1591456908425" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Duplicated_Barcodes" />
     <SUITE FILE_PATH="coverage/Elounda_Market$app.coverage" NAME="app Coverage Results" MODIFIED="1591455787619" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Pricelist_Sales_Ongoing" />
+    <SUITE FILE_PATH="coverage/Elounda_Market$stores_sensitive_info.coverage" NAME="stores_sensitive_info Coverage Results" MODIFIED="1591470946602" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Private" />
     <SUITE FILE_PATH="coverage/Elounda_Market$app__1_.coverage" NAME="app (1) Coverage Results" MODIFIED="1591366950924" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PDA_To_CSV" />
   </component>
 </project>

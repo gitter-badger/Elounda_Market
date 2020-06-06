@@ -7,7 +7,7 @@
 
 
 import pandas as pd
-from New_Order import excel_export
+from ΝΕΑ_ΠΑΡΑΓΓΕΛΙΑ import excel_export
 from Private import slack_app, send_mail, sql_connect
 
 # ----------------STATEMENTS HERE----------------------------
