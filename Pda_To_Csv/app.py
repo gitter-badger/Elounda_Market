@@ -2,7 +2,6 @@
 
 import pandas as pd
 from Private import sql_connect, slack_app
-
 # ----------------SQL SELECT----------------------------
 def pda_results(id):
     output = f"""

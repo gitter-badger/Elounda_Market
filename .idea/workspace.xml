@@ -20,7 +20,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="689fa974-c4bf-47de-84a7-f549a7b79c19" name="Default Changelist" comment="@Kommas (PyCharm Commit and Push Code Lines)">
+      <change afterPath="$PROJECT_DIR$/Duplicated_Barcodes/app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Duplicated_Barcodes/body.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Duplicated_Barcodes/excel_export.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Duplicated_Barcodes/query.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/New_Order/README.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pda_To_Csv/Excel_To_Csv.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pda_To_Csv/README.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pricelist_Sales_Ongoing/README.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pricelist_Sales_Ongoing/excel_export.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/New_Order/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/New_Order/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/New_Order/body" beforeDir="false" afterPath="$PROJECT_DIR$/New_Order/body.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pda_To_Csv/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pda_To_Csv/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pricelist_Sales_Ongoing/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pricelist_Sales_Ongoing/app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,11 +61,12 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="sqlserver" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/New_Order" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Duplicated_Barcodes" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -66,14 +80,14 @@
       <recent name="$PROJECT_DIR$/Pricelist_extract_codes_from_pda" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Duplicated_Barcodes" />
+      <recent name="$PROJECT_DIR$/Pricelist_Sales_Ongoing" />
+      <recent name="$PROJECT_DIR$/Pda_To_Csv" />
       <recent name="$PROJECT_DIR$/New_Order" />
       <recent name="$PROJECT_DIR$/PDA_To_CSV" />
-      <recent name="$PROJECT_DIR$/Pricelist_extract_codes_from_pda" />
-      <recent name="$PROJECT_DIR$/Pricelist_Sales_Ongoing" />
-      <recent name="$PROJECT_DIR$/Private" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.app">
+  <component name="RunManager" selected="Python.app (3)">
     <configuration name="app (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Elounda_Market" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -110,6 +124,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/New_Order/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="app (3)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Elounda_Market" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Duplicated_Barcodes" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Duplicated_Barcodes/app.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -164,6 +200,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.app (3)" />
         <item itemvalue="Python.app" />
         <item itemvalue="Python.app (2)" />
         <item itemvalue="Python.app (1)" />
@@ -182,7 +219,9 @@
       <option name="presentableId" value="Default" />
       <updated>1591364411358</updated>
       <workItem from="1591364438009" duration="6205000" />
-      <workItem from="1591389385380" duration="335000" />
+      <workItem from="1591389385380" duration="2188000" />
+      <workItem from="1591436667667" duration="161000" />
+      <workItem from="1591451692748" duration="2148000" />
     </task>
     <task id="LOCAL-00001" summary="@Kommas (PyCharm Commit and Push Code Lines)">
       <created>1591364704130</created>
@@ -226,7 +265,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591385321750</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="@Kommas (PyCharm Commit and Push Code Lines)">
+      <created>1591391903903</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1591391903903</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,6 +306,11 @@
             </State>
           </value>
         </entry>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
@@ -269,10 +320,23 @@
     <option name="LAST_COMMIT_MESSAGE" value="@Kommas (PyCharm Commit and Push Code Lines)" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="476" y="259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591368237090">
+    <state x="128" y="286" key="#SQL_Dialects" timestamp="1591457044715">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="476" y="259" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1591368237090" />
+    <state x="128" y="286" key="#SQL_Dialects/0.0.1440.900@0.0.1440.900" timestamp="1591457044715" />
+    <state x="320" y="115" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591457181390">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="115" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1591457181390" />
+    <state x="476" y="259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591456377894">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="476" y="259" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1591456377894" />
+    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1591392209210">
+      <screen x="0" y="23" width="1440" height="847" />
+    </state>
+    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1591391857267" />
+    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.23.1440.847@0.23.1440.847" timestamp="1591392209210" />
     <state x="580" y="354" key="Github.ShareDialog" timestamp="1591364452767">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -281,35 +345,36 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="505" y="155" key="Github.UntrackedFilesDialog/0.0.1440.900@0.0.1440.900" timestamp="1591364465358" />
-    <state width="1398" height="238" key="GridCell.Tab.0.bottom" timestamp="1591385353798">
+    <state width="1398" height="238" key="GridCell.Tab.0.bottom" timestamp="1591456908452">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="238" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1591385353798" />
-    <state width="1398" height="238" key="GridCell.Tab.0.center" timestamp="1591385353795">
+    <state width="1398" height="238" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1591456908452" />
+    <state width="1398" height="238" key="GridCell.Tab.0.center" timestamp="1591456908450">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="238" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1591385353795" />
-    <state width="1398" height="238" key="GridCell.Tab.0.left" timestamp="1591385353793">
+    <state width="1398" height="238" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1591456908450" />
+    <state width="1398" height="238" key="GridCell.Tab.0.left" timestamp="1591456908449">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="238" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1591385353793" />
-    <state width="1398" height="238" key="GridCell.Tab.0.right" timestamp="1591385353796">
+    <state width="1398" height="238" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1591456908449" />
+    <state width="1398" height="238" key="GridCell.Tab.0.right" timestamp="1591456908451">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="238" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1591385353796" />
+    <state width="1398" height="238" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1591456908451" />
     <state x="229" y="89" key="SettingsEditor" timestamp="1591365595075">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="229" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1591365595075" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1591385324508">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1591391908211">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591385324508" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591391908211" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Elounda_Market$app__2_.coverage" NAME="app (2) Coverage Results" MODIFIED="1591368469071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/New_Order" />
     <SUITE FILE_PATH="coverage/Elounda_Market$slack_app.coverage" NAME="slack_app Coverage Results" MODIFIED="1591365519438" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Private" />
-    <SUITE FILE_PATH="coverage/Elounda_Market$app.coverage" NAME="app Coverage Results" MODIFIED="1591384569448" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Pricelist_Sales_Ongoing" />
+    <SUITE FILE_PATH="coverage/Elounda_Market$app__3_.coverage" NAME="app (3) Coverage Results" MODIFIED="1591456908425" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Duplicated_Barcodes" />
+    <SUITE FILE_PATH="coverage/Elounda_Market$app.coverage" NAME="app Coverage Results" MODIFIED="1591455787619" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Pricelist_Sales_Ongoing" />
     <SUITE FILE_PATH="coverage/Elounda_Market$app__1_.coverage" NAME="app (1) Coverage Results" MODIFIED="1591366950924" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PDA_To_CSV" />
   </component>
 </project>
