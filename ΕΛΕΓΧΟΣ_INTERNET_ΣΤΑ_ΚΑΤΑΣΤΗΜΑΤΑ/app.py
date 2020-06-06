@@ -9,7 +9,7 @@ class Store:
         self.area = area
         self.ip = ip
         self.ping = 'ΑΓΝΩΣΤΟ'
-        self.response_time = 'None'
+        self.response_time = ''
 
     def __str__(self):
         return f'ΚΑΤΑΣΤΗΜΑ: {self.name} || ΠΕΡΙΟΧΗ: {self.area} || ΚΑΤΑΣΤΑΣΗ: {self.ping} || ΑΠΟΚΡΙΣΗ: {self.response_time} ms'
@@ -22,9 +22,12 @@ class Store:
             statistic = re.search(r'(\d+\.\d+/){3}\d+\.\d+', output).group(0)
             avg_time = re.findall(r'\d+\.\d+', statistic)[1]
             self.response_time = float(avg_time)
+            self.ping = 'ONLINE'
         except subprocess.CalledProcessError:
-            pass
-        self.ping = ('ONLINE' if subprocess.call(command) == 0 else 'OFFLINE')
+            self.response_time = float('inf')
+            self.ping = 'OFFLINE'
+
+
 
 
 ELOUNDA_MARKET = Store(name='Elounda Market',
