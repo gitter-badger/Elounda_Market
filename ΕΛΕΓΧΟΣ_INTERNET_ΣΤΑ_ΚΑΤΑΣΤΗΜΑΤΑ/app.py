@@ -1,6 +1,6 @@
 import subprocess
 from Private import slack_app, stores_sensitive_info
-
+#
 
 class Store:
     def __init__(self, name, area, ip):
