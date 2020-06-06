@@ -25,12 +25,9 @@ class Store:
         self.ip = ip
 
     def check_internet_status(self):
-        details = f"""
-ΚΑΤΑΣΤΗΜΑ: {self.name}
-ΠΕΡΙΟΧΗ: {self.area}"""
         if ping(self.ip):
-            return f'{details}\nΚΑΤΑΣΤΑΣΗ: OK \n'
-        return f'{details}\nΚΑΤΑΣΤΑΣΗ: ERROR \n'
+            return f'ΚΑΤΑΣΤΗΜΑ: {self.name} || ΠΕΡΙΟΧΗ: {self.area} || ΚΑΤΑΣΤΑΣΗ: OK \n'
+        return f'ΚΑΤΑΣΤΗΜΑ: {self.name} || ΠΕΡΙΟΧΗ: {self.area} || ΚΑΤΑΣΤΑΣΗ: ERROR \n'
 
 
 ELOUNDA_MARKET = Store(name='Elounda Market',
