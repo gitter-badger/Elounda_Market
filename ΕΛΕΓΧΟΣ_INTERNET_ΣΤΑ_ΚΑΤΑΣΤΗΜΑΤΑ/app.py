@@ -1,5 +1,4 @@
-import platform  # For getting the operating system name
-import subprocess  # For executing a shell command
+import subprocess
 from Private import slack_app, stores_sensitive_info
 
 
