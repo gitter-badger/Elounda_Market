@@ -19,10 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="689fa974-c4bf-47de-84a7-f549a7b79c19" name="Default Changelist" comment="@Kommas (PyCharm Commit and Push Code Lines)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ΕΛΕΓΧΟΣ_INTERNET_ΣΤΑ_ΚΑΤΑΣΤΗΜΑΤΑ/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/ΕΛΕΓΧΟΣ_INTERNET_ΣΤΑ_ΚΑΤΑΣΤΗΜΑΤΑ/app.py" afterDir="false" />
-    </list>
+    <list default="true" id="689fa974-c4bf-47de-84a7-f549a7b79c19" name="Default Changelist" comment="@Kommas (PyCharm Commit and Push Code Lines)" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,6 +34,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProjectId" id="1cu2yT5EvNC3PKwXhwLGGRb9MnY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -210,7 +208,7 @@
       <workItem from="1591389385380" duration="2188000" />
       <workItem from="1591436667667" duration="161000" />
       <workItem from="1591451692748" duration="3029000" />
-      <workItem from="1591467749845" duration="4533000" />
+      <workItem from="1591467749845" duration="4835000" />
     </task>
     <task id="LOCAL-00001" summary="@Kommas (PyCharm Commit and Push Code Lines)">
       <created>1591364704130</created>
@@ -289,7 +287,21 @@
       <option name="project" value="LOCAL" />
       <updated>1591471951324</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="@Kommas (PyCharm Commit and Push Code Lines)">
+      <created>1591473657693</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1591473657693</updated>
+    </task>
+    <task id="LOCAL-00013" summary="@Kommas (PyCharm Commit and Push Code Lines)">
+      <created>1591473858734</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1591473858734</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -349,10 +361,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="476" y="259" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1591456377894" />
-    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1591392209210">
-      <screen x="0" y="23" width="1440" height="847" />
+    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1591473958347">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1591391857267" />
+    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1591473958347" />
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.23.1440.847@0.23.1440.847" timestamp="1591392209210" />
     <state x="580" y="354" key="Github.ShareDialog" timestamp="1591364452767">
       <screen x="0" y="0" width="1440" height="900" />
@@ -386,10 +398,14 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="229" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1591365595075" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1591471953028">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1591473860569">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591471953028" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591473860569" />
+    <state x="523" y="371" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591473958329">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="523" y="371" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1591473958329" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Elounda_Market$app__2_.coverage" NAME="app (2) Coverage Results" MODIFIED="1591368469071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/New_Order" />
