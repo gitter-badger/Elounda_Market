@@ -14,8 +14,8 @@ class Store:
         command = ['ping', '-c', '1', self.ip]
         if subprocess.call(command) == 0:
             self.ping = 'ONLINE'
-            return f'ΚΑΤΑΣΤΗΜΑ: {self.name} || ΠΕΡΙΟΧΗ: {self.area} || ΚΑΤΑΣΤΑΣΗ: {self.ping} \n'
-        self.ping = 'OFFLINE'
+        else:
+            self.ping = 'OFFLINE'
         return f'ΚΑΤΑΣΤΗΜΑ: {self.name} || ΠΕΡΙΟΧΗ: {self.area} || ΚΑΤΑΣΤΑΣΗ: {self.ping} \n'
 
 
