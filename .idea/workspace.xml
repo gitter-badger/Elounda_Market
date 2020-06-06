@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="689fa974-c4bf-47de-84a7-f549a7b79c19" name="Default Changelist" comment="@Kommas (PyCharm Commit and Push Code Lines)" />
+    <list default="true" id="689fa974-c4bf-47de-84a7-f549a7b79c19" name="Default Changelist" comment="@Kommas (PyCharm Commit and Push Code Lines)">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ΕΛΕΓΧΟΣ_INTERNET_ΣΤΑ_ΚΑΤΑΣΤΗΜΑΤΑ/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/ΕΛΕΓΧΟΣ_INTERNET_ΣΤΑ_ΚΑΤΑΣΤΗΜΑΤΑ/app.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -208,7 +211,7 @@
       <workItem from="1591389385380" duration="2188000" />
       <workItem from="1591436667667" duration="161000" />
       <workItem from="1591451692748" duration="3029000" />
-      <workItem from="1591467749845" duration="4835000" />
+      <workItem from="1591467749845" duration="5807000" />
     </task>
     <task id="LOCAL-00001" summary="@Kommas (PyCharm Commit and Push Code Lines)">
       <created>1591364704130</created>
@@ -301,7 +304,21 @@
       <option name="project" value="LOCAL" />
       <updated>1591473858734</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="@Kommas (PyCharm Commit and Push Code Lines)">
+      <created>1591474047189</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1591474047189</updated>
+    </task>
+    <task id="LOCAL-00015" summary="@Kommas (PyCharm Commit and Push Code Lines)">
+      <created>1591474150198</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1591474150198</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -374,34 +391,34 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="505" y="155" key="Github.UntrackedFilesDialog/0.0.1440.900@0.0.1440.900" timestamp="1591364465358" />
-    <state width="1398" height="309" key="GridCell.Tab.0.bottom" timestamp="1591473222362">
+    <state width="1398" height="309" key="GridCell.Tab.0.bottom" timestamp="1591475072877">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="309" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1591473222362" />
+    <state width="1398" height="309" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1591475072877" />
     <state width="1398" height="238" key="GridCell.Tab.0.bottom/0.23.1440.844@0.23.1440.844" timestamp="1591462354276" />
-    <state width="1398" height="309" key="GridCell.Tab.0.center" timestamp="1591473222360">
+    <state width="1398" height="309" key="GridCell.Tab.0.center" timestamp="1591475072876">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="309" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1591473222360" />
+    <state width="1398" height="309" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1591475072876" />
     <state width="1398" height="238" key="GridCell.Tab.0.center/0.23.1440.844@0.23.1440.844" timestamp="1591462354270" />
-    <state width="1398" height="309" key="GridCell.Tab.0.left" timestamp="1591473222358">
+    <state width="1398" height="309" key="GridCell.Tab.0.left" timestamp="1591475072874">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="309" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1591473222358" />
+    <state width="1398" height="309" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1591475072874" />
     <state width="1398" height="238" key="GridCell.Tab.0.left/0.23.1440.844@0.23.1440.844" timestamp="1591462354268" />
-    <state width="1398" height="309" key="GridCell.Tab.0.right" timestamp="1591473222361">
+    <state width="1398" height="309" key="GridCell.Tab.0.right" timestamp="1591475072877">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="309" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1591473222361" />
+    <state width="1398" height="309" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1591475072877" />
     <state width="1398" height="238" key="GridCell.Tab.0.right/0.23.1440.844@0.23.1440.844" timestamp="1591462354273" />
     <state x="229" y="89" key="SettingsEditor" timestamp="1591365595075">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="229" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1591365595075" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1591473860569">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1591474151932">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591473860569" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591474151932" />
     <state x="523" y="371" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591473958329">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -410,7 +427,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Elounda_Market$app__2_.coverage" NAME="app (2) Coverage Results" MODIFIED="1591368469071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/New_Order" />
     <SUITE FILE_PATH="coverage/Elounda_Market$slack_app.coverage" NAME="slack_app Coverage Results" MODIFIED="1591365519438" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Private" />
-    <SUITE FILE_PATH="coverage/Elounda_Market$app__4_.coverage" NAME="app (4) Coverage Results" MODIFIED="1591473222342" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ΕΛΕΓΧΟΣ_INTERNET_ΣΤΑ_ΚΑΤΑΣΤΗΜΑΤΑ" />
+    <SUITE FILE_PATH="coverage/Elounda_Market$app__4_.coverage" NAME="app (4) Coverage Results" MODIFIED="1591475072863" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ΕΛΕΓΧΟΣ_INTERNET_ΣΤΑ_ΚΑΤΑΣΤΗΜΑΤΑ" />
     <SUITE FILE_PATH="coverage/Elounda_Market$app__3_.coverage" NAME="app (3) Coverage Results" MODIFIED="1591456908425" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Duplicated_Barcodes" />
     <SUITE FILE_PATH="coverage/Elounda_Market$app.coverage" NAME="app Coverage Results" MODIFIED="1591455787619" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Pricelist_Sales_Ongoing" />
     <SUITE FILE_PATH="coverage/Elounda_Market$stores_sensitive_info.coverage" NAME="stores_sensitive_info Coverage Results" MODIFIED="1591470946602" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Private" />
