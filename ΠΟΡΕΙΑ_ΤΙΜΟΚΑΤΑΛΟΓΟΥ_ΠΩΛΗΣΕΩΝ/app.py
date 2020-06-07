@@ -27,7 +27,7 @@ sales = pd.read_sql_query(sql_select.get_sales(from_date, to_date, tuple(timokat
                           sql_connect.sql_cnx())
 
 # -------------------- MERGE RESULTS --------------------
-final_result = pd.merge(left=timokatalogos, right=sales, left_on='ΚΩΔΙΚΟΣ', right_on='ΚΩΔΙΚΟΣ')
+final_result = pd.merge(left=timokatalogos, right=sales, left_on='ΚΩΔΙΚΟΣ', right_on='ΚΩΔΙΚΟΣ').sort_values(by=['SalesQuantity'])
 
 # -------------OPEN FILE | WRITE ----------------------------
 excel_export.export(path_to_file, final_result)
