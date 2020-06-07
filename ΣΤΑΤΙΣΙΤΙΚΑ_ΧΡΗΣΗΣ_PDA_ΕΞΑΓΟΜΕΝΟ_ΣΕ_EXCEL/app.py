@@ -15,7 +15,7 @@ answer_04 = pd.read_sql_query(sql_query.query_04, sql_connect.sql_cnx())
 answer_05 = pd.read_sql_query(sql_query.query_05, sql_connect.sql_cnx())
 answer_06 = pd.read_sql_query(sql_query.query_06, sql_connect.sql_cnx())
 
-#---------------- EXCEL EXPORT ----------------
+# ---------------- EXCEL EXPORT ----------------
 excel_export.export(path, answer_01, answer_02, answer_03, answer_04, answer_05, answer_06)
 
 # ---------------- SLACK BOT ----------------
