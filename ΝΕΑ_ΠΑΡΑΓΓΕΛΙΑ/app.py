@@ -11,6 +11,7 @@ from ΝΕΑ_ΠΑΡΑΓΓΕΛΙΑ import excel_export
 from Private import slack_app, send_mail, sql_connect
 
 # ----------------STATEMENTS HERE----------------------------
+# 796 ok
 input_param = '796'
 output_file = "Order{}.xlsx".format(input_param)
 
