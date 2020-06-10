@@ -32,7 +32,7 @@ def export(path_to_file, final_result):
         worksheet.set_column('H:H', 12, number)
         worksheet.set_column('I:I', 12, normal)
         worksheet.set_column('J:J', 12, normal)
-        worksheet.set_column('K:K', 12, number)
+        worksheet.set_column('K:K', 12, normal)
         worksheet.set_column('L:L', 12, number)
 
         # Conditional Formating

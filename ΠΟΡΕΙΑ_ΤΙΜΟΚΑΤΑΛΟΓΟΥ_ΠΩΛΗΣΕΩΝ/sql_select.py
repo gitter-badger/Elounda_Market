@@ -10,7 +10,8 @@ SELECT ESFIPricelist.Code                         as 'ΤΙΜΟΚΑΤΑΛΟΓΟΣ
        ESFIItem.BarCode                           AS 'ΚΩΔΙΚΟΣ',
        ESFIItem.RetailPrice                       as 'ΤΙΜΗ ΛΙΑΝΙΚΗΣ',
        ESFIPricelistItem.Price                    AS 'ΝΕΑ ΤΙΜΗ',
-       ESFIPricelistItem.PercentageOnBasePrice    AS 'ΠΟΣΟΣΤΟ'
+       ESFIPricelistItem.PercentageOnBasePrice    AS 'ΠΟΣΟΣΤΟ',
+       ESFIItem.fItemSubcategoryCode              AS 'BRAND'
 from ESFIPricelistItem
          left join ESFIItem
                    on ESFIPricelistItem.fItemGID = ESFIItem.GID
