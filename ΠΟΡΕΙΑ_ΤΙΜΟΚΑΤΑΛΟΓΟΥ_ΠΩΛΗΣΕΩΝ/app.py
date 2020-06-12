@@ -41,20 +41,25 @@ excel_export.export(path_to_file, final_result)
 
 # -------------------- SLACK BOT --------------------
 report = f"""
+||
 ΠΩΛΗΣΕΙΣ ΓΙΑ ΤΙΣ ΠΡΟΣΦΟΡΕΣ 15 ΗΜΕΡΩΝ
 ΣΥΜΜΕΤΕΧΟΥΝ: \t {len(final_result)} ΠΡΟΪΟΝΤΑ
 DATERANGE: \t ΑΠΟ: {from_date.strftime("%d-%m-%Y")} \t ΕΩΣ: {to_date.strftime("%d-%m-%Y")}
 ΠΟΣΟΤΗΤΑ ΠΩΛΗΣΕΩΝ: \t {final_result.SalesQuantity.sum()} TEM 
 ΤΖΙΡΟΣ ΠΩΛΗΣΕΩΝ: \t {round(final_result.Turnover.sum(), 2)} €
+||
 """
 
-# slack_app.post_message_to_slack(report)
+slack_app.post_message_to_slack(report)
 print(report)
 
-# -------------------- PLOT --------------------
+# -------------------- SALES QUANTITY --------------------
 sales_quantity = final_result.SalesQuantity.values
+
+# -------------------- QUARTILES --------------------
 quartiles = np.quantile(sales_quantity, [.25, .5, .75])
-print(sales_quantity)
+
+# -------------------- PLOT --------------------
 plt.figure(figsize=(15, 9))
 plt.subplot(1,2,1, xlabel='Products', ylabel='Quantity Sales', title=f'[Histogram (Quartiles)]')
 plt.hist(sales_quantity)

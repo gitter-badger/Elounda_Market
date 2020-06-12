@@ -43,6 +43,8 @@ excel_export.export(path_to_file, sql_answer)
 send_mail.send_mail(mail_lst, mail_names, word, path_to_file, output_file)
 
 slack_app.post_message_to_slack(f"""
+||
 ΕΛΕΓΧΟΣ ΓΙΑ ΔΙΠΛΑ BARCODES 
 {sql_answer}
+||
 """)

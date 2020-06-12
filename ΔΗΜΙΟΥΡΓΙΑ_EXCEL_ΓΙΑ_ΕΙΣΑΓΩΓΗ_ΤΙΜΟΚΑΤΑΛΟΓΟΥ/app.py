@@ -2,7 +2,7 @@
 import pandas as pd
 from dateutil.relativedelta import relativedelta
 from datetime import date
-from Pricelist_Extract_Codes_From_Pda import  sql_select,excel_export
+from ΔΗΜΙΟΥΡΓΙΑ_EXCEL_ΓΙΑ_ΕΙΣΑΓΩΓΗ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ import  sql_select,excel_export
 from Private import sql_connect
 
 # ----------------MAKE DF REPORT VIEWABLE----------------------------

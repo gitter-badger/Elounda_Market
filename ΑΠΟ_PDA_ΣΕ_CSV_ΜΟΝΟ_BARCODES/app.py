@@ -30,6 +30,8 @@ with open('file.csv', 'w') as file:
 
 # ----------------SLACK BOT----------------------------
 slack_app.post_message_to_slack(f""" 
+||
 H Αλλαγή Φ.Π.Α. Ολοκληρώθηκε 
 PDA Αρχείο: {id}
+||
 """)

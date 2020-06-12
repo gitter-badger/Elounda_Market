@@ -80,9 +80,10 @@ send_mail.send_mail(mail_lst, mail_names, word, file_path, output_file)
 
 # ----------------SLACK BOT----------------------------
 slack_app.post_message_to_slack(f"""
+||
 ΚΑΤΑΧΩΡΗΘΗΚΕ Η ΠΑΡΑΓΓΕΛΙΑ : {output_file}
 ΠΡΟΜΗΘΕΥΤΗΣ: {supplier}
 ΥΠΟΚΑΤΑΣΤΗΜΑ: {katastima()}
-ΑΠΟΤΥΠΩΜΑ: {answer_02.ID[0]}
-............................
+PDA ID: {answer_02.ID[0]}
+||
 """)
