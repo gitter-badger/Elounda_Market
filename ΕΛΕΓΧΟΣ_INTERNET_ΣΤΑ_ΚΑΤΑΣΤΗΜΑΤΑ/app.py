@@ -51,11 +51,9 @@ LATO_02.check_internet_status()
 
 # ----------------SLACK BOT----------------------------
 output = f"""
-||
-ΕΛΕΓΧΟΣ INTERNET ΣΤΑ ΚΑΤΑΣΤΗΜΑΤΑ
-{ELOUNDA_MARKET}
-{LATO_01}
-{LATO_02}
-||
+>ΕΛΕΓΧΟΣ INTERNET ΣΤΑ ΚΑΤΑΣΤΗΜΑΤΑ
+`{ELOUNDA_MARKET}`
+`{LATO_01}`
+`{LATO_02}`
 """
 slack_app.post_message_to_slack(output)

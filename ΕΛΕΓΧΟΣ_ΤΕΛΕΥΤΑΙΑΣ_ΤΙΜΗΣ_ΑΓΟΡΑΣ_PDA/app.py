@@ -47,10 +47,8 @@ send_mail.send_mail(mail_lst, mail_names, word, path_to_file, output_file)
 
 # ---------------- SLACK BOT ----------------
 slack_app.post_message_to_slack(f"""
-||
-ΕΛΕΓΧΟΣ_ΤΕΛΕΥΤΑΙΑΣ_ΤΙΜΗΣ_ΑΓΟΡΑΣ_PDA: {id}
-Ενημερώθηκε Το Αρχείο: {output_file}
-||
+>ΕΛΕΓΧΟΣ_ΤΕΛΕΥΤΑΙΑΣ_ΤΙΜΗΣ_ΑΓΟΡΑΣ_PDA: {id}
+`Ενημερώθηκε Το Αρχείο: {output_file}`
 """)
 
 

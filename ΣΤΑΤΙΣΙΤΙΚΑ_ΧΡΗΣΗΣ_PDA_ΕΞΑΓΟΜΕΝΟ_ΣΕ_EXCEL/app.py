@@ -20,8 +20,6 @@ excel_export.export(path, answer_01, answer_02, answer_03, answer_04, answer_05,
 
 # ---------------- SLACK BOT ----------------
 slack_app.post_message_to_slack("""
-||
-ΣΤΑΤΙΣΙΤΙΚΑ_ΧΡΗΣΗΣ_PDA_ΕΞΑΓΟΜΕΝΟ_ΣΕ_EXCEL
-Ενημερώθηκε Το Αρχείο: sql.xlsx
-||
+>ΣΤΑΤΙΣΤΙΚΑ_ΧΡΗΣΗΣ_PDA
+`Ενημερώθηκε Το Αρχείο: sql.xlsx`
 """)
