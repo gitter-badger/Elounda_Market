@@ -69,14 +69,12 @@ plt.show()
 
 # -------------------- FIND BARCODES WHO ARE IN EVERY QUARTILE --------------------
 codes_in_q1 = sql_answer[markup <= quartiles[0]]
-codes_in_q2 = sql_answer[(markup > quartiles[0]) &
-                                    (markup <= quartiles[1])]
-codes_in_q3 = sql_answer[(markup > quartiles[1]) &
-                                    (markup<= quartiles[2])]
+codes_in_q2 = sql_answer[(markup > quartiles[0]) & (markup <= quartiles[1])]
+codes_in_q3 = sql_answer[(markup > quartiles[1]) & (markup <= quartiles[2])]
 codes_in_q4 = sql_answer[markup > quartiles[2]]
 
 
-# -------------------- PRINt THEM IN EVERY QUARTILE --------------------
+# -------------------- PRINT THEM IN EVERY QUARTILE --------------------
 print(f"""
 \t\t\t\t§§§§§§§§§§ ////////////////////// :   CODES IN Q1   : LENGTH = {len(codes_in_q1)} : ////////////////////// §§§§§§§§§§ 
 {codes_in_q1}
@@ -94,7 +92,7 @@ print(f"""
 if input('Press 1 continue:') != '1':
     quit()
 
-# -------------------- Make the list to query for every barcode in bazaar webpage --------------------
+# -------------------- Make the list to query for every barcode in bazaar web page --------------------
 lista = sql_answer['BARCODE']
 scrap.shops = [scrap.a, scrap.b, scrap.e]
 out = scrap.calculate_prices(lista)

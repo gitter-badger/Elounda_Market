@@ -38,5 +38,5 @@ def export(path_to_file, final_result):
         # Conditional Formating
         worksheet.conditional_format(f'I1:I{len(final_result) + 1}', {'type': '3_color_scale'})
         worksheet.conditional_format(f'J1:J{len(final_result) + 1}', {'type': '3_color_scale'})
-        worksheet.write(len(final_result) + 1, 9, final_result.SalesQuantity.sum(), bold)
-        worksheet.write(len(final_result) + 1, 10, final_result.Turnover.sum(), bold)
+        worksheet.write(len(final_result) + 1, 10, final_result.SalesQuantity.sum(), bold)
+        worksheet.write(len(final_result) + 1, 11, final_result.Turnover.sum(), bold)
