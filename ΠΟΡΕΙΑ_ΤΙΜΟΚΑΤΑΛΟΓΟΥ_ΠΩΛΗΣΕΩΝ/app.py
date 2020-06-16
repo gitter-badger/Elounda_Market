@@ -1,7 +1,6 @@
 #  Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 import pandas as pd
 from pathlib import Path
-from datetime import datetime
 from ΠΟΡΕΙΑ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ_ΠΩΛΗΣΕΩΝ import sql_select, excel_export, timokatalogos
 from Private import sql_connect, slack_app
 import matplotlib.pyplot as plt
@@ -33,7 +32,7 @@ sales = pd.read_sql_query(sql_select.get_sales(from_date, to_date, tuple(timokat
 final_result = pd.merge(left=timokatalogos, right=sales, left_on='ΚΩΔΙΚΟΣ', right_on='ΚΩΔΙΚΟΣ').sort_values(
     by=['SalesQuantity'])
 
-# --------------------BRANDS --------------------
+# --------------------GROUP BY BRANDS TO SLACK --------------------
 brand_sales = final_result[['BRAND', 'SalesQuantity', 'Turnover']].groupby(by='BRAND').sum() \
     .sort_values('BRAND').reset_index()
 
@@ -53,7 +52,7 @@ report = f"""
 ```{brand_sales}```
 """
 
-slack_app.post_message_to_slack(report)
+# slack_app.post_message_to_slack(report)
 print(report)
 
 # -------------------- SALES QUANTITY --------------------

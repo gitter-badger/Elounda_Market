@@ -72,6 +72,6 @@ FROM ESFIItem AS ESFIItem
 WHERE
        ESFIItem.ItemClass <> 2
        and ESFIItem.BarCode in {barcode_list}
-        
+        --and ESFIItem.BarCode = '5201219486417'
 
     """
