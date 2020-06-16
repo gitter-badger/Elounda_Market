@@ -80,8 +80,18 @@ june_2020 = Timokatalogos(14,
                           datetime(2020, 6, 15),
                           'Αφορά: Α Δεκαπενθήμερο Προσφορών Ιουνίου')
 
+june_coffee_2020 = Timokatalogos(15,
+                          datetime(2020, 6, 6),
+                          datetime(2020, 6, 15),
+                          'Αφορά: Παπαγάλος Καφές')
+
+june_extra_2020 = Timokatalogos(16,
+                          datetime(2020, 6, 16),
+                          datetime(2020, 6, 30),
+                          'Αφορά: Mπύρα και Καφές')
+
 lista_2020 = [january_2020_02, nestle_2020, feb_2020, kinder_2020, xtapodi_2020, nescafe_2020, march_2020, april_2020,
-              alevri_2020, may_2020, may_2020_b, nuvoleta_2020, nivea_2020, june_2020]
+              alevri_2020, may_2020, may_2020_b, nuvoleta_2020, nivea_2020, june_2020, june_coffee_2020, june_extra_2020]
 
 for i in lista_2020:
     print(i.id, i.comments)
