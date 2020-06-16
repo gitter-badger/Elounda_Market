@@ -52,7 +52,7 @@ report = f"""
 ```{brand_sales}```
 """
 
-# slack_app.post_message_to_slack(report)
+slack_app.post_message_to_slack(report)
 print(report)
 
 # -------------------- SALES QUANTITY --------------------

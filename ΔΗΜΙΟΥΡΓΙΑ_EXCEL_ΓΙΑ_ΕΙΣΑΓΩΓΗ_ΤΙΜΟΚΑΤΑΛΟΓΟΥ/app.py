@@ -10,7 +10,7 @@ pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
 # -------------------- STATEMENTS HERE --------------------
-id = 1873           # ΑΥΤΗ Η ΠΑΡΑΜΕΤΡΟΣ ΚΑΘΕ ΦΟΡΑ ΑΛΛΑΖΕΙ
+id = 1881           # ΑΥΤΗ Η ΠΑΡΑΜΕΤΡΟΣ ΚΑΘΕ ΦΟΡΑ ΑΛΛΑΖΕΙ
 how_many_weeks = 2  # ΑΥΤΗ Η ΠΑΡΑΜΕΤΡΟΣ ΚΑΘΕ ΦΟΡΑ ΑΛΛΑΖΕΙ
 price_or_discount= ['Πελάτες Τιμή Πώλησης', 'Πωλήσεις Έκπτωση 1']
 output_file = 'Timokatalogos.xlsx'
