@@ -19,7 +19,7 @@ answer_06 = pd.read_sql_query(sql_query.query_06, sql_connect.sql_cnx())
 excel_export.export(path, answer_01, answer_02, answer_03, answer_04, answer_05, answer_06)
 
 # ---------------- SLACK BOT ----------------
-slack_app.post_message_to_slack("""
+slack_app.daily_reports("""
 >ΣΤΑΤΙΣΤΙΚΑ_ΧΡΗΣΗΣ_PDA
 `Ενημερώθηκε Το Αρχείο: sql.xlsx`
 """)

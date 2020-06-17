@@ -56,4 +56,4 @@ output = f"""
 `{LATO_01}`
 `{LATO_02}`
 """
-slack_app.post_message_to_slack(output)
+slack_app.mit_reports(output)

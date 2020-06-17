@@ -79,7 +79,7 @@ excel_export.export(file_path, answer_01, answer_02, katastima)
 send_mail.send_mail(mail_lst, mail_names, word, file_path, output_file)
 
 # ----------------SLACK BOT----------------------------
-slack_app.post_message_to_slack(f"""
+slack_app.daily_reports(f"""
 >ΚΑΤΑΧΩΡΗΘΗΚΕ Η ΠΑΡΑΓΓΕΛΙΑ
 `ΑΡΧΕΙΟ: {output_file}`
 `ΠΡΟΜΗΘΕΥΤΗΣ: {supplier}`

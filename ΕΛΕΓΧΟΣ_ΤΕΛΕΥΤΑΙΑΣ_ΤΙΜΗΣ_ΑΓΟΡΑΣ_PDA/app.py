@@ -46,7 +46,7 @@ excel_export.export(path_to_file, sql_answer)
 send_mail.send_mail(mail_lst, mail_names, word, path_to_file, output_file)
 
 # ---------------- SLACK BOT ----------------
-slack_app.post_message_to_slack(f"""
+slack_app.daily_reports(f"""
 >ΕΛΕΓΧΟΣ_ΤΕΛΕΥΤΑΙΑΣ_ΤΙΜΗΣ_ΑΓΟΡΑΣ_PDA: {id}
 `Ενημερώθηκε Το Αρχείο: {output_file}`
 """)

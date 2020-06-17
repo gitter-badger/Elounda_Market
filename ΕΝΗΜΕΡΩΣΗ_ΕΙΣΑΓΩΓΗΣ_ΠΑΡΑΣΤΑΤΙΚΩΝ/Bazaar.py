@@ -112,7 +112,7 @@ excel_writer.export(path_to_file, sql_answer)
 send_mail.send_mail(mail_lst, mail_names, word, path_to_file, output_file)
 
 # ----------------SLACK BOT----------------------------
-slack_app.post_message_to_slack(f"""
+slack_app.daily_reports(f"""
 >ΚΑΤΑΧΩΡΗΘΗΚΑΝ ΤΑ ΤΙΜΟΛΟΓΙΑ
 `ΑΡΧΕΙΟ: {output_file}`
 `ΠΡΟΜΗΘΕΥΤΗΣ: {main_name}`
