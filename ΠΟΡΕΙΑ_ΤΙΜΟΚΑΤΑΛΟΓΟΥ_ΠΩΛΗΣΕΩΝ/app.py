@@ -47,13 +47,13 @@ report = f"""
 ` DATERANGE: \t ΑΠΟ: {from_date.strftime("%d-%m-%Y")} \t ΕΩΣ: {to_date.strftime("%d-%m-%Y")} `
 ` ΠΟΣΟΤΗΤΑ ΠΩΛΗΣΕΩΝ: \t {final_result.SalesQuantity.sum()} TEM `
 ` ΤΖΙΡΟΣ ΠΩΛΗΣΕΩΝ: \t {round(final_result.Turnover.sum(), 2)} € `
-` Α/Α ΤΙΜΟΚΑΤΑΛΟΓΟΥ ΓΙΑ ΤΟ ΕΤΟΣ: {choose.id}`
+` Α/Α ΕΝΕΡΓΕΙΑ: {choose.id}`
 ` {choose.comments}`
 ```{brand_sales}```
 """
 
 slack_app.send_text(report,slack_app.channels[0])
-slack_app.send_files('report.xlsx', path_to_file, 'xlsx', slack_app.channels[0])
+slack_app.send_files(f'{id}.xlsx', path_to_file, 'xlsx', slack_app.channels[0])
 
 
 # -------------------- SALES QUANTITY --------------------

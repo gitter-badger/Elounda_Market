@@ -11,8 +11,8 @@ from ΝΕΑ_ΠΑΡΑΓΓΕΛΙΑ import excel_export
 from Private import slack_app, send_mail, sql_connect
 
 # ----------------STATEMENTS HERE----------------------------
-# 796 ok
-input_param = '797'
+# 797 ok
+input_param = '781'
 output_file = "Order{}.xlsx".format(input_param)
 
 # ----------------MAIL LIST----------------------------
@@ -85,6 +85,6 @@ slack_app.send_text(f"""
 `ΠΡΟΜΗΘΕΥΤΗΣ: {supplier}`
 `ΥΠΟΚΑΤΑΣΤΗΜΑ: {katastima()}`
 `PDA ID: {answer_02.ID[0]}`
-""", slack_app.channels[1])
+""", slack_app.channels[3])
 
 slack_app.send_files(output_file,file_path,'xlsx', slack_app.channels[3])
