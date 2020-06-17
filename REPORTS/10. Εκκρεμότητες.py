@@ -1,7 +1,7 @@
 #  Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 
 
-from Private import sql_connect, slack_app,send_mail
+from Private import sql_connect, slack_app, send_mail
 import pandas as pd
 
 output_file = 'Pendings.xlsx'
@@ -69,8 +69,8 @@ with pd.ExcelWriter(path_to_file, engine='xlsxwriter', datetime_format=' dd - mm
 slack_app.send_text("""
 > ΜΗΝΙΑΙΟ ΔΗΜΟΣΙΕΥΜΑ
 `Ολοκληρώθηκε η εξαγωγή εκκρεμοτήτων για έως σήμερα:`
-""", slack_app.channels[1])
+""", slack_app.channels[4])
 
-slack_app.send_files('report.xlsx', path_to_file, 'xlsx', slack_app.channels[4])
+slack_app.send_files(output_file, path_to_file, 'xlsx', slack_app.channels[4])
 
-send_mail.send_mail(mail_lst,mail_names,word,path_to_file,output_file)
+send_mail.send_mail(mail_lst, mail_names, word, path_to_file, output_file)
