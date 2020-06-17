@@ -116,4 +116,7 @@ slack_app.send_text(f"""
 >ΚΑΤΑΧΩΡΗΘΗΚΑΝ ΤΑ ΤΙΜΟΛΟΓΙΑ
 `ΑΡΧΕΙΟ: {output_file}`
 `ΠΡΟΜΗΘΕΥΤΗΣ: {main_name}`
-""", slack_app.channels[1])
+""", slack_app.channels[5])
+
+slack_app.send_files(output_file, path_to_file, 'xlsx', slack_app.channels[5])
+slack_app.send_files('views.png', 'views.png', 'png', slack_app.channels[5])
