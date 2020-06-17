@@ -42,7 +42,7 @@ excel_export.export(path_to_file, sql_answer)
 # SEND E-MAIL
 send_mail.send_mail(mail_lst, mail_names, word, path_to_file, output_file)
 
-slack_app.daily_reports(f"""
+slack_app.send_text(f"""
 >ΕΛΕΓΧΟΣ ΓΙΑ ΔΙΠΛΑ BARCODES 
 ```{sql_answer}```
-""")
+""", slack_app.channels[1])

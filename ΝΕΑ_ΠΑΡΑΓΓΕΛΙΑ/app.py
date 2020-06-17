@@ -79,10 +79,12 @@ excel_export.export(file_path, answer_01, answer_02, katastima)
 send_mail.send_mail(mail_lst, mail_names, word, file_path, output_file)
 
 # ----------------SLACK BOT----------------------------
-slack_app.daily_reports(f"""
+slack_app.send_text(f"""
 >ΚΑΤΑΧΩΡΗΘΗΚΕ Η ΠΑΡΑΓΓΕΛΙΑ
 `ΑΡΧΕΙΟ: {output_file}`
 `ΠΡΟΜΗΘΕΥΤΗΣ: {supplier}`
 `ΥΠΟΚΑΤΑΣΤΗΜΑ: {katastima()}`
 `PDA ID: {answer_02.ID[0]}`
-""")
+""", slack_app.channels[1])
+
+slack_app.send_files(output_file,file_path,'xlsx', slack_app.channels[3])

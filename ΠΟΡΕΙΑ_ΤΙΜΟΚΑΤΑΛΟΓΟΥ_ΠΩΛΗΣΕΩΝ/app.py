@@ -52,7 +52,8 @@ report = f"""
 ```{brand_sales}```
 """
 
-slack_app.daily_reports(report)
+slack_app.send_text(report,slack_app.channels[0])
+slack_app.send_files('report.xlsx', path_to_file, 'xlsx', slack_app.channels[0])
 
 
 # -------------------- SALES QUANTITY --------------------

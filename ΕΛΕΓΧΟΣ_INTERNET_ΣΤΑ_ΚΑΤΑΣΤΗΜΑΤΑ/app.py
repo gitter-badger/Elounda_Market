@@ -56,5 +56,5 @@ output = f"""
 `{LATO_01}`
 `{LATO_02}`
 """
-slack_app.mit_reports(output)
+slack_app.send_text(output, slack_app.channels[1])
 print('END')

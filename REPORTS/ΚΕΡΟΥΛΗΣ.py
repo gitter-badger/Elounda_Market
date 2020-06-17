@@ -151,4 +151,9 @@ with pd.ExcelWriter(file_path, engine='xlsxwriter') as writer:
     worksheet.insert_chart('A11', chart02)
 
 
-slack_app.mit_reports('Ενημερώθηκε Το Αρχείο: Κερούλης.xlsx')
+slack_app.send_text("""
+>ΤΑΚΤΙΚΑ ΑΡΧΕΙΑ
+`Ενημερώθηκε Το Αρχείο: Κερούλης.xlsx`
+""", slack_app.channels[1])
+
+slack_app.send_files('Κερούλης.xlsx', file_path, 'xlsx', slack_app.channels[1])

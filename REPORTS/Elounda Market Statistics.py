@@ -4,8 +4,7 @@ from datetime import datetime
 from Private import slack_app,sql_connect
 import matplotlib.pyplot as plt
 import pandas as pd
-import pyodbc
-import xlsxwriter
+
 
 # ------ΛΙΣΤΕΣ------------
 
@@ -505,4 +504,9 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
     # INSERT IMAGES
     # worksheet.insert_image('A27', 'sap.png', {'x_scale': 0.2, 'y_scale': 0.2})
     # worksheet.insert_image('I27', 'crystal.png', {'x_scale': 0.27, 'y_scale': 0.29})
-slack_app.mit_reports('Ενημερώθηκε Το Αρχείο: EM.xlsx')
+slack_app.send_text("""
+>ΤΑΚΤΙΚΑ ΑΡΧΕΙΑ
+`Ενημερώθηκε Το Αρχείο: EM.xlsx`
+""", slack_app.channels[1])
+
+slack_app.send_files('EM.xlsx', output_file, 'xlsx', slack_app.channels[1])

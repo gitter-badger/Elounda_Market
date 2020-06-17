@@ -29,8 +29,7 @@ with open('file.csv', 'w') as file:
     file.write('\,'.join(x))
 
 # ----------------SLACK BOT----------------------------
-slack_app.daily_reports(f""" 
+slack_app.send_text(f""" 
 >H Αλλαγή Φ.Π.Α. Ολοκληρώθηκε 
 `PDA Αρχείο: {id}`
-
-""")
+""", slack_app.channels[1])

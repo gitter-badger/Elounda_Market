@@ -148,4 +148,9 @@ with pd.ExcelWriter(file_path, engine='xlsxwriter') as writer:
     chart02.set_size({'width': 1200, 'height': 900})
     worksheet.insert_chart('A32', chart02)
 
-slack_app.mit_reports('Ενημερώθηκε Το Αρχείο: Παγωτά.xlsx')
+slack_app.send_text("""
+>ΤΑΚΤΙΚΑ ΑΡΧΕΙΑ
+`Ενημερώθηκε Το Αρχείο: Παγωτά.xlsx`
+""", slack_app.channels[1])
+
+slack_app.send_files('Παγωτά.xlsx', file_path, 'xlsx', slack_app.channels[1])
