@@ -57,3 +57,4 @@ output = f"""
 `{LATO_02}`
 """
 slack_app.mit_reports(output)
+print('END')
