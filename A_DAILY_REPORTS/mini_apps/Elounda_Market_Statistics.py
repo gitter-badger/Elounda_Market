@@ -1,6 +1,8 @@
 #  Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 
 from datetime import datetime
+import random
+
 from Private import slack_app,sql_connect
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -526,10 +528,10 @@ for i in range(len(c)):
     y.append(year_2018[i])
     y.append(year_2019[i])
     y.append(year_2020[i])
-    x = ['12', '13', '14', '15', '16', '17', '18', '19', '20']
+    X = ['12', '13', '14', '15', '16', '17', '18', '19', '20']
     Y = y
     plt.subplot(8, 8, j, ylabel='ΤΖΙΡΟΣ', title=kataskevastes_lst[i])
-    plt.bar(X, y, alpha=0.5)
+    plt.bar(X, y, color=f"#{random.randrange(0x1000000):06x}")
     j+=1
 
 plt.grid(True, alpha=0.5)
