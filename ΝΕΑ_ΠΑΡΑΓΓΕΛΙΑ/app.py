@@ -12,7 +12,7 @@ from Private import slack_app, send_mail, sql_connect
 
 # ----------------STATEMENTS HERE----------------------------
 # 797 ok
-input_param = '781'
+input_param = '3946'
 output_file = "Order{}.xlsx".format(input_param)
 
 # ----------------MAIL LIST----------------------------
@@ -35,6 +35,7 @@ SELECT  BarCode, ItemDescription as 'Περιγραφή', quant as 'Ποσότη
         --and DATEPART(mm,RealImportTime) = DATEPART(mm,getdate())
         and IMP_MobileDocumentHeaders.Code = {}
         and OrderType = 'ΠΠΡ'
+        --and OrderType = 'ΔΕΑ'
 """.format(input_param)
 
 data_querry = """
@@ -49,6 +50,7 @@ SELECT  distinct OrderType as 'Type', IMP_MobileDocumentHeaders.Code as 'Code', 
         --and DATEPART(mm,RealImportTime) = DATEPART(mm,getdate())
         and IMP_MobileDocumentHeaders.Code = {}
         and OrderType = 'ΠΠΡ'
+        --and OrderType = 'ΔΕΑ'
 """.format(input_param)
 
 

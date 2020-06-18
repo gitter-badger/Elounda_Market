@@ -2,7 +2,7 @@
 import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
-from ΕΝΗΜΕΡΩΣΗ_ΕΙΣΑΓΩΓΗΣ_ΠΑΡΑΣΤΑΤΙΚΩΝ import scrap, excel_writer, sql_import_report
+from B_WEEKLY_ΕΝΗΜΕΡΩΣΗ_ΕΙΣΑΓΩΓΗΣ_ΠΑΡΑΣΤΑΤΙΚΩΝ import scrap, excel_writer, sql_import_report
 from Private import send_mail, slack_app, sql_connect
 
 
@@ -15,7 +15,7 @@ main_name = 'Bazaar A.E.'
 
 
 # -------------------- Open HTML File for the BODY MAIL --------------------
-with open('2. Import || Bazaar.html', 'r') as html_file:
+with open('HTML/2. Import || Bazaar.html', 'r') as html_file:
     word = html_file.read()
 
 

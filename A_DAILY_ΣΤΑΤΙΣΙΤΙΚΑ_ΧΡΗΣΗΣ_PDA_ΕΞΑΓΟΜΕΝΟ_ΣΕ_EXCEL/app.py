@@ -1,6 +1,6 @@
 #  Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 
-from ΣΤΑΤΙΣΙΤΙΚΑ_ΧΡΗΣΗΣ_PDA_ΕΞΑΓΟΜΕΝΟ_ΣΕ_EXCEL import excel_export, sql_query
+from A_DAILY_ΣΤΑΤΙΣΙΤΙΚΑ_ΧΡΗΣΗΣ_PDA_ΕΞΑΓΟΜΕΝΟ_ΣΕ_EXCEL import excel_export, sql_query
 from Private import sql_connect, slack_app
 import pandas as pd
 

@@ -1,7 +1,7 @@
 #  Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 
 from Private import sql_connect, send_mail, slack_app
-from ΕΛΕΓΧΟΣ_ΔΙΠΛΟΚΑΤΑΧΩΡΗΣΗΣ_ΚΩΔΙΚΩΝ import excel_export
+from B_WEEKLY_ΕΛΕΓΧΟΣ_ΔΙΠΛΟΚΑΤΑΧΩΡΗΣΗΣ_ΚΩΔΙΚΩΝ import excel_export
 import pandas as pd
 
 

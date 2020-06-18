@@ -1,21 +1,45 @@
 #  Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 
+def sql_query(input_param,order_type):
+    return """
+    SELECT  BarCode, ItemDescription as 'Περιγραφή', quant as 'Ποσότητα'
+            FROM IMP_MobileDocumentLines
+            left join IMP_MobileDocumentHeaders
+            on IMP_MobileDocumentHeaders.GID = IMP_MobileDocumentLines.fDocGID
+            left join ESFITradeAccount
+            on ESFITradeAccount.gid = IMP_MobileDocumentHeaders.Supplier
+            where DATEPART(yyyy,RealImportTime) = DATEPART(yyyy,getdate())
+            --and DATEPART(mm,RealImportTime) = DATEPART(mm,getdate())
+            and IMP_MobileDocumentHeaders.Code = {}
+           -- and OrderType = 'ΠΠΡ'
+            and OrderType = '{}'
+    """.format(input_param, order_type)
+
+def data_querry(input_param, order_type):
+    return  """
+    SELECT  distinct OrderType as 'Type', IMP_MobileDocumentHeaders.Code as 'Code', ESFITradeAccount.Name as 'Name',
+            IMP_MobileDocumentHeaders.PdaId as 'ID'
+            FROM IMP_MobileDocumentLines
+            left join IMP_MobileDocumentHeaders
+            on IMP_MobileDocumentHeaders.GID = IMP_MobileDocumentLines.fDocGID
+            left join ESFITradeAccount
+            on ESFITradeAccount.gid = IMP_MobileDocumentHeaders.Supplier
+            where DATEPART(yyyy,RealImportTime) = DATEPART(yyyy,getdate())
+            --and DATEPART(mm,RealImportTime) = DATEPART(mm,getdate())
+            and IMP_MobileDocumentHeaders.Code = {}
+            --and OrderType = 'ΠΠΡ'
+            and OrderType = '{}'
+    """.format(input_param, order_type)
+
 def get_product_cost(code):
     database_query = f"""
            SELECT TOP 1 
+           ESFIItemEntry_ESFIItemPeriodics.NetValue /
+           isnull(ESFIItemEntry_ESFIItemPeriodics.Quantity, 1)                                                  AS 'ΚΑΘΑΡΗ ΤΙΜΗ',
            ESFIItemEntry_ESFIItemPeriodics.RegistrationDate                                                     AS 'ΗΜΕΡΟΜΗΝΙΑ',
            ESFIItemEntry_ESFIItemPeriodics.DocumentCode                                                         AS 'ΠΑΡΑΣΤΑΤΙΚΟ',
            FK_ESFIDocumentTrade_ESFITradeAccount.Name                                                           AS 'ΠΡΟΜΗΘΕΥΤΗΣ',
-           FK_ESFIItemEntry_ESFIItem.BarCode                                                                    AS 'BARCODE',
-           ESFIItemEntry_ESFIItemPeriodics.Quantity                                                             AS 'ΠΟΣΟΤΗΤΑ',
-           FK_ESFIItemEntry_ESFIItem.Description                                                                AS 'ΠΕΡΙΓΡΑΦΗ',
-           ESFIItemEntry_ESFIItemPeriodics.NetValue /
-           isnull(ESFIItemEntry_ESFIItemPeriodics.Quantity, 1)                                                  AS 'ΚΑΘΑΡΗ ΤΙΜΗ',
-           FK_ESFIItemEntry_ESFIItem.RetailPrice                                                                AS 'ΛΙΑΝΙΚΗ',
-           Case when ESFIItemEntry_ESFIItemPeriodics.NetValue  =0 then null
-           Else (FK_ESFIItemEntry_ESFIItem.RetailPrice / (1 + (FK_ESFIItem_ESGOZVATCategory.Normal / 100))) /
-           isnull((ESFIItemEntry_ESFIItemPeriodics.NetValue / ESFIItemEntry_ESFIItemPeriodics.Quantity), 1) -
-           1 END                                                                                                    AS 'ΚΕΡΔΟΦΟΡΙΑ'
+           FK_ESFIItemEntry_ESFIItem.BarCode                                                                    AS 'BarCode'
 
 
     FROM ESFIItemEntry_ESFIItemPeriodics AS ESFIItemEntry_ESFIItemPeriodics
@@ -38,19 +62,6 @@ def get_product_cost(code):
     WHERE  FK_ESFIItemEntry_ESFIItem.BarCode = '{code}'
       AND (ESFIItemEntry_ESFIItemPeriodics.DocumentCode LIKE 'ΑΤ%')
 
-order by 1 DESC
+order by 2 DESC
     """
     return database_query
-
-
-def pda_results(id, type_of_document):
-    output = f"""
-    SELECT IMP_MobileDocumentLines.BarCode as 'BARCODE' 
-    FROM IMP_MobileDocumentLines 
-    LEFT JOIN IMP_MobileDocumentHeaders ON 
-    IMP_MobileDocumentLines.fDocGID = IMP_MobileDocumentHeaders.GID
-    WHERE IMP_MobileDocumentHeaders.Code = {id}
-    AND IMP_MobileDocumentHeaders.OrderType like '{type_of_document}'
-    """
-    return  output
-

@@ -14,19 +14,19 @@ mail_names = ['Εκκρεμότητες (Κομμάς Ιωάννης)', 'Εκκ�
 
 program_title = 'Εκκρεμότητες'
 
-with open("/Users/kommas/PycharmProjects/Elounda_Market/REPORTS/HTML/10. Εκκρεμότητες.html", 'r')as html_file:
+with open("/A_DAILY_REPORTS/HTML/10. Εκκρεμότητες.html", 'r')as html_file:
     word = html_file.read()
 
 # Read the SQL Querry_1
-with open('/Users/kommas/PycharmProjects/Elounda_Market/REPORTS/SQL/10. Εκκρεμότητες Bazaar', 'r') as sql_file:
+with open('/A_DAILY_REPORTS/SQL/10. Εκκρεμότητες Bazaar', 'r') as sql_file:
     sql_querry_1 = sql_file.read()
 
 # Read the SQL Querry_2
-with open('/Users/kommas/PycharmProjects/Elounda_Market/REPORTS/SQL/10. Εκκρεμότητες ELOUNDA MARKET', 'r') as sql_file:
+with open('/A_DAILY_REPORTS/SQL/10. Εκκρεμότητες ELOUNDA MARKET', 'r') as sql_file:
     sql_querry_2 = sql_file.read()
 
 # Read the SQL Querry_3
-with open('/Users/kommas/PycharmProjects/Elounda_Market/REPORTS/SQL/10. Εκκρεμότητες LATO', 'r') as sql_file:
+with open('/A_DAILY_REPORTS/SQL/10. Εκκρεμότητες LATO', 'r') as sql_file:
     sql_querry_3 = sql_file.read()
 
 # Assign the SQL Query Answer

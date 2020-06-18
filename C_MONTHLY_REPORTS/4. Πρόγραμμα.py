@@ -15,7 +15,7 @@ mail_names = [f'{program_title} (Κομμάς Ιωάννης)',
               f'{program_title} (Κατάστημα)',
               f'{program_title} (Λογιστήριο)']
 
-with open("/Users/kommas/PycharmProjects/Elounda_Market/REPORTS/HTML/4. Πρόγραμμα.html", 'r')as html_file:
+with open("/A_DAILY_REPORTS/HTML/4. Πρόγραμμα.html", 'r')as html_file:
     word = html_file.read()
 
 # ----------------SLACK BOT----------------------------
