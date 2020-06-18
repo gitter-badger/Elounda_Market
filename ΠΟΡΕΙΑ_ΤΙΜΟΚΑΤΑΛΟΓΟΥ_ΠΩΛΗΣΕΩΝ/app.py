@@ -56,23 +56,14 @@ slack_app.send_text(report,slack_app.channels[0])
 slack_app.send_files(f'{id}.xlsx', path_to_file, 'xlsx', slack_app.channels[0])
 
 
-# -------------------- SALES QUANTITY --------------------
-sales_quantity = final_result.SalesQuantity.values
-
-# -------------------- QUARTILES --------------------
-quartiles = np.quantile(sales_quantity, [.25, .5, .75])
-
 # -------------------- PLOT --------------------
 plt.figure(figsize=(15, 9))
-plt.subplot(1, 2, 1, xlabel='Products', ylabel='Quantity Sales', title=f'[Histogram (Quartiles)]')
-plt.hist(sales_quantity)
-plt.axvline(x=quartiles[0], label=f"Q1={quartiles[0]}", c='#6400e4')
-plt.axvline(x=quartiles[1], label=f"Q2={quartiles[1]}", c='#fd4d3f')
-plt.axvline(x=quartiles[2], label=f"Q3={quartiles[2]}", c='#4fe0b0')
+plt.subplot(xlabel='Brand', title= choose.comments)
+plt.bar(brand_sales.BRAND, brand_sales.Turnover, alpha=0.5, color='red', label='ΤΖΙΡΟΣ')
+plt.plot(brand_sales.BRAND, brand_sales.SalesQuantity, alpha=0.5, color='blue', label='ΠΟΣΟΤΗΤΑ', marker='o', linestyle="None")
+plt.grid(True, alpha=0.8)
 plt.legend()
-plt.subplot(1, 2, 2, xlabel='BoxPlot', ylabel='Quantity Sales', title='Quantity [Box Plot]')
-plt.boxplot(sales_quantity)
-plt.grid(True, alpha=0.2)
-# plt.legend()
 plt.savefig('views.png')
 plt.show()
+
+slack_app.send_files('views.png', 'views.png', 'png', slack_app.channels[0])
