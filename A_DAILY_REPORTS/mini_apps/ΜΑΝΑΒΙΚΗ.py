@@ -3,7 +3,7 @@
 from datetime import datetime
 import pandas as pd
 from Private import slack_app, sql_connect
-
+import matplotlib.pyplot as plt
 file_path = '/Users/kommas/OneDrive/Business_Folder/Slack/Private_Analytics/Μαναβική.xlsx'
 
 # -----------| SQL QUERY -------------
@@ -85,6 +85,16 @@ answer = pd.read_sql_query(query, sql_connect.sql_cnx())
 answer_2 = pd.read_sql_query(query_2, sql_connect.sql_cnx())
 answer_3 = pd.read_sql_query(query_03, sql_connect.sql_cnx())
 pl = answer_3.values.min()
+
+X = answer_2['YEAR']
+y = answer_2['TurnOver']
+plt.figure(figsize=(15, 9))
+plt.subplot(xlabel='ΕΤΟΣ', ylabel='ΤΖΙΡΟΣ' , title= 'ELOUNDA MARKET (ΜΑΝΑΒΙΚΗ)')
+plt.bar(X, y, alpha=0.5)
+plt.grid(True, alpha=0.5)
+plt.savefig('manaviki_views.png')
+plt.show()
+
 # Εισαγωγή Δεομένων στο  EXCEL
 with pd.ExcelWriter(file_path, engine='xlsxwriter') as writer:
     answer.to_excel(writer, sheet_name='ΜΑΝΑΒΙΚΗ', startcol=3, startrow=0)
@@ -154,3 +164,4 @@ slack_app.send_text("""
 """, slack_app.channels[1])
 
 slack_app.send_files('Μαναβική.xlsx', file_path, 'xlsx', slack_app.channels[1])
+slack_app.send_files('manaviki_views.png', 'manaviki_views.png', 'png', slack_app.channels[1])

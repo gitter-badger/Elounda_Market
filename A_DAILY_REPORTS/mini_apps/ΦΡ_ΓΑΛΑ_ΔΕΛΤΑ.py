@@ -3,7 +3,7 @@
 from datetime import datetime
 import pandas as pd
 from Private import sql_connect,slack_app
-
+import matplotlib.pyplot as plt
 file_path = '/Users/kommas/OneDrive/Business_Folder/Slack/Private_Analytics/Φρέσκο Γάλα Δέλτα POS.xlsx'
 
 # -----------| SQL QUERY -------------
@@ -101,6 +101,15 @@ GROUP BY
 answer = pd.read_sql_query(query, sql_connect.sql_cnx())
 answer_2 = pd.read_sql_query(query_2, sql_connect.sql_cnx())
 
+X = answer_2['YEAR']
+y = answer_2['TurnOver']
+plt.figure(figsize=(15, 9))
+plt.subplot(xlabel='ΕΤΟΣ', ylabel='ΤΖΙΡΟΣ' , title= 'ELOUNDA MARKET (ΦΡΕΣΚΟ ΓΑΛΑ ΔΕΛΤΑ)')
+plt.bar(X, y, alpha=0.5)
+plt.grid(True, alpha=0.5)
+plt.savefig('fresco_gala_delta_views.png')
+plt.show()
+
 pl = 12
 # Εισαγωγή Δεομένων στο  EXCEL
 with pd.ExcelWriter(file_path, engine='xlsxwriter') as writer:
@@ -170,3 +179,4 @@ slack_app.send_text("""
 """, slack_app.channels[1])
 
 slack_app.send_files('Φρέσκο Γάλα Δέλτα POS.xlsx', file_path, 'xlsx', slack_app.channels[1])
+slack_app.send_files('fresco_gala_delta_views.png', 'fresco_gala_delta_views.png', 'png', slack_app.channels[1])
