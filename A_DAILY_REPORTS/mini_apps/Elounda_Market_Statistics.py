@@ -505,7 +505,7 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
     # worksheet.insert_image('A27', 'sap.png', {'x_scale': 0.2, 'y_scale': 0.2})
     # worksheet.insert_image('I27', 'crystal.png', {'x_scale': 0.27, 'y_scale': 0.29})
 slack_app.send_text("""
->ΤΑΚΤΙΚΑ ΑΡΧΕΙΑ
+>ΣΤΑΤΙΣΤΙΚΑ ELOUNDA MARKET
 `Ενημερώθηκε Το Αρχείο: EM.xlsx`
 """, slack_app.channels[1])
 

@@ -18,11 +18,11 @@ program_title = 'Διπλά Barcodes '
 barcode_old_values = ('5200116140910', '5206586230687', '5213002921425', '5214000237334')
 
 
-with open('HTML/double_barcode_body.html', 'r')as html_file:
+with open('../HTML/double_barcode_body.html', 'r')as html_file:
     word = html_file.read()
 
 # Read the SQL Querry
-with open('SQL/double_barcode_query.sql', 'r') as sql_file:
+with open('../SQL/double_barcode_query.sql', 'r') as sql_file:
     sql_query = sql_file.read()
 
 
@@ -40,7 +40,7 @@ print()
 double_barcode_excel_export.export(path_to_file, sql_answer)
 
 # SEND E-MAIL
-send_mail.send_mail(mail_lst, mail_names, word, path_to_file, output_file)
+# send_mail.send_mail(mail_lst, mail_names, word, path_to_file, output_file)
 
 slack_app.send_text(f"""
 >ΕΛΕΓΧΟΣ ΓΙΑ ΔΙΠΛΑ BARCODES 
