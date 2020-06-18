@@ -285,7 +285,11 @@ prod_per_year = answer_01.groupby(['YEAR'])['TurnOver'].sum().reset_index()
 
 X = prod_per_year['YEAR']
 y = prod_per_year['TurnOver']
+plt.figure(figsize=(15, 9))
+plt.subplot(xlabel='ΕΤΟΣ', ylabel='ΤΖΙΡΟΣ' , title= 'ELOUNDA MARKET')
 plt.bar(X, y, alpha=0.5)
+plt.grid(True, alpha=0.5)
+plt.savefig('views.png')
 plt.show()
 answer = []
 answer_sum = []
@@ -510,3 +514,4 @@ slack_app.send_text("""
 """, slack_app.channels[1])
 
 slack_app.send_files('EM.xlsx', output_file, 'xlsx', slack_app.channels[1])
+slack_app.send_files('views.png', 'views.png', 'png', slack_app.channels[1])
