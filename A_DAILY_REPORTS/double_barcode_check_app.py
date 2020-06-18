@@ -1,7 +1,7 @@
 #  Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 
 from Private import sql_connect, send_mail, slack_app
-from B_WEEKLY_ΕΛΕΓΧΟΣ_ΔΙΠΛΟΚΑΤΑΧΩΡΗΣΗΣ_ΚΩΔΙΚΩΝ import excel_export
+from A_DAILY_REPORTS.Libraries import double_barcode_excel_export
 import pandas as pd
 
 
@@ -18,11 +18,11 @@ program_title = 'Διπλά Barcodes '
 barcode_old_values = ('5200116140910', '5206586230687', '5213002921425', '5214000237334')
 
 
-with open('body.html', 'r')as html_file:
+with open('HTML/double_barcode_body.html', 'r')as html_file:
     word = html_file.read()
 
 # Read the SQL Querry
-with open('query.sql', 'r') as sql_file:
+with open('SQL/double_barcode_query.sql', 'r') as sql_file:
     sql_query = sql_file.read()
 
 
@@ -37,7 +37,7 @@ print(sql_answer)
 print()
 
 # Εισαγωγή Δεομένων στο  EXCEL
-excel_export.export(path_to_file, sql_answer)
+double_barcode_excel_export.export(path_to_file, sql_answer)
 
 # SEND E-MAIL
 send_mail.send_mail(mail_lst, mail_names, word, path_to_file, output_file)

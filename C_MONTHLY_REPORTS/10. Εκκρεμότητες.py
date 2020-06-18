@@ -14,19 +14,19 @@ mail_names = ['Εκκρεμότητες (Κομμάς Ιωάννης)', 'Εκκ�
 
 program_title = 'Εκκρεμότητες'
 
-with open("/A_DAILY_REPORTS/HTML/10. Εκκρεμότητες.html", 'r')as html_file:
+with open("HTML/10. Εκκρεμότητες.html", 'r')as html_file:
     word = html_file.read()
 
 # Read the SQL Querry_1
-with open('/A_DAILY_REPORTS/SQL/10. Εκκρεμότητες Bazaar', 'r') as sql_file:
+with open('SQL/10. Εκκρεμότητες Bazaar', 'r') as sql_file:
     sql_querry_1 = sql_file.read()
 
 # Read the SQL Querry_2
-with open('/A_DAILY_REPORTS/SQL/10. Εκκρεμότητες ELOUNDA MARKET', 'r') as sql_file:
+with open('SQL/10. Εκκρεμότητες ELOUNDA MARKET', 'r') as sql_file:
     sql_querry_2 = sql_file.read()
 
 # Read the SQL Querry_3
-with open('/A_DAILY_REPORTS/SQL/10. Εκκρεμότητες LATO', 'r') as sql_file:
+with open('SQL/10. Εκκρεμότητες LATO', 'r') as sql_file:
     sql_querry_3 = sql_file.read()
 
 # Assign the SQL Query Answer
@@ -66,6 +66,14 @@ with pd.ExcelWriter(path_to_file, engine='xlsxwriter', datetime_format=' dd - mm
         worksheet.set_column('F:F', 30, number)
         worksheet.set_column('G:G', 20, number)
 
+# ----------------SLACK BOT delete----------------------------
+x = (slack_app.history(slack_app.channels_id[4]))
+
+for i in range(len(x['messages'])):
+    timer = (x['messages'][i]['ts'])
+    slack_app.delete(slack_app.channels_id[4], timer)
+
+# ----------------SLACK BOT import----------------------------
 slack_app.send_text("""
 > ΜΗΝΙΑΙΟ ΔΗΜΟΣΙΕΥΜΑ
 `Ολοκληρώθηκε η εξαγωγή εκκρεμοτήτων για έως σήμερα:`
