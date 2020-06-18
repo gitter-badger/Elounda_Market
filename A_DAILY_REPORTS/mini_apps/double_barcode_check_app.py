@@ -18,11 +18,11 @@ program_title = 'Διπλά Barcodes '
 barcode_old_values = ('5200116140910', '5206586230687', '5213002921425', '5214000237334')
 
 
-with open('../HTML/double_barcode_body.html', 'r')as html_file:
+with open('HTML/double_barcode_body.html', 'r')as html_file:
     word = html_file.read()
 
 # Read the SQL Querry
-with open('../SQL/double_barcode_query.sql', 'r') as sql_file:
+with open('SQL/double_barcode_query.sql', 'r') as sql_file:
     sql_query = sql_file.read()
 
 
