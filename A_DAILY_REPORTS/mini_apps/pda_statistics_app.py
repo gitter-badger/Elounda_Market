@@ -17,35 +17,26 @@ answer_04 = pd.read_sql_query(pda_stats_sql_query.query_04, sql_connect.sql_cnx(
 answer_05 = pd.read_sql_query(pda_stats_sql_query.query_05, sql_connect.sql_cnx())
 answer_06 = pd.read_sql_query(pda_stats_sql_query.query_06, sql_connect.sql_cnx())
 
-# ---------------- PLOT YEARS----------------
+# ---------------- PLOT ----------------
 X = answer_05['YEAR']
 y = answer_05['Count "Παραστατικά"']
 plt.figure(figsize=(15, 9))
-plt.subplot(xlabel='ΕΤΟΣ', ylabel='Παραστατικά' , title= '(PDA STATISTICS) ΧΡΟΝΙΕΣ ')
-plt.bar(X, y, alpha=0.5)
+plt.subplot(2, 1, 1,xlabel='ΕΤΟΣ', ylabel='Παραστατικά' , title= '(PDA STATISTICS) ΧΡΟΝΙΕΣ ')
+plt.bar(X, y, alpha=0.8)
 plt.grid(True, alpha=0.5)
-plt.savefig('years_pda_views.png')
-plt.show()
-
-# ---------------- PLOT MONTHS----------------
+plt.subplot(2, 2, 3, xlabel='ΜΗΝΑΣ', ylabel='Παραστατικά' , title= '(PDA STATISTICS) ΜΗΝΕΣ')
 X = answer_04['MONTH']
 y = answer_04['Count "Παραστατικά"']
-plt.figure(figsize=(15, 9))
-plt.subplot(xlabel='ΜΗΝΑΣ', ylabel='Παραστατικά' , title= '(PDA STATISTICS) ΜΗΝΕΣ')
-plt.bar(X, y, alpha=0.5)
+plt.bar(X, y, alpha=0.8, color='red')
 plt.grid(True, alpha=0.5)
-plt.savefig('months_pda_views.png')
-plt.show()
-
-# ---------------- PLOT DAY ----------------
+plt.subplot(2, 2, 4, xlabel='ΗΜΕΡΑ', ylabel='Παραστατικά' , title= '(PDA STATISTICS) ΗΜΕΡΕΣ')
 X = answer_03['DAY']
 y = answer_03['Count "Παραστατικά"']
-plt.figure(figsize=(15, 9))
-plt.subplot(xlabel='ΗΜΕΡΑ', ylabel='Παραστατικά' , title= '(PDA STATISTICS) ΗΜΕΡΕΣ')
-plt.bar(X, y, alpha=0.5)
+plt.bar(X, y, alpha=0.8, color= 'yellow')
 plt.grid(True, alpha=0.5)
-plt.savefig('days_pda_views.png')
+plt.savefig('pda_views.png')
 plt.show()
+
 
 # ---------------- EXCEL EXPORT ----------------
 pda_stats_excel_export.export(path, answer_01, answer_02, answer_03, answer_04, answer_05, answer_06)
@@ -56,6 +47,4 @@ slack_app.send_text("""
 `Ενημερώθηκε Το Αρχείο: sql.xlsx`
 """, slack_app.channels[1])
 slack_app.send_files('sql.xlsx', path, 'xlsx', slack_app.channels[1])
-slack_app.send_files('years_pda_views.png', 'years_pda_views.png', 'png', slack_app.channels[1])
-slack_app.send_files('months_pda_views.png', 'months_pda_views.png', 'png', slack_app.channels[1])
-slack_app.send_files('days_pda_views.png', 'days_pda_views.png', 'png', slack_app.channels[1])
+slack_app.send_files('pda_views.png', 'pda_views.png', 'png', slack_app.channels[1])

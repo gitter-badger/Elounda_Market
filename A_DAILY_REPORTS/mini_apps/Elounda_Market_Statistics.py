@@ -29,6 +29,7 @@ kataskevastes_lst = ['COCA COLA 3E', 'Pepsico - HBH', 'Κρι Κρι', 'ΟΛΥΜ
                      'Καλαμαράκης Κ.Ε. Α.Β.Ε.Ε. - Καλας Α.Ε.', 'SCA Hygiene Products A.E.',
                      'Κονσερβοοπιια Βορειου Αιγαιου Α.Ε.Β.Ε.', 'Sonel A.E. Loreal Hellas S.A.'
                      ]
+
 coca_cola = (
     'AMITA', 'AVRA', 'Coca-Cola', 'Fanta', 'Frulite', 'Monster', 'Nestea', 'Powerade', 'Schweppes', 'Sprite', 'Λυττός')
 pepsico = ('7up', 'Lipton', 'Pepsi', 'RockStar', 'Ήβη')
@@ -291,6 +292,8 @@ plt.bar(X, y, alpha=0.5)
 plt.grid(True, alpha=0.5)
 plt.savefig('views.png')
 plt.show()
+
+
 answer = []
 answer_sum = []
 answer_count = []
@@ -329,6 +332,7 @@ answer_prom_count = []
 for i in range(len(promi8eutes_list)):
     answer_prom.append(pd.read_sql_query(querry_suppliers(promi8eutes_list[i]), sql_connect.sql_cnx()))
     answer_prom_count.append(len(answer_prom[i]))
+
 
 # -------------OPEN FILE | WRITE ----------------------------
 with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SKIP
@@ -508,6 +512,30 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
     # INSERT IMAGES
     # worksheet.insert_image('A27', 'sap.png', {'x_scale': 0.2, 'y_scale': 0.2})
     # worksheet.insert_image('I27', 'crystal.png', {'x_scale': 0.27, 'y_scale': 0.29})
+
+plt.figure(figsize=(50, 50))
+j=1
+for i in range(len(c)):
+    y = []
+    y.append(year_2012[i])
+    y.append(year_2013[i])
+    y.append(year_2014[i])
+    y.append(year_2015[i])
+    y.append(year_2016[i])
+    y.append(year_2017[i])
+    y.append(year_2018[i])
+    y.append(year_2019[i])
+    y.append(year_2020[i])
+    x = ['12', '13', '14', '15', '16', '17', '18', '19', '20']
+    Y = y
+    plt.subplot(8, 8, j, ylabel='ΤΖΙΡΟΣ', title=kataskevastes_lst[i])
+    plt.bar(X, y, alpha=0.5)
+    j+=1
+
+plt.grid(True, alpha=0.5)
+plt.savefig('kataskevastis_views.png')
+plt.show()
+
 slack_app.send_text("""
 >ΣΤΑΤΙΣΤΙΚΑ ELOUNDA MARKET
 `Ενημερώθηκε Το Αρχείο: EM.xlsx`
@@ -515,3 +543,4 @@ slack_app.send_text("""
 
 slack_app.send_files('EM.xlsx', output_file, 'xlsx', slack_app.channels[1])
 slack_app.send_files('views.png', 'views.png', 'png', slack_app.channels[1])
+slack_app.send_files('kataskevastis_views.png', 'kataskevastis_views.png', 'png', slack_app.channels[1])
