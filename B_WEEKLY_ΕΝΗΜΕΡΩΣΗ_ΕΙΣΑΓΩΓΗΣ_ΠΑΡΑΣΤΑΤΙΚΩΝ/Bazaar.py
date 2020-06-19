@@ -2,7 +2,7 @@
 import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
-from B_WEEKLY_ΕΝΗΜΕΡΩΣΗ_ΕΙΣΑΓΩΓΗΣ_ΠΑΡΑΣΤΑΤΙΚΩΝ import scrap, excel_writer, sql_import_report
+from B_WEEKLY_ΕΝΗΜΕΡΩΣΗ_ΕΙΣΑΓΩΓΗΣ_ΠΑΡΑΣΤΑΤΙΚΩΝ.Libraries import sql_import_report, scrap, bazaar_excel_writer
 from Private import send_mail, slack_app, sql_connect
 
 
@@ -105,7 +105,7 @@ sql_answer['TIMH Care Market'] = out['Care Market']
 
 
 # -------------------- Εισαγωγή Δεομένων στο  EXCEL --------------------
-excel_writer.export(path_to_file, sql_answer)
+bazaar_excel_writer.export(path_to_file, sql_answer)
 
 
 # ---------------- E-MAIL SEND --------------------

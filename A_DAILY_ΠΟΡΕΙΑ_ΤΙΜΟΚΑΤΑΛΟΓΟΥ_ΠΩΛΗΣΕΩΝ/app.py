@@ -1,10 +1,9 @@
 #  Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 import pandas as pd
 from pathlib import Path
-from A_DAILY_ΠΟΡΕΙΑ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ_ΠΩΛΗΣΕΩΝ import sql_select, excel_export, timokatalogos
+from A_DAILY_ΠΟΡΕΙΑ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ_ΠΩΛΗΣΕΩΝ.library import sql_select, timokatalogos, excel_export
 from Private import sql_connect, slack_app
 import matplotlib.pyplot as plt
-import numpy as np
 
 # ----------------MAKE DF REPORT VIEWABLE----------------------------
 pd.set_option('display.max_columns', 500)
@@ -41,20 +40,28 @@ final_result = pd.merge(left=timokatalogos, right=sales, left_on='ΚΩΔΙΚΟΣ
 brand_sales = final_result[['BRAND', 'SalesQuantity', 'Turnover']].groupby(by='BRAND').sum() \
     .sort_values('BRAND').reset_index()
 
-
 # -------------OPEN FILE | WRITE ----------------------------
 excel_export.export(path_to_file, final_result)
 
 # -------------------- PLOT --------------------
 plt.figure(figsize=(15, 9))
-plt.subplot(xlabel='Brand', title= choose.comments)
+plt.subplot(xlabel='Brand', title=choose.comments)
 plt.bar(brand_sales.BRAND, brand_sales.Turnover, alpha=0.5, color='red', label='ΤΖΙΡΟΣ')
-plt.plot(brand_sales.BRAND, brand_sales.SalesQuantity, alpha=0.5, color='blue', label='ΠΟΣΟΤΗΤΑ', marker='o', linestyle="None")
+plt.plot(brand_sales.BRAND, brand_sales.SalesQuantity, alpha=0.5, color='blue', label='ΠΟΣΟΤΗΤΑ', marker='o',
+         linestyle="None")
+for x, y in zip(brand_sales.BRAND, brand_sales.SalesQuantity):
+    label = "{:.2f} TEM".format(y)
+
+    # this method is called for each point
+    plt.annotate(label,  # this is the text
+                 (x, y),  # this is the point to label
+                 textcoords="offset points",  # how to position the text
+                 xytext=(0, 10),  # distance from text to points (x,y)
+                 ha='center')  # horizontal alignment can be left, right or center
 plt.grid(True, alpha=0.8)
 plt.legend()
 plt.savefig('views.png')
 plt.show()
-
 
 # -------------------- SLACK BOT ADD--------------------
 report = f"""
@@ -68,9 +75,6 @@ report = f"""
 ```{brand_sales}```
 """
 
-slack_app.send_text(report,slack_app.channels[0])
+slack_app.send_text(report, slack_app.channels[0])
 slack_app.send_files(f'{id}.xlsx', path_to_file, 'xlsx', slack_app.channels[0])
 slack_app.send_files('views.png', 'views.png', 'png', slack_app.channels[0])
-
-
-

@@ -23,16 +23,43 @@ y = answer_05['Count "Παραστατικά"']
 plt.figure(figsize=(15, 9))
 plt.subplot(2, 1, 1,xlabel='ΕΤΟΣ', ylabel='Παραστατικά' , title= '(PDA STATISTICS) ΧΡΟΝΙΕΣ ')
 plt.bar(X, y, alpha=0.8)
+for a, b in zip(X, y):
+    label = "{:.2f}".format(b)
+
+    # this method is called for each point
+    plt.annotate(label,  # this is the text
+                 (a, b),  # this is the point to label
+                 textcoords="offset points",  # how to position the text
+                 xytext=(0, 10),  # distance from text to points (x,y)
+                 ha='center')  # horizontal alignment can be left, right or center
 plt.grid(True, alpha=0.5)
 plt.subplot(2, 2, 3, xlabel='ΜΗΝΑΣ', ylabel='Παραστατικά' , title= '(PDA STATISTICS) ΜΗΝΕΣ')
 X = answer_04['MONTH']
 y = answer_04['Count "Παραστατικά"']
 plt.bar(X, y, alpha=0.8, color='red')
+for a, b in zip(X, y):
+    label = "{:.2f}".format(b)
+
+    # this method is called for each point
+    plt.annotate(label,  # this is the text
+                 (a, b),  # this is the point to label
+                 textcoords="offset points",  # how to position the text
+                 xytext=(0, 10),  # distance from text to points (x,y)
+                 ha='center')  # horizontal alignment can be left, right or center
 plt.grid(True, alpha=0.5)
 plt.subplot(2, 2, 4, xlabel='ΗΜΕΡΑ', ylabel='Παραστατικά' , title= '(PDA STATISTICS) ΗΜΕΡΕΣ')
 X = answer_03['DAY']
 y = answer_03['Count "Παραστατικά"']
 plt.bar(X, y, alpha=0.8, color= 'yellow')
+for a, b in zip(X, y):
+    label = "{:.2f}".format(b)
+
+    # this method is called for each point
+    plt.annotate(label,  # this is the text
+                 (a, b),  # this is the point to label
+                 textcoords="offset points",  # how to position the text
+                 xytext=(0, 10),  # distance from text to points (x,y)
+                 ha='center')  # horizontal alignment can be left, right or center
 plt.grid(True, alpha=0.5)
 plt.savefig('pda_views.png')
 plt.show()
