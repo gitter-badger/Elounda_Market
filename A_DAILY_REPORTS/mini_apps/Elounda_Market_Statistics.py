@@ -291,6 +291,15 @@ y = prod_per_year['TurnOver']
 plt.figure(figsize=(15, 9))
 plt.subplot(xlabel='ΕΤΟΣ', ylabel='ΤΖΙΡΟΣ' , title= 'ELOUNDA MARKET')
 plt.bar(X, y, alpha=0.5)
+for a, b in zip(X, y):
+    label = "{:.2f} €".format(b)
+
+    # this method is called for each point
+    plt.annotate(label,  # this is the text
+                 (a, b),  # this is the point to label
+                 textcoords="offset points",  # how to position the text
+                 xytext=(0, 10),  # distance from text to points (x,y)
+                 ha='center')  # horizontal alignment can be left, right or center
 plt.grid(True, alpha=0.5)
 plt.savefig('views.png')
 plt.show()

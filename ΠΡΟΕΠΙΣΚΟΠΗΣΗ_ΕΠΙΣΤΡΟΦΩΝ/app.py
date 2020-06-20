@@ -1,4 +1,4 @@
-#  Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
+
 
 import pandas as pd
 from ΠΡΟΕΠΙΣΚΟΠΗΣΗ_ΕΠΙΣΤΡΟΦΩΝ import excel_export, sql_select
@@ -11,8 +11,8 @@ pd.set_option('display.width', 1000)
 # ---------------- STATEMENTS HERE ----------------
 order_types = ['ΑΠ_ΜΟΒ', 'ΔΕΑ', 'ΑΔΠ']
 # TODO 'ΑΠΟ ΕΔΩ'
-order_type = order_types[1]
-input_param = '3946'
+order_type = order_types[1]  # 0 = ΑΠ_ΜΟΒ / 1 = ΔΕΑ / 2 = ΑΔΠ
+input_param = '3946'         # Βάζω 
 # TODO 'ΕΩΣ ΕΔΩ'
 output_file = "temp_{}.xlsx".format(input_param)
 detailed = 'detailed_{}.xlsx'.format(input_param)
