@@ -1,3 +1,5 @@
+#   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
+
 from Private import slack_app
 # channel is ενημερώσεις
 x = (slack_app.history(slack_app.channels_id[1]))

@@ -1,3 +1,5 @@
+#   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
+
 import pandas as pd
 from datetime import datetime
 def export(file_path, answer_01, answer_02, katastima):

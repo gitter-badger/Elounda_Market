@@ -1,3 +1,5 @@
+#   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
+
 import pandas as pd
 
 def export(path_to_file, final_result):

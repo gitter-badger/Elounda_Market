@@ -1,4 +1,4 @@
-#  Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
+#   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt

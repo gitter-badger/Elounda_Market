@@ -1,4 +1,4 @@
-#  Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
+#   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 import pandas as pd
 from pathlib import Path
 from A_DAILY_ΠΟΡΕΙΑ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ_ΠΩΛΗΣΕΩΝ.library import sql_select, timokatalogos, excel_export

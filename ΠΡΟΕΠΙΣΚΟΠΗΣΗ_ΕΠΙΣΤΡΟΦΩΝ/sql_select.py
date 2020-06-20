@@ -1,4 +1,4 @@
-#  Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
+#   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 
 def sql_query(input_param,order_type):
     return """

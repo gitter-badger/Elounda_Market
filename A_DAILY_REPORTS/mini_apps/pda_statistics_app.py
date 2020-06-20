@@ -1,4 +1,4 @@
-#  Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
+#   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 
 from A_DAILY_REPORTS.SQL import pda_stats_sql_query
 from A_DAILY_REPORTS.Libraries import pda_stats_excel_export

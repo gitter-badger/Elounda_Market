@@ -1,4 +1,4 @@
-#  Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
+#   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 
 from Private import send_mail, slack_app
 

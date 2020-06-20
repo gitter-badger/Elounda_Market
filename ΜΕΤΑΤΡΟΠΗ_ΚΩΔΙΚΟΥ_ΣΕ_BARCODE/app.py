@@ -1,4 +1,4 @@
-#  Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
+#   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 
 # -------------- READ WRITE FILES ----------------------
 with open('write.txt', 'w') as a:

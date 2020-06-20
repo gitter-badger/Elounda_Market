@@ -1,4 +1,4 @@
-#  Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
+#   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 import pandas as pd
 from ΕΛΕΓΧΟΣ_ΤΕΛΕΥΤΑΙΑΣ_ΤΙΜΗΣ_ΑΓΟΡΑΣ_PDA import excel_export, scrap, sql_select
 from Private import sql_connect, send_mail, slack_app

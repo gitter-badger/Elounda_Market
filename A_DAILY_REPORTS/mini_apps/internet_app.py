@@ -1,3 +1,5 @@
+#   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
+
 import subprocess
 import re
 from Private import slack_app, stores_sensitive_info

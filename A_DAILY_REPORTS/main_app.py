@@ -1,3 +1,5 @@
+#   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
+
 from A_DAILY_REPORTS.mini_apps import delete_slack_chat
 from A_DAILY_REPORTS.mini_apps import double_barcode_check_app
 from A_DAILY_REPORTS.mini_apps import Elounda_Market_Statistics
