@@ -5,17 +5,16 @@ from matplotlib import pyplot as plt
 from B_WEEKLY_ΕΝΗΜΕΡΩΣΗ_ΕΙΣΑΓΩΓΗΣ_ΠΑΡΑΣΤΑΤΙΚΩΝ.Libraries import sql_import_report, scrap, excel_writer
 from Private import send_mail, slack_app, sql_connect
 
-
 # -------------------- Statements Here --------------------
-output_file = 'Bazaar.xlsx'
+main_name = 'Astor Hellas A.E.'
+output_file = 'Astor.xlsx'
 path_to_file = f'/Users/kommas/OneDrive/Business_Folder/Slack/Multiple_emails/{output_file}'
 mail_lst = ['johnkommas@hotmail.com', 'accounts@latocrete.gr', 'eloundamarket@yahoo.gr']
-mail_names = ['Τιμολόγιο Bazaar (Κομμάς)', 'Τιμολόγιο Bazaar (Λογιστήριο)', 'Τιμολόγιο Bazaar (Κατάστημα)']
-main_name = 'Bazaar A.E.'
+mail_names = ['Τιμολόγιο Astor (Κομμάς)', 'Τιμολόγιο Astor (Λογιστήριο)', 'Τιμολόγιο Astor (Κατάστημα)']
 
 
 # -------------------- Open HTML File for the BODY MAIL --------------------
-with open('HTML/2. Import || Bazaar.html', 'r') as html_file:
+with open('HTML/2. Import || Astor.html', 'r') as html_file:
     word = html_file.read()
 
 

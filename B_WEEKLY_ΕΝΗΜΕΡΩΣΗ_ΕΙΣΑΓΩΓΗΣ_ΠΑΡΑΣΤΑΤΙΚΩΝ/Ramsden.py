@@ -7,17 +7,16 @@ from Private import send_mail, slack_app, sql_connect
 
 
 # -------------------- Statements Here --------------------
-output_file = 'Bazaar.xlsx'
+output_file = 'Ramsden.xlsx'
 path_to_file = f'/Users/kommas/OneDrive/Business_Folder/Slack/Multiple_emails/{output_file}'
 mail_lst = ['johnkommas@hotmail.com', 'accounts@latocrete.gr', 'eloundamarket@yahoo.gr']
-mail_names = ['Τιμολόγιο Bazaar (Κομμάς)', 'Τιμολόγιο Bazaar (Λογιστήριο)', 'Τιμολόγιο Bazaar (Κατάστημα)']
-main_name = 'Bazaar A.E.'
+mail_names = ['Τιμολόγιο Ramsden International (Κομμάς)', 'Τιμολόγιο Ramsden International (Λογιστήριο)', 'Τιμολόγιο Ramsden International (Κατάστημα)']
+main_name = 'Ramsden International'
 
 
-# -------------------- Open HTML File for the BODY MAIL --------------------
-with open('HTML/2. Import || Bazaar.html', 'r') as html_file:
+# Open HTML File for the BODY MAIL
+with open('HTML/2. Import || Ramsden.html', 'r') as html_file:
     word = html_file.read()
-
 
 # -------------------- Assign the SQL Query Answer --------------------
 sql_answer = pd.read_sql_query(sql_import_report.private_database_query(main_name), sql_connect.sql_cnx())
