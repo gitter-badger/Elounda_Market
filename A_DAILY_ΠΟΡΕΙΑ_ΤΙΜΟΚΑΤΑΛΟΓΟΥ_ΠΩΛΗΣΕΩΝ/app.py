@@ -21,36 +21,56 @@ id = choose.id
 BASE_DIR = Path(__file__).resolve(strict=True).parents[1]
 path_to_file = BASE_DIR / f'A_DAILY_ΠΟΡΕΙΑ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ_ΠΩΛΗΣΕΩΝ/excel/{id}.xlsx'
 
+# -------------------- TAKE TIMESTAMP --------------------
+start_timestamp = dt.now().strftime('%d-%m %H:%M:%S')
+
+# -------------------- ADD COUNTER FOR SUCCESS DIFFERENCES --------------------
+found_changes_counter = 0
 
 while True:
 
-    # -------------------- ΔΙΑΒΑΖΩ ΤΗΝ ΤΕΛΕΥΤΑΙΑ ΤΙΜΗ ΤΖΙΡΟΥ --------------------
+    # -------------------- ΔΙΑΒΑΖΩ ΤΗΝ ΤΙΜΗ ΤΖΙΡΟΥ ΑΠΟ ΤΟ TXT--------------------
     with open('tziros.txt', 'r') as file:
         tziros = float(file.read())
 
-    # -------------------- ΔΙΑΒΑΖΩ ΤΟΝ ΤΙΜΟΚΑΤΑΛΟΓΟ --------------------
+    # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
+    # print(f'{dt.now()} :READING SQL PRICELIST:')
+
+    # -------------------- ΔΙΑΒΑΖΩ ΤΟΝ ΤΙΜΟΚΑΤΑΛΟΓΟ SQL DB--------------------
     timokatalogos = pd.read_sql_query(sql_select.get_products_in_the_period(from_date, to_date), sql_connect.sql_cnx())
 
-    # -------------------- READ SALES --------------------
+    # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
+    # print(f'{dt.now()} :READING SQL SALES:')
+
+    # -------------------- READ SALES SQL DB--------------------
     sales = pd.read_sql_query(sql_select.get_sales(from_date, to_date, tuple(timokatalogos['ΚΩΔΙΚΟΣ'].values)),
                               sql_connect.sql_cnx())
 
-    # -------------------- MERGE RESULTS --------------------
+    # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
+    # print(f'{dt.now()} :MERGING RESULTS:')
+
+    # -------------------- MERGE RESULTS PANDAS--------------------
     final_result = pd.merge(left=timokatalogos, right=sales, left_on='ΚΩΔΙΚΟΣ', right_on='ΚΩΔΙΚΟΣ').sort_values(
         by=['SalesQuantity'])
+
+    # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
+    # print(f'{dt.now()} :GROUPING RESULTS:')
 
     # --------------------GROUP BY BRANDS TO SLACK --------------------
     brand_sales = final_result[['BRAND', 'SalesQuantity', 'Turnover']].groupby(by='BRAND').sum() \
         .sort_values('BRAND').reset_index()
 
     # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
-    print(f'{dt.now()} :CHECKING DIFFERENCES:')
+    # print(f'{dt.now()} :CHECKING DIFFERENCES:')
 
     # --------------------ΕΝΑΡΞΗ ΕΛΕΓΧΟΥ --------------------
     if tziros != round(final_result.Turnover.sum(), 2):
 
+        # -------------------- ADD +=1 TO THE COUNTER --------------------
+        found_changes_counter += 1
+
         # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
-        print(f'{dt.now()} :FOUND NEW RECORDS:')
+        # print(f'{dt.now()} :FOUND NEW RECORDS:')
 
         # -------------OPEN FILE | WRITE ----------------------------
         excel_export.export(path_to_file, final_result)
@@ -100,18 +120,22 @@ while True:
         slack_app.send_files(f'{id}.xlsx', path_to_file, 'xlsx', slack_app.channels[0])
         slack_app.send_files('views.png', 'views.png', 'png', slack_app.channels[0])
     else:
-
+        pass
         # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
-        print(f'{dt.now()} :NOTHING TO REPORT:')
+        # print(f'{dt.now()} :NOTHING TO REPORT:')
 
     # --------------------WRITE TZIROS ON TXT --------------------
     with open('tziros.txt', 'w') as file:
         file.write(f'{round(final_result.Turnover.sum(), 2)}')
 
     # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
-    print(f'{dt.now()} :PAUSE ON:')
+    print(f'ΣΥΝΟΛΙΚΕΣ ΕΝΗΜΕΡΩΣΕΙΣ ΑΠΟ: {start_timestamp} : ΕΓΙΝΑΝ:{found_changes_counter}')
+
+    # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
+    print(f'{dt.now()} :PAUSE ON: 5 MINUTES')
+
+    # --------------------ADD SLEEP TIMER --------------------
     time.sleep(300)  # 5 minutes
 
     # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
-    print(f'{dt.now()} :PAUSE OFF:')
-
+    # print(f'{dt.now()} :PAUSE OFF:')
