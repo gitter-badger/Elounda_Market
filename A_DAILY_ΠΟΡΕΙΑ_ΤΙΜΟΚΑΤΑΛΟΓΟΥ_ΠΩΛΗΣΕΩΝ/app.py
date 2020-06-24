@@ -9,11 +9,7 @@ import matplotlib.pyplot as plt
 pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
-# -------------------- SLACK BOT DELETE--------------------
-x = (slack_app.history(slack_app.channels_id[0]))
-for i in range(3):
-    timer = (x['messages'][i]['ts'])
-    slack_app.delete(slack_app.channels_id[0], timer)
+
 
 # -------------------- STATEMENTS HERE --------------------
 choose = timokatalogos.lista_2020[-1]
@@ -45,7 +41,7 @@ excel_export.export(path_to_file, final_result)
 
 # -------------------- PLOT --------------------
 plt.figure(figsize=(15, 9))
-plt.subplot(xlabel='Brand', title=choose.comments)
+plt.subplot(xlabel='Brand', title=f'{choose.comments} [ΕΝΑΡΞΗ: {from_date.strftime("%d-%m")} - ΛΗΞΗ: {to_date.strftime("%d-%m")}]')
 plt.bar(brand_sales.BRAND, brand_sales.Turnover, alpha=0.5, color='red', label='ΤΖΙΡΟΣ')
 plt.plot(brand_sales.BRAND, brand_sales.SalesQuantity, alpha=0.5, color='blue', label='ΠΟΣΟΤΗΤΑ', marker='o',
          linestyle="None")
@@ -63,7 +59,13 @@ plt.legend()
 plt.savefig('views.png')
 plt.show()
 
-# -------------------- SLACK BOT ADD--------------------
+# -------------------- SLACK BOT DELETE (3 OLD POSTS) --------------------
+x = (slack_app.history(slack_app.channels_id[0]))
+for i in range(3):
+    timer = (x['messages'][i]['ts'])
+    slack_app.delete(slack_app.channels_id[0], timer)
+
+# -------------------- SLACK BOT ADD TEXT --------------------
 report = f"""
 >ΠΟΡΕΙΑ ΠΩΛΗΣΕΩΝ ΓΙΑ ΤΙΣ ΠΡΟΣΦΟΡΕΣ:
 ` ΣΥΜΜΕΤΕΧΟΥΝ: \t {len(final_result)} ΠΡΟΪΟΝΤΑ `
@@ -76,5 +78,7 @@ report = f"""
 """
 
 slack_app.send_text(report, slack_app.channels[0])
+
+# -------------------- SLACK BOT ADD FILES --------------------
 slack_app.send_files(f'{id}.xlsx', path_to_file, 'xlsx', slack_app.channels[0])
 slack_app.send_files('views.png', 'views.png', 'png', slack_app.channels[0])

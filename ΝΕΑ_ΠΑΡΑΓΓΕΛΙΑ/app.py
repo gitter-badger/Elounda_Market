@@ -12,7 +12,7 @@ from Private import slack_app, send_mail, sql_connect
 
 # ----------------STATEMENTS HERE----------------------------
 # 797 ok
-input_param = '800'
+input_param = '781'
 output_file = "Order{}.xlsx".format(input_param)
 
 # ----------------MAIL LIST----------------------------
@@ -53,6 +53,26 @@ SELECT  distinct OrderType as 'Type', IMP_MobileDocumentHeaders.Code as 'Code', 
         --and OrderType = 'ΔΕΑ'
 """.format(input_param)
 
+extract_mail = """
+SELECT  
+        distinct FK_ESGOPerson_PersonCode1.EMailAddress AS EMailAddress,
+        FK_ESGOPerson_ESGOSites.Telephone1 AS Telephone1
+        FROM IMP_MobileDocumentLines
+        
+        left join IMP_MobileDocumentHeaders
+        on IMP_MobileDocumentHeaders.GID = IMP_MobileDocumentLines.fDocGID
+        left join ESFITradeAccount
+        on ESFITradeAccount.gid = IMP_MobileDocumentHeaders.Supplier
+        LEFT JOIN ESGOPerson AS FK_ESGOPerson_PersonCode1
+       ON ESFITradeAccount.fPersonCodeGID = FK_ESGOPerson_PersonCode1.GID 
+       INNER JOIN ESGOSites AS FK_ESGOPerson_ESGOSites
+       ON FK_ESGOPerson_PersonCode1.fMainAddressGID = FK_ESGOPerson_ESGOSites.GID
+        where DATEPART(yyyy,RealImportTime) = DATEPART(yyyy,getdate())
+        --and DATEPART(mm,RealImportTime) = DATEPART(mm,getdate())
+        and IMP_MobileDocumentHeaders.Code = {}
+        and OrderType = 'ΠΠΡ'
+        --and OrderType = 'ΔΕΑ'
+""".format(input_param)
 
 def katastima():
     if answer_02.ID[0] in ['00', '01']:
@@ -69,6 +89,15 @@ def katastima():
 answer_01 = pd.read_sql_query(sql_query, sql_connect.sql_cnx())
 answer_02 = pd.read_sql_query(data_querry, sql_connect.sql_cnx())
 supplier = answer_02.Name[0]
+
+# -------------ΒΡΕΣ ΤΟ MAIL ΤΟΥ ΠΡΟΜΗΘΕΥΤΗ ----------------------------
+person_mail = pd.read_sql_query(extract_mail, sql_connect.sql_cnx())
+name = f'Νέα Παραγγελία: {katastima()}'
+phone_number = person_mail.Telephone1[0]
+for i in person_mail.EMailAddress:
+    mail_lst.append(i)
+    mail_names.append(name)
+print(mail_lst)
 
 # ----------------FILE PATH----------------------------
 file_path = '/Users/kommas/OneDrive/Business_Folder/Slack/Orders/{k}/{s}/{f}'.format(s=supplier, f=output_file,
@@ -87,6 +116,8 @@ slack_app.send_text(f"""
 `ΠΡΟΜΗΘΕΥΤΗΣ: {supplier}`
 `ΥΠΟΚΑΤΑΣΤΗΜΑ: {katastima()}`
 `PDA ID: {answer_02.ID[0]}`
+`E-MAIL: {person_mail.EMailAddress[0]}`
+`Τηλ.: {phone_number}`
 """, slack_app.channels[3])
 
 slack_app.send_files(output_file,file_path,'xlsx', slack_app.channels[3])
