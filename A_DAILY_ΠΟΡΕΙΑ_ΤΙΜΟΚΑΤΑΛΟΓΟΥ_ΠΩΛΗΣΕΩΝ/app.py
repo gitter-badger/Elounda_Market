@@ -33,44 +33,26 @@ while True:
     with open('tziros.txt', 'r') as file:
         tziros = float(file.read())
 
-    # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
-    # print(f'{dt.now()} :READING SQL PRICELIST:')
-
     # -------------------- ΔΙΑΒΑΖΩ ΤΟΝ ΤΙΜΟΚΑΤΑΛΟΓΟ SQL DB--------------------
     timokatalogos = pd.read_sql_query(sql_select.get_products_in_the_period(from_date, to_date), sql_connect.sql_cnx())
-
-    # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
-    # print(f'{dt.now()} :READING SQL SALES:')
 
     # -------------------- READ SALES SQL DB--------------------
     sales = pd.read_sql_query(sql_select.get_sales(from_date, to_date, tuple(timokatalogos['ΚΩΔΙΚΟΣ'].values)),
                               sql_connect.sql_cnx())
 
-    # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
-    # print(f'{dt.now()} :MERGING RESULTS:')
-
     # -------------------- MERGE RESULTS PANDAS--------------------
     final_result = pd.merge(left=timokatalogos, right=sales, left_on='ΚΩΔΙΚΟΣ', right_on='ΚΩΔΙΚΟΣ').sort_values(
         by=['SalesQuantity'])
 
-    # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
-    # print(f'{dt.now()} :GROUPING RESULTS:')
-
     # --------------------GROUP BY BRANDS TO SLACK --------------------
     brand_sales = final_result[['BRAND', 'SalesQuantity', 'Turnover']].groupby(by='BRAND').sum() \
         .sort_values('BRAND').reset_index()
-
-    # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
-    # print(f'{dt.now()} :CHECKING DIFFERENCES:')
 
     # --------------------ΕΝΑΡΞΗ ΕΛΕΓΧΟΥ --------------------
     if tziros != round(final_result.Turnover.sum(), 2):
 
         # -------------------- ADD +=1 TO THE COUNTER --------------------
         found_changes_counter += 1
-
-        # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
-        # print(f'{dt.now()} :FOUND NEW RECORDS:')
 
         # -------------OPEN FILE | WRITE ----------------------------
         excel_export.export(path_to_file, final_result)
@@ -96,11 +78,23 @@ while True:
         plt.savefig('views.png')
         plt.show()
 
-        # -------------------- SLACK BOT DELETE (3 OLD POSTS) --------------------
-        x = (slack_app.history(slack_app.channels_id[0]))
-        for i in range(3):
-            timer = (x['messages'][i]['ts'])
-            slack_app.delete(slack_app.channels_id[0], timer)
+        # --------------------READ VERSION OF PRICELIST IN TXT--------------------
+        with open('version.txt', 'r') as file:
+            version = int(file.read())
+
+        # -------------------- CHECK IF WE GOT NEW VERSION --------------------
+        if version == id:
+
+            # -------------------- SLACK BOT DELETE (3 OLD POSTS) --------------------
+            x = (slack_app.history(slack_app.channels_id[0]))
+            for i in range(3):
+                timer = (x['messages'][i]['ts'])
+                slack_app.delete(slack_app.channels_id[0], timer)
+        else:
+
+            # -------------------- FILE WRITE NEW ID --------------------
+            with open('version.txt', 'w') as file:
+                file.write(f'{id}')
 
         # -------------------- SLACK BOT ADD TEXT --------------------
         report = f"""
