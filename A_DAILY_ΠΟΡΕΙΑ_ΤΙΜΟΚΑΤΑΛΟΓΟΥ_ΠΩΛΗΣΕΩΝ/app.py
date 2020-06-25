@@ -77,7 +77,7 @@ while True:
 
         # -------------------- PLOT --------------------
         plt.figure(figsize=(15, 9))
-        plt.subplot(xlabel='Brand',
+        plt.subplot(xlabel=f'Brand (EΝΗΜΕΡΩΘΗΚΕ:{dt.now().strftime("%d/%m %H:%M:%S")}',
                     title=f'ΕΝΕΡΓΕΙΑ: {id}η || {choose.comments} || [ΕΝΑΡΞΗ: {from_date.strftime("%d-%m")} - ΛΗΞΗ: {to_date.strftime("%d-%m")}]')
         plt.bar(brand_sales.BRAND, brand_sales.Turnover, alpha=0.5, color='red', label='ΤΖΙΡΟΣ')
         plt.plot(brand_sales.BRAND, brand_sales.SalesQuantity, alpha=0.5, color='blue', label='ΠΟΣΟΤΗΤΑ', marker='o',
