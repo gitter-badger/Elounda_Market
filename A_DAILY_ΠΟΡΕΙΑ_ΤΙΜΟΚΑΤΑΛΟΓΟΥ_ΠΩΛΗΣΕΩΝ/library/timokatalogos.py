@@ -10,6 +10,8 @@ class Timokatalogos:
         self.start = start
         self.end = end
         self.comments = comments
+        self.quantity = 0
+        self.turn_over = 0
 
 
 january_2020_02 = Timokatalogos(1,
