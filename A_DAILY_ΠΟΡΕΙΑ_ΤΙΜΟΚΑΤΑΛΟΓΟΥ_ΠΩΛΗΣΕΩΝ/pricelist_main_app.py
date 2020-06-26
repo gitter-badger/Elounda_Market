@@ -47,7 +47,7 @@ while True:
 
     # --------------------GROUP BY BRANDS TO SLACK --------------------
     brand_sales = final_result[['BRAND', 'SalesQuantity', 'Turnover']].groupby(by='BRAND').sum() \
-        .sort_values('BRAND').reset_index()
+        .sort_values('Turnover').reset_index()
 
     # --------------------ΕΝΑΡΞΗ ΕΛΕΓΧΟΥ --------------------
     if tziros != round(final_result.Turnover.sum(), 2):
@@ -131,7 +131,7 @@ while True:
         # -------------------- SLACK BOT ADD TEXT --------------------
         report = f"""
         >ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ
-        >ΠΟΡΕΙΑ ΠΩΛΗΣΕΩΝ ΓΙΑ ΤΙΣ ΠΡΟΣΦΟΡΕΣ:
+        ΠΟΡΕΙΑ ΠΩΛΗΣΕΩΝ ΓΙΑ ΤΙΣ ΠΡΟΣΦΟΡΕΣ:
         ` ΣΥΜΜΕΤΕΧΟΥΝ: \t {len(final_result)} ΠΡΟΪΟΝΤΑ `
         ` DATERANGE: \t ΑΠΟ: {from_date.strftime("%d-%m-%Y")} \t ΕΩΣ: {to_date.strftime("%d-%m-%Y")} `
         ` ΠΟΣΟΤΗΤΑ ΠΩΛΗΣΕΩΝ: \t {final_result.SalesQuantity.sum()} TEM `
