@@ -183,6 +183,7 @@ with pd.ExcelWriter(file_path, engine='xlsxwriter') as writer:
 
 
 slack_app.send_text("""
+>ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ
 >ΤΑΚΤΙΚΑ ΑΡΧΕΙΑ
 `Ενημερώθηκε Το Αρχείο: Φρέσκο Γάλα Δέλτα POS.xlsx`
 """, slack_app.channels[1])

@@ -43,6 +43,7 @@ double_barcode_excel_export.export(path_to_file, sql_answer)
 # send_mail.send_mail(mail_lst, mail_names, word, path_to_file, output_file)
 
 slack_app.send_text(f"""
+>ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ
 >ΕΛΕΓΧΟΣ ΓΙΑ ΔΙΠΛΑ BARCODES 
 ```{sql_answer}```
 """, slack_app.channels[1])

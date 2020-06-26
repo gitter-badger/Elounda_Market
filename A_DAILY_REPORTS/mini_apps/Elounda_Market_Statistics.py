@@ -548,6 +548,7 @@ plt.savefig('kataskevastis_views.png')
 plt.show()
 
 slack_app.send_text("""
+>ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ
 >ΣΤΑΤΙΣΤΙΚΑ ELOUNDA MARKET
 `Ενημερώθηκε Το Αρχείο: EM.xlsx`
 """, slack_app.channels[1])

@@ -168,6 +168,7 @@ with pd.ExcelWriter(file_path, engine='xlsxwriter') as writer:
     worksheet.insert_chart('A67', chart02)
 
 slack_app.send_text("""
+>ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ
 >ΤΑΚΤΙΚΑ ΑΡΧΕΙΑ
 `Ενημερώθηκε Το Αρχείο: Μαναβική.xlsx`
 """, slack_app.channels[1])

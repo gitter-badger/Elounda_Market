@@ -87,7 +87,8 @@ send_mail.send_mail(mail_lst, mail_names, word, path_to_file, output_file)
 
 # ----------------SLACK BOT----------------------------
 slack_output_text = f"""
->ΚΑΤΑΧΩΡΗΘΗΚΑΝ ΤΑ ΤΙΜΟΛΟΓΙΑ: {order_id}
+> ΕΒΔΟΜΑΔΙΑΙΟ ΔΗΜΟΣΙΕΥΜΑ
+> ΚΑΤΑΧΩΡΗΘΗΚΑΝ ΤΑ ΤΙΜΟΛΟΓΙΑ: {order_id}
 
 `AVERAGE  :{round(np.mean(markup),2)}%`
 `MEDIAN   :{np.median(markup)}%`
@@ -99,18 +100,17 @@ slack_output_text = f"""
 `ΑΡΧΕΙΟ: {output_file}`
 `ΠΡΟΜΗΘΕΥΤΗΣ: {main_name}`
 
-`KΩΔΙΚΟΙ ΠΟΥ ΑΝΗΚΟΥΝ ΣΤΟ ΠΡΩΤΟ ΤΕΤΑΡΤΗΜΟΡΙΟ (ΠΛΗΘΟΣ ΚΩΔΙΚΩΝ = {len(codes_in_q1)})`
-`ΣΤΟ ΠΡΩΤΟ ΤΕΤΑΡΤΗΜΟΡΙΟ ΒΡΙΣΚΟΝΤΑΙ ΟΛΟΙ ΟΙ ΚΩΔΙΚΟΙ ΜΕ ΠΟΣΟΣΤΟ ΚΕΡΔΟΦΟΡΙΑΣ ΑΠΟ: {np.amin(markup)}%  ΕΩΣ: {quartiles[0]}%`
+`1o ΤΕΤΑΡΤΗΜΟΡΙΟ (ΠΛΗΘΟΣ ΚΩΔΙΚΩΝ = {len(codes_in_q1)})`
+`1o ΤΕΤΑΡΤΗΜΟΡΙΟ ΑΠΟ: {round(np.amin(markup), 2)}%  ΕΩΣ: {round(quartiles[0], 2)}%`
 
-`KΩΔΙΚΟΙ ΠΟΥ ΑΝΗΚΟΥΝ ΣΤΟ ΔΕΥΤΕΡΟ ΤΕΤΑΡΤΗΜΟΡΙΟ (ΠΛΗΘΟΣ ΚΩΔΙΚΩΝ = {len(codes_in_q2)}`
-`ΣΤΟ ΔΕΥΤΕΡΟ ΤΕΤΑΡΤΗΜΟΡΙΟ ΒΡΙΣΚΟΝΤΑΙ ΟΛΟΙ ΟΙ ΚΩΔΙΚΟΙ ΜΕ ΠΟΣΟΣΤΟ ΚΕΡΔΟΦΟΡΙΑΣ ΑΠΟ: {quartiles[0]}%  ΕΩΣ: {quartiles[1]}%`
+`2o ΤΕΤΑΡΤΗΜΟΡΙΟ (ΠΛΗΘΟΣ ΚΩΔΙΚΩΝ = {len(codes_in_q2)}`
+`2o ΤΕΤΑΡΤΗΜΟΡΙΟ ΑΠΟ: {round(quartiles[0], 2)}%  ΕΩΣ: {round(quartiles[1], 2)}%`
 
-`KΩΔΙΚΟΙ ΠΟΥ ΑΝΗΚΟΥΝ ΣΤΟ ΤΡΙΤΟ ΤΕΤΑΡΤΗΜΟΡΙΟ (ΠΛΗΘΟΣ ΚΩΔΙΚΩΝ = {len(codes_in_q3)}`
-`ΣΤΟ ΤΡΙΤΟ ΤΕΤΑΡΤΗΜΟΡΙΟ ΒΡΙΣΚΟΝΤΑΙ ΟΛΟΙ ΟΙ ΚΩΔΙΚΟΙ ΜΕ ΠΟΣΟΣΤΟ ΚΕΡΔΟΦΟΡΙΑΣ ΑΠΟ: {quartiles[1]}%  ΕΩΣ: {quartiles[2]}%`
+`3o ΤΕΤΑΡΤΗΜΟΡΙΟ (ΠΛΗΘΟΣ ΚΩΔΙΚΩΝ = {len(codes_in_q3)}`
+`3o ΤΕΤΑΡΤΗΜΟΡΙΟ ΑΠΟ: {round(quartiles[1], 2)}%  ΕΩΣ: {round(quartiles[2], 2)}%`
 
-`KΩΔΙΚΟΙ ΠΟΥ ΑΝΗΚΟΥΝ ΣΤΟ ΤΕΤΑΡΤΟ ΤΕΤΑΡΤΗΜΟΡΙΟ (ΠΛΗΘΟΣ ΚΩΔΙΚΩΝ = {len(codes_in_q4)}`
-`ΣΤΟ ΤΕΤΑΡΤΟ ΤΕΤΑΡΤΗΜΟΡΙΟ ΒΡΙΣΚΟΝΤΑΙ ΟΛΟΙ ΟΙ ΚΩΔΙΚΟΙ ΜΕ ΠΟΣΟΣΤΟ ΚΕΡΔΟΦΟΡΙΑΣ ΑΠΟ: {quartiles[2]}%  ΕΩΣ: {np.amax(markup)}%`
-
+`4o ΤΕΤΑΡΤΗΜΟΡΙΟ (ΠΛΗΘΟΣ ΚΩΔΙΚΩΝ = {len(codes_in_q4)}`
+`4o ΤΕΤΑΡΤΗΜΟΡΙΟ ΑΠΟ: {round(quartiles[2], 2)}%  ΕΩΣ: {round(np.amax(markup), 2)}%`
 """
 
 slack_app.send_text(slack_output_text, slack_app.channels[5])

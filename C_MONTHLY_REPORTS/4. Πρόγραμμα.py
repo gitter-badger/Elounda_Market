@@ -19,7 +19,10 @@ with open("/A_DAILY_REPORTS/HTML/4. Πρόγραμμα.html", 'r')as html_file:
     word = html_file.read()
 
 # ----------------SLACK BOT----------------------------
-slack_app.send_text('Το μηνιαίο Πρόγραμμα των Υπαλλήλων είναι Έτοιμο', slack_app.channels[2])
+slack_app.send_text("""
+> ΜΗΝΙΑΙΟ ΔΗΜΟΣΙΕΥΜΑ
+`Το Πρόγραμμα των Υπαλλήλων είναι Έτοιμο`
+""", slack_app.channels[2])
 slack_app.send_files('report', path_to_file, 'pdf', slack_app.channels[2])
 
 # ----------------MAIL BOT----------------------------

@@ -53,6 +53,7 @@ LATO_02.check_internet_status()
 
 # ----------------SLACK BOT----------------------------
 output = f"""
+>ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ
 >ΕΛΕΓΧΟΣ INTERNET ΣΤΑ ΚΑΤΑΣΤΗΜΑΤΑ
 `{ELOUNDA_MARKET}`
 `{LATO_01}`

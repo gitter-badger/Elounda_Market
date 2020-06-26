@@ -70,6 +70,7 @@ pda_stats_excel_export.export(path, answer_01, answer_02, answer_03, answer_04, 
 
 # ---------------- SLACK BOT ----------------
 slack_app.send_text("""
+>ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ
 >ΣΤΑΤΙΣΤΙΚΑ_ΧΡΗΣΗΣ_PDA
 `Ενημερώθηκε Το Αρχείο: sql.xlsx`
 """, slack_app.channels[1])

@@ -130,6 +130,7 @@ while True:
 
         # -------------------- SLACK BOT ADD TEXT --------------------
         report = f"""
+        >ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ
         >ΠΟΡΕΙΑ ΠΩΛΗΣΕΩΝ ΓΙΑ ΤΙΣ ΠΡΟΣΦΟΡΕΣ:
         ` ΣΥΜΜΕΤΕΧΟΥΝ: \t {len(final_result)} ΠΡΟΪΟΝΤΑ `
         ` DATERANGE: \t ΑΠΟ: {from_date.strftime("%d-%m-%Y")} \t ΕΩΣ: {to_date.strftime("%d-%m-%Y")} `
