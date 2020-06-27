@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 import time
 from _datetime import datetime as dt
 
+
+
 # ----------------MAKE DF REPORT VIEWABLE----------------------------
 pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
@@ -89,10 +91,10 @@ while True:
 
         plt.subplot(2, 1, 2, xlabel=f'ΗΜΕΡΟΜΗΝΙΕΣ (EΝΗΜΕΡΩΘΗΚΕ:{dt.now().strftime("%d/%m %H:%M:%S")})',
                     title=f'ΠΩΛΗΣΕΙΣ ΑΝΑ ΗΜΕΡΑ || ΣΥΝΟΛΑ: {final_result.SalesQuantity.sum()}TEM / {round(final_result.Turnover.sum(), 2)}€  ')
-        plt.bar(dates_ranges.strftime('%d'), tziros_per_day, alpha=0.5, color='blue', label='ΤΖΙΡΟΣ')
-        plt.plot(dates_ranges.strftime('%d'), quantity_per_day, alpha=0.5, color='red', label='ΠΟΣΟΤΗΤΑ', marker='o',
+        plt.bar(dates_ranges.strftime('%d/%m'), tziros_per_day, alpha=0.5, color='blue', label='ΤΖΙΡΟΣ')
+        plt.plot(dates_ranges.strftime('%d/%m'), quantity_per_day, alpha=0.5, color='red', label='ΠΟΣΟΤΗΤΑ', marker='o',
                  linestyle="None")
-        for x, y in zip(dates_ranges.strftime('%d'), quantity_per_day):
+        for x, y in zip(dates_ranges.strftime('%d/%m'), quantity_per_day):
             label = "{:.2f} TEM".format(y)
 
             # this method is called for each point
