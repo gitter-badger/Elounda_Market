@@ -7,8 +7,6 @@ import matplotlib.pyplot as plt
 import time
 from _datetime import datetime as dt
 
-
-
 # ----------------MAKE DF REPORT VIEWABLE----------------------------
 pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
@@ -156,7 +154,6 @@ while True:
     # --------------------WRITE TZIROS ON TXT --------------------
     with open('tziros.txt', 'w') as file:
         file.write(f'{round(final_result.Turnover.sum(), 2)}')
-
 
     # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
     print(f'ΣΥΝΟΛΙΚΕΣ ΕΝΗΜΕΡΩΣΕΙΣ ΑΠΟ: {start_timestamp} : ΕΓΙΝΑΝ:{found_changes_counter}')
