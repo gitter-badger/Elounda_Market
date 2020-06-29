@@ -128,3 +128,25 @@ WHERE
 
 
     """
+
+def get_ending_pricelist_products(to_date):
+    return f"""
+    SELECT ESFIPricelist.Code                         as 'ΤΙΜΟΚΑΤΑΛΟΓΟΣ',
+           ESFIPricelistItem.fItemPricingCategoryCode as 'ΚΑΤΗΓΟΡΙΑ',
+           ESFIPricelistItem.ValidFromDate            as 'ΕΝΑΡΞΗ',
+           ESFIPricelistItem.ValidToDate              as 'ΛΗΞΗ',
+           ESFIItem.Description                       AS 'ΠΕΡΙΓΡΑΦΗ',
+           ESFIItem.BarCode                           AS 'ΚΩΔΙΚΟΣ',
+           ESFIItem.RetailPrice                       as 'ΤΙΜΗ ΛΙΑΝΙΚΗΣ',
+           ESFIPricelistItem.Price                    AS 'ΝΕΑ ΤΙΜΗ',
+           ESFIPricelistItem.PercentageOnBasePrice    AS 'ΠΟΣΟΣΤΟ',
+           ESFIItem.fItemSubcategoryCode              AS 'BRAND'
+    from ESFIPricelistItem
+             left join ESFIItem
+                       on ESFIPricelistItem.fItemGID = ESFIItem.GID
+             inner JOIN ESFIPricelist
+                        on ESFIPricelistItem.fPricelistGID = ESFIPricelist.GID
+    where 
+         '{to_date}' = ValidToDate 
+    order by 3,4,5
+    """
