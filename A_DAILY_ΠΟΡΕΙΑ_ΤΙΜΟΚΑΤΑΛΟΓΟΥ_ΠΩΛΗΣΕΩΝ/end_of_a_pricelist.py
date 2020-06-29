@@ -17,7 +17,6 @@ to_date = pick_timokatalogo.end
 BASE_DIR = Path(__file__).resolve(strict=True).parents[1]
 path_to_file = BASE_DIR / f'A_DAILY_ΠΟΡΕΙΑ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ_ΠΩΛΗΣΕΩΝ/excel/{to_date.strftime("%d-%m")}.xlsx'
 
-
 # -------------------- TAKE TIMESTAMP --------------------
 start_timestamp = dt.now().strftime('%d-%m %H:%M:%S')
 
@@ -26,7 +25,6 @@ timokatalogos = pd.read_sql_query(sql_select.get_ending_pricelist_products(to_da
 
 # -------------OPEN FILE | WRITE ----------------------------
 end_of_pricelist_excel_export.export(path_to_file, timokatalogos[['ΠΕΡΙΓΡΑΦΗ', 'ΚΩΔΙΚΟΣ', 'BRAND']])
-
 
 # -------------------- SLACK BOT ADD TEXT --------------------
 report = f"""
