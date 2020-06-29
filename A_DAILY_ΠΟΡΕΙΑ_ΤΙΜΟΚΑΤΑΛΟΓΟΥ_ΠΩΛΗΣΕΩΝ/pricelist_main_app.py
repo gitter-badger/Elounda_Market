@@ -12,10 +12,10 @@ pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
 # -------------------- STATEMENTS HERE --------------------
-choose = timokatalogos.lista_2020[-1]
-from_date = choose.start
-to_date = choose.end
-id = choose.id
+choose_pricelist = timokatalogos.lista_2020[-1]
+from_date = choose_pricelist.start
+to_date = choose_pricelist.end
+id = choose_pricelist.id
 dates_ranges = pd.date_range(from_date, to_date)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -71,7 +71,7 @@ while True:
         # -------------------- PLOT --------------------
         plt.figure(figsize=(15, 9))
         plt.subplot(2, 1, 1,
-                    title=f'ΕΝΕΡΓΕΙΑ: {id}η || {choose.comments} || [ΕΝΑΡΞΗ: {from_date.strftime("%d-%m")} - ΛΗΞΗ: {to_date.strftime("%d-%m")}]')
+                    title=f'ΕΝΕΡΓΕΙΑ: {id}η || {choose_pricelist.comments} || [ΕΝΑΡΞΗ: {from_date.strftime("%d-%m")} - ΛΗΞΗ: {to_date.strftime("%d-%m")}]')
         plt.bar(brand_sales.BRAND, brand_sales.Turnover, alpha=0.5, color='red', label='ΤΖΙΡΟΣ')
         plt.plot(brand_sales.BRAND, brand_sales.SalesQuantity, alpha=0.5, color='blue', label='ΠΟΣΟΤΗΤΑ', marker='o',
                  linestyle="None")
@@ -125,8 +125,8 @@ while True:
             with open('version.txt', 'w') as file:
                 file.write(f'{id}')
 
-        choose.quantity = final_result.SalesQuantity.sum()
-        choose.turn_over = {round(final_result.Turnover.sum(), 2)}
+        choose_pricelist.quantity = final_result.SalesQuantity.sum()
+        choose_pricelist.turn_over = {round(final_result.Turnover.sum(), 2)}
 
         # -------------------- SLACK BOT ADD TEXT --------------------
         report = f"""
@@ -136,8 +136,8 @@ while True:
         ` DATERANGE: \t ΑΠΟ: {from_date.strftime("%d-%m-%Y")} \t ΕΩΣ: {to_date.strftime("%d-%m-%Y")} `
         ` ΠΟΣΟΤΗΤΑ ΠΩΛΗΣΕΩΝ: \t {final_result.SalesQuantity.sum()} TEM `
         ` ΤΖΙΡΟΣ ΠΩΛΗΣΕΩΝ: \t {round(final_result.Turnover.sum(), 2)} € `
-        ` Α/Α ΕΝΕΡΓΕΙΑ: {choose.id}`
-        ` {choose.comments}`
+        ` Α/Α ΕΝΕΡΓΕΙΑ: {choose_pricelist.id}`
+        ` {choose_pricelist.comments}`
         ```{brand_sales}```
         """
 
