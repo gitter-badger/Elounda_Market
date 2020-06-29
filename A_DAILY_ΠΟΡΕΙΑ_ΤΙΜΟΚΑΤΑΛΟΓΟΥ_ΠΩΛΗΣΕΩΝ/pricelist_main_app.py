@@ -5,7 +5,7 @@ from A_DAILY_ΠΟΡΕΙΑ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ_ΠΩΛΗΣΕΩΝ.library im
 from Private import sql_connect, slack_app
 import matplotlib.pyplot as plt
 import time
-from _datetime import datetime as dt
+from datetime import datetime as dt
 
 # ----------------MAKE DF REPORT VIEWABLE----------------------------
 pd.set_option('display.max_columns', 500)
