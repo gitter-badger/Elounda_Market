@@ -31,7 +31,7 @@ report = f"""
 >EKTAKTO ΔΗΜΟΣΙΕΥΜΑ
 >ΛΗΞΗ ΤΙΜΟΚΑΤΑΛΟΓΟΥ: {to_date.strftime('%d-%m')}
 """
-slack_app.send_text(report, slack_app.channels[1])
+slack_app.send_text(report, slack_app.channels[4])
 
 # -------------------- SLACK BOT ADD FILES --------------------
-slack_app.send_files(f'{to_date.strftime("%d-%m")}.xlsx', path_to_file, 'xlsx', slack_app.channels[1])
+slack_app.send_files(f'{to_date.strftime("%d-%m")}.xlsx', path_to_file, 'xlsx', slack_app.channels[4])
