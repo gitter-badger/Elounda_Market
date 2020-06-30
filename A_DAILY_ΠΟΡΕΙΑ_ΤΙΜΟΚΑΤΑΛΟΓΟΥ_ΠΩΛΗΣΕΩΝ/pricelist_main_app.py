@@ -150,22 +150,23 @@ while True:
         slack_app.send_files(f'{id}.xlsx', path_to_file, 'xlsx', slack_app.channels[0])
         slack_app.send_files('views.png', 'views.png', 'png', slack_app.channels[0])
     else:
-        pass
+
         # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
-        # print(f'{dt.now()} :NOTHING TO REPORT:')
+        print(f'{dt.now().strftime("%d-%m %H:%M:%S")} :NOTHING TO REPORT:')
 
     # --------------------WRITE TZIROS ON TXT --------------------
     with open('tziros.txt', 'w') as file:
         file.write(f'{round(final_result.Turnover.sum(), 2)}')
 
     # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
-    print(f'ΣΥΝΟΛΙΚΕΣ ΕΝΗΜΕΡΩΣΕΙΣ ΑΠΟ: {start_timestamp} : ΕΓΙΝΑΝ:{found_changes_counter}')
+    print(f'{start_timestamp} :ΑΛΛΑΓΕΣ: {found_changes_counter}')
 
     # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
-    print(f'{dt.now()} :PAUSE ON: 5 MINUTES')
+    print(f'{dt.now().strftime("%d-%m %H:%M:%S")} :5 MINUTES PAUSE')
 
     # --------------------ADD SLEEP TIMER --------------------
     time.sleep(300)  # 5 minutes
 
     # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
-    # print(f'{dt.now()} :PAUSE OFF:')
+    print('<---------------------------------->')
+    print(f'{dt.now().strftime("%d-%m %H:%M:%S")} :ΈΝΑΡΞΗ ΑΝΑΖΗΤΗΣΗΣ:')
