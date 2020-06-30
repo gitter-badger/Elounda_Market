@@ -6,6 +6,7 @@ from Private import sql_connect, slack_app
 import matplotlib.pyplot as plt
 import time
 from datetime import datetime as dt
+import numpy as np
 
 # ----------------MAKE DF REPORT VIEWABLE----------------------------
 pd.set_option('display.max_columns', 500)
@@ -135,7 +136,9 @@ while True:
         ` ΣΥΜΜΕΤΕΧΟΥΝ: \t {len(final_result)} ΠΡΟΪΟΝΤΑ `
         ` DATERANGE: \t ΑΠΟ: {from_date.strftime("%d-%m-%Y")} \t ΕΩΣ: {to_date.strftime("%d-%m-%Y")} `
         ` ΠΟΣΟΤΗΤΑ ΠΩΛΗΣΕΩΝ: \t {final_result.SalesQuantity.sum()} TEM `
+        ` M.O. / ΗΜΕΡΑ : \t {round(np.mean(quantity_per_day))} TEM ` 
         ` ΤΖΙΡΟΣ ΠΩΛΗΣΕΩΝ: \t {round(final_result.Turnover.sum(), 2)} € `
+        ` M.O. / ΗΜΕΡΑ : \t {round(np.mean(tziros_per_day), 2)} EUR `
         ` Α/Α ΕΝΕΡΓΕΙΑ: {choose_pricelist.id}`
         ` {choose_pricelist.comments}`
         ```{brand_sales}```
