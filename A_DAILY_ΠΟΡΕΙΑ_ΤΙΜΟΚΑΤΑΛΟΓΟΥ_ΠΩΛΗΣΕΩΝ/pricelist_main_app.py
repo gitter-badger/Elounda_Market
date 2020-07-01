@@ -26,10 +26,15 @@ path_to_file = BASE_DIR / f'A_DAILY_ΠΟΡΕΙΑ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ_ΠΩ
 # -------------------- TAKE TIMESTAMP --------------------
 start_timestamp = dt.now().strftime('%d-%m %H:%M:%S')
 
-# -------------------- ADD COUNTER FOR SUCCESS DIFFERENCES --------------------
+# -------------------- ADD COUNTERS FOR SUCCESS DIFFERENCES --------------------
 found_changes_counter = 0
+tries = 0
 
 while True:
+    tries += 1
+    # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
+    print('<---------------------------------->')
+    print(f'{dt.now().strftime("%d-%m %H:%M:%S")} :ΈΝΑΡΞΗ ΑΝΑΖΗΤΗΣΗΣ: {tries}')
 
     # -------------------- ΔΙΑΒΑΖΩ ΤΗΝ ΤΙΜΗ ΤΖΙΡΟΥ ΑΠΟ ΤΟ TXT--------------------
     with open('tziros.txt', 'r') as file:
@@ -90,10 +95,10 @@ while True:
 
         plt.subplot(2, 1, 2, xlabel=f'ΗΜΕΡΟΜΗΝΙΕΣ (EΝΗΜΕΡΩΘΗΚΕ:{dt.now().strftime("%d/%m %H:%M:%S")})',
                     title=f'ΠΩΛΗΣΕΙΣ ΑΝΑ ΗΜΕΡΑ || ΣΥΝΟΛΑ: {final_result.SalesQuantity.sum()}TEM / {round(final_result.Turnover.sum(), 2)}€  ')
-        plt.bar(dates_ranges.strftime('%d/%m'), tziros_per_day, alpha=0.5, color='blue', label='ΤΖΙΡΟΣ')
-        plt.plot(dates_ranges.strftime('%d/%m'), quantity_per_day, alpha=0.5, color='red', label='ΠΟΣΟΤΗΤΑ', marker='o',
+        plt.bar(dates_ranges.strftime('%a \n%d/%m'), tziros_per_day, alpha=0.5, color='blue', label='ΤΖΙΡΟΣ')
+        plt.plot(dates_ranges.strftime('%a \n%d/%m'), quantity_per_day, alpha=0.5, color='red', label='ΠΟΣΟΤΗΤΑ', marker='x',
                  linestyle="None")
-        for x, y in zip(dates_ranges.strftime('%d/%m'), quantity_per_day):
+        for x, y in zip(dates_ranges.strftime('%a \n%d/%m'), quantity_per_day):
             label = "{:.2f} TEM".format(y)
 
             # this method is called for each point
@@ -102,7 +107,13 @@ while True:
                          textcoords="offset points",  # how to position the text
                          xytext=(0, 2),  # distance from text to points (x,y)
                          ha='center')  # horizontal alignment can be left, right or center
-        plt.grid(True, alpha=0.8)
+        plt.axhline(y=round(np.mean(tziros_per_day), 2), xmin=0, xmax=1, linestyle='-.',
+                    label=f'Μ.Ο. ΤΖΙΡΟΥ: ({round(np.mean(tziros_per_day), 2)} EUR)',
+                    color='black', alpha=.2)
+        plt.axhline(y=round(np.mean(quantity_per_day)), xmin=0, xmax=1, linestyle='--',
+                    label=f'Μ.Ο. ΠΟΣΟΤΗΤΑΣ: ({round(np.mean(quantity_per_day))} TEM)',
+                    color='red', alpha=.4)
+        plt.grid(True, alpha=0.2)
         plt.legend()
 
         plt.savefig('views.png')
@@ -137,7 +148,7 @@ while True:
         ` DATERANGE: \t ΑΠΟ: {from_date.strftime("%d-%m-%Y")} \t ΕΩΣ: {to_date.strftime("%d-%m-%Y")} `
         ` ΠΟΣΟΤΗΤΑ ΠΩΛΗΣΕΩΝ: \t {final_result.SalesQuantity.sum()} TEM `
         ` M.O. / ΗΜΕΡΑ : \t {round(np.mean(quantity_per_day))} TEM ` 
-        ` ΤΖΙΡΟΣ ΠΩΛΗΣΕΩΝ: \t {round(final_result.Turnover.sum(), 2)} € `
+        ` ΤΖΙΡΟΣ ΠΩΛΗΣΕΩΝ: \t {round(final_result.Turnover.sum(), 2)} EUR `
         ` M.O. / ΗΜΕΡΑ : \t {round(np.mean(tziros_per_day), 2)} EUR `
         ` Α/Α ΕΝΕΡΓΕΙΑ: {choose_pricelist.id}`
         ` {choose_pricelist.comments}`
@@ -166,7 +177,3 @@ while True:
 
     # --------------------ADD SLEEP TIMER --------------------
     time.sleep(300)  # 5 minutes
-
-    # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
-    print('<---------------------------------->')
-    print(f'{dt.now().strftime("%d-%m %H:%M:%S")} :ΈΝΑΡΞΗ ΑΝΑΖΗΤΗΣΗΣ:')
