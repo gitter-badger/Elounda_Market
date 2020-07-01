@@ -82,7 +82,11 @@ while True:
         plt.plot(brand_sales.BRAND, brand_sales.SalesQuantity, alpha=0.5, color='blue', label='ΠΟΣΟΤΗΤΑ', marker='o',
                  linestyle="None")
         for x, y in zip(brand_sales.BRAND, brand_sales.SalesQuantity):
-            label = "{:.2f} TEM".format(y)
+            if y - int(y) == 0:
+                quant_type = 'TEM'
+            else:
+                quant_type = 'ΚΙΛ'
+            label = "{:.2f} {}".format(y, quant_type)
 
             # this method is called for each point
             plt.annotate(label,  # this is the text
@@ -96,7 +100,8 @@ while True:
         plt.subplot(2, 1, 2, xlabel=f'ΗΜΕΡΟΜΗΝΙΕΣ (EΝΗΜΕΡΩΘΗΚΕ:{dt.now().strftime("%d/%m %H:%M:%S")})',
                     title=f'ΠΩΛΗΣΕΙΣ ΑΝΑ ΗΜΕΡΑ || ΣΥΝΟΛΑ: {round(final_result.SalesQuantity.sum(), 2)}TEM / {round(final_result.Turnover.sum(), 2)}€  ')
         plt.bar(dates_ranges.strftime('%a \n%d/%m'), tziros_per_day, alpha=0.5, color='blue', label='ΤΖΙΡΟΣ')
-        plt.plot(dates_ranges.strftime('%a \n%d/%m'), quantity_per_day, alpha=0.5, color='red', label='ΠΟΣΟΤΗΤΑ', marker='x',
+        plt.plot(dates_ranges.strftime('%a \n%d/%m'), quantity_per_day, alpha=0.5, color='red', label='ΠΟΣΟΤΗΤΑ',
+                 marker='x',
                  linestyle="None")
         for x, y in zip(dates_ranges.strftime('%a \n%d/%m'), quantity_per_day):
             label = "{:.2f} TEM".format(y)
