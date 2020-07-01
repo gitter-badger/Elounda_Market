@@ -94,7 +94,7 @@ while True:
         plt.legend()
 
         plt.subplot(2, 1, 2, xlabel=f'ΗΜΕΡΟΜΗΝΙΕΣ (EΝΗΜΕΡΩΘΗΚΕ:{dt.now().strftime("%d/%m %H:%M:%S")})',
-                    title=f'ΠΩΛΗΣΕΙΣ ΑΝΑ ΗΜΕΡΑ || ΣΥΝΟΛΑ: {final_result.SalesQuantity.sum()}TEM / {round(final_result.Turnover.sum(), 2)}€  ')
+                    title=f'ΠΩΛΗΣΕΙΣ ΑΝΑ ΗΜΕΡΑ || ΣΥΝΟΛΑ: {round(final_result.SalesQuantity.sum(), 2)}TEM / {round(final_result.Turnover.sum(), 2)}€  ')
         plt.bar(dates_ranges.strftime('%a \n%d/%m'), tziros_per_day, alpha=0.5, color='blue', label='ΤΖΙΡΟΣ')
         plt.plot(dates_ranges.strftime('%a \n%d/%m'), quantity_per_day, alpha=0.5, color='red', label='ΠΟΣΟΤΗΤΑ', marker='x',
                  linestyle="None")
@@ -137,8 +137,8 @@ while True:
             with open('version.txt', 'w') as file:
                 file.write(f'{id}')
 
-        choose_pricelist.quantity = final_result.SalesQuantity.sum()
-        choose_pricelist.turn_over = {round(final_result.Turnover.sum(), 2)}
+        choose_pricelist.quantity = round(final_result.SalesQuantity.sum(), 2)
+        choose_pricelist.turn_over = round(final_result.Turnover.sum(), 2)
 
         # -------------------- SLACK BOT ADD TEXT --------------------
         report = f"""
@@ -146,7 +146,7 @@ while True:
         ΠΟΡΕΙΑ ΠΩΛΗΣΕΩΝ ΓΙΑ ΤΙΣ ΠΡΟΣΦΟΡΕΣ:
         ` ΣΥΜΜΕΤΕΧΟΥΝ: \t {len(final_result)} ΠΡΟΪΟΝΤΑ `
         ` DATERANGE: \t ΑΠΟ: {from_date.strftime("%d-%m-%Y")} \t ΕΩΣ: {to_date.strftime("%d-%m-%Y")} `
-        ` ΠΟΣΟΤΗΤΑ ΠΩΛΗΣΕΩΝ: \t {final_result.SalesQuantity.sum()} TEM `
+        ` ΠΟΣΟΤΗΤΑ ΠΩΛΗΣΕΩΝ: \t {round(final_result.SalesQuantity.sum(), 2)} TEM `
         ` M.O. / ΗΜΕΡΑ : \t {round(np.mean(quantity_per_day))} TEM ` 
         ` ΤΖΙΡΟΣ ΠΩΛΗΣΕΩΝ: \t {round(final_result.Turnover.sum(), 2)} EUR `
         ` M.O. / ΗΜΕΡΑ : \t {round(np.mean(tziros_per_day), 2)} EUR `
