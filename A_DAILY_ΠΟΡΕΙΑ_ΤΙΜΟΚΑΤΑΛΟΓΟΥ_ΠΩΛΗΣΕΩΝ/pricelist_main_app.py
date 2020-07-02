@@ -75,7 +75,7 @@ while True:
         excel_export.export(path_to_file, final_result)
 
         # -------------------- PLOT --------------------
-        plt.figure(figsize=(15, 9))
+        plt.figure(figsize=(15, 10))
         plt.subplot(2, 1, 1,
                     title=f'ΕΝΕΡΓΕΙΑ: {id}η || {choose_pricelist.comments} || [ΕΝΑΡΞΗ: {from_date.strftime("%d-%m")} - ΛΗΞΗ: {to_date.strftime("%d-%m")}]')
         plt.bar(brand_sales.BRAND, brand_sales.Turnover, alpha=0.5, color='red', label='ΤΖΙΡΟΣ')
@@ -94,6 +94,7 @@ while True:
                          textcoords="offset points",  # how to position the text
                          xytext=(0, 2),  # distance from text to points (x,y)
                          ha='center')  # horizontal alignment can be left, right or center
+        plt.xticks(rotation=20)
         plt.grid(True, alpha=0.8)
         plt.legend()
 
@@ -120,7 +121,7 @@ while True:
                     color='red', alpha=.4)
         plt.grid(True, alpha=0.2)
         plt.legend()
-
+        plt.tight_layout()
         plt.savefig('views.png')
         plt.show()
 
