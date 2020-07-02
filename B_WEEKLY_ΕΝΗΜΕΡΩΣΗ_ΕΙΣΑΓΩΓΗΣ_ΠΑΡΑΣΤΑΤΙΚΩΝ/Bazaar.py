@@ -89,28 +89,6 @@ send_mail.send_mail(mail_lst, mail_names, word, path_to_file, output_file)
 slack_output_text = f"""
 > ΕΒΔΟΜΑΔΙΑΙΟ ΔΗΜΟΣΙΕΥΜΑ
 > ΚΑΤΑΧΩΡΗΘΗΚΑΝ ΤΑ ΤΙΜΟΛΟΓΙΑ: {order_id}
-
-`AVERAGE  :{round(np.mean(markup),2)}%`
-`MEDIAN   :{np.median(markup)}%`
-`MIN      :{np.amin(markup)}%`
-`MAX      :{np.amax(markup)}%`
-`STD DEV  :{round(np.std(markup), 2)}`
-`HISTOGRAM:{np.quantile(markup, [.25, .5, .75])}`
-
-`ΑΡΧΕΙΟ: {output_file}`
-`ΠΡΟΜΗΘΕΥΤΗΣ: {main_name}`
-
-`1o ΤΕΤΑΡΤΗΜΟΡΙΟ (ΠΛΗΘΟΣ ΚΩΔΙΚΩΝ = {len(codes_in_q1)})`
-`1o ΤΕΤΑΡΤΗΜΟΡΙΟ ΑΠΟ: {round(np.amin(markup), 2)}%  ΕΩΣ: {round(quartiles[0], 2)}%`
-
-`2o ΤΕΤΑΡΤΗΜΟΡΙΟ (ΠΛΗΘΟΣ ΚΩΔΙΚΩΝ = {len(codes_in_q2)}`
-`2o ΤΕΤΑΡΤΗΜΟΡΙΟ ΑΠΟ: {round(quartiles[0], 2)}%  ΕΩΣ: {round(quartiles[1], 2)}%`
-
-`3o ΤΕΤΑΡΤΗΜΟΡΙΟ (ΠΛΗΘΟΣ ΚΩΔΙΚΩΝ = {len(codes_in_q3)}`
-`3o ΤΕΤΑΡΤΗΜΟΡΙΟ ΑΠΟ: {round(quartiles[1], 2)}%  ΕΩΣ: {round(quartiles[2], 2)}%`
-
-`4o ΤΕΤΑΡΤΗΜΟΡΙΟ (ΠΛΗΘΟΣ ΚΩΔΙΚΩΝ = {len(codes_in_q4)}`
-`4o ΤΕΤΑΡΤΗΜΟΡΙΟ ΑΠΟ: {round(quartiles[2], 2)}%  ΕΩΣ: {round(np.amax(markup), 2)}%`
 """
 
 slack_app.send_text(slack_output_text, slack_app.channels[5])

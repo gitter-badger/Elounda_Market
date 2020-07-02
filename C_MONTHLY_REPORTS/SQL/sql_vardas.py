@@ -4,10 +4,10 @@
 def get_vardas_sale(date, code = '01-002284'):
     return f"""
         SELECT
-           IsNull(FK_ItemSales_ESFIItem.ESFIItemPeriodics_SalesQty,0) AS SalesQuantity,
-           IsNull(FK_ItemSales_ESFIItem.ESFIItemPeriodics_TurnOver,0) AS Turnover,
            ESFIItem.BarCode AS ΚΩΔΙΚΟΣ,
-           ESFIItem.Description AS ΠΕΡΙΓΡΑΦΗ
+           ESFIItem.Description AS ΠΕΡΙΓΡΑΦΗ,
+           IsNull(FK_ItemSales_ESFIItem.ESFIItemPeriodics_SalesQty,0) AS SalesQuantity,
+           IsNull(FK_ItemSales_ESFIItem.ESFIItemPeriodics_TurnOver,0) AS Turnover
 
 
     FROM ESFIItem AS ESFIItem
@@ -54,3 +54,35 @@ def get_vardas_sale(date, code = '01-002284'):
 
 
         """
+
+
+def pistotiko():
+    database_query = f"""
+    SELECT ESFIItemEntry_ESFIItemPeriodics.RegistrationDate                                                     AS 'REGISTRATION DATE',
+           ESFIItemEntry_ESFIItemPeriodics.NetValue                                                             AS 'NET VALUE',
+           ESFIItemEntry_ESFIItemPeriodics.Comment                                                              AS 'COMMENT'
+           
+
+    FROM ESFIItemEntry_ESFIItemPeriodics AS ESFIItemEntry_ESFIItemPeriodics
+
+             LEFT JOIN ESFIItem AS FK_ESFIItemEntry_ESFIItemPeriodics_ESFIItem
+                       ON ESFIItemEntry_ESFIItemPeriodics.fItemGID = FK_ESFIItemEntry_ESFIItemPeriodics_ESFIItem.GID
+             LEFT JOIN ESFIItem AS FK_ESFIItemEntry_ESFIItem
+                       ON ESFIItemEntry_ESFIItemPeriodics.fItemGID = FK_ESFIItemEntry_ESFIItem.GID
+             LEFT JOIN ESFIDocumentTrade AS FK_ESFIItemEntry_ESFIDocumentTrade
+                       ON ESFIItemEntry_ESFIItemPeriodics.fDocumentGID = FK_ESFIItemEntry_ESFIDocumentTrade.GID
+             INNER JOIN ESFITradeAccount AS FK_ESFIDocumentTrade_ESFITradeAccount
+                        ON FK_ESFIItemEntry_ESFIDocumentTrade.fTradeAccountGID = FK_ESFIDocumentTrade_ESFITradeAccount.GID
+             LEFT JOIN ESGOZVATCategory AS FK_ESFIItem_ESGOZVATCategory
+                       ON FK_ESFIItemEntry_ESFIItemPeriodics_ESFIItem.fVATCategoryCode = FK_ESFIItem_ESGOZVATCategory.Code
+             LEFT JOIN ESFIZTransitionStep AS FK_ESFIDocumentTrade_ESFIZTransitionStep
+                       ON FK_ESFIItemEntry_ESFIDocumentTrade.fTransitionStepCode =
+                          FK_ESFIDocumentTrade_ESFIZTransitionStep.Code AND
+                          FK_ESFIItemEntry_ESFIDocumentTrade.fCompanyCode =
+                          FK_ESFIDocumentTrade_ESFIZTransitionStep.fCompanyCode
+    WHERE DATEPART(yyyy, ESFIItemEntry_ESFIItemPeriodics.RegistrationDate) >= 2019
+      AND FK_ESFIItemEntry_ESFIItem.Code = '01-002284'
+      AND (ESFIItemEntry_ESFIItemPeriodics.DocumentCode LIKE 'ΠΕΚ%')
+
+    """
+    return database_query
