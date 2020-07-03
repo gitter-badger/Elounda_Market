@@ -8,7 +8,7 @@ import time
 from datetime import datetime as dt
 import numpy as np
 
-# ----------------MAKE DF REPORT VIEWABLE----------------------------
+# ---------------- MAKE DF REPORT VIEWABLE ----------------------------
 pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
@@ -32,18 +32,18 @@ tries = 0
 
 while True:
     tries += 1
-    # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
+    # -------------------- ΕΚΤΥΠΩΝΩ STATEMENT --------------------
     print('<---------------------------------->')
     print(f'{dt.now().strftime("%d-%m %H:%M:%S")} :ΈΝΑΡΞΗ ΑΝΑΖΗΤΗΣΗΣ: {tries}')
 
-    # -------------------- ΔΙΑΒΑΖΩ ΤΗΝ ΤΙΜΗ ΤΖΙΡΟΥ ΑΠΟ ΤΟ TXT--------------------
+    # -------------------- ΔΙΑΒΑΖΩ ΤΗΝ ΤΙΜΗ ΤΖΙΡΟΥ ΑΠΟ ΤΟ TXT --------------------
     with open('tziros.txt', 'r') as file:
         tziros = float(file.read())
 
-    # -------------------- ΔΙΑΒΑΖΩ ΤΟΝ ΤΙΜΟΚΑΤΑΛΟΓΟ SQL DB--------------------
+    # -------------------- ΔΙΑΒΑΖΩ ΤΟΝ ΤΙΜΟΚΑΤΑΛΟΓΟ SQL DB --------------------
     timokatalogos = pd.read_sql_query(sql_select.get_products_in_the_period(from_date, to_date), sql_connect.sql_cnx())
 
-    # -------------------- READ SALES SQL DB--------------------
+    # -------------------- READ SALES SQL DB --------------------
     sales = pd.read_sql_query(sql_select.get_sales(from_date, to_date, tuple(timokatalogos['ΚΩΔΙΚΟΣ'].values)),
                               sql_connect.sql_cnx())
 
@@ -51,14 +51,14 @@ while True:
     final_result = pd.merge(left=timokatalogos, right=sales, left_on='ΚΩΔΙΚΟΣ', right_on='ΚΩΔΙΚΟΣ').sort_values(
         by=['SalesQuantity'])
 
-    # --------------------GROUP BY BRANDS TO SLACK --------------------
+    # -------------------- GROUP BY BRANDS TO SLACK --------------------
     brand_sales = final_result[['BRAND', 'SalesQuantity', 'Turnover']].groupby(by='BRAND').sum() \
         .sort_values('Turnover').reset_index()
 
-    # --------------------ΕΝΑΡΞΗ ΕΛΕΓΧΟΥ --------------------
+    # -------------------- ΕΝΑΡΞΗ ΕΛΕΓΧΟΥ --------------------
     if tziros != round(final_result.Turnover.sum(), 2):
 
-        # -------------------- READ SALES QUANTITY AND TurnOver PER DAY PERSQL DB--------------------
+        # -------------------- READ SALES QUANTITY AND TurnOver PER DAY PERSQL DB --------------------
         quantity_per_day = []
         tziros_per_day = []
         for specific_date in dates_ranges:
@@ -71,7 +71,7 @@ while True:
         # -------------------- ADD +=1 TO THE COUNTER --------------------
         found_changes_counter += 1
 
-        # -------------OPEN FILE | WRITE ----------------------------
+        # ------------- OPEN FILE | WRITE ----------------------------
         excel_export.export(path_to_file, final_result)
 
         # -------------------- PLOT --------------------
@@ -125,7 +125,7 @@ while True:
         plt.savefig('views.png')
         plt.show()
 
-        # --------------------READ VERSION OF PRICELIST IN TXT--------------------
+        # -------------------- READ VERSION OF PRICELIST IN TXT --------------------
         with open('version.txt', 'r') as file:
             version = int(file.read())
 
@@ -168,18 +168,18 @@ while True:
         slack_app.send_files('views.png', 'views.png', 'png', slack_app.channels[0])
     else:
 
-        # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
+        # -------------------- ΕΚΤΥΠΩΝΩ STATEMENT --------------------
         print(f'{dt.now().strftime("%d-%m %H:%M:%S")} :NOTHING TO REPORT:')
 
-    # --------------------WRITE TZIROS ON TXT --------------------
+    # -------------------- WRITE TZIROS ON TXT --------------------
     with open('tziros.txt', 'w') as file:
         file.write(f'{round(final_result.Turnover.sum(), 2)}')
 
-    # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
+    # -------------------- ΕΚΤΥΠΩΝΩ STATEMENT --------------------
     print(f'{start_timestamp} :ΑΛΛΑΓΕΣ: {found_changes_counter}')
 
-    # --------------------ΕΚΤΥΠΩΝΩ STATEMENT --------------------
+    # -------------------- ΕΚΤΥΠΩΝΩ STATEMENT --------------------
     print(f'{dt.now().strftime("%d-%m %H:%M:%S")} :5 MINUTES PAUSE')
 
-    # --------------------ADD SLEEP TIMER --------------------
+    # -------------------- ADD SLEEP TIMER --------------------
     time.sleep(300)  # 5 minutes
