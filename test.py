@@ -1,7 +1,13 @@
 #   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 
-x = 10.00
-y = 1.14
-if x - int(x) == 0:
-    print('yeah')
-print(y - int(y))
+import datetime
+import time
+
+x = datetime.datetime.now().strftime('%H:%M:%S')
+
+time.sleep(10)
+
+y = datetime.timedelta(datetime.datetime.now()).strftime('%H:%M:%S')
+
+z = x - y
+print(z)

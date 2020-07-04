@@ -9,10 +9,10 @@ pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
 # ---------------- STATEMENTS HERE ----------------
-order_types = ['ΑΠ_ΜΟΒ', 'ΔΕΑ', 'ΑΔΠ']
+order_types = ['ΑΠ_ΜΟΒ', 'ΔΕΑ', 'ΑΔΠ', 'ΑΤΔ']
 # TODO 'ΑΠΟ ΕΔΩ'
-order_type = order_types[1]  # 0 = ΑΠ_ΜΟΒ / 1 = ΔΕΑ / 2 = ΑΔΠ
-input_param = '3946'         # Βάζω 
+order_type = order_types[3]  # 0 = ΑΠ_ΜΟΒ / 1 = ΔΕΑ / 2 = ΑΔΠ
+input_param = '27441'         # Βάζω
 # TODO 'ΕΩΣ ΕΔΩ'
 output_file = "temp_{}.xlsx".format(input_param)
 detailed = 'detailed_{}.xlsx'.format(input_param)
