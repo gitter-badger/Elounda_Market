@@ -277,14 +277,16 @@ print('Προμηθευτές: SQL Ερώτημα για το σύνολο τω�
 x = ()
 for i in range(len(answer_00)):
     x = x + (answer_00['NAME'][i],)
+    print(f'loop counter {i} and result {x}')
 
 
-
+print('Read SQL QUERY')
 answer_01 = pd.read_sql_query(query_01, sql_connect.sql_cnx())
-
+print('SQL QUERY DONE')
+print(answer_01.head())
 
 prod_per_year = answer_01.groupby(['YEAR'])['TurnOver'].sum().reset_index()
-
+print('GROUPING')
 
 X = prod_per_year['YEAR']
 y = prod_per_year['TurnOver']
@@ -303,7 +305,7 @@ for a, b in zip(X, y):
 plt.grid(True, alpha=0.5)
 plt.savefig('views.png')
 plt.show()
-
+print('plot DONE')
 
 answer = []
 answer_sum = []
@@ -332,6 +334,7 @@ for i in range(len(c)):
     year_2018.append(sum(answer[i].f2018))
     year_2019.append(sum(answer[i].f2019))
     year_2020.append(sum(answer[i].f2020))
+    print(f'looping with counter {i} ')
 
 
 promi8eutes_list = [compo1, compo2, x]
@@ -343,6 +346,7 @@ answer_prom_count = []
 for i in range(len(promi8eutes_list)):
     answer_prom.append(pd.read_sql_query(querry_suppliers(promi8eutes_list[i]), sql_connect.sql_cnx()))
     answer_prom_count.append(len(answer_prom[i]))
+    print(f'looping with counter {i} ')
 
 
 # -------------OPEN FILE | WRITE ----------------------------
@@ -354,11 +358,13 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
     for i in range(len(c)):
         answer[i].to_excel(writer, sheet_name='ΚΑΤΑΣΚΕΥΑΣΤΗΣ', startcol=0, startrow=k)
         k += (4 + answer_count[i])
+        print(f'EXCEL looping with counter {i} ')
     excel_positioning = 1
     # Προμηθευτές
     for i in range(len(promi8eutes_list)):
         answer_prom[i].to_excel(writer, sheet_name='ΠΡΟΜΗΘΕΥΤΕΣ', startcol=0, startrow=excel_positioning)
         excel_positioning += (4 + answer_prom_count[i])
+        print(f'EXCEL looping with counter {i} ')
     print('Προμηθευτές εγγραφή στο  Excel --> Ολοκληρώθηκε:  {}'.format(datetime.now()))
     # Get access to the workbook and sheet
     workbook = writer.book
@@ -432,6 +438,7 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
         for j in range(0, 22, 7):
             a.append(i)
             b.append(j)
+            print(f'EXCEL looping with counters {i} and {j} ')
     print('Counters για τα Γραφήματα --> Ολοκληρώθηκε:  {}'.format(datetime.now()))
 
 
@@ -481,6 +488,7 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
         chart(i, j, k)
         j += 1
         k += 10
+        print(f'EXCEL looping with counter {i} ')
 
 
     # Προμηθευτές
@@ -499,6 +507,7 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
                                        {'type': 'data_bar', 'bar_color': 'red'})
         fun_suppliers(prom_counter)
         prom_counter += (answer_prom_count[i] + 4)
+        print(f'EXCEL looping with counter {i} ')
 
     # Συνοπτικά
     worksheet_5.write(0, 0, 'Κατασκευαστής')
@@ -506,6 +515,7 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
     for i in range(1, 9):
         worksheet_5.write(0, i, '{}'.format(j))
         j += 1
+        print(f'EXCEL looping with counter {i} ')
     j = 1
     for i in range(len(c)):
         worksheet_5.write(j, 0, kataskevastes_lst[i])
@@ -519,6 +529,7 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
         worksheet_5.write(j, 8, year_2019[i])
         worksheet_5.write(j, 9, year_2020[i])
         j += 1
+        print(f'EXCEL looping with counter {i} ')
 
     # INSERT IMAGES
     # worksheet.insert_image('A27', 'sap.png', {'x_scale': 0.2, 'y_scale': 0.2})
@@ -542,6 +553,7 @@ for i in range(len(c)):
     plt.subplot(8, 8, j, ylabel='ΤΖΙΡΟΣ', title=kataskevastes_lst[i])
     plt.bar(X, y, color=f"#{random.randrange(0x1000000):06x}")
     j+=1
+    print(f'EXCEL looping with counter {i} ')
 
 plt.grid(True, alpha=0.5)
 plt.savefig('kataskevastis_views.png')
