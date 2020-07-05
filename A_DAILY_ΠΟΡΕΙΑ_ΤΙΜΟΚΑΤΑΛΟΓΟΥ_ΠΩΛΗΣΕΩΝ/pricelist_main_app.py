@@ -12,8 +12,15 @@ import numpy as np
 pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
+# -------------------- SLACK DELETE ALL --------------------
+# x = (slack_app.history(slack_app.channels_id[0]))
+# for i in range(len(x['messages'])):
+#     timer = (x['messages'][i]['ts'])
+#     slack_app.delete(slack_app.channels_id[0], timer)
+
 # -------------------- STATEMENTS HERE --------------------
 choose_pricelist = timokatalogos.lista_2020[-1]
+# for choose_pricelist in timokatalogos.lista_2020:
 from_date = choose_pricelist.start
 to_date = choose_pricelist.end
 id = choose_pricelist.id
