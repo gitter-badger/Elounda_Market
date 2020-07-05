@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import time
 from datetime import datetime as dt
 import numpy as np
+import squarify
 
 # ---------------- MAKE DF REPORT VIEWABLE ----------------------------
 pd.set_option('display.max_columns', 500)
@@ -132,6 +133,24 @@ while True:
         plt.savefig('views.png')
         plt.show()
 
+        # -------------------- TREE MAP --------------------
+        # Prepare Data
+        df = brand_sales
+
+        labels = df.apply(lambda x: f'{x[0]}\n({x[1]} {"TEM" if x[1] - int(x[1]) == 0 else "ΚΙΛ"})', axis=1)
+        sizes = df['SalesQuantity'].values.tolist()
+        colors = [plt.cm.Spectral(i / float(len(labels))) for i in range(len(labels))]
+
+        # Draw Plot
+        plt.figure(figsize=(12, 8), dpi=80)
+        squarify.plot(sizes=sizes, label=labels, color=colors, alpha=.8)
+
+        # Decorate
+        plt.title(f'Treemap: Ποσοτικές Πωλήσεις || ΣΥΝΟΛΑ: {round(df.SalesQuantity.sum(), 2)}')
+        plt.axis('off')
+        plt.savefig('tree_map_quantity.png')
+        plt.show()
+
         # -------------------- READ VERSION OF PRICELIST IN TXT --------------------
         with open('version.txt', 'r') as file:
             version = int(file.read())
@@ -139,9 +158,9 @@ while True:
         # -------------------- CHECK IF WE GOT NEW VERSION --------------------
         if version == id:
 
-            # -------------------- SLACK BOT DELETE (3 OLD POSTS) --------------------
+            # -------------------- SLACK BOT DELETE (4 OLD POSTS) --------------------
             x = (slack_app.history(slack_app.channels_id[0]))
-            for i in range(3):
+            for i in range(4):
                 timer = (x['messages'][i]['ts'])
                 slack_app.delete(slack_app.channels_id[0], timer)
         else:
@@ -173,6 +192,7 @@ while True:
         # -------------------- SLACK BOT ADD FILES --------------------
         slack_app.send_files(f'{id}.xlsx', path_to_file, 'xlsx', slack_app.channels[0])
         slack_app.send_files('views.png', 'views.png', 'png', slack_app.channels[0])
+        slack_app.send_files('tree_map_quantity.png', 'tree_map_quantity.png', 'png', slack_app.channels[0])
     else:
 
         # -------------------- ΕΚΤΥΠΩΝΩ STATEMENT --------------------
