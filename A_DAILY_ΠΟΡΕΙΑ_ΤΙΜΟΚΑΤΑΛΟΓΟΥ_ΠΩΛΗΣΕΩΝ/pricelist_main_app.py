@@ -83,7 +83,7 @@ while True:
         excel_export.export(path_to_file, final_result)
 
         # -------------------- PLOT --------------------
-        plt.figure(figsize=(15, 10))
+        plt.figure(figsize=(16, 8), dpi=300)
         # plt.subplot(2, 1, 1,
         #             title=f'ΕΝΕΡΓΕΙΑ: {id}η || {choose_pricelist.comments} || [ΕΝΑΡΞΗ: {from_date.strftime("%d-%m")} - ΛΗΞΗ: {to_date.strftime("%d-%m")}]')
         # plt.bar(brand_sales.BRAND, brand_sales.Turnover, alpha=0.5, color='red', label='ΤΖΙΡΟΣ')
@@ -112,9 +112,10 @@ while True:
 
 ΠΩΛΗΣΕΙΣ ΑΝΑ ΗΜΕΡΑ || ΣΥΝΟΛΑ: {round(final_result.SalesQuantity.sum(), 2)}TEM / {round(final_result.Turnover.sum(), 2)}€  
 """)
-        plt.bar(dates_ranges.strftime('%a \n%d/%m'), tziros_per_day, alpha=0.5, color='blue', label='ΤΖΙΡΟΣ')
-        plt.plot(dates_ranges.strftime('%a \n%d/%m'), quantity_per_day, alpha=0.5, color='red', label='ΠΟΣΟΤΗΤΑ',
-                 marker='x',
+        colors = [plt.cm.Spectral(i / float(len(dates_ranges))) for i in range(len(dates_ranges))]
+        plt.bar(dates_ranges.strftime('%a \n%d/%m'), tziros_per_day, alpha=0.9, color=colors, label='ΤΖΙΡΟΣ')
+        plt.plot(dates_ranges.strftime('%a \n%d/%m'), quantity_per_day, alpha=0.9, color='darkgreen', label='ΠΟΣΟΤΗΤΑ',
+                 marker='o',
                  linestyle="None")
         for x, y in zip(dates_ranges.strftime('%a \n%d/%m'), quantity_per_day):
             label = "{:.2f} TEM".format(y)
@@ -123,7 +124,7 @@ while True:
             plt.annotate(label,  # this is the text
                          (x, y),  # this is the point to label
                          textcoords="offset points",  # how to position the text
-                         xytext=(0, 2),  # distance from text to points (x,y)
+                         xytext=(0, 10),  # distance from text to points (x,y)
                          ha='center')  # horizontal alignment can be left, right or center
         plt.axhline(y=round(np.mean(tziros_per_day), 2), xmin=0, xmax=1, linestyle='-.',
                     label=f'Μ.Ο. ΤΖΙΡΟΥ: ({round(np.mean(tziros_per_day), 2)} EUR)',
@@ -146,7 +147,7 @@ while True:
         colors = [plt.cm.Spectral(i / float(len(labels))) for i in range(len(labels))]
 
         # Draw Plot
-        plt.figure(figsize=(12, 8), dpi=80)
+        plt.figure(figsize=(16, 8), dpi=300)
         squarify.plot(sizes=sizes, label=labels, color=colors, alpha=.8)
 
         # Decorate
