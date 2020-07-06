@@ -292,7 +292,8 @@ X = prod_per_year['YEAR']
 y = prod_per_year['TurnOver']
 plt.figure(figsize=(15, 9))
 plt.subplot(xlabel='ΕΤΟΣ', ylabel='ΤΖΙΡΟΣ' , title= 'ELOUNDA MARKET')
-plt.bar(X, y, alpha=0.5)
+colors = [plt.cm.Spectral(i / float(len(X))) for i in range(len(X))]
+plt.bar(X, y, alpha=0.9, color=colors)
 for a, b in zip(X, y):
     label = "{:.2f} €".format(b)
 
@@ -551,7 +552,8 @@ for i in range(len(c)):
     X = ['12', '13', '14', '15', '16', '17', '18', '19', '20']
     Y = y
     plt.subplot(8, 8, j, ylabel='ΤΖΙΡΟΣ', title=kataskevastes_lst[i])
-    plt.bar(X, y, color=f"#{random.randrange(0x1000000):06x}")
+    colors = [plt.cm.Spectral(i / float(len(X))) for i in range(len(X))]
+    plt.bar(X, y, color=colors)
     j+=1
     print(f'EXCEL looping with counter {i} ')
 

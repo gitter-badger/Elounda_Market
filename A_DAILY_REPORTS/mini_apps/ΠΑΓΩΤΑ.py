@@ -88,9 +88,10 @@ pl = answer_3.values.min()
 
 X = answer_2['YEAR']
 y = answer_2['TurnOver']
-plt.figure(figsize=(15, 9))
+plt.figure(figsize=(16, 8))
 plt.subplot(xlabel='ΕΤΟΣ', ylabel='ΤΖΙΡΟΣ' , title= 'ELOUNDA MARKET (ΠΑΓΩΤΑ)')
-plt.bar(X, y, alpha=0.5)
+colors = [plt.cm.Spectral(i / float(len(X))) for i in range(len(X))]
+plt.bar(X, y, alpha=0.9, color=colors)
 for a, b in zip(X, y):
     label = "{:.2f} €".format(b)
 
