@@ -2,6 +2,8 @@
 
 from datetime import datetime
 import pandas as pd
+import squarify
+
 from Private import slack_app,sql_connect
 import matplotlib.pyplot as plt
 file_path = '/Users/kommas/OneDrive/Business_Folder/Slack/Private_Analytics/Κερούλης.xlsx'
@@ -107,6 +109,24 @@ plt.grid(True, alpha=0.5)
 plt.savefig('keroulis_views.png')
 plt.show()
 
+# -------------------- TREE MAP --------------------
+# Prepare Data
+df = answer[answer.TurnOver > 0]
+labels = df.apply(lambda x: f'{x[0]}\n({x[1]} EUR)', axis=1)
+print(labels)
+sizes = df['TurnOver'].values.tolist()
+colors = [plt.cm.Spectral(i / float(len(labels))) for i in range(len(labels))]
+
+# Draw Plot
+plt.figure(figsize=(16, 8), dpi=300)
+squarify.plot(sizes=sizes, label=labels, color=colors, alpha=0.9)
+
+# Decorate
+plt.title(f'ΤΖΙΡΟΣ / ΥΠΟΚΑΤΗΓΟΡΙΑ')
+plt.axis('off')
+plt.savefig('keroulis_tree_map.png')
+plt.show()
+
 # Εισαγωγή Δεομένων στο  EXCEL
 with pd.ExcelWriter(file_path, engine='xlsxwriter') as writer:
     answer.to_excel(writer, sheet_name='ΚΕΡΟΥΛΗΣ', startcol=3, startrow=0)
@@ -178,3 +198,4 @@ slack_app.send_text("""
 
 slack_app.send_files('Κερούλης.xlsx', file_path, 'xlsx', slack_app.channels[1])
 slack_app.send_files('keroulis_views.png', 'keroulis_views.png', 'png', slack_app.channels[1])
+slack_app.send_files('keroulis_tree_map.png', 'keroulis_tree_map.png', 'png', slack_app.channels[1])

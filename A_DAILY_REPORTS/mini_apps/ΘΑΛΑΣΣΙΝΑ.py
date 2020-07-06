@@ -4,16 +4,15 @@ from datetime import datetime
 import pandas as pd
 from Private import sql_connect,slack_app
 import matplotlib.pyplot as plt
-
+import squarify
 file_path = '/Users/kommas/OneDrive/Business_Folder/Slack/Private_Analytics/Θαλασσινά.xlsx'
 
 # -----------| SQL QUERY -------------
 query = """
 SELECT
-       IsNull(FK_ESFIItemPeriodics_ESFIItem.fItemCategoryCode,'') + ' - ' +
        IsNull(FK_ESFIItem_ESFIZItemCategory.Description,'')
         AS Category
-        ,Sum(ESFIItemPeriodics.TurnOver) AS TurnOver
+        ,isnull(Sum(ESFIItemPeriodics.TurnOver), 0) AS TurnOver
     ,isnull(sum(case when Year(FK_ESFIItemPeriodics_ESGOFiscalPeriod.BeginDate) = 2012 then TurnOver end), 0) '2012'
     ,isnull(sum(case when Year(FK_ESFIItemPeriodics_ESGOFiscalPeriod.BeginDate) = 2013 then TurnOver end), 0) '2013'
     ,isnull(sum(case when Year(FK_ESFIItemPeriodics_ESGOFiscalPeriod.BeginDate) = 2014 then TurnOver end), 0) '2014'
@@ -45,7 +44,7 @@ FROM ESFIItemPeriodics AS ESFIItemPeriodics
 
 GROUP BY
  -- FK_ESFIItemPeriodics_ESGOFiscalPeriod.BeginDate,
- IsNull(FK_ESFIItemPeriodics_ESFIItem.fItemCategoryCode,'') + ' - ' +
+
 IsNull(FK_ESFIItem_ESFIZItemCategory.Description,'')
 """
 
@@ -108,6 +107,24 @@ for a, b in zip(X, y):
                  xytext=(0, 10),  # distance from text to points (x,y)
                  ha='center')  # horizontal alignment can be left, right or center
 plt.savefig('sea_views.png')
+plt.show()
+
+# -------------------- TREE MAP --------------------
+# Prepare Data
+df = answer[answer.TurnOver > 0]
+labels = df.apply(lambda x: f'{x[0]}\n({x[1]} EUR)', axis=1)
+print(labels)
+sizes = df['TurnOver'].values.tolist()
+colors = [plt.cm.Spectral(i / float(len(labels))) for i in range(len(labels))]
+
+# Draw Plot
+plt.figure(figsize=(16, 8), dpi=300)
+squarify.plot(sizes=sizes, label=labels, color=colors, alpha=0.9)
+
+# Decorate
+plt.title(f'ΤΖΙΡΟΣ / ΥΠΟΚΑΤΗΓΟΡΙΑ')
+plt.axis('off')
+plt.savefig('thalassina_tree_map.png')
 plt.show()
 
 # Εισαγωγή Δεομένων στο  EXCEL
@@ -183,3 +200,4 @@ slack_app.send_text("""
 
 slack_app.send_files('Θαλασσινά.xlsx', file_path, 'xlsx', slack_app.channels[1])
 slack_app.send_files('sea_views.png', 'sea_views.png', 'png', slack_app.channels[1])
+slack_app.send_files('thalassina_tree_map.png', 'thalassina_tree_map.png', 'png', slack_app.channels[1])

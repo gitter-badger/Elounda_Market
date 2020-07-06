@@ -2,6 +2,8 @@
 
 from datetime import datetime
 import pandas as pd
+import squarify
+
 from Private import sql_connect,slack_app
 import matplotlib.pyplot as plt
 file_path = '/Users/kommas/OneDrive/Business_Folder/Slack/Private_Analytics/Παγωτά.xlsx'
@@ -105,6 +107,24 @@ plt.grid(True, alpha=0.5)
 plt.savefig('pagota_views.png')
 plt.show()
 
+# -------------------- TREE MAP --------------------
+# Prepare Data
+df = answer[answer.TurnOver > 0]
+labels = df.apply(lambda x: f'{x[0]}\n({x[1]} EUR)', axis=1)
+print(labels)
+sizes = df['TurnOver'].values.tolist()
+colors = [plt.cm.Spectral(i / float(len(labels))) for i in range(len(labels))]
+
+# Draw Plot
+plt.figure(figsize=(16, 8), dpi=300)
+squarify.plot(sizes=sizes, label=labels, color=colors, alpha=0.9)
+
+# Decorate
+plt.title(f'ΤΖΙΡΟΣ / ΥΠΟΚΑΤΗΓΟΡΙΑ')
+plt.axis('off')
+plt.savefig('pagota_tree_map.png')
+plt.show()
+
 
 # Εισαγωγή Δεομένων στο  EXCEL
 with pd.ExcelWriter(file_path, engine='xlsxwriter') as writer:
@@ -176,3 +196,4 @@ slack_app.send_text("""
 
 slack_app.send_files('Παγωτά.xlsx', file_path, 'xlsx', slack_app.channels[1])
 slack_app.send_files('pagota_views.png', 'pagota_views.png', 'png', slack_app.channels[1])
+slack_app.send_files('pagota_tree_map.png', 'pagota_tree_map.png', 'png', slack_app.channels[1])
