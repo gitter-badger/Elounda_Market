@@ -1,4 +1,5 @@
 #   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
+import squarify
 
 from A_DAILY_REPORTS.SQL import pda_stats_sql_query
 from A_DAILY_REPORTS.Libraries import pda_stats_excel_export
@@ -64,6 +65,24 @@ plt.grid(True, alpha=0.5)
 plt.savefig('pda_views.png')
 plt.show()
 
+# -------------------- TREE MAP --------------------
+# Prepare Data
+df = answer_05
+labels = df.apply(lambda x: f'{x[0]}\n({x[1]} Γραμμές)', axis=1)
+print(labels)
+sizes = df['Count "Γραμμές"'].values.tolist()
+colors = [plt.cm.Spectral(i / float(len(labels))) for i in range(len(labels))]
+
+# Draw Plot
+plt.figure(figsize=(16, 8), dpi=300)
+squarify.plot(sizes=sizes, label=labels, color=colors, alpha=0.9)
+
+# Decorate
+plt.title(f'ΓΡΑΜΜΕΣ / ΕΤΟΣ')
+plt.axis('off')
+plt.savefig('pda_tree_map.png')
+plt.show()
+
 
 # ---------------- EXCEL EXPORT ----------------
 pda_stats_excel_export.export(path, answer_01, answer_02, answer_03, answer_04, answer_05, answer_06)
@@ -76,3 +95,4 @@ slack_app.send_text("""
 """, slack_app.channels[1])
 slack_app.send_files('sql.xlsx', path, 'xlsx', slack_app.channels[1])
 slack_app.send_files('pda_views.png', 'pda_views.png', 'png', slack_app.channels[1])
+slack_app.send_files('pda_tree_map.png', 'pda_tree_map.png', 'png', slack_app.channels[1])

@@ -136,7 +136,7 @@ while True:
         plt.legend()
         plt.tight_layout()
         plt.savefig('views.png')
-        plt.show()
+        # plt.show()
 
         # -------------------- TREE MAP --------------------
         # Prepare Data
@@ -154,7 +154,7 @@ while True:
         plt.title(f"ΠΩΛΗΣΕΙΣ ΠΟΣΟΤΗΤΑ || ΣΥΝΟΛΑ: {round(final_result.SalesQuantity.sum(), 2)}TEM / {round(final_result.Turnover.sum(), 2)}€  ")
         plt.axis('off')
         plt.savefig('tree_map_quantity.png')
-        plt.show()
+        # plt.show()
 
         # -------------------- READ VERSION OF PRICELIST IN TXT --------------------
         with open('version.txt', 'r') as file:
