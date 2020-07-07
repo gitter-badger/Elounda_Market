@@ -19,8 +19,8 @@ detailed = 'detailed_{}.xlsx'.format(input_param)
 
 # ---------------- MAIL LIST ----------------------------
 mail_lst = ['johnkommas@hotmail.com', 'accounts@latocrete.gr', 'eloundamarket@yahoo.gr']
-mail_names = ['ΠΡΟΕΠΙΣΚΟΠΗΣΗ_ΕΠΙΣΤΡΟΦΩΝ: (Κομμάς)', 'ΠΡΟΕΠΙΣΚΟΠΗΣΗ_ΕΠΙΣΤΡΟΦΩΝ: (Λογιστήριο)',
-              'ΠΡΟΕΠΙΣΚΟΠΗΣΗ_ΕΠΙΣΤΡΟΦΩΝ: (Κατάστημα)']
+mail_names = ['ΠΡΟΕΠΙΣΚΟΠΗΣΗ: (Κομμάς)', 'ΠΡΟΕΠΙΣΚΟΠΗΣΗ: (Λογιστήριο)',
+              'ΠΡΟΕΠΙΣΚΟΠΗΣΗ: (Κατάστημα)']
 
 # ---------------- Open HTML File for the BODY MAIL ----------------
 with open('body.html', 'r') as html_file:
