@@ -84,32 +84,30 @@ while True:
 
         # -------------------- PLOT --------------------
         plt.figure(figsize=(16, 8), dpi=300)
-        # plt.subplot(2, 1, 1,
-        #             title=f'ΕΝΕΡΓΕΙΑ: {id}η || {choose_pricelist.comments} || [ΕΝΑΡΞΗ: {from_date.strftime("%d-%m")} - ΛΗΞΗ: {to_date.strftime("%d-%m")}]')
-        # plt.bar(brand_sales.BRAND, brand_sales.Turnover, alpha=0.5, color='red', label='ΤΖΙΡΟΣ')
-        # plt.plot(brand_sales.BRAND, brand_sales.SalesQuantity, alpha=0.5, color='blue', label='ΠΟΣΟΤΗΤΑ', marker='o',
-        #          linestyle="None")
-        # for x, y in zip(brand_sales.BRAND, brand_sales.SalesQuantity):
-        #     if y - int(y) == 0:
-        #         quant_type = 'TEM'
-        #     else:
-        #         quant_type = 'ΚΙΛ'
-        #     label = "{:.2f} {}".format(y, quant_type)
-        #
-        #     # this method is called for each point
-        #     plt.annotate(label,  # this is the text
-        #                  (x, y),  # this is the point to label
-        #                  textcoords="offset points",  # how to position the text
-        #                  xytext=(0, 2),  # distance from text to points (x,y)
-        #                  ha='center')  # horizontal alignment can be left, right or center
-        # plt.xticks(rotation=20)
-        # plt.grid(True, alpha=0.8)
-        # plt.legend()
+        plt.subplot(2, 1, 1,
+                    title=f'ΕΝΕΡΓΕΙΑ: {id}η || {choose_pricelist.comments} || [ΕΝΑΡΞΗ: {from_date.strftime("%d-%m")} - ΛΗΞΗ: {to_date.strftime("%d-%m")}]')
+        plt.bar(brand_sales.BRAND, brand_sales.Turnover, alpha=0.5, color='red', label='ΤΖΙΡΟΣ')
+        plt.plot(brand_sales.BRAND, brand_sales.SalesQuantity, alpha=0.5, color='blue', label='ΠΟΣΟΤΗΤΑ', marker='o',
+                 linestyle="None")
+        for x, y in zip(brand_sales.BRAND, brand_sales.SalesQuantity):
+            if y - int(y) == 0:
+                quant_type = 'TEM'
+            else:
+                quant_type = 'ΚΙΛ'
+            label = "{:.2f} {}".format(y, quant_type)
 
-        plt.subplot(xlabel=f'ΗΜΕΡΟΜΗΝΙΕΣ (EΝΗΜΕΡΩΘΗΚΕ:{dt.now().strftime("%d/%m %H:%M:%S")})',
+            # this method is called for each point
+            plt.annotate(label,  # this is the text
+                         (x, y),  # this is the point to label
+                         textcoords="offset points",  # how to position the text
+                         xytext=(0, 2),  # distance from text to points (x,y)
+                         ha='center')  # horizontal alignment can be left, right or center
+        plt.xticks(rotation=20)
+        plt.grid(True, alpha=0.8)
+        plt.legend()
+
+        plt.subplot(212, xlabel=f'ΗΜΕΡΟΜΗΝΙΕΣ (EΝΗΜΕΡΩΘΗΚΕ:{dt.now().strftime("%d/%m %H:%M:%S")})',
                     title=f"""
-ΕΝΕΡΓΕΙΑ: {id}η || {choose_pricelist.comments} || [ΕΝΑΡΞΗ: {from_date.strftime("%d-%m")} - ΛΗΞΗ: {to_date.strftime("%d-%m")}]
-
 ΠΩΛΗΣΕΙΣ ΑΝΑ ΗΜΕΡΑ || ΣΥΝΟΛΑ: {round(final_result.SalesQuantity.sum(), 2)}TEM / {round(final_result.Turnover.sum(), 2)}€  
 """)
         colors = [plt.cm.Spectral(i / float(len(dates_ranges))) for i in range(len(dates_ranges))]
