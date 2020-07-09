@@ -83,7 +83,7 @@ while True:
         excel_export.export(path_to_file, final_result)
 
         # -------------------- PLOT --------------------
-        plt.figure(figsize=(16, 8), dpi=300)
+        plt.figure(figsize=(16, 8), dpi=150)
         plt.subplot(2, 1, 1,
                     title=f'ΕΝΕΡΓΕΙΑ: {id}η || {choose_pricelist.comments} || [ΕΝΑΡΞΗ: {from_date.strftime("%d-%m")} - ΛΗΞΗ: {to_date.strftime("%d-%m")}]')
         plt.bar(brand_sales.BRAND, brand_sales.Turnover, alpha=0.5, color='red', label='ΤΖΙΡΟΣ')
@@ -145,7 +145,7 @@ while True:
         colors = [plt.cm.Spectral(i / float(len(labels))) for i in range(len(labels))]
 
         # Draw Plot
-        plt.figure(figsize=(16, 8), dpi=300)
+        plt.figure(figsize=(16, 8), dpi=150)
         squarify.plot(sizes=sizes, label=labels, color=colors, alpha=.8)
 
         # Decorate
