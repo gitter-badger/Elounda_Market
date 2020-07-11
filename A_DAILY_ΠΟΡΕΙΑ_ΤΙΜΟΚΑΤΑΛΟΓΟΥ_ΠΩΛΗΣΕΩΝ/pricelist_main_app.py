@@ -9,7 +9,7 @@ from datetime import datetime as dt
 import numpy as np
 import squarify
 
-# ---------------- MAKE DF REPORT VIEWABLE ----------------------------.
+# ---------------- MAKE DF REPORT VIEWABLE ----------------------------
 pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
