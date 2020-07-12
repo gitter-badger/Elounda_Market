@@ -1,13 +1,7 @@
 #   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
+a= 1
+b= 2
 
-import datetime
-import time
+a, b = b, a
+print(a, b)
 
-x = datetime.datetime.now().strftime('%H:%M:%S')
-
-time.sleep(10)
-
-y = datetime.timedelta(datetime.datetime.now()).strftime('%H:%M:%S')
-
-z = x - y
-print(z)
