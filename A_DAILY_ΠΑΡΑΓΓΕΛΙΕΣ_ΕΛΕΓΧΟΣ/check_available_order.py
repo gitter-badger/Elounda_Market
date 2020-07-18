@@ -11,7 +11,7 @@ SELECT
         from IMP_MobileDocumentHeaders
         where DATEPART(yyyy,Date) = DATEPART(yyyy,getdate())
         and OrderType = 'ΠΠΡ'
-        and CheckState = 0 -- καταχωρημένο όχι (στο PC)
+        and CheckState is null -- καταχωρημένο όχι (στο PC)
         and Ιntegrated = 1 -- ολοκληρωμένο ναι (στο PDA)
         
 """
@@ -30,7 +30,7 @@ def katastima(x):
 
 answer_01 = pd.read_sql_query(sql_query, sql_connect.sql_cnx())
 answer_01['Store'] = answer_01['PdaId'].apply(katastima)
-if answer_01.isna:
+if len(answer_01)==0:
     print('ΔΕΝ ΥΠΑΡΧΟΥΝ ΕΓΓΡΑΦΕΣ (ΠΑΡΑΓΓΕΛΙΕΣ)')
 else:
     print('ΒΡΕΘΗΚΑΝ ΕΓΓΡΑΦΕΣ (ΠΑΡΑΓΓΕΛΙΕΣ)')
