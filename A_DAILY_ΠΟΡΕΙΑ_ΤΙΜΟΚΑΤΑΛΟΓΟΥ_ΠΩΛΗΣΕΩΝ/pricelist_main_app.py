@@ -138,21 +138,26 @@ while True:
 
         # -------------------- TREE MAP --------------------
         # Prepare Data
-        # df = brand_sales
-        # 
-        # labels = df.apply(lambda x: f'{x[0]}\n({x[1]} {"TEM" if x[1] - int(x[1]) == 0 else "ΚΙΛ"})\n({round(x[2], 2)} EUR)', axis=1)
-        # sizes = df['SalesQuantity'].values.tolist()
-        # colors = [plt.cm.Spectral(i / float(len(labels))) for i in range(len(labels))]
-        # 
-        # # Draw Plot
-        # plt.figure(figsize=(16, 8), dpi=150)
-        # squarify.plot(sizes=sizes, label=labels, color=colors, alpha=.8)
-        # 
-        # # Decorate
-        # plt.title(f"ΠΩΛΗΣΕΙΣ ΠΟΣΟΤΗΤΑ || ΣΥΝΟΛΑ: {round(final_result.SalesQuantity.sum(), 2)}TEM / {round(final_result.Turnover.sum(), 2)}€  ")
-        # plt.axis('off')
-        # plt.savefig('tree_map_quantity.png')
-        # plt.show()
+        try:
+            df = brand_sales
+
+            labels = df.apply(lambda x: f'{x[0]}\n({x[1]} {"TEM" if x[1] - int(x[1]) == 0 else "ΚΙΛ"})\n({round(x[2], 2)} EUR)', axis=1)
+            sizes = df['SalesQuantity'].values.tolist()
+            colors = [plt.cm.Spectral(i / float(len(labels))) for i in range(len(labels))]
+
+            # Draw Plot
+            plt.figure(figsize=(16, 8), dpi=150)
+            squarify.plot(sizes=sizes, label=labels, color=colors, alpha=.8)
+
+            # Decorate
+            plt.title(f"ΠΩΛΗΣΕΙΣ ΠΟΣΟΤΗΤΑ || ΣΥΝΟΛΑ: {round(final_result.SalesQuantity.sum(), 2)}TEM / {round(final_result.Turnover.sum(), 2)}€  ")
+            plt.axis('off')
+            plt.savefig('tree_map_quantity.png')
+            # plt.show()
+        except ZeroDivisionError:
+            print('ΣΦΑΛΜΑ ZeroDivisionError ΣΤΟ TREE MAP')
+        except:
+            print('ΑΛΛΟ ΣΦΑΛΜΑ ΣΤΟ TREE MAP')
 
         # -------------------- READ VERSION OF PRICELIST IN TXT --------------------
         with open('version.txt', 'r') as file:
