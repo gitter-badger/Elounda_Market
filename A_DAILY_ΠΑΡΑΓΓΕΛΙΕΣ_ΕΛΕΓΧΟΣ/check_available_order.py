@@ -3,17 +3,22 @@
 from Private import sql_connect
 import pandas as pd
 
+# ---------------- MAKE DF REPORT VIEWABLE ----------------------------
+pd.set_option('display.max_columns', 500)
+pd.set_option('display.width', 1000)
+
 # SQL QUERY ============================================================================================
 sql_query = """
 SELECT  
-        Code,
-        PdaId
+        IMP_MobileDocumentHeaders.Code,
+        IMP_MobileDocumentHeaders.PdaId,
+        ESFITradeAccount.Name
         from IMP_MobileDocumentHeaders
+        left join ESFITradeAccount on IMP_MobileDocumentHeaders.Supplier = ESFITradeAccount.GID
         where DATEPART(yyyy,Date) = DATEPART(yyyy,getdate())
         and OrderType = 'ΠΠΡ'
         and CheckState is null -- καταχωρημένο όχι (στο PC)
-        and Ιntegrated = 1 -- ολοκληρωμένο ναι (στο PDA)
-        
+        and Ιntegrated = 1 -- ολοκληρωμένο ναι (στο PDA)     
 """
 
 

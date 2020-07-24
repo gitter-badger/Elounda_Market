@@ -1,0 +1,6 @@
+/*
+ * #  Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
+ */
+
+select name, GID from ESFITradeAccount
+where GID = '6103C2A0-AF3F-46CE-83EF-F3244B31E11B'
