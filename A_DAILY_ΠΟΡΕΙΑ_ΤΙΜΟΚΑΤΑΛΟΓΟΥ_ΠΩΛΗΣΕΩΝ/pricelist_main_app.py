@@ -135,6 +135,7 @@ while True:
         plt.tight_layout()
         plt.savefig('views.png')
         # plt.show()
+        plt.close()
 
         # -------------------- TREE MAP --------------------
         # Prepare Data
@@ -154,10 +155,13 @@ while True:
             plt.axis('off')
             plt.savefig('tree_map_quantity.png')
             # plt.show()
+            plt.close()
         except ZeroDivisionError:
             print('ΣΦΑΛΜΑ ZeroDivisionError ΣΤΟ TREE MAP')
         except:
             print('ΑΛΛΟ ΣΦΑΛΜΑ ΣΤΟ TREE MAP')
+        finally:
+            plt.close()
 
         # -------------------- READ VERSION OF PRICELIST IN TXT --------------------
         with open('version.txt', 'r') as file:
