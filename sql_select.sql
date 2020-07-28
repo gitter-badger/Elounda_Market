@@ -6,5 +6,6 @@
 select * from ESFITradeAccount where GLAccountCode = 60
 
 -- ΜΕΤΡΗΣΕ ΜΟΥ ΟΛΟΥΣ ΤΟΥΣ ΥΠΑΛΛΗΛΟΥΣ ΠΟΥ ΕΧΟΥΝ ΑΝΟΙΧΤΕΙ
-select count(*) as 'SUM OF EMPLOYES'
+select count(*) as 'SUM OF EMPLOYEES'
 from ESFITradeAccount where GLAccountCode = 60
+
