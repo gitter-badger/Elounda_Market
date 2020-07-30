@@ -118,7 +118,7 @@ for a, b in zip(X, y):
                  ha='center')  # horizontal alignment can be left, right or center
 plt.grid(True, alpha=0.5)
 plt.savefig('fresco_gala_delta_views.png')
-plt.show()
+# plt.show()
 
 pl = 12
 # Εισαγωγή Δεομένων στο  EXCEL

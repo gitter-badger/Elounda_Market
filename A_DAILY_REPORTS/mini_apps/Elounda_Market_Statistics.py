@@ -305,7 +305,7 @@ for a, b in zip(X, y):
                  ha='center')  # horizontal alignment can be left, right or center
 plt.grid(True, alpha=0.5)
 plt.savefig('views.png')
-plt.show()
+# plt.show()
 print('plot DONE')
 
 answer = []
@@ -559,7 +559,7 @@ for i in range(len(c)):
 
 plt.grid(True, alpha=0.5)
 plt.savefig('kataskevastis_views.png')
-plt.show()
+# plt.show()
 
 slack_app.send_text("""
 >ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ

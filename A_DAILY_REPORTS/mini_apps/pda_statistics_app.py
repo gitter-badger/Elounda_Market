@@ -63,7 +63,7 @@ for a, b in zip(X, y):
                  ha='center')  # horizontal alignment can be left, right or center
 plt.grid(True, alpha=0.5)
 plt.savefig('pda_views.png')
-plt.show()
+# plt.show()
 
 # -------------------- TREE MAP --------------------
 # Prepare Data
@@ -81,7 +81,7 @@ squarify.plot(sizes=sizes, label=labels, color=colors, alpha=0.9)
 plt.title(f'ΓΡΑΜΜΕΣ / ΕΤΟΣ')
 plt.axis('off')
 plt.savefig('pda_tree_map.png')
-plt.show()
+# plt.show()
 
 
 # ---------------- EXCEL EXPORT ----------------

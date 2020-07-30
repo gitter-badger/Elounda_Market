@@ -107,7 +107,7 @@ for a, b in zip(X, y):
                  xytext=(0, 10),  # distance from text to points (x,y)
                  ha='center')  # horizontal alignment can be left, right or center
 plt.savefig('sea_views.png')
-plt.show()
+# plt.show()
 
 # -------------------- TREE MAP --------------------
 # Prepare Data
@@ -125,7 +125,7 @@ squarify.plot(sizes=sizes, label=labels, color=colors, alpha=0.9)
 plt.title(f'ΤΖΙΡΟΣ / ΥΠΟΚΑΤΗΓΟΡΙΑ')
 plt.axis('off')
 plt.savefig('thalassina_tree_map.png')
-plt.show()
+# plt.show()
 
 # Εισαγωγή Δεομένων στο  EXCEL
 with pd.ExcelWriter(file_path, engine='xlsxwriter') as writer:
