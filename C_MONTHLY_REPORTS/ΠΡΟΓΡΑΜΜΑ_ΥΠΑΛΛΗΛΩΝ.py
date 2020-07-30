@@ -2,7 +2,7 @@
 
 from Private import send_mail, slack_app
 
-output_file = '07_2020.pdf'
+output_file = '08_2020.pdf'
 
 program_title = 'Πρόγραμμα:'
 

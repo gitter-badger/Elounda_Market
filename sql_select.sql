@@ -9,3 +9,4 @@ select * from ESFITradeAccount where GLAccountCode = 60
 select count(*) as 'SUM OF EMPLOYEES'
 from ESFITradeAccount where GLAccountCode = 60
 
+select * from ESFIZItemSubCategory
