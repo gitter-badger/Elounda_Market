@@ -1,14 +1,22 @@
 #   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
-def DecimalToBinary(num):
-    if num > 1:
-        DecimalToBinary(num // 2)
-    print(num % 2, end='')
+
+ΑΠΜ_ΕΛΟΥΝΤΑ = 16
+ΠΝΧ_ΕΛΟΥΝΤΑ = 22
+ΤΕΔ_ΕΛΟΥΝΤΑ = 22
+ΤΕΔ_ΛΑΤΟ_01 = 1
+ΤΕΔ_ΛΑΤΟ_02 = 3
+ΑΔΠ_ΕΛΟΥΝΤΑ = 146
+ΠΔΕ_ΕΛΟΥΝΤΑ = 5
+ΠΔΕ_ΛΑΤΟ_01 = 1
+ΠΔΕ_ΛΑΤΟ_03 = 1
+ΠΑΓ_ΕΛΟΥΝΤΑ = 50
+ΠΑΓ_ΛΑΤΟ_02 = 1
+ΠΑΓ_ΛΑΤΟ_03 = 3
+ΠΕΚ_ΕΛΟΥΝΤΑ = 7
+ΑΤΔ_ΕΛΟΥΝΤΑ = 382
+ΑΤΔ_ΛΑΤΟ_01 = 25
+ΑΤΔ_ΛΑΤΟ_02 = 20
+ΑΤΠ_ΕΛΟΥΝΤΑ = 158
 
 
-# Driver Code
-if __name__ == '__main__':
-    # decimal value
-    dec_val = 24
-
-    # Calling function
-    DecimalToBinary(dec_val)
+ΜΑΡΙΑ_ΡΑΠΑΝΑΚΗ = 863
