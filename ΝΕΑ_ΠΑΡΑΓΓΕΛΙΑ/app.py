@@ -14,7 +14,7 @@ from Private import slack_app, send_mail, sql_connect
 #
 input_param = '815'
 output_file = "Order{}.xlsx".format(input_param)
-type = 'ΠΠΡ'
+type_of_forma = 'ΠΠΡ'
 
 # ----------------MAIL LIST----------------------------
 mail_lst = ['johnkommas@hotmail.com', 'accounts@latocrete.gr', 'eloundamarket@yahoo.gr']
@@ -35,7 +35,7 @@ SELECT  BarCode, ItemDescription as 'Περιγραφή', quant as 'Ποσότη
         where DATEPART(yyyy,RealImportTime) = DATEPART(yyyy,getdate())
         --and DATEPART(mm,RealImportTime) = DATEPART(mm,getdate())
         and IMP_MobileDocumentHeaders.Code = {input_param}
-        and OrderType = '{type}'
+        and OrderType = '{type_of_forma}'
         --and OrderType = 'ΔΕΑ'
 """
 
@@ -50,7 +50,7 @@ SELECT  distinct OrderType as 'Type', IMP_MobileDocumentHeaders.Code as 'Code', 
         where DATEPART(yyyy,RealImportTime) = DATEPART(yyyy,getdate())
         --and DATEPART(mm,RealImportTime) = DATEPART(mm,getdate())
         and IMP_MobileDocumentHeaders.Code = {input_param}
-        and OrderType = '{type}'
+        and OrderType = '{type_of_forma}'
         --and OrderType = 'ΔΕΑ'
 """
 
@@ -71,7 +71,7 @@ SELECT
         where DATEPART(yyyy,RealImportTime) = DATEPART(yyyy,getdate())
         --and DATEPART(mm,RealImportTime) = DATEPART(mm,getdate())
         and IMP_MobileDocumentHeaders.Code = {input_param}
-        and OrderType = '{type}'
+        and OrderType = '{type_of_forma}'
         --and OrderType = 'ΔΕΑ'
 """
 
@@ -116,10 +116,10 @@ file_path = f'/Users/kommas/OneDrive/Business_Folder/Slack/Orders/{store}/{suppl
 # ----------------DIRECTORY PATH ----------------------------
 directory_path = f'/Users/kommas/OneDrive/Business_Folder/Slack/Orders/{store}/{supplier}'
 
-# -------------------- MAKE DIRECTORIES --------------------
+# -------------------- MAKE DIRECTORY IF DOES NOT EXISTS --------------------
 try:
     if not os.path.exists(directory_path):
-        os.makedirs(f'{directory_path}')
+        os.makedirs(directory_path)
         print('!NEW! file path created')
     else:
         print('file path EXISTS')
