@@ -58,7 +58,7 @@ def export(file_path, answer_01, answer_02, katastima):
 
         # MERGE CELLS
         worksheet.merge_range("A1:D1", 'ΝΕΑ ΠΑΡΑΓΓΕΛΙΑ ΑΠΟ: ΚΟΥΤΟΥΛΑΚΗΣ Μ. ΑΤΣΑΛΗΣ Α. Ο.Ε.', set_color)
-        worksheet.merge_range("A2:D2", 'Α.Φ.Μ. 082465475 || Υποκατάστημα: {}.'.format(katastima()), set_color)
+        worksheet.merge_range("A2:D2", 'Α.Φ.Μ. 082465475 || Υποκατάστημα: {}.'.format(katastima), set_color)
         worksheet.merge_range("A3:D3", 'ΠΡΟΣ: {}'.format(answer_02.Name[0]), set_color)
         worksheet.merge_range("A4:D4", 'Αριθμός Παραγγελίας: ({}) || ΗΜΕΡΟΜΗΝΙΑ: {}  '
                               .format(answer_02.Code[0], datetime.now().strftime("%d/%m/%Y")), set_color)

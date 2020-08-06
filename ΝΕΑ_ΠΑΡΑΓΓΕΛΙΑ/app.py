@@ -14,6 +14,7 @@ from Private import slack_app, send_mail, sql_connect
 #
 input_param = '815'
 output_file = "Order{}.xlsx".format(input_param)
+type = 'ΠΠΡ'
 
 # ----------------MAIL LIST----------------------------
 mail_lst = ['johnkommas@hotmail.com', 'accounts@latocrete.gr', 'eloundamarket@yahoo.gr']
@@ -24,7 +25,7 @@ with open('body.html', 'r') as html_file:
     word = html_file.read()
 
 # SQL QUERY ============================================================================================
-sql_query = """
+sql_query = f"""
 SELECT  BarCode, ItemDescription as 'Περιγραφή', quant as 'Ποσότητα'
         FROM IMP_MobileDocumentLines
         left join IMP_MobileDocumentHeaders
@@ -33,12 +34,12 @@ SELECT  BarCode, ItemDescription as 'Περιγραφή', quant as 'Ποσότη
         on ESFITradeAccount.gid = IMP_MobileDocumentHeaders.Supplier
         where DATEPART(yyyy,RealImportTime) = DATEPART(yyyy,getdate())
         --and DATEPART(mm,RealImportTime) = DATEPART(mm,getdate())
-        and IMP_MobileDocumentHeaders.Code = {}
-        and OrderType = 'ΠΠΡ'
+        and IMP_MobileDocumentHeaders.Code = {input_param}
+        and OrderType = '{type}'
         --and OrderType = 'ΔΕΑ'
-""".format(input_param)
+"""
 
-data_querry = """
+data_query = f"""
 SELECT  distinct OrderType as 'Type', IMP_MobileDocumentHeaders.Code as 'Code', ESFITradeAccount.Name as 'Name',
         IMP_MobileDocumentHeaders.PdaId as 'ID'
         FROM IMP_MobileDocumentLines
@@ -48,12 +49,12 @@ SELECT  distinct OrderType as 'Type', IMP_MobileDocumentHeaders.Code as 'Code', 
         on ESFITradeAccount.gid = IMP_MobileDocumentHeaders.Supplier
         where DATEPART(yyyy,RealImportTime) = DATEPART(yyyy,getdate())
         --and DATEPART(mm,RealImportTime) = DATEPART(mm,getdate())
-        and IMP_MobileDocumentHeaders.Code = {}
-        and OrderType = 'ΠΠΡ'
+        and IMP_MobileDocumentHeaders.Code = {input_param}
+        and OrderType = '{type}'
         --and OrderType = 'ΔΕΑ'
-""".format(input_param)
+"""
 
-extract_mail = """
+extract_mail = f"""
 SELECT  
         distinct FK_ESGOPerson_PersonCode1.EMailAddress AS EMailAddress,
         FK_ESGOPerson_ESGOSites.Telephone1 AS Telephone1
@@ -69,10 +70,10 @@ SELECT
        ON FK_ESGOPerson_PersonCode1.fMainAddressGID = FK_ESGOPerson_ESGOSites.GID
         where DATEPART(yyyy,RealImportTime) = DATEPART(yyyy,getdate())
         --and DATEPART(mm,RealImportTime) = DATEPART(mm,getdate())
-        and IMP_MobileDocumentHeaders.Code = {}
-        and OrderType = 'ΠΠΡ'
+        and IMP_MobileDocumentHeaders.Code = {input_param}
+        and OrderType = '{type}'
         --and OrderType = 'ΔΕΑ'
-""".format(input_param)
+"""
 
 
 def katastima():
@@ -88,7 +89,9 @@ def katastima():
 
 # -------------ANSWERS----------------------------
 answer_01 = pd.read_sql_query(sql_query, sql_connect.sql_cnx())
-answer_02 = pd.read_sql_query(data_querry, sql_connect.sql_cnx())
+print(answer_01, end='\n')
+answer_02 = pd.read_sql_query(data_query, sql_connect.sql_cnx())
+print(answer_02, end='\n')
 supplier = answer_02.Name[0]
 
 # -------------ΑΝΑΘΕΣΗ ΤΙΜΗΣ: ΤΟ ΥΠΟΚΑΤΑΣΤΗΜΑ ----------------------------
