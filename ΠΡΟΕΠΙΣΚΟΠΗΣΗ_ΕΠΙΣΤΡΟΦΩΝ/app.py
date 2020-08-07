@@ -12,7 +12,7 @@ pd.set_option('display.width', 1000)
 order_types = ['ΑΠ_ΜΟΒ', 'ΔΕΑ', 'ΑΔΠ', 'ΑΤΔ']
 # TODO 'ΑΠΟ ΕΔΩ'
 order_type = order_types[3]  # 0 = ΑΠ_ΜΟΒ / 1 = ΔΕΑ / 2 = ΑΔΠ
-input_param = '27441'         # Βάζω
+input_param = '27441'  # Βάζω
 # TODO 'ΕΩΣ ΕΔΩ'
 output_file = "temp_{}.xlsx".format(input_param)
 detailed = 'detailed_{}.xlsx'.format(input_param)
@@ -25,6 +25,7 @@ mail_names = ['ΠΡΟΕΠΙΣΚΟΠΗΣΗ: (Κομμάς)', 'ΠΡΟΕΠΙΣΚΟ�
 # ---------------- Open HTML File for the BODY MAIL ----------------
 with open('body.html', 'r') as html_file:
     word = html_file.read()
+
 
 # ------------- ΕΠΙΛΟΓΗ ΥΠΟΚΑΤΑΣΤΗΜΑΤΟΣ ΜΕ ΒΑΣΗ ΤΟ ID ΤΟΥ SCANNER ----------------------------
 def katastima():
