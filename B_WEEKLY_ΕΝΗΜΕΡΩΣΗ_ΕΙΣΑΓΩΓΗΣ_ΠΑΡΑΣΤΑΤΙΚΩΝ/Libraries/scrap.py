@@ -34,6 +34,7 @@ class EShop():
             final_price = '0.00'
         if self.name in names:
             final_price = final_price[:5]
+            final_price = final_price.replace('~', '')
         final_price = final_price.replace('€', '')
         final_price = final_price.strip()
         final_price = final_price.replace(',', '.')
