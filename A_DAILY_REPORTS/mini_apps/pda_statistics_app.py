@@ -34,6 +34,7 @@ for a, b in zip(X, y):
                  xytext=(0, 10),  # distance from text to points (x,y)
                  ha='center')  # horizontal alignment can be left, right or center
 plt.grid(True, alpha=0.5)
+
 plt.subplot(2, 2, 3, xlabel='ΜΗΝΑΣ', ylabel='Παραστατικά' , title= '(PDA STATISTICS) ΜΗΝΕΣ')
 X = answer_04['MONTH']
 y = answer_04['Count "Παραστατικά"']
@@ -48,6 +49,7 @@ for a, b in zip(X, y):
                  xytext=(0, 10),  # distance from text to points (x,y)
                  ha='center')  # horizontal alignment can be left, right or center
 plt.grid(True, alpha=0.5)
+
 plt.subplot(2, 2, 4, xlabel='ΗΜΕΡΑ', ylabel='Παραστατικά' , title= '(PDA STATISTICS) ΗΜΕΡΕΣ')
 X = answer_03['DAY']
 y = answer_03['Count "Παραστατικά"']
