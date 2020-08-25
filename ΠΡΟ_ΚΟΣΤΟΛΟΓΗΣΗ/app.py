@@ -11,10 +11,10 @@ pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
 # ---------------- STATEMENTS HERE ----------------
-order_types = ['ΑΠ_ΜΟΒ', 'ΔΕΑ', 'ΑΔΠ', 'ΑΤΔ']
+order_types = ['ΔΕΑ', 'ΑΔΠ', 'ΑΤΔ']
 # TODO 'ΑΠΟ ΕΔΩ'
-order_type = order_types[1]  # 0 = ΑΠ_ΜΟΒ / 1 = ΔΕΑ / 2 = ΑΔΠ
-input_param = '4018'  # Βάζω
+order_type = order_types[0]  # 0 = ΔΕΑ / 1 = ΑΔΠ ...
+input_param = '4002'  # Βάζω
 # TODO 'ΕΩΣ ΕΔΩ'
 output_file = "temp_{}.xlsx".format(input_param)
 detailed = 'detailed_{}.xlsx'.format(input_param)
@@ -54,7 +54,7 @@ supplier = answer_02.Name[0]
 # -------------------- GET TOP 1 COST FOR EVERY BARCODE --------------------
 answer_03 = pd.DataFrame()
 for barcode in barcodes:
-    answer_03 = answer_03.append(pd.read_sql_query(sql_select.get_product_cost(barcode), sql_connect.sql_cnx()))
+    answer_03 = answer_03.append(pd.read_sql_query(sql_select.get_product_cost(barcode,supplier), sql_connect.sql_cnx()))
 
 # -------------------- MERGE RESULTS --------------------
 final_result = pd.merge(left=answer_01, right=answer_03, left_on='BarCode', right_on='BarCode', how='left').sort_values(
@@ -70,7 +70,7 @@ file_path = '/Users/kommas/OneDrive/Business_Folder/Slack/Orders/{k}/{s}/{f}'.fo
 detailed_file_path = '/Users/kommas/OneDrive/Business_Folder/Slack/Orders/{k}/{s}/{f}'.format(s=supplier, f=detailed,
                                                                                               k=katastima())
 # ----------------DIRECTORY PATH ----------------------------
-directory_path = f'/Users/kommas/OneDrive/Business_Folder/Slack/Orders/{katastima}/{supplier}'
+directory_path = f'/Users/kommas/OneDrive/Business_Folder/Slack/Orders/{katastima()}/{supplier}'
 
 # -------------------- MAKE DIRECTORY IF DOES NOT EXISTS --------------------
 try:

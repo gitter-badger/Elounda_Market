@@ -31,7 +31,7 @@ def data_querry(input_param, order_type):
             and OrderType = '{}'
     """.format(input_param, order_type)
 
-def get_product_cost(code):
+def get_product_cost(code , name):
     database_query = f"""
            SELECT TOP 1 
            ESFIItemEntry_ESFIItemPeriodics.NetValue /
@@ -61,6 +61,8 @@ def get_product_cost(code):
                           FK_ESFIDocumentTrade_ESFIZTransitionStep.fCompanyCode
     WHERE  FK_ESFIItemEntry_ESFIItem.BarCode = '{code}'
       AND (ESFIItemEntry_ESFIItemPeriodics.DocumentCode LIKE 'ΑΤ%')
+      AND (ESFIItemEntry_ESFIItemPeriodics.NetValue > 0) 
+      AND (FK_ESFIDocumentTrade_ESFITradeAccount.Name = '{name}')  
 
 order by 2 DESC
     """
