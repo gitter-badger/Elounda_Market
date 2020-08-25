@@ -1,7 +1,9 @@
 #   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 
+import os
+import sys
 import pandas as pd
-from ΠΡΟΕΠΙΣΚΟΠΗΣΗ_ΕΠΙΣΤΡΟΦΩΝ import excel_export, sql_select
+from ΠΡΟ_ΚΟΣΤΟΛΟΓΗΣΗ import excel_export, sql_select
 from Private import slack_app, send_mail, sql_connect
 
 # ---------------- MAKE DF REPORT VIEWABLE ----------------
@@ -11,8 +13,8 @@ pd.set_option('display.width', 1000)
 # ---------------- STATEMENTS HERE ----------------
 order_types = ['ΑΠ_ΜΟΒ', 'ΔΕΑ', 'ΑΔΠ', 'ΑΤΔ']
 # TODO 'ΑΠΟ ΕΔΩ'
-order_type = order_types[3]  # 0 = ΑΠ_ΜΟΒ / 1 = ΔΕΑ / 2 = ΑΔΠ
-input_param = '27441'  # Βάζω
+order_type = order_types[1]  # 0 = ΑΠ_ΜΟΒ / 1 = ΔΕΑ / 2 = ΑΔΠ
+input_param = '4018'  # Βάζω
 # TODO 'ΕΩΣ ΕΔΩ'
 output_file = "temp_{}.xlsx".format(input_param)
 detailed = 'detailed_{}.xlsx'.format(input_param)
@@ -67,6 +69,20 @@ file_path = '/Users/kommas/OneDrive/Business_Folder/Slack/Orders/{k}/{s}/{f}'.fo
                                                                                      k=katastima())
 detailed_file_path = '/Users/kommas/OneDrive/Business_Folder/Slack/Orders/{k}/{s}/{f}'.format(s=supplier, f=detailed,
                                                                                               k=katastima())
+# ----------------DIRECTORY PATH ----------------------------
+directory_path = f'/Users/kommas/OneDrive/Business_Folder/Slack/Orders/{katastima}/{supplier}'
+
+# -------------------- MAKE DIRECTORY IF DOES NOT EXISTS --------------------
+try:
+    if not os.path.exists(directory_path):
+        os.makedirs(directory_path)
+        print('!NEW! file path created')
+    else:
+        print('file path EXISTS')
+except OSError:
+    print("!ERROR! Creation of the directory FAILED")
+    sys.exit(1)
+
 # -------------OPEN FILE | WRITE ----------------------------
 excel_export.export(file_path, answer_01, answer_02, katastima)
 excel_export.export(detailed_file_path, final_result, answer_02, katastima)

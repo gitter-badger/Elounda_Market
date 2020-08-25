@@ -14,7 +14,7 @@ with open('mail_body.html', 'r') as html_file:
 # -------------------- STATEMENTS HERE --------------------
 type_of_documents = ['ΑΠ_ΜΟΒ', 'ΔΕΑ', 'ΑΔΠ']
 choose = type_of_documents[1]
-id = 3946  # ΑΥΤΗ Η ΠΑΡΑΜΕΤΡΟΣ ΚΑΘΕ ΦΟΡΑ ΑΛΛΑΖΕΙ
+id = 4002  # ΑΥΤΗ Η ΠΑΡΑΜΕΤΡΟΣ ΚΑΘΕ ΦΟΡΑ ΑΛΛΑΖΕΙ
 output_file = 'Output.xlsx'
 path_to_file = f'/Users/kommas/OneDrive/Business_Folder/Slack/Multiple_emails/{output_file}'
 mail_lst = ['johnkommas@hotmail.com', 'accounts@latocrete.gr', 'eloundamarket@yahoo.gr']
