@@ -3,10 +3,9 @@
 from datetime import datetime
 import random
 
-from Private import slack_app,sql_connect
+from Private import slack_app, sql_connect
 import matplotlib.pyplot as plt
 import pandas as pd
-
 
 # ------ΛΙΣΤΕΣ------------
 
@@ -125,10 +124,9 @@ compo2 = ('ΣΙΓΑΝΟΣ Α.Ε. - ΑΝΤΙΠΡΟΣΩΠΕΙΣ - ΕΜΠΟΡΙΟ �
 # ------- OUTPUT FILE -----------
 output_file = "/Users/kommas/OneDrive/Business_Folder/Slack/Private_Analytics/EM.xlsx"
 
-
 #  ----Ονόματα προμηθευτών
 query_00 = "SELECT NAME FROM ESFITradeAccount where ESFITradeAccount.Type = 1 and Inactive= 0"
-print('Ερώτημα Στην Βάση: Προμηθευτές & Ανάθεση Αποτελέσματος --> Ολοκληρώθηκε:  {}'.format(datetime.now()))
+print('Ερώτημα Στην Βάση: Προμηθευτές & Ανάθεση Αποτελέσματος --> Ολοκληρώθηκε:  {}'.format(datetime.now().strftime("%H:%M:%S")))
 # -----------| SQL QUERY | All Years | All Months | TZIROS | SALES|----------------------------------
 query_01 = """
 SELECT
@@ -273,25 +271,26 @@ order by 4  desc
 
 # -------------ANSWERS----------------------------
 answer_00 = pd.read_sql_query(query_00, sql_connect.sql_cnx())
-print('Προμηθευτές: SQL Ερώτημα για το σύνολο των Προμηθευτών -> --> Ολοκληρώθηκε:  {}'.format(datetime.now()))
+print(' 00: Προμηθευτές: SQL Ερώτημα για το σύνολο των Προμηθευτών -> --> Ολοκληρώθηκε:  {}'.format(datetime.now().strftime("%H:%M:%S")))
 x = ()
 for i in range(len(answer_00)):
+    percent = int((100 * (i + 1)) / len(answer_00))
+    filler = '|' * percent
+    remaining = '.' * (100 - percent)
     x = x + (answer_00['NAME'][i],)
-    print(f'loop counter {i} and result {x}')
+    print(f'\r 00: Adding {answer_00["NAME"][i]} Done:[{filler}{percent}%{remaining}]', end='', flush=True)
 
-
-print('Read SQL QUERY')
+print(f'\n 01: Read SQL QUERY: {datetime.now().strftime("%H:%M:%S")}', end='')
 answer_01 = pd.read_sql_query(query_01, sql_connect.sql_cnx())
-print('SQL QUERY DONE')
-print(answer_01.head())
+print(f'\n 02: SQL QUERY DONE: {datetime.now().strftime("%H:%M:%S")}', end='')
 
 prod_per_year = answer_01.groupby(['YEAR'])['TurnOver'].sum().reset_index()
-print('GROUPING')
+print(f'\n 03: GROUPING DONE: {datetime.now().strftime("%H:%M:%S")}', end='')
 
 X = prod_per_year['YEAR']
 y = prod_per_year['TurnOver']
 plt.figure(figsize=(15, 9))
-plt.subplot(xlabel='ΕΤΟΣ', ylabel='ΤΖΙΡΟΣ' , title= 'ELOUNDA MARKET')
+plt.subplot(xlabel='ΕΤΟΣ', ylabel='ΤΖΙΡΟΣ', title='ELOUNDA MARKET')
 colors = [plt.cm.Spectral(i / float(len(X))) for i in range(len(X))]
 plt.bar(X, y, alpha=0.9, color=colors)
 for a, b in zip(X, y):
@@ -305,8 +304,9 @@ for a, b in zip(X, y):
                  ha='center')  # horizontal alignment can be left, right or center
 plt.grid(True, alpha=0.5)
 plt.savefig('views.png')
+
 # plt.show()
-print('plot DONE')
+print(f'\n 04: Plot DONE: {datetime.now().strftime("%H:%M:%S")}')
 
 answer = []
 answer_sum = []
@@ -322,6 +322,10 @@ year_2018 = []
 year_2019 = []
 year_2020 = []
 for i in range(len(c)):
+    percent = int((100 * (i + 1)) / len(c))
+    filler = '|' * percent
+    remaining = '.' * (100 - percent)
+
     answer.append(pd.read_sql_query(query(c[i]), sql_connect.sql_cnx()))
     answer_sum.append(sum(answer[i].TurnOver))
     answer_count.append(len(answer[i]))
@@ -335,38 +339,49 @@ for i in range(len(c)):
     year_2018.append(sum(answer[i].f2018))
     year_2019.append(sum(answer[i].f2019))
     year_2020.append(sum(answer[i].f2020))
-    print(f'looping with counter {i} ')
-
+    print(f'\r 05: Doing SUMS with counter Done:[{filler}{percent}%{remaining}]', end='', flush=True)
 
 promi8eutes_list = [compo1, compo2, x]
-
-
+print()
 #  ΠΡΟΜΗΘΕΥΤΕΣ
 answer_prom = []
 answer_prom_count = []
 for i in range(len(promi8eutes_list)):
+    percent = int((100 * (i + 1)) / len(promi8eutes_list))
+    filler = '|' * percent
+    remaining = '.' * (100 - percent)
+
     answer_prom.append(pd.read_sql_query(querry_suppliers(promi8eutes_list[i]), sql_connect.sql_cnx()))
     answer_prom_count.append(len(answer_prom[i]))
-    print(f'looping with counter {i} ')
-
+    print(f'\r 06: looping with counter {i} Done:[{filler}{percent}%{remaining}]', end='', flush=True)
 
 # -------------OPEN FILE | WRITE ----------------------------
 with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SKIP
     # PUT ANSWERS INSIDE EXCEL
     answer_01.to_excel(writer, sheet_name='YEAR', startcol=0, startrow=1)
-    print('Πωλήσεις εγγραφή στο  Excel --> Ολοκληρώθηκε:  {}'.format(datetime.now()))
+    print(f'\n 07: Πωλήσεις εγγραφή στο  Excel --> Ολοκληρώθηκε: {datetime.now().strftime("%H:%M:%S")}')
     k = 2
     for i in range(len(c)):
+        percent = int((100 * (i + 1)) / len(c))
+        filler = '|' * percent
+        remaining = '.' * (100 - percent)
+
         answer[i].to_excel(writer, sheet_name='ΚΑΤΑΣΚΕΥΑΣΤΗΣ', startcol=0, startrow=k)
         k += (4 + answer_count[i])
-        print(f'EXCEL looping with counter {i} ')
+        print(f'\r 08: EXCEL looping with counter {i} Done:[{filler}{percent}%{remaining}]', end='', flush=True)
     excel_positioning = 1
+    print()
     # Προμηθευτές
     for i in range(len(promi8eutes_list)):
+        percent = int((100 * (i + 1)) / len(promi8eutes_list))
+        filler = '|' * percent
+        remaining = '.' * (100 - percent)
+
         answer_prom[i].to_excel(writer, sheet_name='ΠΡΟΜΗΘΕΥΤΕΣ', startcol=0, startrow=excel_positioning)
         excel_positioning += (4 + answer_prom_count[i])
-        print(f'EXCEL looping with counter {i} ')
-    print('Προμηθευτές εγγραφή στο  Excel --> Ολοκληρώθηκε:  {}'.format(datetime.now()))
+        print(f'\r 09: EXCEL looping with counter {i} Done:[{filler}{percent}%{remaining}]', end='', flush=True)
+
+    print(f'\n 10: Προμηθευτές εγγραφή στο  Excel --> Ολοκληρώθηκε: {datetime.now().strftime("%H:%M:%S")}')
     # Get access to the workbook and sheet
     workbook = writer.book
     worksheet = writer.sheets['YEAR']
@@ -409,15 +424,15 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
     worksheet_4.set_column('B:B', 40, center)
     worksheet_4.set_column('C:D', 20, center)
     worksheet_4.set_column('E:O', 20, money_fmt)
-    print('Format EXCEL --> --> Ολοκληρώθηκε:  {}'.format(datetime.now()))
+    print(f'\n 11: Format EXCEL --> Ολοκληρώθηκε:  {datetime.now().strftime("%H:%M:%S")}', end='')
     # MERGE CELLS
     worksheet.merge_range("M14:R14", 'ΤΕΛΕΥΑΤΑΙΑ ΕΝΗΜΕΡΩΣΗ', set_color)
-    worksheet.merge_range("M15:R15", 'ΗΜΕΡΟΜΗΝΙΑ: {}  '.format(datetime.now().strftime("%d/%m/%Y")), set_color)
+    worksheet.merge_range("M15:R15", 'ΗΜΕΡΟΜΗΝΙΑ: {}  '.format(datetime.now().strftime("%H:%M:%S")), set_color)
     worksheet.merge_range("M16:R16", 'ΩΡΑ: {}  '.format(datetime.now().strftime("%H:%M:%S")), set_color)
-    print('MERGING CELLS -- > --> Ολοκληρώθηκε:  {}'.format(datetime.now()))
+    print(f'\n 12: MERGING CELLS --> Ολοκληρώθηκε:  {datetime.now().strftime("%H:%M:%S")}', end='')
     # Conditional Formating
     worksheet.conditional_format('O1:O15', {'type': '3_color_scale'})
-    print('Conditional Formating -- > --> Ολοκληρώθηκε:  {}'.format(datetime.now()))
+    print(f'\n 13: Conditional Formating --> Ολοκληρώθηκε:  {datetime.now().strftime("%H:%M:%S")}', end='')
     # CHARTS
     chart01 = workbook.add_chart({'type': 'column'})
     chart01.add_series({'categories': '=YEAR!$B$3:$B$11',
@@ -431,7 +446,7 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
     chart01.set_y_axis({'name': 'ΤΖΙΡΟΣ'})
     chart01.set_size({'width': 1100, 'height': 300})
     worksheet.insert_chart('A12', chart01)
-    print('CHARTS INSIDE EXCEL --> --> Ολοκληρώθηκε:  {}'.format(datetime.now()))
+    print(f'\n 14: CHARTS INSIDE EXCEL --> Ολοκληρώθηκε:  {datetime.now().strftime("%H:%M:%S")}')
     # Counters για τα Γραφήματα
     a = []
     b = []
@@ -439,8 +454,8 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
         for j in range(0, 22, 7):
             a.append(i)
             b.append(j)
-            print(f'EXCEL looping with counters {i} and {j} ')
-    print('Counters για τα Γραφήματα --> Ολοκληρώθηκε:  {}'.format(datetime.now()))
+
+    print(f'\n 15: Counters για τα Γραφήματα --> Ολοκληρώθηκε:  {datetime.now().strftime("%H:%M:%S")}')
 
 
     # Function CHART
@@ -473,6 +488,10 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
     row_num = 0
     col_num = 0
     for i in range(len(c)):
+        percent = int((100 * (i + 1)) / len(c))
+        filler = '|' * percent
+        remaining = '.' * (100 - percent)
+
         worksheet_2.conditional_format('C{}:C{}'.format(j + 3, j + 3 + answer_count[i]), {'type': 'data_bar'})
         w(j, i, answer_quant[i].values, answer_sum[i])
         j += (answer_count[i] + 2)
@@ -489,9 +508,9 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
         chart(i, j, k)
         j += 1
         k += 10
-        print(f'EXCEL looping with counter {i} ')
+        print(f'\r 16: EXCEL looping with counter {i} Done:[{filler}{percent}%{remaining}]', end='', flush=True)
 
-
+    print()
     # Προμηθευτές
     def fun_suppliers(input):
         worksheet_4.merge_range('$A${}:$M${}'.format(input, input),
@@ -500,6 +519,10 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
 
     prom_counter = 1
     for i in range(len(promi8eutes_list)):
+        percent = int((100 * (i + 1)) / len(c))
+        filler = '|' * percent
+        remaining = '.' * (100 - percent)
+
         worksheet_4.conditional_format('C{}:C{}'.format(prom_counter + 2, prom_counter + 2 + answer_prom_count[i]),
                                        {'type': 'data_bar', 'bar_color': 'blue'})
         worksheet_4.conditional_format('D{}:D{}'.format(prom_counter + 2, prom_counter + 2 + answer_prom_count[i]),
@@ -508,17 +531,25 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
                                        {'type': 'data_bar', 'bar_color': 'red'})
         fun_suppliers(prom_counter)
         prom_counter += (answer_prom_count[i] + 4)
-        print(f'EXCEL looping with counter {i} ')
-
+        print(f'\r 17: EXCEL looping with counter {i} Done:[{filler}{percent}%{remaining}]', end='', flush=True)
+    print()
     # Συνοπτικά
     worksheet_5.write(0, 0, 'Κατασκευαστής')
     j = 2012
     for i in range(1, 9):
+        percent = int((100 * (i + 1)) / 8)
+        filler = '|' * percent
+        remaining = '.' * (100 - percent)
         worksheet_5.write(0, i, '{}'.format(j))
         j += 1
-        print(f'EXCEL looping with counter {i} ')
+        print(f'\r 18: EXCEL looping with counter {i} Done:[{filler}{percent}%{remaining}]', end='', flush=True)
+    print()
     j = 1
     for i in range(len(c)):
+        percent = int((100 * (i + 1)) / len(c))
+        filler = '|' * percent
+        remaining = '.' * (100 - percent)
+
         worksheet_5.write(j, 0, kataskevastes_lst[i])
         worksheet_5.write(j, 1, year_2012[i])
         worksheet_5.write(j, 2, year_2013[i])
@@ -530,15 +561,19 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
         worksheet_5.write(j, 8, year_2019[i])
         worksheet_5.write(j, 9, year_2020[i])
         j += 1
-        print(f'EXCEL looping with counter {i} ')
+        print(f'\r 19: EXCEL looping with counter {i} Done:[{filler}{percent}%{remaining}]', end='', flush=True)
 
     # INSERT IMAGES
     # worksheet.insert_image('A27', 'sap.png', {'x_scale': 0.2, 'y_scale': 0.2})
     # worksheet.insert_image('I27', 'crystal.png', {'x_scale': 0.27, 'y_scale': 0.29})
 
 plt.figure(figsize=(50, 50))
-j=1
+j = 1
 for i in range(len(c)):
+    percent = int((100 * (i + 1)) / len(c))
+    filler = '|' * percent
+    remaining = '.' * (100 - percent)
+
     y = []
     y.append(year_2012[i])
     y.append(year_2013[i])
@@ -554,12 +589,13 @@ for i in range(len(c)):
     plt.subplot(8, 8, j, ylabel='ΤΖΙΡΟΣ', title=kataskevastes_lst[i])
     colors = [plt.cm.Spectral(i / float(len(X))) for i in range(len(X))]
     plt.bar(X, y, color=colors)
-    j+=1
-    print(f'EXCEL looping with counter {i} ')
+    j += 1
+    print(f'\r 20: EXCEL looping with counter {i} Done:[{filler}{percent}%{remaining}]', end='', flush=True)
 
 plt.grid(True, alpha=0.5)
 plt.savefig('kataskevastis_views.png')
 # plt.show()
+print('\n 21: PLOT DONE')
 
 slack_app.send_text("""
 >ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ
@@ -570,3 +606,5 @@ slack_app.send_text("""
 slack_app.send_files('EM.xlsx', output_file, 'xlsx', slack_app.channels[1])
 slack_app.send_files('views.png', 'views.png', 'png', slack_app.channels[1])
 slack_app.send_files('kataskevastis_views.png', 'kataskevastis_views.png', 'png', slack_app.channels[1])
+
+print(' 22: SLACK DONE ')
