@@ -53,7 +53,12 @@ supplier = answer_02.Name[0]
 
 # -------------------- GET TOP 1 COST FOR EVERY BARCODE --------------------
 answer_03 = pd.DataFrame()
-for barcode in barcodes:
+
+for counter, barcode in enumerate(barcodes):
+    percent = int((100 * (counter+1)) / len(barcodes))
+    filler = '|' * percent
+    remaining = '.' * (100 - percent)
+    print(f'CHECK BARCODE: {barcode} {counter}/{len(barcodes)} Done:[{filler}{percent}%{remaining}]')
     answer_03 = answer_03.append(pd.read_sql_query(sql_select.get_product_cost(barcode,supplier), sql_connect.sql_cnx()))
 
 # -------------------- MERGE RESULTS --------------------
