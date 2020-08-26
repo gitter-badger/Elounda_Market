@@ -55,11 +55,12 @@ supplier = answer_02.Name[0]
 answer_03 = pd.DataFrame()
 
 for counter, barcode in enumerate(barcodes):
-    percent = int((100 * (counter+1)) / len(barcodes))
+    percent = int((100 * (counter + 1)) / len(barcodes))
     filler = '|' * percent
     remaining = '.' * (100 - percent)
-    print(f'CHECK BARCODE: {barcode} {counter}/{len(barcodes)} Done:[{filler}{percent}%{remaining}]')
-    answer_03 = answer_03.append(pd.read_sql_query(sql_select.get_product_cost(barcode,supplier), sql_connect.sql_cnx()))
+    print(f'CHECKING BARCODE: {barcode} {counter}/{len(barcodes)} Done:[{filler}{percent}%{remaining}]')
+    answer_03 = answer_03.append(
+        pd.read_sql_query(sql_select.get_product_cost(barcode, supplier), sql_connect.sql_cnx()))
 
 # -------------------- MERGE RESULTS --------------------
 final_result = pd.merge(left=answer_01, right=answer_03, left_on='BarCode', right_on='BarCode', how='left').sort_values(
