@@ -5,7 +5,6 @@ from matplotlib import pyplot as plt
 from B_WEEKLY_ΕΝΗΜΕΡΩΣΗ_ΕΙΣΑΓΩΓΗΣ_ΠΑΡΑΣΤΑΤΙΚΩΝ.Libraries import sql_import_report, scrap, excel_writer
 from Private import send_mail, slack_app, sql_connect
 
-
 # -------------------- Statements Here --------------------
 output_file = 'Bazaar.xlsx'
 path_to_file = f'/Users/kommas/OneDrive/Business_Folder/Slack/Multiple_emails/{output_file}'
@@ -13,18 +12,15 @@ mail_lst = ['johnkommas@hotmail.com', 'accounts@latocrete.gr', 'eloundamarket@ya
 mail_names = ['Τιμολόγιο Bazaar (Κομμάς)', 'Τιμολόγιο Bazaar (Λογιστήριο)', 'Τιμολόγιο Bazaar (Κατάστημα)']
 main_name = 'Bazaar A.E.'
 
-
 # -------------------- Open HTML File for the BODY MAIL --------------------
 with open('HTML/2. Import || Bazaar.html', 'r') as html_file:
     word = html_file.read()
 
-
 # -------------------- Assign the SQL Query Answer --------------------
 sql_answer = pd.read_sql_query(sql_import_report.private_database_query(main_name), sql_connect.sql_cnx())
 
-
 # -------------------- ASSIGN VALUES HERE MARKUP / QUARTILES --------------------
-markup = round(sql_answer['ΚΕΡΔΟΦΟΡΙΑ']*100, 2)
+markup = round(sql_answer['ΚΕΡΔΟΦΟΡΙΑ'] * 100, 2)
 quartiles = np.quantile(markup, [.25, .5, .75])
 order_id = sql_answer['ΠΑΡΑΣΤΑΤΙΚΟ'].unique()
 retail_price = sql_answer['ΤΙΜΗ ΛΙΑΝΙΚΗΣ']
@@ -36,7 +32,6 @@ codes_in_q2 = sql_answer[(markup > quartiles[0]) & (markup <= quartiles[1])]
 codes_in_q3 = sql_answer[(markup > quartiles[1]) & (markup <= quartiles[2])]
 codes_in_q4 = sql_answer[markup > quartiles[2]]
 
-
 if input('Press 1 to Start:') != '1':
     quit()
 
@@ -44,7 +39,6 @@ if input('Press 1 to Start:') != '1':
 lista = sql_answer['BARCODE']
 scrap.shops = [scrap.a, scrap.b, scrap.e]
 out = scrap.calculate_prices(lista)
-
 
 # -------------------- Assign the results --------------------
 sql_answer['ΤΙΜΗ BAZAAR'] = out['BAZAAR']
@@ -57,9 +51,9 @@ plt.figure(figsize=(15, 9))
 # First Subplot
 plt.subplot(2, 1, 1, xlabel='Markup (%100)', ylabel='Count', title=f'{order_id} [Histogram (Quartiles)]')
 plt.hist(markup, bins=8)
-plt.axvline(x=quartiles[0], label=f"Q1={quartiles[0]}", c ='#6400e4')
-plt.axvline(x=quartiles[1], label=f"Q2={quartiles[1]}", c ='#fd4d3f')
-plt.axvline(x=quartiles[2], label=f"Q3={quartiles[2]}", c ='#4fe0b0')
+plt.axvline(x=quartiles[0], label=f"Q1={quartiles[0]}", c='#6400e4')
+plt.axvline(x=quartiles[1], label=f"Q2={quartiles[1]}", c='#fd4d3f')
+plt.axvline(x=quartiles[2], label=f"Q3={quartiles[2]}", c='#4fe0b0')
 plt.grid(True, alpha=0.2)
 plt.legend()
 # Second Subplot
@@ -81,9 +75,20 @@ plt.show()
 # -------------------- Εισαγωγή Δεομένων στο  EXCEL --------------------
 excel_writer.export(path_to_file, sql_answer)
 
-
 # ---------------- E-MAIL SEND --------------------
 send_mail.send_mail(mail_lst, mail_names, word, path_to_file, output_file)
+
+# ----------------SLACK BOT DELETE ALL ----------------------------
+x = (slack_app.history(slack_app.channels_id[5]))
+
+for i in range(len(x['messages'])):
+    percent = int((100 * (i + 1)) / len(x['messages']))
+    filler = "█" * (percent // 2)
+    remaining = '-' * ((100 - percent) // 2)
+    timer = (x['messages'][i]['ts'])
+    slack_app.delete(slack_app.channels_id[5], timer)
+    print(f'\rSLACK DELETE ALL ENTRIES DONE:[{filler}{remaining}]{percent}%', end='', flush=True)
+print()
 
 # ----------------SLACK BOT----------------------------
 slack_output_text = f"""
