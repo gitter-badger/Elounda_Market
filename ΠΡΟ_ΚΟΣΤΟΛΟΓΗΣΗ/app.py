@@ -56,8 +56,8 @@ answer_03 = pd.DataFrame()
 
 for counter, barcode in enumerate(barcodes):
     percent = int((100 * (counter + 1)) / len(barcodes))
-    filler = '|' * percent
-    remaining = '.' * (100 - percent)
+    filler = "█" * percent
+    remaining = '-' * (100 - percent)
     print(f'\rCHECKING BARCODE: {barcode} {counter}/{len(barcodes)} Done:[{filler}{percent}%{remaining}]', end='', flush=True)
     answer_03 = answer_03.append(
         pd.read_sql_query(sql_select.get_product_cost(barcode, supplier), sql_connect.sql_cnx()))
@@ -68,7 +68,7 @@ final_result = pd.merge(left=answer_01, right=answer_03, left_on='BarCode', righ
 
 # -------------------- QUANTITY * PRICE --------------------
 final_result['SUM'] = final_result['Ποσότητα'] * final_result['ΚΑΘΑΡΗ ΤΙΜΗ']
-print(final_result)
+print('\n', final_result)
 
 # ----------------FILE PATHS----------------------------
 file_path = '/Users/kommas/OneDrive/Business_Folder/Slack/Orders/{k}/{s}/{f}'.format(s=supplier, f=output_file,
@@ -95,6 +95,7 @@ excel_export.export(detailed_file_path, final_result, answer_02, katastima)
 
 # -------------SEND E-MAIL----------------------------
 send_mail.send_mail(mail_lst, mail_names, word, file_path, output_file)
+sys.exit(1)
 
 # ----------------SLACK BOT CHAT----------------------------
 slack_app.send_text(f"""

@@ -275,8 +275,8 @@ print(' 00: Προμηθευτές: SQL Ερώτημα για το σύνολο 
 x = ()
 for i in range(len(answer_00)):
     percent = int((100 * (i + 1)) / len(answer_00))
-    filler = '|' * percent
-    remaining = '.' * (100 - percent)
+    filler = "█" * percent
+    remaining = '-' * (100 - percent)
     x = x + (answer_00['NAME'][i],)
     print(f'\r 00: Adding {answer_00["NAME"][i]} Done:[{filler}{percent}%{remaining}]', end='', flush=True)
 
@@ -323,8 +323,8 @@ year_2019 = []
 year_2020 = []
 for i in range(len(c)):
     percent = int((100 * (i + 1)) / len(c))
-    filler = '|' * percent
-    remaining = '.' * (100 - percent)
+    filler = "█" * percent
+    remaining = '-' * (100 - percent)
 
     answer.append(pd.read_sql_query(query(c[i]), sql_connect.sql_cnx()))
     answer_sum.append(sum(answer[i].TurnOver))
@@ -348,8 +348,8 @@ answer_prom = []
 answer_prom_count = []
 for i in range(len(promi8eutes_list)):
     percent = int((100 * (i + 1)) / len(promi8eutes_list))
-    filler = '|' * percent
-    remaining = '.' * (100 - percent)
+    filler = "█" * percent
+    remaining = '-' * (100 - percent)
 
     answer_prom.append(pd.read_sql_query(querry_suppliers(promi8eutes_list[i]), sql_connect.sql_cnx()))
     answer_prom_count.append(len(answer_prom[i]))
@@ -363,9 +363,8 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
     k = 2
     for i in range(len(c)):
         percent = int((100 * (i + 1)) / len(c))
-        filler = '|' * percent
-        remaining = '.' * (100 - percent)
-
+        filler = "█" * percent
+        remaining = '-' * (100 - percent)
         answer[i].to_excel(writer, sheet_name='ΚΑΤΑΣΚΕΥΑΣΤΗΣ', startcol=0, startrow=k)
         k += (4 + answer_count[i])
         print(f'\r 08: EXCEL looping with counter {i} Done:[{filler}{percent}%{remaining}]', end='', flush=True)
@@ -374,9 +373,8 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
     # Προμηθευτές
     for i in range(len(promi8eutes_list)):
         percent = int((100 * (i + 1)) / len(promi8eutes_list))
-        filler = '|' * percent
-        remaining = '.' * (100 - percent)
-
+        filler = "█" * percent
+        remaining = '-' * (100 - percent)
         answer_prom[i].to_excel(writer, sheet_name='ΠΡΟΜΗΘΕΥΤΕΣ', startcol=0, startrow=excel_positioning)
         excel_positioning += (4 + answer_prom_count[i])
         print(f'\r 09: EXCEL looping with counter {i} Done:[{filler}{percent}%{remaining}]', end='', flush=True)
@@ -489,9 +487,8 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
     col_num = 0
     for i in range(len(c)):
         percent = int((100 * (i + 1)) / len(c))
-        filler = '|' * percent
-        remaining = '.' * (100 - percent)
-
+        filler = "█" * percent
+        remaining = '-' * (100 - percent)
         worksheet_2.conditional_format('C{}:C{}'.format(j + 3, j + 3 + answer_count[i]), {'type': 'data_bar'})
         w(j, i, answer_quant[i].values, answer_sum[i])
         j += (answer_count[i] + 2)
@@ -519,10 +516,9 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
 
     prom_counter = 1
     for i in range(len(promi8eutes_list)):
-        percent = int((100 * (i + 1)) / len(c))
-        filler = '|' * percent
-        remaining = '.' * (100 - percent)
-
+        percent = int((100 * (i + 1)) / len(promi8eutes_list))
+        filler = "█" * percent
+        remaining = '-' * (100 - percent)
         worksheet_4.conditional_format('C{}:C{}'.format(prom_counter + 2, prom_counter + 2 + answer_prom_count[i]),
                                        {'type': 'data_bar', 'bar_color': 'blue'})
         worksheet_4.conditional_format('D{}:D{}'.format(prom_counter + 2, prom_counter + 2 + answer_prom_count[i]),
@@ -538,8 +534,8 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
     j = 2012
     for i in range(1, 9):
         percent = int((100 * (i + 1)) / 8)
-        filler = '|' * percent
-        remaining = '.' * (100 - percent)
+        filler = "█" * percent
+        remaining = '-' * (100 - percent)
         worksheet_5.write(0, i, '{}'.format(j))
         j += 1
         print(f'\r 18: EXCEL looping with counter {i} Done:[{filler}{percent}%{remaining}]', end='', flush=True)
@@ -547,8 +543,8 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
     j = 1
     for i in range(len(c)):
         percent = int((100 * (i + 1)) / len(c))
-        filler = '|' * percent
-        remaining = '.' * (100 - percent)
+        filler = "█" * percent
+        remaining = '-' * (100 - percent)
 
         worksheet_5.write(j, 0, kataskevastes_lst[i])
         worksheet_5.write(j, 1, year_2012[i])
@@ -566,13 +562,13 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
     # INSERT IMAGES
     # worksheet.insert_image('A27', 'sap.png', {'x_scale': 0.2, 'y_scale': 0.2})
     # worksheet.insert_image('I27', 'crystal.png', {'x_scale': 0.27, 'y_scale': 0.29})
-
+print()
 plt.figure(figsize=(50, 50))
 j = 1
 for i in range(len(c)):
     percent = int((100 * (i + 1)) / len(c))
-    filler = '|' * percent
-    remaining = '.' * (100 - percent)
+    filler = "█" * percent
+    remaining = '-' * (100 - percent)
 
     y = []
     y.append(year_2012[i])
