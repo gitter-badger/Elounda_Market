@@ -10,7 +10,7 @@ for i in range(len(x['messages'])):
     remaining = '-' * ((100 - percent) // 2)
     timer = (x['messages'][i]['ts'])
     slack_app.delete(slack_app.channels_id[1], timer)
-    print('SLACK DELETE ALL ENTRIES DONE:[{filler}{remaining}]{percent}%',end='', flush=True)
+    print(f'\rSLACK DELETE ALL ENTRIES DONE:[{filler}{remaining}]{percent}%',end='', flush=True)
 print()
 
 

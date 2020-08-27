@@ -1,7 +1,15 @@
 #   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 
+import time
 
-list1 = [0, 1, 2, 3, 3, 2, 3, 1, 4, 5, 4]
-print(type(set(list1)))
-print(max(set(list1), key = list1.count))
+for i in range(60):
+    percent = int((100 * (i + 1)) / len(range(60)))
+    filler = "█" * percent
+    remaining = '-' * (100 - percent)
+    print(f'\r\tLoading:\t[{filler}{remaining}]{percent}% \t{i+1}', end='', flush=True)
+    # time.sleep(.1)
+
+
+
+
 
