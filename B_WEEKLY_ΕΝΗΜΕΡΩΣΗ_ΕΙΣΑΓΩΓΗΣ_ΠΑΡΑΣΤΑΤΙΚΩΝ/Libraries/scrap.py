@@ -79,7 +79,7 @@ def calculate_prices(in_barcode_list):
             remaining = '-' * ((100 - percent) // 2)
             shop.scrap_data(barcode)
             shop.barcodes.append(barcode)
-            print(f'\rLOADING:[{filler}{remaining}]{percent}%\t CHECKING\t [{barcode}]\t ', end='', flush=True)
+            print(f'\rLOADING:[{filler}{remaining}]{percent}%\t HACKING\t [{barcode}]\t ', end='', flush=True)
         df[shop.name] = shop.prices
     print()
     return df
