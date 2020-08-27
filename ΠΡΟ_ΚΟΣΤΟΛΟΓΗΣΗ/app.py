@@ -56,9 +56,10 @@ answer_03 = pd.DataFrame()
 
 for counter, barcode in enumerate(barcodes):
     percent = int((100 * (counter + 1)) / len(barcodes))
-    filler = "█" * percent
-    remaining = '-' * (100 - percent)
-    print(f'\rCHECKING BARCODE: {barcode} {counter}/{len(barcodes)} Done:[{filler}{percent}%{remaining}]', end='', flush=True)
+    filler = "█" * (percent // 2)
+    remaining = '-' * ((100 - percent) // 2)
+    print(f'\r01: CHECKING BARCODE: [{barcode}] \t{counter + 1}/{len(barcodes)} \tComplete:[{filler}{remaining}]{percent}%',
+          end='', flush=True)
     answer_03 = answer_03.append(
         pd.read_sql_query(sql_select.get_product_cost(barcode, supplier), sql_connect.sql_cnx()))
 
@@ -68,7 +69,8 @@ final_result = pd.merge(left=answer_01, right=answer_03, left_on='BarCode', righ
 
 # -------------------- QUANTITY * PRICE --------------------
 final_result['SUM'] = final_result['Ποσότητα'] * final_result['ΚΑΘΑΡΗ ΤΙΜΗ']
-print('\n', final_result)
+
+print('\n\n02: Dataframe Merge:\t [✔️]')
 
 # ----------------FILE PATHS----------------------------
 file_path = '/Users/kommas/OneDrive/Business_Folder/Slack/Orders/{k}/{s}/{f}'.format(s=supplier, f=output_file,
@@ -80,22 +82,25 @@ directory_path = f'/Users/kommas/OneDrive/Business_Folder/Slack/Orders/{katastim
 
 # -------------------- MAKE DIRECTORY IF DOES NOT EXISTS --------------------
 try:
+    print('\n03: Path Check: ', end='')
     if not os.path.exists(directory_path):
         os.makedirs(directory_path)
-        print('!NEW! file path created')
+        print('!NEW!\t [✔️]')
     else:
-        print('file path EXISTS')
+        print('\t\t [✔️]')
 except OSError:
-    print("!ERROR! Creation of the directory FAILED")
+    print("!ERROR! [❌️]")
     sys.exit(1)
 
 # -------------OPEN FILE | WRITE ----------------------------
 excel_export.export(file_path, answer_01, answer_02, katastima)
 excel_export.export(detailed_file_path, final_result, answer_02, katastima)
 
+print('\n04: Export To Excel:\t [✔️]')
 # -------------SEND E-MAIL----------------------------
+print('\n05: ', end='')
 send_mail.send_mail(mail_lst, mail_names, word, file_path, output_file)
-sys.exit(1)
+
 
 # ----------------SLACK BOT CHAT----------------------------
 slack_app.send_text(f"""

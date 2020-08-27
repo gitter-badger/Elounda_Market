@@ -75,12 +75,13 @@ def calculate_prices(in_barcode_list):
         print(f'\n{shop} Start: {dt.now().strftime("%H:%M:%S")}')
         for counter, barcode in enumerate(in_barcode_list):
             percent = int((100 * (counter + 1)) / len(in_barcode_list))
-            filler = '|' * percent
-            remaining = '.' * (100 - percent)
+            filler = "█" * (percent // 2)
+            remaining = '-' * ((100 - percent) // 2)
             shop.scrap_data(barcode)
             shop.barcodes.append(barcode)
-            print(f'\r CHECKING {barcode}: Done:[{filler}{percent}%{remaining}]', end='', flush=True)
+            print(f'\rLOADING:[{filler}{remaining}]{percent}%\t CHECKING\t [{barcode}]\t ', end='', flush=True)
         df[shop.name] = shop.prices
+    print()
     return df
 
 # print(calculate_prices(barcode_list))

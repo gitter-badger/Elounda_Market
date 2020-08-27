@@ -37,7 +37,7 @@ codes_in_q3 = sql_answer[(markup > quartiles[1]) & (markup <= quartiles[2])]
 codes_in_q4 = sql_answer[markup > quartiles[2]]
 
 
-if input('Press 1 continue:') != '1':
+if input('Press 1 to Start:') != '1':
     quit()
 
 # -------------------- Make the list to query for every barcode in bazaar web page --------------------
