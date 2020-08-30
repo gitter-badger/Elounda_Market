@@ -13,8 +13,8 @@ pd.set_option('display.width', 1000)
 # ---------------- STATEMENTS HERE ----------------
 order_types = ['ΔΕΑ', 'ΑΔΠ', 'ΑΤΔ', 'ΠΠΡ', 'ΑΠ_ΜΟΒ']
 # TODO 'ΑΠΟ ΕΔΩ'
-order_type = order_types[0]  # 0 = ΔΕΑ / 1 = ΑΔΠ ...
-input_param = '4002'  # Βάζω
+order_type = order_types[-1]  # 0 = ΔΕΑ / 1 = ΑΔΠ ...
+input_param = '2062'  # Βάζω
 # TODO 'ΕΩΣ ΕΔΩ'
 output_file = "temp_{}.xlsx".format(input_param)
 detailed = 'detailed_{}.xlsx'.format(input_param)
@@ -50,8 +50,9 @@ barcodes = answer_01['BarCode']
 
 # -------------------- SUPPLIER --------------------
 supplier = answer_02.Name[0]
+print(supplier)
 # Αν δεν βρεθεί όνομα να οριστεί το order_type για να εκτελεστεί στην συνέχεια άλλο ερώτημα στην DB
-if len(supplier) < 1:  # TODO if not supplier:
+if not supplier:
     order_type = 'ΑΠ_ΜΟΒ'
 # -------------------- GET TOP 1 COST FOR EVERY BARCODE --------------------
 answer_03 = pd.DataFrame()
