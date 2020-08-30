@@ -11,7 +11,7 @@ pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
 # ---------------- STATEMENTS HERE ----------------
-order_types = ['ΔΕΑ', 'ΑΔΠ', 'ΑΤΔ']
+order_types = ['ΔΕΑ', 'ΑΔΠ', 'ΑΤΔ', 'ΠΠΡ', 'ΑΠ_ΜΟΒ']
 # TODO 'ΑΠΟ ΕΔΩ'
 order_type = order_types[0]  # 0 = ΔΕΑ / 1 = ΑΔΠ ...
 input_param = '4002'  # Βάζω
@@ -50,7 +50,9 @@ barcodes = answer_01['BarCode']
 
 # -------------------- SUPPLIER --------------------
 supplier = answer_02.Name[0]
-
+# Αν δεν βρεθεί όνομα να οριστεί το order_type για να εκτελεστεί στην συνέχεια άλλο ερώτημα στην DB
+if len(supplier) < 1:  # TODO if not supplier:
+    order_type = 'ΑΠ_ΜΟΒ'
 # -------------------- GET TOP 1 COST FOR EVERY BARCODE --------------------
 answer_03 = pd.DataFrame()
 
@@ -60,7 +62,11 @@ for counter, barcode in enumerate(barcodes):
     remaining = '-' * ((100 - percent) // 2)
     print(f'\r01: CHECKING BARCODE: [{barcode}] \t{counter + 1}/{len(barcodes)} \tComplete:[{filler}{remaining}]{percent}%',
           end='', flush=True)
-    answer_03 = answer_03.append(
+    if order_type == 'ΑΠ_ΜΟΒ':
+        answer_03 = answer_03.append(
+            pd.read_sql_query(sql_select.get_product_cost_with_no_name(barcode), sql_connect.sql_cnx()))
+    else:
+        answer_03 = answer_03.append(
         pd.read_sql_query(sql_select.get_product_cost(barcode, supplier), sql_connect.sql_cnx()))
 
 # -------------------- MERGE RESULTS --------------------
