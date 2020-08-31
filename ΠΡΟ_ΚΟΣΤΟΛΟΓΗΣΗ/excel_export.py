@@ -68,5 +68,6 @@ def export(file_path, answer_01, answer_02, katastima):
         worksheet.merge_range("A4:D4", 'ΑΡΙΘΜΟΣ: ({}) || ΗΜΕΡΟΜΗΝΙΑ: {}  '
                               .format(answer_02.Code[0], datetime.now().strftime("%d/%m/%Y")), set_color)
         worksheet.merge_range("E1:F4", "Συνολική Ποσότητα {} Τεμ.".format(sum(answer_01.Ποσότητα)), set_color_02)
-        worksheet.merge_range("G1:H4", "Συνολικά Είδη          {}.".format(len(answer_01.Ποσότητα)), set_color_02)
+        worksheet.merge_range("G1:H4", "ΚΩΔΙΚΟΙ: {} || ΚΟΣΤΟΣ: {} EUR".format(len(answer_01.Ποσότητα),
+                                                                       round(answer_01['SUM'].sum(), 2)),set_color_02)
 

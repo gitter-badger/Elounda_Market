@@ -2,7 +2,7 @@
 
 def sql_query(input_param, order_type):
     return """
-    SELECT  BarCode, ItemDescription as 'Περιγραφή', quant as 'Ποσότητα'
+    SELECT  distinct  BarCode, ItemDescription as 'Περιγραφή', sum(quant) as 'Ποσότητα'
             FROM IMP_MobileDocumentLines
             left join IMP_MobileDocumentHeaders
             on IMP_MobileDocumentHeaders.GID = IMP_MobileDocumentLines.fDocGID
@@ -13,6 +13,7 @@ def sql_query(input_param, order_type):
             and IMP_MobileDocumentHeaders.Code = {}
            -- and OrderType = 'ΠΠΡ'
             and OrderType = '{}'
+            group by BarCode, ItemDescription
     """.format(input_param, order_type)
 
 
@@ -33,7 +34,7 @@ def data_querry(input_param, order_type):
     """.format(input_param, order_type)
 
 
-def get_product_cost(code, name):
+def get_product_cost(code, name, year):
     database_query = f"""
            SELECT TOP 1 
            ESFIItemEntry_ESFIItemPeriodics.NetValue /
@@ -64,14 +65,15 @@ def get_product_cost(code, name):
     WHERE  FK_ESFIItemEntry_ESFIItem.BarCode = '{code}'
       AND (ESFIItemEntry_ESFIItemPeriodics.DocumentCode LIKE 'ΑΤ%')
       AND (ESFIItemEntry_ESFIItemPeriodics.NetValue > 0) 
-      AND (FK_ESFIDocumentTrade_ESFITradeAccount.Name = '{name}')  
+      AND (FK_ESFIDocumentTrade_ESFITradeAccount.Name = '{name}') 
+      AND DATEPART(yyyy,ESFIItemEntry_ESFIItemPeriodics.RegistrationDate) <= {year}
 
 order by 2 DESC
     """
     return database_query
 
 
-def get_product_cost_with_no_name(code):
+def get_product_cost_with_no_name(code, year):
     database_query = f"""
            SELECT TOP 1 
            ESFIItemEntry_ESFIItemPeriodics.NetValue /
@@ -101,7 +103,8 @@ def get_product_cost_with_no_name(code):
                           FK_ESFIDocumentTrade_ESFIZTransitionStep.fCompanyCode
     WHERE  FK_ESFIItemEntry_ESFIItem.BarCode = '{code}'
       AND (ESFIItemEntry_ESFIItemPeriodics.DocumentCode LIKE 'ΑΤ%')
-      AND (ESFIItemEntry_ESFIItemPeriodics.NetValue > 0)   
+      AND (ESFIItemEntry_ESFIItemPeriodics.NetValue > 0)  
+      AND DATEPART(yyyy,ESFIItemEntry_ESFIItemPeriodics.RegistrationDate) <= {year}
 
 order by 2 DESC
     """

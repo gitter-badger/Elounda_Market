@@ -5,7 +5,7 @@ import sys
 import pandas as pd
 from ΠΡΟ_ΚΟΣΤΟΛΟΓΗΣΗ import excel_export, sql_select
 from Private import slack_app, send_mail, sql_connect
-
+from datetime import datetime as dt
 # ---------------- MAKE DF REPORT VIEWABLE ----------------
 pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
@@ -13,8 +13,11 @@ pd.set_option('display.width', 1000)
 # ---------------- STATEMENTS HERE ----------------
 order_types = ['ΔΕΑ', 'ΑΔΠ', 'ΑΤΔ', 'ΠΠΡ', 'ΑΠ_ΜΟΒ']
 # TODO 'ΑΠΟ ΕΔΩ'
-order_type = order_types[-1]  # 0 = ΔΕΑ / 1 = ΑΔΠ ...
-input_param = '2062'  # Βάζω
+order_type = order_types[0]  # 0 = ΔΕΑ / 1 = ΑΔΠ ...
+input_param = '4002'  # Βάζω
+get_year = dt.now().year
+if input('Press 1: Συγκεκριμένο Έτος & Πίσω:') == '1':
+    get_year = int(input('\rΠληκτρολογήστε Έτος: '))
 # TODO 'ΕΩΣ ΕΔΩ'
 output_file = "temp_{}.xlsx".format(input_param)
 detailed = 'detailed_{}.xlsx'.format(input_param)
@@ -50,7 +53,6 @@ barcodes = answer_01['BarCode']
 
 # -------------------- SUPPLIER --------------------
 supplier = answer_02.Name[0]
-print(supplier)
 # Αν δεν βρεθεί όνομα να οριστεί το order_type για να εκτελεστεί στην συνέχεια άλλο ερώτημα στην DB
 if not supplier:
     order_type = 'ΑΠ_ΜΟΒ'
@@ -59,16 +61,22 @@ answer_03 = pd.DataFrame()
 
 for counter, barcode in enumerate(barcodes):
     percent = int((100 * (counter + 1)) / len(barcodes))
-    filler = "█" * (percent // 2)
-    remaining = '-' * ((100 - percent) // 2)
+    filler = "█" * percent
+    remaining = '-' * (100 - percent)
     print(f'\r01: CHECKING BARCODE: [{barcode}] \t{counter + 1}/{len(barcodes)} \tComplete:[{filler}{remaining}]{percent}%',
           end='', flush=True)
     if order_type == 'ΑΠ_ΜΟΒ':
-        answer_03 = answer_03.append(
-            pd.read_sql_query(sql_select.get_product_cost_with_no_name(barcode), sql_connect.sql_cnx()))
+        temp = pd.read_sql_query(sql_select.get_product_cost_with_no_name(barcode, get_year), sql_connect.sql_cnx())
+        if temp.empty:
+            temp = pd.read_sql_query(sql_select.get_product_cost_with_no_name(barcode, dt.now().year),
+                                     sql_connect.sql_cnx())
+        answer_03 = answer_03.append(temp)
     else:
-        answer_03 = answer_03.append(
-        pd.read_sql_query(sql_select.get_product_cost(barcode, supplier), sql_connect.sql_cnx()))
+        temp = pd.read_sql_query(sql_select.get_product_cost_with_no_name(barcode, get_year), sql_connect.sql_cnx())
+        if temp.empty:
+            temp = pd.read_sql_query(sql_select.get_product_cost_with_no_name(barcode, dt.now().year),
+                                     sql_connect.sql_cnx())
+        answer_03 = answer_03.append(temp)
 
 # -------------------- MERGE RESULTS --------------------
 final_result = pd.merge(left=answer_01, right=answer_03, left_on='BarCode', right_on='BarCode', how='left').sort_values(
@@ -80,8 +88,6 @@ final_result['SUM'] = final_result['Ποσότητα'] * final_result['ΚΑΘΑ�
 print('\n\n02: Dataframe Merge:\t [✔️]')
 
 # ----------------FILE PATHS----------------------------
-file_path = '/Users/kommas/OneDrive/Business_Folder/Slack/Orders/{k}/{s}/{f}'.format(s=supplier, f=output_file,
-                                                                                     k=katastima())
 detailed_file_path = '/Users/kommas/OneDrive/Business_Folder/Slack/Orders/{k}/{s}/{f}'.format(s=supplier, f=detailed,
                                                                                               k=katastima())
 # ----------------DIRECTORY PATH ----------------------------
@@ -100,13 +106,12 @@ except OSError:
     sys.exit(1)
 
 # -------------OPEN FILE | WRITE ----------------------------
-excel_export.export(file_path, answer_01, answer_02, katastima)
 excel_export.export(detailed_file_path, final_result, answer_02, katastima)
 
 print('\n04: Export To Excel:\t [✔️]')
 # -------------SEND E-MAIL----------------------------
 print('\n05: ', end='')
-send_mail.send_mail(mail_lst, mail_names, word, file_path, output_file)
+send_mail.send_mail(mail_lst, mail_names, word, detailed_file_path, output_file)
 
 
 # ----------------SLACK BOT CHAT----------------------------
