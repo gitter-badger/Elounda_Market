@@ -533,7 +533,7 @@ with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:  # doctest: +SK
     worksheet_5.write(0, 0, 'Κατασκευαστής')
     j = 2012
     for i in range(1, 9):
-        percent = int((100 * i) / 7)
+        percent = int((100 * i) / 8)
         filler = "█" * percent
         remaining = '-' * (100 - percent)
         worksheet_5.write(0, i, '{}'.format(j))
