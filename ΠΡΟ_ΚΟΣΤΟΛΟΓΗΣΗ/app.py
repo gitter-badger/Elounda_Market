@@ -14,12 +14,11 @@ pd.set_option('display.width', 1000)
 order_types = ['ΔΕΑ', 'ΑΔΠ', 'ΑΤΔ', 'ΠΠΡ', 'ΑΠ_ΜΟΒ']
 # TODO 'ΑΠΟ ΕΔΩ'
 order_type = order_types[0]  # 0 = ΔΕΑ / 1 = ΑΔΠ ...
-input_param = '4002'  # Βάζω
+input_param = '4018'  # Βάζω
 get_year = dt.now().year
 if input('Press 1: Συγκεκριμένο Έτος & Πίσω:') == '1':
     get_year = int(input('\rΠληκτρολογήστε Έτος: '))
 # TODO 'ΕΩΣ ΕΔΩ'
-output_file = "temp_{}.xlsx".format(input_param)
 detailed = 'detailed_{}.xlsx'.format(input_param)
 
 # ---------------- MAIL LIST ----------------------------
@@ -111,20 +110,18 @@ excel_export.export(detailed_file_path, final_result, answer_02, katastima)
 print('\n04: Export To Excel:\t [✔️]')
 # -------------SEND E-MAIL----------------------------
 print('\n05: ', end='')
-send_mail.send_mail(mail_lst, mail_names, word, detailed_file_path, output_file)
+send_mail.send_mail(mail_lst, mail_names, word, detailed_file_path, detailed)
 
 
 # ----------------SLACK BOT CHAT----------------------------
 slack_app.send_text(f"""
->ΔΗΜΙΟΥΡΓΙΑ ΠΡΟΣΩΡΙΝΗΣ ΕΓΓΡΑΦΗΣ 
-`ΑΡΧΕΙΟ ΓΙΑ ΑΠΟΣΤΟΛΗ: {output_file}`
-`ΑΡΧΕΙΟ ΜΕ ΑΝΑΛΥΤΙΚΕΣ ΠΛΗΡΟΦΟΡΙΕΣ: {detailed}`
-`ΠΡΟΜΗΘΕΥΤΗΣ: {supplier}`
-`ΥΠΟΚΑΤΑΣΤΗΜΑ: {katastima()}`
-`PDA ID: {answer_02.ID[0]}`
-`ΠΡΟΪΟΝΤΑ: {len(final_result)}`
-`ΣΥΝΟΛΙΚΗ ΠΟΣΟΤΗΤΑ: {sum(final_result['Ποσότητα'])} ΤΕΜ`
-`ΣΥΝΟΛΙΚΟ ΚΟΣΤΟΣ: {round(final_result['SUM'].sum(), 2)} €`
+> ΠΡΟΜΗΘΕΥΤΗΣ:\t{supplier}
+> ΥΠΟΚΑΤΑΣΤΗΜΑ:\t{katastima()}
+> ΠΡΟΪΟΝΤΑ:\t{len(final_result)}
+> ΣΥΝΟΛΙΚΗ ΠΟΣΟΤΗΤΑ:\t{sum(final_result['Ποσότητα'])} ΤΕΜ
+> ΣΥΝΟΛΙΚΟ ΚΟΣΤΟΣ:\t{round(final_result['SUM'].sum(), 2)} €
+>ΕΤΟΣ ΑΝΑΖΗΤΗΣΗΣ ΚΟΣΤΟΥΣ:\t{get_year}
+:slack: 
 """, slack_app.channels[6])
 
 # ----------------SLACK BOT FILES----------------------------
