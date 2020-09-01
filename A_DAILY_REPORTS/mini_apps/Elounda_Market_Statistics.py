@@ -597,6 +597,9 @@ slack_app.send_text("""
 >ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ
 >ΣΤΑΤΙΣΤΙΚΑ ELOUNDA MARKET
 `Ενημερώθηκε Το Αρχείο: EM.xlsx`
+>
+>Data Science Tools Used:
+>:slack: :github: :docker: :kubernetes: :python: :javascript: :nodejs: :react: :vue: :fbwow: 
 """, slack_app.channels[1])
 
 slack_app.send_files('EM.xlsx', output_file, 'xlsx', slack_app.channels[1])

@@ -55,6 +55,9 @@ text = f"""
 ```{pistotika}```
 > ΚΑΘΑΡΟ ΥΠΟΛΟΙΠΟ:
 ` {tziros} - {money_back} = {ypoloipo} EUR`
+>
+>Data Science Tools Used:
+>:slack: :github: :docker: :kubernetes: :python: :javascript: :nodejs: :react: :vue: :fbwow:
 """
 
 slack_app.send_text(text, slack_app.channels[4])

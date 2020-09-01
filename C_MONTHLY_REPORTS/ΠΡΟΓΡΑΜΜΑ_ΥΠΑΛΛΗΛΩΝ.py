@@ -22,6 +22,9 @@ with open("HTML/4. Πρόγραμμα.html", 'r')as html_file:
 slack_app.send_text("""
 > ΜΗΝΙΑΙΟ ΔΗΜΟΣΙΕΥΜΑ
 `Το Πρόγραμμα των Υπαλλήλων είναι Έτοιμο`
+>
+>Data Science Tools Used:
+>:slack: :github: :docker: :kubernetes: :python: :javascript: :nodejs: :react: :vue: :fbwow:
 """, slack_app.channels[2])
 slack_app.send_files(output_file, path_to_file, 'pdf', slack_app.channels[2])
 

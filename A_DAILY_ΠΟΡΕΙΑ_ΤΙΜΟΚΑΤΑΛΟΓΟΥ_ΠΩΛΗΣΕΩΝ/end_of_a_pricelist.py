@@ -30,6 +30,9 @@ end_of_pricelist_excel_export.export(path_to_file, timokatalogos[['ΠΕΡΙΓΡ�
 report = f"""
 >EKTAKTO ΔΗΜΟΣΙΕΥΜΑ
 >ΛΗΞΗ ΤΙΜΟΚΑΤΑΛΟΓΟΥ: {to_date.strftime('%d-%m')}
+>
+>Data Science Tools Used:
+>:slack: :github: :docker: :kubernetes: :python: :javascript: :nodejs: :react: :vue: :fbwow: 
 """
 slack_app.send_text(report, slack_app.channels[4])
 

@@ -77,6 +77,9 @@ for i in range(len(x['messages'])):
 slack_app.send_text("""
 > ΜΗΝΙΑΙΟ ΔΗΜΟΣΙΕΥΜΑ
 `Ολοκληρώθηκε η εξαγωγή εκκρεμοτήτων για έως σήμερα:`
+>
+>Data Science Tools Used:
+>:slack: :github: :docker: :kubernetes: :python: :javascript: :nodejs: :react: :vue: :fbwow:
 """, slack_app.channels[4])
 
 slack_app.send_files(output_file, path_to_file, 'xlsx', slack_app.channels[4])

@@ -200,6 +200,9 @@ while True:
         ` Α/Α ΕΝΕΡΓΕΙΑ: {choose_pricelist.id}`
         ` {choose_pricelist.comments}`
         ```{brand_sales}```
+        >
+        >Data Science Tools Used:
+        >:slack: :github: :docker: :kubernetes: :python: :javascript: :nodejs: :react: :vue: :fbwow: 
         """
 
         slack_app.send_text(report, slack_app.channels[0])

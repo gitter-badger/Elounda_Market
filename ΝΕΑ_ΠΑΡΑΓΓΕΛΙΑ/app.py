@@ -142,6 +142,9 @@ slack_app.send_text(f"""
 `PDA ID: {answer_02.ID[0]}`
 `E-MAIL: {person.EMailAddress[0]}`
 `Τηλ.: {phone_number}`
+>
+>Data Science Tools Used:
+>:slack: :github: :docker: :kubernetes: :python: :javascript: :nodejs: :react: :vue: :fbwow:
 """, slack_app.channels[3])
 
 slack_app.send_files(output_file, file_path, 'xlsx', slack_app.channels[3])

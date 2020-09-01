@@ -3,8 +3,8 @@
 import os
 import sys
 import pandas as pd
-from ΠΡΟ_ΚΟΣΤΟΛΟΓΗΣΗ import excel_export, sql_select
 from Private import slack_app, send_mail, sql_connect
+from PRE_COST_CALCULATION import excel_export, sql_select
 from datetime import datetime as dt
 # ---------------- MAKE DF REPORT VIEWABLE ----------------
 pd.set_option('display.max_columns', 500)
@@ -14,7 +14,7 @@ pd.set_option('display.width', 1000)
 order_types = ['ΔΕΑ', 'ΑΔΠ', 'ΑΤΔ', 'ΠΠΡ', 'ΑΠ_ΜΟΒ']
 # TODO 'ΑΠΟ ΕΔΩ'
 order_type = order_types[0]  # 0 = ΔΕΑ / 1 = ΑΔΠ ...
-input_param = '4018'  # Βάζω
+input_param = '4002'  # number here 4018 4002
 get_year = dt.now().year
 if input('Press 1: Συγκεκριμένο Έτος & Πίσω:') == '1':
     get_year = int(input('\rΠληκτρολογήστε Έτος: '))
@@ -121,7 +121,11 @@ slack_app.send_text(f"""
 > ΣΥΝΟΛΙΚΗ ΠΟΣΟΤΗΤΑ:\t{sum(final_result['Ποσότητα'])} ΤΕΜ
 > ΣΥΝΟΛΙΚΟ ΚΟΣΤΟΣ:\t{round(final_result['SUM'].sum(), 2)} €
 >ΕΤΟΣ ΑΝΑΖΗΤΗΣΗΣ ΚΟΣΤΟΥΣ:\t{get_year}
-:slack: 
+>
+>Data Science Tools Used:
+>:slack: :github: :docker: :kubernetes: :python: :javascript: :nodejs: :react: :vue: :fbwow: 
+
+
 """, slack_app.channels[6])
 
 # ----------------SLACK BOT FILES----------------------------

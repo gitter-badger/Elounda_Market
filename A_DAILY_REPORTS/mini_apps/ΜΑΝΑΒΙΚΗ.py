@@ -191,6 +191,9 @@ with pd.ExcelWriter(file_path, engine='xlsxwriter') as writer:
 slack_app.send_text("""
 >ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ
 `Ενημερώθηκε Το Αρχείο: Μαναβική.xlsx`
+>
+>Data Science Tools Used:
+>:slack: :github: :docker: :kubernetes: :python: :javascript: :nodejs: :react: :vue: :fbwow: 
 """, slack_app.channels[1])
 
 slack_app.send_files('Μαναβική.xlsx', file_path, 'xlsx', slack_app.channels[1])
