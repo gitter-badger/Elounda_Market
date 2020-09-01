@@ -41,7 +41,7 @@ pistotika = pd.read_sql_query(sql_vardas.pistotiko(), sql_connect.sql_cnx())
 
 price = 0.06
 money_back = round(sum(pistotika['NET VALUE']), 2)
-tziros = price * poliseis.SalesQuantity[0]
+tziros = round(price * poliseis.SalesQuantity[0], 2)
 ypoloipo = round(tziros - money_back, 2)
 
 vardas = Supplier(poliseis, pistotika, dates, price, money_back, tziros, ypoloipo)
