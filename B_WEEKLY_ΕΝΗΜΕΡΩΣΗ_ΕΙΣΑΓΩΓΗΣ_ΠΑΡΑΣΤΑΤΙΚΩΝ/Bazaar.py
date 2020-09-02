@@ -48,27 +48,13 @@ sql_answer['TIMH Care Market'] = out['Care Market']
 # -------------------- PLOT A HISTOGRAM WITH QUARTILE VALUES --------------------
 # create your figure here
 plt.figure(figsize=(15, 9))
-# First Subplot
-plt.subplot(2, 1, 1, xlabel='Markup (%100)', ylabel='Count', title=f'{order_id} [Histogram (Quartiles)]')
-plt.hist(markup, bins=8)
-plt.axvline(x=quartiles[0], label=f"Q1={quartiles[0]}", c='#6400e4')
-plt.axvline(x=quartiles[1], label=f"Q2={quartiles[1]}", c='#fd4d3f')
-plt.axvline(x=quartiles[2], label=f"Q3={quartiles[2]}", c='#4fe0b0')
-plt.grid(True, alpha=0.2)
-plt.legend()
-# Second Subplot
-plt.subplot(2, 2, 4, xlabel='Product', ylabel='Retail Price', title='Retail Price [Scatter Plot]')
+plt.subplot(xlabel='Product', ylabel='Retail Price', title='Retail Price [Scatter Plot]')
 plt.scatter(range(len(sql_answer)), retail_price, marker='o', color='blue', label='ELOUNDA')
 plt.scatter(range(len(sql_answer)), sql_answer['ΤΙΜΗ BAZAAR'], marker='o', color='red', label='BAZAAR')
-# plt.scatter(range(len(sql_answer)), sql_answer['TIMH ΒΑΣΙΛΟΠΟΥΛΟΣ'], marker='o', color='green', label='ΒΑΣΙΛΟΠΟΥΛΟΣ')
-# plt.scatter(range(len(sql_answer)), sql_answer['TIMH Care Market'], marker='o', color='black', label='Care Market')
+plt.scatter(range(len(sql_answer)), sql_answer['TIMH ΒΑΣΙΛΟΠΟΥΛΟΣ'], marker='o', color='green', label='ΒΑΣΙΛΟΠΟΥΛΟΣ')
+plt.scatter(range(len(sql_answer)), sql_answer['TIMH Care Market'], marker='o', color='black', label='Care Market')
 plt.grid(True, alpha=0.2)
 plt.legend()
-# Next Subplot
-plt.subplot(2, 2, 3, xlabel='BoxPlot', ylabel='Markup (%100)', title='Markup [Box Plot]')
-plt.boxplot(markup)
-plt.grid(True, alpha=0.2)
-# Save Figure as Image and Plot
 plt.savefig('views.png')
 plt.show()
 

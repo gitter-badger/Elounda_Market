@@ -29,32 +29,6 @@ order_id = sql_answer['ΠΑΡΑΣΤΑΤΙΚΟ'].unique()
 retail_price = sql_answer['ΤΙΜΗ ΛΙΑΝΙΚΗΣ']
 retail_q = np.quantile(retail_price, [.25, .5, .75])
 
-
-# -------------------- PLOT A HISTOGRAM WITH QUARTILE VALUES --------------------
-# create your figure here
-plt.figure(figsize=(15, 9))
-# First Subplot
-plt.subplot(2, 1, 1, xlabel='Markup (%100)', ylabel='Count', title=f'{order_id} [Histogram (Quartiles)]')
-plt.hist(markup, bins=8)
-plt.axvline(x=quartiles[0], label=f"Q1={quartiles[0]}", c ='#6400e4')
-plt.axvline(x=quartiles[1], label=f"Q2={quartiles[1]}", c ='#fd4d3f')
-plt.axvline(x=quartiles[2], label=f"Q3={quartiles[2]}", c ='#4fe0b0')
-plt.grid(True, alpha=0.2)
-plt.legend()
-# Second Subplot
-plt.subplot(2, 2, 4, xlabel='Product', ylabel='Retail Price', title='Retail Price [Scatter Plot]')
-plt.scatter(range(len(sql_answer)), retail_price, marker='o')
-plt.grid(True, alpha=0.2)
-plt.legend()
-# Next Subplot
-plt.subplot(2, 2, 3, xlabel='BoxPlot', ylabel='Markup (%100)', title='Markup [Box Plot]')
-plt.boxplot(markup)
-plt.grid(True, alpha=0.2)
-# Save Figure as Image and Plot
-plt.savefig('views.png')
-plt.show()
-
-
 # -------------------- FIND BARCODES WHO ARE IN EVERY QUARTILE --------------------
 codes_in_q1 = sql_answer[markup <= quartiles[0]]
 codes_in_q2 = sql_answer[(markup > quartiles[0]) & (markup <= quartiles[1])]
@@ -76,6 +50,16 @@ sql_answer['ΤΙΜΗ BAZAAR'] = out['BAZAAR']
 sql_answer['TIMH ΒΑΣΙΛΟΠΟΥΛΟΣ'] = out['ΑΒ. Βασιλόπουλος']
 sql_answer['TIMH Care Market'] = out['Care Market']
 
+# -------------------- PLOT A HISTOGRAM WITH QUARTILE VALUES --------------------
+# create your figure here
+plt.figure(figsize=(15, 9))
+plt.subplot(xlabel='Product', ylabel='Retail Price', title='Retail Price [Scatter Plot]')
+plt.scatter(range(len(sql_answer)), retail_price, marker='o', color='blue', label='ELOUNDA')
+plt.scatter(range(len(sql_answer)), sql_answer['ΤΙΜΗ BAZAAR'], marker='o', color='red', label='BAZAAR')
+plt.grid(True, alpha=0.2)
+plt.legend()
+plt.savefig('views.png')
+plt.show()
 
 # -------------------- Εισαγωγή Δεομένων στο  EXCEL --------------------
 excel_writer.export(path_to_file, sql_answer)
