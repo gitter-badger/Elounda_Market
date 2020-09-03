@@ -1,8 +1,6 @@
 #   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 
 from datetime import datetime
-import random
-
 from Private import slack_app, sql_connect
 import matplotlib.pyplot as plt
 import pandas as pd
