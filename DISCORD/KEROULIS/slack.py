@@ -1,6 +1,7 @@
 #   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 from Private import slack_app
 
+
 def run(file_path):
     slack_app.send_text("""
     >ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ

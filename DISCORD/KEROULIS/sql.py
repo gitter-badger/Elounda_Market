@@ -39,6 +39,7 @@ def query_01():
      IsNull(FK_ESFIItemPeriodics_ESFIItem.fItemSubCategoryCode,'') 
     """
 
+
 def query_02():
     return """
 SELECT
@@ -69,6 +70,7 @@ GROUP BY
   Year(FK_ESFIItemPeriodics_ESGOFiscalPeriod.BeginDate)
 
 """
+
 
 def query_03():
     return """

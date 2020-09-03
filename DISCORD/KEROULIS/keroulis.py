@@ -1,6 +1,5 @@
 #   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 
-from datetime import datetime
 import pandas as pd
 from DISCORD.KEROULIS import sql, excel, slack, plot
 from Private import sql_connect

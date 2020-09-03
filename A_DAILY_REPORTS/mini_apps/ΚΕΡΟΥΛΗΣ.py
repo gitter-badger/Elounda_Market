@@ -3,9 +3,9 @@
 from datetime import datetime
 import pandas as pd
 import squarify
-
-from Private import slack_app,sql_connect
+from Private import slack_app, sql_connect
 import matplotlib.pyplot as plt
+
 file_path = '/Users/kommas/OneDrive/Business_Folder/Slack/Private_Analytics/Κερούλης.xlsx'
 
 # -----------| SQL QUERY -------------
@@ -90,6 +90,7 @@ answer_2 = pd.read_sql_query(query_2, sql_connect.sql_cnx())
 answer_3 = pd.read_sql_query(query_03, sql_connect.sql_cnx())
 pl = answer_3.values.min()
 
+# PLOT
 X = answer_2['YEAR']
 y = answer_2['TurnOver']
 plt.figure(figsize=(16, 8))
