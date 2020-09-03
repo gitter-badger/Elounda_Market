@@ -303,7 +303,7 @@ for a, b in zip(X, y):
                  xytext=(0, 10),  # distance from text to points (x,y)
                  ha='center')  # horizontal alignment can be left, right or center
 plt.grid(True, alpha=0.5)
-plt.savefig('views.png')
+plt.savefig('images/views.png')
 
 # plt.show()
 print(f'\n 04: Plot DONE: {datetime.now().strftime("%H:%M:%S")}')
@@ -589,7 +589,7 @@ for i in range(len(c)):
     print(f'\r 20: EXCEL looping with counter {i} Done:[{filler}{percent}%{remaining}]', end='', flush=True)
 
 plt.grid(True, alpha=0.5)
-plt.savefig('kataskevastis_views.png')
+plt.savefig('images/kataskevastis_views.png')
 # plt.show()
 print('\n 21: PLOT DONE')
 
@@ -603,7 +603,7 @@ slack_app.send_text("""
 """, slack_app.channels[1])
 
 slack_app.send_files('EM.xlsx', output_file, 'xlsx', slack_app.channels[1])
-slack_app.send_files('views.png', 'views.png', 'png', slack_app.channels[1])
-slack_app.send_files('kataskevastis_views.png', 'kataskevastis_views.png', 'png', slack_app.channels[1])
+slack_app.send_files('views.png', 'images/views.png', 'png', slack_app.channels[1])
+slack_app.send_files('kataskevastis_views.png', 'images/kataskevastis_views.png', 'png', slack_app.channels[1])
 
 print(' 22: SLACK DONE ')

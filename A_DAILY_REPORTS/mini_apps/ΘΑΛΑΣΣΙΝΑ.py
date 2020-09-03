@@ -106,7 +106,7 @@ for a, b in zip(X, y):
                  textcoords="offset points",  # how to position the text
                  xytext=(0, 10),  # distance from text to points (x,y)
                  ha='center')  # horizontal alignment can be left, right or center
-plt.savefig('sea_views.png')
+plt.savefig('images/sea_views.png')
 # plt.show()
 
 # -------------------- TREE MAP --------------------
@@ -124,7 +124,7 @@ squarify.plot(sizes=sizes, label=labels, color=colors, alpha=0.9)
 # Decorate
 plt.title(f'ΤΖΙΡΟΣ / ΥΠΟΚΑΤΗΓΟΡΙΑ')
 plt.axis('off')
-plt.savefig('thalassina_tree_map.png')
+plt.savefig('images/thalassina_tree_map.png')
 # plt.show()
 
 # Εισαγωγή Δεομένων στο  EXCEL
@@ -202,5 +202,5 @@ slack_app.send_text("""
 """, slack_app.channels[1])
 
 slack_app.send_files('Θαλασσινά.xlsx', file_path, 'xlsx', slack_app.channels[1])
-slack_app.send_files('sea_views.png', 'sea_views.png', 'png', slack_app.channels[1])
-slack_app.send_files('thalassina_tree_map.png', 'thalassina_tree_map.png', 'png', slack_app.channels[1])
+slack_app.send_files('sea_views.png', 'images/sea_views.png', 'png', slack_app.channels[1])
+slack_app.send_files('thalassina_tree_map.png', 'images/thalassina_tree_map.png', 'png', slack_app.channels[1])

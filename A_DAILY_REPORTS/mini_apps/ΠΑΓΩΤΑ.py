@@ -104,7 +104,7 @@ for a, b in zip(X, y):
                  xytext=(0, 10),  # distance from text to points (x,y)
                  ha='center')  # horizontal alignment can be left, right or center
 plt.grid(True, alpha=0.5)
-plt.savefig('pagota_views.png')
+plt.savefig('images/pagota_views.png')
 # plt.show()
 
 # -------------------- TREE MAP --------------------
@@ -122,7 +122,7 @@ squarify.plot(sizes=sizes, label=labels, color=colors, alpha=0.9)
 # Decorate
 plt.title(f'ΤΖΙΡΟΣ / ΥΠΟΚΑΤΗΓΟΡΙΑ')
 plt.axis('off')
-plt.savefig('pagota_tree_map.png')
+plt.savefig('images/pagota_tree_map.png')
 # plt.show()
 
 
@@ -198,5 +198,5 @@ slack_app.send_text("""
 """, slack_app.channels[1])
 
 slack_app.send_files('Παγωτά.xlsx', file_path, 'xlsx', slack_app.channels[1])
-slack_app.send_files('pagota_views.png', 'pagota_views.png', 'png', slack_app.channels[1])
-slack_app.send_files('pagota_tree_map.png', 'pagota_tree_map.png', 'png', slack_app.channels[1])
+slack_app.send_files('pagota_views.png', 'images/pagota_views.png', 'png', slack_app.channels[1])
+slack_app.send_files('pagota_tree_map.png', 'images/pagota_tree_map.png', 'png', slack_app.channels[1])

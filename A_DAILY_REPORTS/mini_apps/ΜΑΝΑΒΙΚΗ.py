@@ -104,7 +104,7 @@ for a, b in zip(X, y):
                  xytext=(0, 10),  # distance from text to points (x,y)
                  ha='center')  # horizontal alignment can be left, right or center
 plt.grid(True, alpha=0.5)
-plt.savefig('manaviki_views.png')
+plt.savefig('images/manaviki_views.png')
 # plt.show()
 
 # -------------------- TREE MAP --------------------
@@ -122,7 +122,7 @@ squarify.plot(sizes=sizes, label=labels, color=colors, alpha=0.9)
 # Decorate
 plt.title(f'ΤΖΙΡΟΣ / ΥΠΟΚΑΤΗΓΟΡΙΑ')
 plt.axis('off')
-plt.savefig('manaviki_tree_map.png')
+plt.savefig('images/manaviki_tree_map.png')
 # plt.show()
 
 # Εισαγωγή Δεομένων στο  EXCEL
@@ -197,5 +197,5 @@ slack_app.send_text("""
 """, slack_app.channels[1])
 
 slack_app.send_files('Μαναβική.xlsx', file_path, 'xlsx', slack_app.channels[1])
-slack_app.send_files('manaviki_views.png', 'manaviki_views.png', 'png', slack_app.channels[1])
-slack_app.send_files('manaviki_tree_map.png', 'manaviki_tree_map.png', 'png', slack_app.channels[1])
+slack_app.send_files('manaviki_views.png', 'images/manaviki_views.png', 'png', slack_app.channels[1])
+slack_app.send_files('manaviki_tree_map.png', 'images/manaviki_tree_map.png', 'png', slack_app.channels[1])

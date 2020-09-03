@@ -117,7 +117,7 @@ for a, b in zip(X, y):
                  xytext=(0, 10),  # distance from text to points (x,y)
                  ha='center')  # horizontal alignment can be left, right or center
 plt.grid(True, alpha=0.5)
-plt.savefig('fresco_gala_delta_views.png')
+plt.savefig('images/fresco_gala_delta_views.png')
 # plt.show()
 
 pl = 12
@@ -192,4 +192,4 @@ slack_app.send_text("""
 """, slack_app.channels[1])
 
 slack_app.send_files('Φρέσκο Γάλα Δέλτα POS.xlsx', file_path, 'xlsx', slack_app.channels[1])
-slack_app.send_files('fresco_gala_delta_views.png', 'fresco_gala_delta_views.png', 'png', slack_app.channels[1])
+slack_app.send_files('fresco_gala_delta_views.png', 'images/fresco_gala_delta_views.png', 'png', slack_app.channels[1])
