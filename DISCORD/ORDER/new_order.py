@@ -8,8 +8,7 @@ import sys
 import os
 import pandas as pd
 from DISCORD.ORDER import sql, excel, slack
-
-from Private import  sql_connect
+from Private import sql_connect
 
 
 def run(input_param):
