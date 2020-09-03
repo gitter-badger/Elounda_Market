@@ -64,7 +64,7 @@ for a, b in zip(X, y):
                  xytext=(0, 10),  # distance from text to points (x,y)
                  ha='center')  # horizontal alignment can be left, right or center
 plt.grid(True, alpha=0.5)
-plt.savefig('pda_views.png')
+plt.savefig('images/pda_views.png')
 # plt.show()
 
 # -------------------- TREE MAP --------------------
@@ -82,7 +82,7 @@ squarify.plot(sizes=sizes, label=labels, color=colors, alpha=0.9)
 # Decorate
 plt.title(f'ΓΡΑΜΜΕΣ / ΕΤΟΣ')
 plt.axis('off')
-plt.savefig('pda_tree_map.png')
+plt.savefig('images/pda_tree_map.png')
 # plt.show()
 
 
@@ -99,5 +99,5 @@ slack_app.send_text("""
 >:slack: :github: :docker: :kubernetes: :python: :javascript: :nodejs: :react: :vue: :fbwow: 
 """, slack_app.channels[1])
 slack_app.send_files('sql.xlsx', path, 'xlsx', slack_app.channels[1])
-slack_app.send_files('pda_views.png', 'pda_views.png', 'png', slack_app.channels[1])
-slack_app.send_files('pda_tree_map.png', 'pda_tree_map.png', 'png', slack_app.channels[1])
+slack_app.send_files('pda_views.png', 'images/pda_views.png', 'png', slack_app.channels[1])
+slack_app.send_files('pda_tree_map.png', 'images/pda_tree_map.png', 'png', slack_app.channels[1])

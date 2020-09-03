@@ -2,14 +2,14 @@
 import matplotlib.pyplot as plt
 import squarify
 
-def figure(answer_2, answer):
+
+def run(answer, answer_2):
     X = answer_2['YEAR']
     y = answer_2['TurnOver']
     plt.figure(figsize=(16, 8))
-    plt.subplot(xlabel='ΕΤΟΣ', ylabel='ΤΖΙΡΟΣ', title='ELOUNDA MARKET (ΘΑΛΑΣΣΙΝΑ)')
+    plt.subplot(xlabel='ΕΤΟΣ', ylabel='ΤΖΙΡΟΣ', title='ELOUNDA MARKET (ΚΕΡΟΥΛΗΣ)')
     colors = [plt.cm.Spectral(i / float(len(X))) for i in range(len(X))]
     plt.bar(X, y, alpha=0.9, color=colors)
-    plt.grid(True, alpha=0.5)
     for a, b in zip(X, y):
         label = "{:.2f} €".format(b)
 
@@ -19,7 +19,9 @@ def figure(answer_2, answer):
                      textcoords="offset points",  # how to position the text
                      xytext=(0, 10),  # distance from text to points (x,y)
                      ha='center')  # horizontal alignment can be left, right or center
-    plt.savefig('images/sea_views.png')
+    plt.grid(True, alpha=0.5)
+    plt.savefig('images/keroulis_views.png')
+    # plt.show()
 
     # -------------------- TREE MAP --------------------
     # Prepare Data
@@ -36,5 +38,5 @@ def figure(answer_2, answer):
     # Decorate
     plt.title(f'ΤΖΙΡΟΣ / ΥΠΟΚΑΤΗΓΟΡΙΑ')
     plt.axis('off')
-    plt.savefig('images/thalassina_tree_map.png')
-
+    plt.savefig('images/keroulis_tree_map.png')
+    # plt.show()

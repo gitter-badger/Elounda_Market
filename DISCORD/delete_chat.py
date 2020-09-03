@@ -17,4 +17,4 @@ def run(id):
 
 
 # get list of slack channels order
-# print(slack_app.channels)
+print(slack_app.channels)
