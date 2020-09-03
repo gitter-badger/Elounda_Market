@@ -110,7 +110,7 @@ c = [coca_cola, pepsico, kri_kri, olympos, delta, hellenic, olympiaki, athinaiki
      kalamarakis, sca_hygiene, conserva, sonel
      ]
 
-print('Κατασκευαστές Σύνολο: {}'.format(len(c)))
+# print('Κατασκευαστές Σύνολο: {}'.format(len(c)))
 
 # ------- ΠΡΟΜΗΘΕΥΤΕΣ -----------
 
