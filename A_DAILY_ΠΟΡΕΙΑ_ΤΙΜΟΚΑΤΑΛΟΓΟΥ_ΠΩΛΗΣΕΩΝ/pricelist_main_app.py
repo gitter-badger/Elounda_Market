@@ -133,7 +133,7 @@ while True:
         plt.grid(True, alpha=0.2)
         plt.legend()
         plt.tight_layout()
-        plt.savefig('views.png')
+        plt.savefig('images/views.png')
         # plt.show()
         plt.close()
 
@@ -156,7 +156,7 @@ while True:
             plt.title(
                 f"ΠΩΛΗΣΕΙΣ ΠΟΣΟΤΗΤΑ || ΣΥΝΟΛΑ: {round(final_result.SalesQuantity.sum(), 2)}TEM / {round(final_result.Turnover.sum(), 2)}€  ")
             plt.axis('off')
-            plt.savefig('tree_map_quantity.png')
+            plt.savefig('images/tree_map_quantity.png')
             # plt.show()
             plt.close()
         except ZeroDivisionError:
@@ -209,8 +209,8 @@ while True:
 
         # -------------------- SLACK BOT ADD FILES --------------------
         slack_app.send_files(f'{id}.xlsx', path_to_file, 'xlsx', slack_app.channels[0])
-        slack_app.send_files('views.png', 'views.png', 'png', slack_app.channels[0])
-        slack_app.send_files('tree_map_quantity.png', 'tree_map_quantity.png', 'png', slack_app.channels[0])
+        slack_app.send_files('views.png', 'images/views.png', 'png', slack_app.channels[0])
+        slack_app.send_files('tree_map_quantity.png', 'images/tree_map_quantity.png', 'png', slack_app.channels[0])
     else:
 
         # -------------------- ΕΚΤΥΠΩΝΩ STATEMENT --------------------

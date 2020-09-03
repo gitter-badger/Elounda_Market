@@ -5,6 +5,8 @@
       <excludeFolder url="file://$MODULE_DIR$/.idea/copyright" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/dataSources" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/dictionaries" />
+      <excludeFolder url="file://$MODULE_DIR$/A_DAILY_REPORTS/images" />
+      <excludeFolder url="file://$MODULE_DIR$/A_DAILY_ΠΟΡΕΙΑ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ_ΠΩΛΗΣΕΩΝ/images" />
       <excludeFolder url="file://$MODULE_DIR$/Private" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
