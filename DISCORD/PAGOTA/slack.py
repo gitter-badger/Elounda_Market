@@ -4,11 +4,10 @@ from Private import slack_app
 
 def run(file_path):
     slack_app.send_text("""
+>:slack:
 >ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ
 >Ενημερώθηκε Το Αρχείο: Παγωτά.xlsx
->:java:
->Data Science Tools Used:
->:slack: :github: :docker: :kubernetes: :python: :javascript: :nodejs: :react: :vue: :fbwow: 
+>:java: :python: :fbwow:
     """, slack_app.channels[1])
 
     slack_app.send_files('Παγωτά.xlsx', file_path, 'xlsx', slack_app.channels[1])
