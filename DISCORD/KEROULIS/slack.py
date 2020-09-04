@@ -4,10 +4,9 @@ from Private import slack_app
 
 def run(file_path):
     slack_app.send_text("""
->:slack:
->ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ
+>:python: : ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ
 >Ενημερώθηκε Το Αρχείο: Κερούλης.xlsx
->:java: :python: :fbwow:
+>:fbwow:
     """, slack_app.channels[1])
 
     slack_app.send_files('Κερούλης.xlsx', file_path, 'xlsx', slack_app.channels[1])

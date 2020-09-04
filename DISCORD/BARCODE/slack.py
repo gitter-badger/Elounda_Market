@@ -3,9 +3,8 @@ from Private import slack_app
 
 def app(sql_answer):
     slack_app.send_text(f"""
->:slack:
->ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ
+>:python: : ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ
 >ΕΛΕΓΧΟΣ ΓΙΑ ΔΙΠΛΑ BARCODES 
 ```{sql_answer}```
->:java: :python: :fbwow:
+>:fbwow:
     """, slack_app.channels[1])

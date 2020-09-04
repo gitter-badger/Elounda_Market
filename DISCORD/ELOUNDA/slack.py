@@ -3,11 +3,10 @@ from Private import slack_app
 
 def run(output_file):
     slack_app.send_text("""
->:slack:
->ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ
+>:python: : ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ
 >ΣΤΑΤΙΣΤΙΚΑ ELOUNDA MARKET
 >Ενημερώθηκε Το Αρχείο: EM.xlsx
->:java: :python: :fbwow:
+>:fbwow:
     """, slack_app.channels[1])
 
     slack_app.send_files('EM.xlsx', output_file, 'xlsx', slack_app.channels[1])

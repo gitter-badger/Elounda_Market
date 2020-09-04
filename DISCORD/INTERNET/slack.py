@@ -5,13 +5,12 @@ from Private import slack_app
 def app(ELOUNDA_MARKET, LATO_01, LATO_02):
     # ----------------SLACK BOT----------------------------
     output = f"""
->:slack:
->ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ
+>:python: : ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ
 >ΕΛΕΓΧΟΣ INTERNET ΣΤΑ ΚΑΤΑΣΤΗΜΑΤΑ
 >{ELOUNDA_MARKET}
 >{LATO_01}
 >{LATO_02}
->:java: :python: :fbwow:
+>:fbwow:
     """
     slack_app.send_text(output, slack_app.channels[1])
     print('END')
