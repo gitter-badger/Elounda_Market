@@ -51,8 +51,8 @@ plt.figure(figsize=(15, 9))
 plt.subplot(xlabel='Product', ylabel='Retail Price', title='Retail Price [Scatter Plot]')
 plt.scatter(range(len(sql_answer)), retail_price, marker='o', color='blue', label='ELOUNDA')
 plt.scatter(range(len(sql_answer)), sql_answer['ΤΙΜΗ BAZAAR'], marker='o', color='red', label='BAZAAR')
-plt.scatter(range(len(sql_answer)), sql_answer['TIMH ΒΑΣΙΛΟΠΟΥΛΟΣ'], marker='o', color='green', label='ΒΑΣΙΛΟΠΟΥΛΟΣ')
-plt.scatter(range(len(sql_answer)), sql_answer['TIMH Care Market'], marker='o', color='black', label='Care Market')
+# plt.scatter(range(len(sql_answer)), sql_answer['TIMH ΒΑΣΙΛΟΠΟΥΛΟΣ'], marker='o', color='green', label='ΒΑΣΙΛΟΠΟΥΛΟΣ')
+# plt.scatter(range(len(sql_answer)), sql_answer['TIMH Care Market'], marker='o', color='black', label='Care Market')
 plt.grid(True, alpha=0.2)
 plt.legend()
 plt.savefig('views.png')
@@ -86,6 +86,5 @@ slack_output_text = f"""
 """
 
 slack_app.send_text(slack_output_text, slack_app.channels[5])
-
 slack_app.send_files(output_file, path_to_file, 'xlsx', slack_app.channels[5])
 slack_app.send_files('views.png', 'views.png', 'png', slack_app.channels[5])
