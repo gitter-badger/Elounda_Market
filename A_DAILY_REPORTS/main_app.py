@@ -1,5 +1,5 @@
 #   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
-from DISCORD import delete_chat
+from DISCORD.DELETE import delete_chat
 from DISCORD.BARCODE import double_barcode_check
 from DISCORD.ELOUNDA import elounda
 from DISCORD.INTERNET import internet
