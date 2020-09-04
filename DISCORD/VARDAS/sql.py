@@ -1,7 +1,6 @@
-
 #   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 
-def get_vardas_sale(date, code = '01-002284'):
+def get_vardas_sale(date, code='01-002284'):
     return f"""
         SELECT
            ESFIItem.BarCode AS ΚΩΔΙΚΟΣ,
@@ -42,7 +41,7 @@ def get_vardas_sale(date, code = '01-002284'):
                          LEFT JOIN ESFISalesPerson AS FK_ESFIItemEntry_ESFISalesPerson
                            ON ESFIItemEntry_ESFIItemPeriodics.fSalesPersonGID = FK_ESFIItemEntry_ESFISalesPerson.GID
                     WHERE ESFIItemEntry_ESFIItemPeriodics.RegistrationDate in {date}
-                            
+
                            AND (ESFIItemEntry_ESFIItemPeriodics.ESFIItemPeriodics_SalesQty <> 0)
 
 
@@ -61,7 +60,7 @@ def pistotiko():
     SELECT ESFIItemEntry_ESFIItemPeriodics.RegistrationDate                                                     AS 'REGISTRATION DATE',
            ESFIItemEntry_ESFIItemPeriodics.NetValue                                                             AS 'NET VALUE',
            ESFIItemEntry_ESFIItemPeriodics.Comment                                                              AS 'COMMENT'
-           
+
 
     FROM ESFIItemEntry_ESFIItemPeriodics AS ESFIItemEntry_ESFIItemPeriodics
 

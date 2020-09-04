@@ -28,9 +28,9 @@ def run(input_param):
 
     # -------------ANSWERS----------------------------
     answer_01 = pd.read_sql_query(sql.sql_query(input_param, type_of_forma), sql_connect.sql_cnx())
-    print(answer_01, end='\n')
+    # print(answer_01, end='\n')
     answer_02 = pd.read_sql_query(sql.data_query(input_param, type_of_forma), sql_connect.sql_cnx())
-    print(answer_02, end='\n')
+    # print(answer_02, end='\n')
     supplier = answer_02.Name[0]
 
     # -------------ΑΝΑΘΕΣΗ ΤΙΜΗΣ: ΤΟ ΥΠΟΚΑΤΑΣΤΗΜΑ ----------------------------

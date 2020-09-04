@@ -58,7 +58,7 @@ def app(answer_03, answer_04, answer_05):
     # Prepare Data
     df = answer_05
     labels = df.apply(lambda x: f'{x[0]}\n({x[1]} Γραμμές)', axis=1)
-    print(labels)
+    # print(labels)
     sizes = df['Count "Γραμμές"'].values.tolist()
     colors = [plt.cm.Spectral(i / float(len(labels))) for i in range(len(labels))]
 

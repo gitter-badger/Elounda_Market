@@ -2,6 +2,7 @@
 import matplotlib.pyplot as plt
 import squarify
 
+
 def figure(answer_2, answer):
     X = answer_2['YEAR']
     y = answer_2['TurnOver']
@@ -25,7 +26,7 @@ def figure(answer_2, answer):
     # Prepare Data
     df = answer[answer.TurnOver > 0]
     labels = df.apply(lambda x: f'{x[0]}\n({x[1]} EUR)', axis=1)
-    print(labels)
+    # print(labels)
     sizes = df['TurnOver'].values.tolist()
     colors = [plt.cm.Spectral(i / float(len(labels))) for i in range(len(labels))]
 

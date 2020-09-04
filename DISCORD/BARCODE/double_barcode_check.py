@@ -14,11 +14,6 @@ def run():
 
     sql_answer['Υπάρχει στο Slack'] = sql_answer.BarCode.apply(lambda x: 'NAI' if x in barcode_old_values else 'OXI')
 
-    print('DATA EXPORT PREVIEW')
-    print()
-    print(sql_answer)
-    print()
-
     # Εισαγωγή Δεομένων στο  EXCEL
     excel.export(path_to_file, sql_answer)
 
