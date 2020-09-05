@@ -2,15 +2,15 @@
 import matplotlib.pyplot as plt
 
 
-def run(df, barcode):
+def run(df, barcode, folder):
     X = df['ΗΜΕΡΟΜΗΝΙΑ']
     y = df['ΚΑΘΑΡΗ ΤΙΜΗ']
     plt.figure(figsize=(15, 9))
-    plt.subplot(xlabel='ΕΤΟΣ', ylabel='TIMH', title=f'ΙΣΤΟΡΙΚΟ ΤΙΜΗΣ ΕΙΔΟΥΣ: {df["ΠΕΡΙΓΡΑΦΗ"].unique()} : BARCODE:[{barcode}]')
+    plt.subplot(xlabel='ΗΜΕΡΟΜΗΝΙΕΣ - ΕΤΟΣ', ylabel='TIMH ΑΓΟΡΑΣ', title=f'ΙΣΤΟΡΙΚΟ ΤΙΜΗΣ ΕΙΔΟΥΣ: {df["ΠΕΡΙΓΡΑΦΗ"].unique()} : BARCODE:[{barcode}]')
     colors = [plt.cm.Spectral(i / float(len(X))) for i in range(len(X))]
     plt.scatter(X, y, alpha=0.8, color=colors, marker='o')
     plt.grid(True, alpha=0.5)
-    plt.savefig('images/price_history.png')
+    plt.savefig(f'{folder}/{barcode}.png')
     # plt.show()
     plt.close()
 

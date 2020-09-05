@@ -4,11 +4,11 @@ def get_product_cost(barcode):
     return f"""
            SELECT 
            ROUND(ESFIItemEntry_ESFIItemPeriodics.NetValue /
-           isnull(ESFIItemEntry_ESFIItemPeriodics.Quantity, 1) ,2)                                              AS 'ΚΑΘΑΡΗ ΤΙΜΗ',
-           FK_ESFIItemEntry_ESFIItem.Description                                                                AS 'ΠΕΡΙΓΡΑΦΗ',
-           ESFIItemEntry_ESFIItemPeriodics.RegistrationDate                                                     AS 'ΗΜΕΡΟΜΗΝΙΑ',
-           DATEPART(yyyy,ESFIItemEntry_ESFIItemPeriodics.RegistrationDate)                                      AS 'YEAR',
-           FK_ESFIItemEntry_ESFIItem.BarCode                                                                    AS 'BarCode'
+           isnull(ESFIItemEntry_ESFIItemPeriodics.Quantity, 1) ,2)                                     AS 'ΚΑΘΑΡΗ ΤΙΜΗ',
+           FK_ESFIItemEntry_ESFIItem.Description                                                       AS 'ΠΕΡΙΓΡΑΦΗ',
+           ESFIItemEntry_ESFIItemPeriodics.RegistrationDate                                            AS 'ΗΜΕΡΟΜΗΝΙΑ',
+           DATEPART(yyyy,ESFIItemEntry_ESFIItemPeriodics.RegistrationDate)                             AS 'YEAR',
+           FK_ESFIItemEntry_ESFIItem.BarCode                                                           AS 'BarCode'
 
 
     FROM ESFIItemEntry_ESFIItemPeriodics AS ESFIItemEntry_ESFIItemPeriodics
@@ -34,9 +34,15 @@ def get_product_cost(barcode):
 """
 
 
-def get_codes(sub):
+def get_codes():
     return f"""
-    SELECT BarCode 
-    FROM ESFIItem
-    where fItemSubcategoryCode = '{sub}'
+    SELECT FK_ESFIItemEntry_ESFIItem.BarCode, 
+    DocumentCode
+    FROM ESFIItemEntry_ESFIItemPeriodics
+
+    LEFT JOIN ESFIItem AS FK_ESFIItemEntry_ESFIItem
+                       ON ESFIItemEntry_ESFIItemPeriodics.fItemGID = FK_ESFIItemEntry_ESFIItem.GID 
+    LEFT JOIN ESFIDocumentTrade AS FK_ESFIItemEntry_ESFIDocumentTrade
+                       ON ESFIItemEntry_ESFIItemPeriodics.fDocumentGID = FK_ESFIItemEntry_ESFIDocumentTrade.GID
+    WHERE fTransitionStepCode = 'ΑΠΟΔΟΣΗ'
     """

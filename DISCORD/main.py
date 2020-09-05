@@ -113,15 +113,8 @@ async def on_message(message):
         await message.channel.send(response)
 
     if message.content.lower().startswith('history'):
-        try:
-            barcode = message.content.split(' ')[1]
-        except IndexError:
-            await message.channel.send('Η ΣΥΝΤΑΞΗ ΤΗΣ ΕΝΤΟΛΗΣ ΕΙΝΑΙ: {history + __barcode__}')
-            return
-        x = price_history.run(barcode)
-        r = [f'{i} EUR' for i in x]
-        await message.channel.send(file=discord.File('images/price_history.png'),
-                                   content=f'ΒΡΕΘΗΚΑΝ ΟΙ ΠΑΡΑΚΑΤΩ ΤΙΜΕΣ {r}')
+        price_history.run()
+        await message.channel.send('ΔΗΜΙΟΥΡΓΙΑ ΙΣΤΟΡΙΚΟΥ ΤΙΜΩΝ: COMPLETE')
 
 
 client.run(TOKEN)
