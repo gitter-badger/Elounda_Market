@@ -2,7 +2,7 @@
 
 def sql_query(input_param, type_of_forma):
     return f"""
-SELECT  BarCode, ItemDescription as 'Περιγραφή', quant as 'Ποσότητα'
+SELECT  distinct BarCode, ItemDescription as 'Περιγραφή', sum(quant) as 'Ποσότητα'
         FROM IMP_MobileDocumentLines
         left join IMP_MobileDocumentHeaders
         on IMP_MobileDocumentHeaders.GID = IMP_MobileDocumentLines.fDocGID
@@ -12,8 +12,9 @@ SELECT  BarCode, ItemDescription as 'Περιγραφή', quant as 'Ποσότη
         --and DATEPART(mm,RealImportTime) = DATEPART(mm,getdate())
         and IMP_MobileDocumentHeaders.Code = {input_param}
         and OrderType = '{type_of_forma}'
-        --and OrderType = 'ΔΕΑ'
+        group by ItemDescription, BarCode
 """
+
 
 def data_query(input_param, type_of_forma):
     return f"""
@@ -28,8 +29,8 @@ SELECT  distinct OrderType as 'Type', IMP_MobileDocumentHeaders.Code as 'Code', 
         --and DATEPART(mm,RealImportTime) = DATEPART(mm,getdate())
         and IMP_MobileDocumentHeaders.Code = {input_param}
         and OrderType = '{type_of_forma}'
-        --and OrderType = 'ΔΕΑ'
 """
+
 
 def extract_mail(input_param, type_of_forma):
     return f"""
@@ -50,7 +51,6 @@ SELECT
         --and DATEPART(mm,RealImportTime) = DATEPART(mm,getdate())
         and IMP_MobileDocumentHeaders.Code = {input_param}
         and OrderType = '{type_of_forma}'
-        --and OrderType = 'ΔΕΑ'
 """
 
 
