@@ -14,4 +14,4 @@ def run(sql_answer, retail_price):
     plt.grid(True, alpha=0.2)
     plt.legend()
     plt.savefig('views.png')
-    plt.show()
+    # plt.show()

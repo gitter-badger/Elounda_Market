@@ -118,11 +118,12 @@ compo1 = (
     'Μακριδάκη Α.- Γ.Μακατουνάκης Ο.Ε', 'CANDIA NUTS', 'ΠΕΡΝΙΕΝΤΑΚΗΣ Δ. Α.Ε.Β.Ε. ΑΝΤΙΠΡΟΣΩΠΙΕΣ - ΔΙΑΝΟΜΕΣ - ΕΜΠΟΡΙΟ')
 compo2 = ('ΣΙΓΑΝΟΣ Α.Ε. - ΑΝΤΙΠΡΟΣΩΠΕΙΣ - ΕΜΠΟΡΙΟ ΠΟΤΩΝ', 'Bazaar A.E.', 'ΕΜΠΟΡΙΚΗ ΤΡΟΦΟΔΟΤΙΚΗ Α.Ε.')
 
-# ------- OUTPUT FILE -----------
-output_file = "/Users/kommas/OneDrive/Business_Folder/Slack/Private_Analytics/EM.xlsx"
+
 
 
 def run():
+    # ------- OUTPUT FILE -----------
+    output_file = "/Users/kommas/OneDrive/Business_Folder/Slack/Private_Analytics/EM.xlsx"
     # -------------ANSWERS----------------------------
     answer_00 = pd.read_sql_query(sql.query_00(), sql_connect.sql_cnx())
     print(' 00: Προμηθευτές: SQL Ερώτημα για το σύνολο των Προμηθευτών -> --> Ολοκληρώθηκε:  {}'.format(

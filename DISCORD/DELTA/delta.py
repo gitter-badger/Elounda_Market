@@ -3,10 +3,9 @@ import pandas as pd
 from DISCORD.DELTA import excel, sql, slack, plot
 from Private import sql_connect
 
-file_path = '/Users/kommas/OneDrive/Business_Folder/Slack/Private_Analytics/Φρέσκο Γάλα Δέλτα POS.xlsx'
-
 
 def run():
+    file_path = '/Users/kommas/OneDrive/Business_Folder/Slack/Private_Analytics/Φρέσκο Γάλα Δέλτα POS.xlsx'
     # -------------Pandas GET Answer ------------
     answer = pd.read_sql_query(sql.query_01(), sql_connect.sql_cnx())
     answer_2 = pd.read_sql_query(sql.query_02(), sql_connect.sql_cnx())

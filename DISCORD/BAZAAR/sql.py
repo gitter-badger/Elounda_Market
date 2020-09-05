@@ -2,17 +2,20 @@
 
 def private_database_query(name):
     return f"""
-SELECT FK_ESFIItemEntry_ESFIItem.BarCode                                                                    AS 'BARCODE',
+SELECT 
+       ESFIItemEntry_ESFIItemPeriodics.DocumentCode                                                         AS 'ΠΑΡΑΣΤΑΤΙΚΟ',
+       FK_ESFIItemEntry_ESFIItem.BarCode                                                                    AS 'BARCODE',
        FK_ESFIItemEntry_ESFIItem.Description                                                                AS 'ΠΕΡΙΓΡΑΦΗ',
+       FK_ESFIItemEntry_ESFIItem.fItemSubcategoryCode                                                       AS 'BRAND',
        ESFIItemEntry_ESFIItemPeriodics.Quantity                                                             AS 'ΠΟΣΟΤΗΤΑ',
        ESFIItemEntry_ESFIItemPeriodics.NetValue /
        isnull(ESFIItemEntry_ESFIItemPeriodics.Quantity, 1)                                                  AS 'ΚΑΘΑΡΗ ΤΙΜΗ',
        FK_ESFIItemEntry_ESFIItem.RetailPrice                                                                AS 'ΤΙΜΗ ΛΙΑΝΙΚΗΣ',
-       Case when ESFIItemEntry_ESFIItemPeriodics.NetValue  =0 then null
+       CASE when ESFIItemEntry_ESFIItemPeriodics.NetValue  =0 then null
        Else (FK_ESFIItemEntry_ESFIItem.RetailPrice / (1 + (FK_ESFIItem_ESGOZVATCategory.Normal / 100))) /
        isnull((ESFIItemEntry_ESFIItemPeriodics.NetValue / ESFIItemEntry_ESFIItemPeriodics.Quantity), 1) -
-       1 END                                                                                                    AS 'ΚΕΡΔΟΦΟΡΙΑ',
-       ESFIItemEntry_ESFIItemPeriodics.DocumentCode                                                         AS 'ΠΑΡΑΣΤΑΤΙΚΟ'
+       1 END                                                                                                    AS 'ΚΕΡΔΟΦΟΡΙΑ'
+       
 
 FROM ESFIItemEntry_ESFIItemPeriodics AS ESFIItemEntry_ESFIItemPeriodics
 
