@@ -19,16 +19,17 @@ def run():
 
         def __str__(self):
             return f"""
->:python: :  ΜΗΝΙΑΙΟ ΔΗΜΟΣΙΕΥΜΑ [ΕΜΜΑΝΟΥΗΛ ΒΑΡΔΑΣ (ΠΕΚ)] (0.06 EUR * ΠΟΣΟΤΗΤΑ) - (ΑΘΡΟΙΣΜΑ ΠΙΣΤΩΤΙΚΩΝ)
+>:python: :  ΜΗΝΙΑΙΟ ΔΗΜΟΣΙΕΥΜΑ [ΕΜΜΑΝΟΥΗΛ ΒΑΡΔΑΣ (ΠΕΚ)] 
+> ΥΠΟΛΟΓΙΣΜΟΣ (0.06 EUR * ΠΟΣΟΤΗΤΑ_ΠΩΛΗΣΕΩΝ) - (ΑΘΡΟΙΣΜΑ ΠΙΣΤΩΤΙΚΩΝ)
 >ΠΩΛΗΣΕΙΣ:
 ```{self.poliseis}```
 >ΠΙΣΤΩΤΙΚΑ:
 ```{pistotika}```
 >ΚΑΘΑΡΟ ΥΠΟΛΟΙΠΟ:
+` (0.06 * {self.poliseis.SalesQuantity[0]} ) - ({self.money_back})`
 ` {self.tziros} - {self.money_back} = {self.ypoloipo} EUR`
 >:fbwow:
     """
-
 
     today = datetime.now()
     dates = pd.date_range('2018-11-1', today)

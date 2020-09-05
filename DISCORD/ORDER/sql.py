@@ -54,4 +54,16 @@ SELECT
 """
 
 
-
+def available_orders():
+    return  """
+    SELECT  
+            IMP_MobileDocumentHeaders.Code,
+            IMP_MobileDocumentHeaders.PdaId,
+            ESFITradeAccount.Name
+            from IMP_MobileDocumentHeaders
+            left join ESFITradeAccount on IMP_MobileDocumentHeaders.Supplier = ESFITradeAccount.GID
+            where DATEPART(yyyy,Date) = DATEPART(yyyy,getdate())
+            and OrderType = 'ΠΠΡ'
+            and CheckState is null -- καταχωρημένο όχι (στο PC)
+            and Ιntegrated = 1 -- ολοκληρωμένο ναι (στο PDA)     
+    """
