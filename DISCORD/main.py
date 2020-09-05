@@ -17,6 +17,7 @@ from DISCORD.BAZAAR import bazaar
 from DISCORD.VARDAS import vardas
 from DISCORD.PRE_COST_CALCULATION import pre_cost_calc
 from DISCORD.PENDING import pendings
+from DISCORD.PRICE_HISTORY import price_history
 
 TOKEN = discord_app.token()
 GUILD = os.getenv(discord_app.guild())
@@ -110,6 +111,17 @@ async def on_message(message):
         bazaar.run()
         response = 'ΚΑΤΑΧΩΡΗΣΗ ΤΙΜΟΛΟΓΙΩΝ BAZAAR: COMPLETE'
         await message.channel.send(response)
+
+    if message.content.lower().startswith('history'):
+        try:
+            barcode = message.content.split(' ')[1]
+        except IndexError:
+            await message.channel.send('Η ΣΥΝΤΑΞΗ ΤΗΣ ΕΝΤΟΛΗΣ ΕΙΝΑΙ: {history + __barcode__}')
+            return
+        x = price_history.run(barcode)
+        r = [f'{i} EUR' for i in x]
+        await message.channel.send(file=discord.File('images/price_history.png'),
+                                   content=f'ΒΡΕΘΗΚΑΝ ΟΙ ΠΑΡΑΚΑΤΩ ΤΙΜΕΣ {r}')
 
 
 client.run(TOKEN)

@@ -38,4 +38,4 @@ def figure(answer_2, answer):
     plt.title(f'ΤΖΙΡΟΣ / ΥΠΟΚΑΤΗΓΟΡΙΑ')
     plt.axis('off')
     plt.savefig('images/thalassina_tree_map.png')
-
+    plt.close()

@@ -40,3 +40,4 @@ def run(answer, answer_2):
     plt.axis('off')
     plt.savefig('images/pagota_tree_map.png')
     # plt.show()
+    plt.close()

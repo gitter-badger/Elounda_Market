@@ -53,3 +53,4 @@ def run_02(year_2012, year_2013, year_2014, year_2015, year_2016, year_2017, yea
     plt.savefig('images/kataskevastis_views.png')
     # plt.show()
     print('\n 21: PLOT DONE')
+    plt.close()

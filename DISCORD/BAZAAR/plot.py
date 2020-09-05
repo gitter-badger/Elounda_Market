@@ -17,3 +17,4 @@ def run(sql_answer, retail_price):
     plt.legend()
     plt.savefig('images/bazaar_views.png')
     # plt.show()
+    plt.close()

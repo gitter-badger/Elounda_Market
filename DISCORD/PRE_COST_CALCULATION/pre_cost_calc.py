@@ -7,7 +7,7 @@ from Private import sql_connect
 from DISCORD.PRE_COST_CALCULATION import excel_export, sql_select, slack
 from datetime import datetime as dt
 
-# '4002'  # number here 4018 4002
+# number here 4018 4002
 
 
 def run(input_param, get_year):

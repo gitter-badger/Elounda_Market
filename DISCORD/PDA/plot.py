@@ -71,3 +71,4 @@ def app(answer_03, answer_04, answer_05):
     plt.axis('off')
     plt.savefig('images/pda_tree_map.png')
     # plt.show()
+    plt.close()

@@ -1,7 +1,6 @@
 #   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 
 from Private import slack_app
-# channel 1 is ενημερώσεις
 
 
 def run(id):
@@ -12,7 +11,7 @@ def run(id):
         remaining = '-' * ((100 - percent) // 2)
         timer = (x['messages'][i]['ts'])
         slack_app.delete(slack_app.channels_id[id], timer)
-        print(f'\r:slack: SLACK DELETE ALL ENTRIES DONE:[{filler}{remaining}]{percent}%', end='', flush=True)
+        print(f'\rDONE:[{filler}{remaining}]{percent}%', end='', flush=True)
     print()
 
 

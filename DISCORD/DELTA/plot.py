@@ -22,3 +22,4 @@ def run(answer_2):
     plt.grid(True, alpha=0.5)
     plt.savefig('images/fresco_gala_delta_views.png')
     # plt.show()
+    plt.close()
