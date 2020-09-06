@@ -21,7 +21,7 @@ def run():
     folder = query.DocumentCode.unique()
     for document in folder:
         # ----------------DIRECTORY PATH ----------------------------
-        directory_path = f'/Users/kommas/OneDrive/Business_Folder/Slack/Supplier_Check/{document}'
+        directory_path = f'/Users/kommas/OneDrive/Business_Folder/Slack/Supplier_Check/history/{document}'
         target = query[query.DocumentCode == document]
         # -------------------- MAKE DIRECTORY IF DOES NOT EXISTS --------------------
         try:
