@@ -1,10 +1,8 @@
 #   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 
+import time
+x = range(20,0,-1)
 
-a = 'ela re malaka'
-
-if (a.split()[0] + a.split()[1]) == 'elare':
-    print('ok')
-
-x =a.startswith('ela re')
-print(x)
+for i in x:
+    print(f'\r{i:2}', end='')
+    time.sleep(1)
