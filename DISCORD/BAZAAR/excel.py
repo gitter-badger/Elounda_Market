@@ -47,6 +47,7 @@ def export(path_to_file, sql_answer):
 
             # Conditional Formating
             worksheet.conditional_format('H1:H1500', {'type': '3_color_scale'})
-            worksheet.merge_range(f"A{length}:K{length}", f'BRAND NAME: {i}', center)
+            mean_markup = round(sql_answer['ΚΕΡΔΟΦΟΡΙΑ'][sql_answer['BRAND'] == i].mean() * 100, 2)
+            worksheet.merge_range(f"A{length}:K{length}", f'BRAND NAME: {i} MARKUP: {mean_markup}', center)
 
             length += len(sql_answer[sql_answer['BRAND'] == i]) + 3

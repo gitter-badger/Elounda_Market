@@ -16,7 +16,7 @@ with open("../HTML/7. Εκκ. Πιστωτικών Καρτών.html", 'r')as ht
     word = html_file.read()
 
 # -------------------------------- READ SQL FILE ---------------------------------------
-with open('../SQL/7. Εκκ. Πιστωτικών Καρτών', 'r') as sql_file:
+with open('../SQL/epc.sql', 'r') as sql_file:
     sql_querry = sql_file.read()
 
 # -------------------------------- SQL ---------------------------------------

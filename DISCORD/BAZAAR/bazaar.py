@@ -1,7 +1,6 @@
 #   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 import pandas as pd
 import numpy as np
-from matplotlib import pyplot as plt
 from DISCORD.BAZAAR import excel, scrap, slack, sql, plot
 from Private import  sql_connect
 
@@ -16,6 +15,9 @@ main_name = 'Bazaar A.E.'
 def run():
     # -------------------- Assign the SQL Query Answer --------------------
     sql_answer = pd.read_sql_query(sql.private_database_query(main_name), sql_connect.sql_cnx())
+
+    unique_brands = sql_answer['BRAND'].unique()
+    markup_per_brand= [round(sql_answer['ΚΕΡΔΟΦΟΡΙΑ'][sql_answer['BRAND'] == i].mean() * 100, 2) for i in unique_brands]
 
     # -------------------- ASSIGN VALUES HERE MARKUP / QUARTILES --------------------
     markup = round(sql_answer['ΚΕΡΔΟΦΟΡΙΑ'] * 100, 2)
@@ -40,8 +42,16 @@ def run():
     sql_answer['TIMH ΒΑΣΙΛΟΠΟΥΛΟΣ'] = out['ΑΒ. Βασιλόπουλος']
     sql_answer['TIMH Care Market'] = out['Care Market']
 
+    # -------------------- EXTRA RETAIL/BAZAAR -------------------
+    extra = sql_answer
+    extra['DIFERENCE'] = 0
+    extra['DIFERENCE'] = round(extra['ΤΙΜΗ ΛΙΑΝΙΚΗΣ'] / extra['ΤΙΜΗ BAZAAR'] * 100, 2)
+    print(extra)
+    quit()
+
     # -------------------- PLOT A HISTOGRAM WITH QUARTILE VALUES --------------------
     plot.run(sql_answer, retail_price)
+    plot.run_02(markup_per_brand, unique_brands)
 
     # -------------------- Εισαγωγή Δεομένων στο  EXCEL --------------------
     excel.export(path_to_file, sql_answer)
@@ -49,3 +59,4 @@ def run():
     # ----------------SLACK BOT----------------------------
     slack.run(order_id, output_file, path_to_file)
 
+run()
