@@ -2,7 +2,7 @@
 
 import pandas as pd
 from Private import send_mail, sql_connect
-from Send_Multiple_E_Mails.Libraries import pe_00_to_excel
+from C_MONTHLY_REPORTS.EXCEL import pe_00_to_excel
 output_file = 'Extra_Timokatalogos.xlsx'
 path_to_file = f'/Users/kommas/OneDrive/Business_Folder/Slack/Multiple_emails/{output_file}'
 mail_lst = ['johnkommas@hotmail.com', 'accounts@latocrete.gr', 'eloundamarket@yahoo.gr']

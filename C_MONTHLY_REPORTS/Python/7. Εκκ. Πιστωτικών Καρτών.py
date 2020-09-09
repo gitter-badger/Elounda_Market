@@ -1,7 +1,7 @@
 #   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 from Private import sql_connect, send_mail
 import pandas as pd
-from Send_Multiple_E_Mails.Libraries import epc_07_to_excel
+from C_MONTHLY_REPORTS.EXCEL import epc_07_to_excel
 
 
 output_file = 'Sales_Credit_Card.xlsx'

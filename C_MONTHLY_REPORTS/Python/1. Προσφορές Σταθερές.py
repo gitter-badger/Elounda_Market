@@ -2,7 +2,7 @@
 
 import pandas as pd
 from Private import send_mail, sql_connect
-from Send_Multiple_E_Mails.Libraries import ps_01_to_excel
+from C_MONTHLY_REPORTS.EXCEL import ps_01_to_excel
 
 output_file = 'Normal_Timokatalogos.xlsx'
 
