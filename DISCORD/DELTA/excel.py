@@ -8,7 +8,7 @@ def run(file_path, answer, answer_2, pl):
     with pd.ExcelWriter(file_path, engine='xlsxwriter') as writer:
         answer.to_excel(writer, sheet_name='ΦΡ_ΓΑΛΑ_ΔΕΛΤΑ', startcol=3, startrow=0)
         answer_2.to_excel(writer, sheet_name='ΦΡ_ΓΑΛΑ_ΔΕΛΤΑ', startcol=0, startrow=0)
-        # Φτιάχνω το excel για να είναι ευαναγνωστο
+        # Φτιάχνω το EXCEL για να είναι ευαναγνωστο
         workbook = writer.book
         worksheet = writer.sheets['ΦΡ_ΓΑΛΑ_ΔΕΛΤΑ']
         number = workbook.add_format({'num_format': '€#,##0.00',

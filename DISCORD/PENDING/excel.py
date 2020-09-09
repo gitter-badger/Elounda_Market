@@ -8,7 +8,7 @@ def run(path_to_file, tabs, answers):
         for i, tab in enumerate(tabs):
             answers[i].to_excel(writer, sheet_name=tab, startcol=0, startrow=0, index=None)
 
-            # Φτιάχνω το excel για να είναι ευαναγνωστο
+            # Φτιάχνω το EXCEL για να είναι ευαναγνωστο
             workbook = writer.book
             worksheet = writer.sheets[tab]
             # Formats

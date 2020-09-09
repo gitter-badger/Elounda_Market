@@ -10,7 +10,7 @@ def export(path_to_file, sql_answer):
             sql_answer[sql_answer['BRAND'] == i].to_excel(writer, sheet_name='TODAY', startcol=0, startrow=length,
                                                           index=None)
 
-            # Φτιάχνω το excel για να είναι ευαναγνωστο
+            # Φτιάχνω το EXCEL για να είναι ευαναγνωστο
             workbook = writer.book
             worksheet = writer.sheets['TODAY']
             number = workbook.add_format({

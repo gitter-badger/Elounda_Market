@@ -6,7 +6,7 @@ def export(path_to_file,sql_answer):
     with pd.ExcelWriter(path_to_file, engine='xlsxwriter') as writer:
         sql_answer.to_excel(writer, sheet_name='Barcodes', startcol=0, startrow=0, index=None)
 
-        # Φτιάχνω το excel για να είναι ευαναγνωστο
+        # Φτιάχνω το EXCEL για να είναι ευαναγνωστο
         workbook = writer.book
         worksheet = writer.sheets['Barcodes']
         number = workbook.add_format({'num_format': '€#,##0.00',
