@@ -56,9 +56,17 @@ def run():
     plot.run_02(markup_per_brand, unique_brands)
     plot.run_03(extra['BARCODE'], extra['DIFFERENCE'])
 
+    # -------------------- PLUS STATS --------------------
+
+    cost = round(sql_answer['ΚΑΘΑΡΗ ΤΙΜΗ'] * sql_answer['ΠΟΣΟΤΗΤΑ'].sum(), 2)
+    elounda_sales = round(sql_answer['ΤΙΜΗ ΛΙΑΝΙΚΗΣ'] * sql_answer['ΠΟΣΟΤΗΤΑ'].sum(), 2)
+    bazaar_sales = round(sql_answer['ΤΙΜΗ BAZAAR'] * sql_answer['ΠΟΣΟΤΗΤΑ'].sum(), 2)
+    kerdos_elounda = round(elounda_sales - cost, 2)
+    kerdos_bazaar = round(bazaar_sales - cost, 2)
+
     # -------------------- Εισαγωγή Δεομένων στο  EXCEL --------------------
     excel.export(path_to_file, sql_answer)
 
     # ----------------SLACK BOT----------------------------
-    slack.run(order_id, output_file, path_to_file)
+    slack.run(order_id, output_file, path_to_file, cost, elounda_sales, kerdos_elounda, bazaar_sales, kerdos_bazaar)
 

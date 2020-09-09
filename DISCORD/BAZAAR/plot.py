@@ -43,6 +43,7 @@ def run_02(markup_per_brand, unique_brands):
     # plt.show()
     plt.close()
 
+
 def run_03(barcode, diference):
     # create your figure here
     X = barcode

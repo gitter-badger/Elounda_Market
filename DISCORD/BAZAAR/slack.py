@@ -2,10 +2,13 @@
 from Private import slack_app
 
 
-def run(order_id, output_file, path_to_file):
+def run(order_id, output_file, path_to_file, cost, elounda_sales, kerdos_elounda, bazaar_sales, kerdos_bazaar):
     slack_output_text = f"""
 > :python: : ΕΒΔΟΜΑΔΙΑΙΟ ΔΗΜΟΣΙΕΥΜΑ
 > ΚΑΤΑΧΩΡΗΘΗΚΑΝ ΤΑ ΤΙΜΟΛΟΓΙΑ: {order_id}
+> ΣΥΝΟΛΙΚΟ ΚΟΣΤΟΣ: {cost} EUR
+> ΤΑΜΕΙΟ ΠΩΛΗΣΗ ELOUNDA: {elounda_sales} EUR \t ΚΕΡΔΟΣ: {kerdos_elounda} EUR
+> ΤΑΜΕΙΟ ΠΩΛΗΣΗ BAZAAR :{bazaar_sales} EUR  \t ΚΕΡΔΟΣ: {kerdos_bazaar} EUR
 >:fbwow: 
     """
     slack_app.send_text(slack_output_text, slack_app.channels[5])
