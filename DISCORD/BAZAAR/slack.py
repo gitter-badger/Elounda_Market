@@ -12,3 +12,4 @@ def run(order_id, output_file, path_to_file):
     slack_app.send_files(output_file, path_to_file, 'xlsx', slack_app.channels[5])
     slack_app.send_files('bazaar_views.png', 'images/bazaar_views.png', 'png', slack_app.channels[5])
     slack_app.send_files('markup_bazaar_views.png', 'images/markup_bazaar_views.png', 'png', slack_app.channels[5])
+    slack_app.send_files('retail_to_retail.png', 'images/retail_to_retail.png', 'png', slack_app.channels[5])

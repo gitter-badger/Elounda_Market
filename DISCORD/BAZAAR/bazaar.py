@@ -62,4 +62,3 @@ def run():
     # ----------------SLACK BOT----------------------------
     slack.run(order_id, output_file, path_to_file)
 
-run()
