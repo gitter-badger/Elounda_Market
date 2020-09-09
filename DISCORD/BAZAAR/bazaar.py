@@ -44,14 +44,17 @@ def run():
 
     # -------------------- EXTRA RETAIL/BAZAAR -------------------
     extra = sql_answer
-    extra['DIFERENCE'] = 0
-    extra['DIFERENCE'] = round(extra['ΤΙΜΗ ΛΙΑΝΙΚΗΣ'] / extra['ΤΙΜΗ BAZAAR'] * 100, 2)
-    print(extra)
-    quit()
+    extra['DIFFERENCE'] = 0
+    extra['DIFFERENCE'] = round((extra['ΤΙΜΗ ΛΙΑΝΙΚΗΣ'] / extra['ΤΙΜΗ BAZAAR'] -1)* 100, 2)
+    extra['DIFFERENCE'] = extra['DIFFERENCE'].replace(to_replace=-100.00, value=np.nan)
+    extra['DIFFERENCE'] = extra['DIFFERENCE'].replace([np.inf, -np.inf], np.nan)
+    extra = extra.dropna()
+    extra = extra.sort_values(by='DIFFERENCE')
 
     # -------------------- PLOT A HISTOGRAM WITH QUARTILE VALUES --------------------
     plot.run(sql_answer, retail_price)
     plot.run_02(markup_per_brand, unique_brands)
+    plot.run_03(extra['BARCODE'], extra['DIFFERENCE'])
 
     # -------------------- Εισαγωγή Δεομένων στο  EXCEL --------------------
     excel.export(path_to_file, sql_answer)

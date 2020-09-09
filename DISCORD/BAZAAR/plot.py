@@ -39,7 +39,30 @@ def run_02(markup_per_brand, unique_brands):
                      xytext=(0, 10),  # distance from text to points (x,y)
                      ha='center')  # horizontal alignment can be left, right or center
     plt.grid(True, alpha=0.2)
-    plt.legend()
-    # plt.savefig('images/markup_bazaar_views.png')
-    plt.show()
+    plt.savefig('images/markup_bazaar_views.png')
+    # plt.show()
     plt.close()
+
+def run_03(barcode, diference):
+    # create your figure here
+    X = barcode
+    y = diference
+    plt.figure(figsize=(15, 9))
+    plt.subplot(xlabel='ΚΩΔΙΚΟΣ', ylabel='BAZAAR PLUS', title='ΠΟΣΟΣΤΟ ΠΡΟΣΑΥΞΗΣΗΣ ΣΕ ΣΧΕΣΗ ΜΕ ΤΗΝ ΤΙΜΗ BAZAAR (RETAIL TO RETAIL) ')
+    plt.xticks(rotation=90)
+    colors = [plt.cm.Spectral(i / float(len(X))) for i in range(len(X))]
+    plt.bar(X, y, alpha=0.9, color=colors)
+    for a, b in zip(X, y):
+        label = "{}%".format(int(b))
+
+        # this method is called for each point
+        plt.annotate(label,  # this is the text
+                     (a, b),  # this is the point to label
+                     textcoords="offset points",  # how to position the text
+                     xytext=(0, 10),  # distance from text to points (x,y)
+                     ha='center')  # horizontal alignment can be left, right or center
+    plt.grid(True, alpha=0.2)
+    plt.savefig('images/markup_bazaar_views.png')
+    # plt.show()
+    plt.close()
+
