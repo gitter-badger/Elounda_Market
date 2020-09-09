@@ -63,7 +63,7 @@ def run():
 
     sql_answer['cost'] = round(sql_answer['ΚΑΘΑΡΗ ΤΙΜΗ'] * sql_answer['ΠΟΣΟΤΗΤΑ'], 2)
     sql_answer['elounda_sales'] = round(sql_answer['ΤΙΜΗ ΛΙΑΝΙΚΗΣ'] * sql_answer['ΠΟΣΟΤΗΤΑ'], 2)
-    sql_answer['bazaar_sales'] = round(sql_answer['ΤΙΜΗ BAZAAR'] * sql_answer['ΠΟΣΟΤΗΤΑ'].sum(), 2)
+    sql_answer['bazaar_sales'] = round(sql_answer['ΤΙΜΗ BAZAAR'] * sql_answer['ΠΟΣΟΤΗΤΑ'], 2)
 
     cost = round(sql_answer['cost'].sum(), 2)
     elounda_sales = round(sql_answer['elounda_sales'].sum(), 2)
