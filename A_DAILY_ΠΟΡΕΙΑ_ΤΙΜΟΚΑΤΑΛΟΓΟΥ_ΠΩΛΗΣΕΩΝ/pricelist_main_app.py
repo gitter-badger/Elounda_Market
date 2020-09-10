@@ -3,11 +3,8 @@ import pandas as pd
 from pathlib import Path
 from A_DAILY_ΠΟΡΕΙΑ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ_ΠΩΛΗΣΕΩΝ.library import sql_select, timokatalogos, excel_export, plot, price_list_slack
 from Private import sql_connect, slack_app
-import matplotlib.pyplot as plt
 import time
 from datetime import datetime as dt
-import numpy as np
-import squarify
 
 # ---------------- MAKE DF REPORT VIEWABLE ----------------------------
 pd.set_option('display.max_columns', 500)
