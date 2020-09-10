@@ -2,7 +2,7 @@
 import pandas as pd
 import numpy as np
 from DISCORD.BAZAAR import excel, scrap, slack, sql, plot
-from Private import  sql_connect
+from Private import sql_connect
 
 # -------------------- Statements Here --------------------
 output_file = 'Bazaar.xlsx'
@@ -60,7 +60,6 @@ def run():
     excel.export(path_to_file, sql_answer)
 
     # -------------------- PLUS STATS --------------------
-
     sql_answer['cost'] = round(sql_answer['ΚΑΘΑΡΗ ΤΙΜΗ'] * sql_answer['ΠΟΣΟΤΗΤΑ'], 2)
     sql_answer['elounda_sales'] = round(sql_answer['ΤΙΜΗ ΛΙΑΝΙΚΗΣ'] * sql_answer['ΠΟΣΟΤΗΤΑ'], 2)
     sql_answer['bazaar_sales'] = round(sql_answer['ΤΙΜΗ BAZAAR'] * sql_answer['ΠΟΣΟΤΗΤΑ'], 2)

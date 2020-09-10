@@ -189,20 +189,18 @@ while True:
 
         # -------------------- SLACK BOT ADD TEXT --------------------
         report = f"""
-        >ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ
-        ΠΟΡΕΙΑ ΠΩΛΗΣΕΩΝ ΓΙΑ ΤΙΣ ΠΡΟΣΦΟΡΕΣ:
-        ` ΣΥΜΜΕΤΕΧΟΥΝ: \t {len(final_result)} ΠΡΟΪΟΝΤΑ `
-        ` DATERANGE: \t ΑΠΟ: {from_date.strftime("%d-%m-%Y")} \t ΕΩΣ: {to_date.strftime("%d-%m-%Y")} `
-        ` ΠΟΣΟΤΗΤΑ ΠΩΛΗΣΕΩΝ: \t {round(final_result.SalesQuantity.sum(), 2)} TEM `
-        ` M.O. / ΗΜΕΡΑ : \t {round(np.mean(quantity_per_day))} TEM ` 
-        ` ΤΖΙΡΟΣ ΠΩΛΗΣΕΩΝ: \t {round(final_result.Turnover.sum(), 2)} EUR `
-        ` M.O. / ΗΜΕΡΑ : \t {round(np.mean(tziros_per_day), 2)} EUR `
-        ` Α/Α ΕΝΕΡΓΕΙΑ: {choose_pricelist.id}`
-        ` {choose_pricelist.comments}`
-        ```{brand_sales}```
-        >
-        >Data Science Tools Used:
-        >:slack: :github: :docker: :kubernetes: :python: :javascript: :nodejs: :react: :vue: :fbwow: 
+>:python: : ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ
+>ΠΟΡΕΙΑ ΠΩΛΗΣΕΩΝ ΓΙΑ ΤΙΣ ΠΡΟΣΦΟΡΕΣ:
+>ΣΥΜΜΕΤΕΧΟΥΝ: \t {len(final_result)} ΠΡΟΪΟΝΤΑ 
+>DATERANGE: \t ΑΠΟ: {from_date.strftime("%d-%m-%Y")} \t ΕΩΣ: {to_date.strftime("%d-%m-%Y")} 
+>ΠΟΣΟΤΗΤΑ ΠΩΛΗΣΕΩΝ: \t {round(final_result.SalesQuantity.sum(), 2)} TEM 
+> M.O. / ΗΜΕΡΑ : \t {round(np.mean(quantity_per_day))} TEM 
+> ΤΖΙΡΟΣ ΠΩΛΗΣΕΩΝ: \t {round(final_result.Turnover.sum(), 2)} EUR 
+> M.O. / ΗΜΕΡΑ : \t {round(np.mean(tziros_per_day), 2)} EUR 
+> Α/Α ΕΝΕΡΓΕΙΑ: {choose_pricelist.id}`
+> {choose_pricelist.comments}
+```{brand_sales}```
+> :fbwow: 
         """
 
         slack_app.send_text(report, slack_app.channels[0])
