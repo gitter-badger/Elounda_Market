@@ -106,7 +106,7 @@ while True:
 
         # -------------------- SLACK BOT ADD TEXT --------------------
         price_list_slack.run(final_result, from_date, to_date, quantity_per_day, tziros_per_day,
-                             choose_pricelist, brand_sales, path_to_file)
+                             choose_pricelist, brand_sales, path_to_file, id)
     else:
 
         # -------------------- ΕΚΤΥΠΩΝΩ STATEMENT --------------------

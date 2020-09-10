@@ -41,6 +41,9 @@ def run():
     sql_answer_bazaar['TIMH ΒΑΣΙΛΟΠΟΥΛΟΣ'] = out['ΑΒ. Βασιλόπουλος']
     sql_answer_bazaar['TIMH Care Market'] = out['Care Market']
 
+    # -------------------- Εισαγωγή Δεομένων στο  EXCEL --------------------
+    excel.export(path_to_file, sql_answer_bazaar)
+
     # -------------------- EXTRA RETAIL/BAZAAR -------------------
     extra = sql_answer_bazaar
     extra['DIFFERENCE'] = 0
@@ -54,9 +57,6 @@ def run():
     plot.run(sql_answer_bazaar, retail_price)
     plot.run_02(markup_per_brand, unique_brands)
     plot.run_03(extra['BARCODE'], extra['DIFFERENCE'])
-
-    # -------------------- Εισαγωγή Δεομένων στο  EXCEL --------------------
-    excel.export(path_to_file, sql_answer_bazaar)
 
     # -------------------- PLUS STATS --------------------
     sql_answer_bazaar['cost'] = round(sql_answer_bazaar['ΚΑΘΑΡΗ ΤΙΜΗ'] * sql_answer_bazaar['ΠΟΣΟΤΗΤΑ'], 2)

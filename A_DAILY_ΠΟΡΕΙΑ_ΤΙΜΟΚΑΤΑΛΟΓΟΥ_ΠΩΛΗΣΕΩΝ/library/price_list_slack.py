@@ -4,7 +4,7 @@ import numpy as np
 
 
 def run(final_result, from_date, to_date, quantity_per_day,
-        tziros_per_day, choose_pricelist, brand_sales, path_to_file):
+        tziros_per_day, choose_pricelist, brand_sales, path_to_file, id):
     report = f"""
 >:python: : ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ
 >ΠΟΡΕΙΑ ΠΩΛΗΣΕΩΝ ΓΙΑ ΤΙΣ ΠΡΟΣΦΟΡΕΣ:
