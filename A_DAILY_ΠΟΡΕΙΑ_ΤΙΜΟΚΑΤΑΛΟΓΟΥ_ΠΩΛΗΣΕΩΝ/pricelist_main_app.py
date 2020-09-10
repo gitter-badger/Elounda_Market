@@ -197,7 +197,7 @@ while True:
 > M.O. / ΗΜΕΡΑ : \t {round(np.mean(quantity_per_day))} TEM 
 > ΤΖΙΡΟΣ ΠΩΛΗΣΕΩΝ: \t {round(final_result.Turnover.sum(), 2)} EUR 
 > M.O. / ΗΜΕΡΑ : \t {round(np.mean(tziros_per_day), 2)} EUR 
-> Α/Α ΕΝΕΡΓΕΙΑ: {choose_pricelist.id}`
+> Α/Α ΕΝΕΡΓΕΙΑ: {choose_pricelist.id}
 > {choose_pricelist.comments}
 ```{brand_sales}```
 > :fbwow: 

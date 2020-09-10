@@ -214,7 +214,7 @@ async def on_message(message):
             """)
 
             await message.channel.send("""
-            :one: :one: __ΑΝ__ __ΚΑΙ__ __ΠΑΛΙ__ __ΔΕΝ__ __ΒΡΕΘΕΙ__ __ΠΑΡΑΣΤΙΚΟ__ __ΑΓΟΡΑΣ__ :question:""")
+            :one: :one: __ΑΝ__ __ΚΑΙ__ __ΠΑΛΙ__ __ΔΕΝ__ __ΒΡΕΘΕΙ__ __ΠΑΡΑΣΤΑΤΙΚΟ__ __ΑΓΟΡΑΣ__ :question:""")
 
             await message.channel.send(""" 
             :white_check_mark: ΤΟΤΕ ΕΙΜΑΣΤΕ ΣΙΓΟΥΡΟΙ ΟΤΙ ΤΟ ΕΙΔΟΣ ΕΙΝΑΙ ΝΕΟΤΕΡΟ ΤΟΥ ΕΤΟΥΣ 
