@@ -125,7 +125,7 @@ def run():
     # ------- OUTPUT FILE -----------
     output_file = "/Users/kommas/OneDrive/Business_Folder/Slack/Private_Analytics/EM.xlsx"
     # -------------ANSWERS----------------------------
-    answer_00 = pd.read_sql_query(sql.query_00(), sql_connect.sql_cnx())
+    answer_00 = pd.read_sql_query(sql.query_00(), sql_connect.connect())
     print(' 00: Προμηθευτές: SQL Ερώτημα για το σύνολο των Προμηθευτών -> --> Ολοκληρώθηκε:  {}'.format(
         datetime.now().strftime("%H:%M:%S")))
     x = ()
@@ -136,7 +136,7 @@ def run():
         x = x + (answer_00['NAME'][i],)
         print(f'\r 00: Adding {answer_00["NAME"][i]} Done:[{filler}{percent}%{remaining}]', end='', flush=True)
 
-    answer_01 = pd.read_sql_query(sql.query_01(), sql_connect.sql_cnx())
+    answer_01 = pd.read_sql_query(sql.query_01(), sql_connect.connect())
     print(f'\n 02: SQL QUERY DONE: {datetime.now().strftime("%H:%M:%S")}', end='')
 
     prod_per_year = answer_01.groupby(['YEAR'])['TurnOver'].sum().reset_index()
@@ -165,10 +165,10 @@ def run():
         filler = "█" * percent
         remaining = '-' * (100 - percent)
 
-        answer.append(pd.read_sql_query(sql.query(c[i]), sql_connect.sql_cnx()))
+        answer.append(pd.read_sql_query(sql.query(c[i]), sql_connect.connect()))
         answer_sum.append(sum(answer[i].TurnOver))
         answer_count.append(len(answer[i]))
-        answer_quant.append(pd.read_sql_query(sql.count_query(c[i]), sql_connect.sql_cnx()))
+        answer_quant.append(pd.read_sql_query(sql.count_query(c[i]), sql_connect.connect()))
         year_2012.append(sum(answer[i].f2012))
         year_2013.append(sum(answer[i].f2013))
         year_2014.append(sum(answer[i].f2014))
@@ -191,7 +191,7 @@ def run():
         filler = "█" * percent
         remaining = '-' * (100 - percent)
 
-        answer_prom.append(pd.read_sql_query(sql.querry_suppliers(promi8eutes_list[i]), sql_connect.sql_cnx()))
+        answer_prom.append(pd.read_sql_query(sql.querry_suppliers(promi8eutes_list[i]), sql_connect.connect()))
         answer_prom_count.append(len(answer_prom[i]))
         print(f'\r 06: looping with counter {i} Done:[{filler}{percent}%{remaining}]', end='', flush=True)
 

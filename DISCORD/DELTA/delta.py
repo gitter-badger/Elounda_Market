@@ -7,8 +7,8 @@ from Private import sql_connect
 def run():
     file_path = '/Users/kommas/OneDrive/Business_Folder/Slack/Private_Analytics/Φρέσκο Γάλα Δέλτα POS.xlsx'
     # -------------Pandas GET Answer ------------
-    answer = pd.read_sql_query(sql.query_01(), sql_connect.sql_cnx())
-    answer_2 = pd.read_sql_query(sql.query_02(), sql_connect.sql_cnx())
+    answer = pd.read_sql_query(sql.query_01(), sql_connect.connect())
+    answer_2 = pd.read_sql_query(sql.query_02(), sql_connect.connect())
     # ------------- PLOT ------------
     plot.run(answer_2)
     pl = 12

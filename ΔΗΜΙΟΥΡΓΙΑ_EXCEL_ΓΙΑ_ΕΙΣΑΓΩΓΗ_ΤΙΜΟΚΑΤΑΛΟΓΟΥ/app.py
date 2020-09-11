@@ -17,7 +17,7 @@ output_file = 'Timokatalogos.xlsx'
 path_to_file = f'/Users/kommas/OneDrive/{output_file}'
 
 # -------------------- READ PDA SCANNED ITEMS --------------------
-sql = pd.read_sql_query(sql_select.pda_results(id), sql_connect.sql_cnx())
+sql = pd.read_sql_query(sql_select.pda_results(id), sql_connect.connect())
 df = pd.DataFrame()
 today = date.today().strftime('%d/%m/%y')
 period = date.today() +  relativedelta(weeks=+how_many_weeks)

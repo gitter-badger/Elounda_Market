@@ -20,7 +20,7 @@ def pda_results(id):
 id = '1877'
 
 # ----------------DATAFRAME----------------------------
-df = pd.read_sql_query(pda_results(id), sql_connect.sql_cnx())
+df = pd.read_sql_query(pda_results(id), sql_connect.connect())
 
 # ----------------FILE WRITE INLINE WITH \,----------------------------
 with open('file.csv', 'w') as file:

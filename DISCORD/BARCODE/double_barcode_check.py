@@ -10,7 +10,7 @@ def run():
     barcode_old_values = ('5200116140910', '5206586230687', '5213002921425', '5214000237334')
 
     # Assign the SQL Query Answer
-    sql_answer = pd.read_sql_query(database.sql_query(), sql_connect.sql_cnx())
+    sql_answer = pd.read_sql_query(database.sql_query(), sql_connect.connect())
 
     sql_answer['Υπάρχει στο Slack'] = sql_answer.BarCode.apply(lambda x: 'NAI' if x in barcode_old_values else 'OXI')
 

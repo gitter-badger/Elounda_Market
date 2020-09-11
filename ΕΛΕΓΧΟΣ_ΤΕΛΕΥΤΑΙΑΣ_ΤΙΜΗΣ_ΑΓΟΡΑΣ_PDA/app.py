@@ -21,12 +21,12 @@ mail_lst = ['johnkommas@hotmail.com', 'accounts@latocrete.gr', 'eloundamarket@ya
 mail_names = ['Ανάλυση Τιμών (Κομμάς)', 'Ανάλυση Τιμών (Λογιστήριο)', 'Ανάλυση Τιμών (Κατάστημα)']
 
 # -------------------- READ PDA SCANNED ITEMS --------------------
-barcodes = pd.read_sql_query(sql_select.pda_results(id, choose), sql_connect.sql_cnx())
+barcodes = pd.read_sql_query(sql_select.pda_results(id, choose), sql_connect.connect())
 
 # -------------------- GET LATEST COST FOR EVERY BARCODE --------------------
 sql_answer = pd.DataFrame()
 for barcode in barcodes['BARCODE']:
-    sql_answer = sql_answer.append(pd.read_sql_query(sql_select.get_product_cost(barcode), sql_connect.sql_cnx()))
+    sql_answer = sql_answer.append(pd.read_sql_query(sql_select.get_product_cost(barcode), sql_connect.connect()))
 
 # -------------------- RESET INDEX --------------------
 sql_answer = sql_answer.reset_index(drop=True)

@@ -13,7 +13,7 @@ def run():
     mail_names = ['Τιμολόγιο Bazaar (Κομμάς)', 'Τιμολόγιο Bazaar (Λογιστήριο)', 'Τιμολόγιο Bazaar (Κατάστημα)']
     main_name = 'Bazaar A.E.'
     # -------------------- Assign the SQL Query Answer --------------------
-    sql_answer_bazaar = pd.read_sql_query(sql.private_database_query(main_name), sql_connect.sql_cnx())
+    sql_answer_bazaar = pd.read_sql_query(sql.private_database_query(main_name), sql_connect.connect())
 
     unique_brands = sql_answer_bazaar['BRAND'].unique()
     markup_per_brand= [round(sql_answer_bazaar['ΚΕΡΔΟΦΟΡΙΑ'][sql_answer_bazaar['BRAND'] == i].mean() * 100, 2) for i in unique_brands]

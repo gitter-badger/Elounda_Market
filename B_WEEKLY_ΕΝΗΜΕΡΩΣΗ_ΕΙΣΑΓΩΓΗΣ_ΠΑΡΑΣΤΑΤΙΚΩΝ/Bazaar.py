@@ -17,7 +17,7 @@ with open('HTML/2. Import || Bazaar.html', 'r') as html_file:
     word = html_file.read()
 
 # -------------------- Assign the SQL Query Answer --------------------
-sql_answer = pd.read_sql_query(sql_import_report.private_database_query(main_name), sql_connect.sql_cnx())
+sql_answer = pd.read_sql_query(sql_import_report.private_database_query(main_name), sql_connect.connect())
 
 # -------------------- ASSIGN VALUES HERE MARKUP / QUARTILES --------------------
 markup = round(sql_answer['ΚΕΡΔΟΦΟΡΙΑ'] * 100, 2)

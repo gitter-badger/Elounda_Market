@@ -46,11 +46,11 @@ while True:
         tziros = float(file.read())
 
     # -------------------- ΔΙΑΒΑΖΩ ΤΟΝ ΤΙΜΟΚΑΤΑΛΟΓΟ SQL DB --------------------
-    timokatalogos = pd.read_sql_query(sql_select.get_products_in_the_period(from_date, to_date), sql_connect.sql_cnx())
+    timokatalogos = pd.read_sql_query(sql_select.get_products_in_the_period(from_date, to_date), sql_connect.connect())
 
     # -------------------- READ SALES SQL DB --------------------
     sales = pd.read_sql_query(sql_select.get_sales(from_date, to_date, tuple(timokatalogos['ΚΩΔΙΚΟΣ'].values)),
-                              sql_connect.sql_cnx())
+                              sql_connect.connect())
 
     # -------------------- MERGE RESULTS PANDAS--------------------
     final_result = pd.merge(left=timokatalogos, right=sales, left_on='ΚΩΔΙΚΟΣ', right_on='ΚΩΔΙΚΟΣ').sort_values(
@@ -69,7 +69,7 @@ while True:
         for specific_date in dates_ranges:
             sales_per_day = pd.read_sql_query(
                 sql_select.get_sales_for_every_day(specific_date, tuple(timokatalogos['ΚΩΔΙΚΟΣ'].values)),
-                sql_connect.sql_cnx())
+                sql_connect.connect())
             quantity_per_day.append(sales_per_day.SalesQuantity.sum())
             tziros_per_day.append(round(sales_per_day.Turnover.sum(), 2))
 

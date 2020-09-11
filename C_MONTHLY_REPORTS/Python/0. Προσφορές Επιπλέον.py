@@ -18,7 +18,7 @@ with open('../SQL/0. Προσφορές Επιπλέον', 'r') as sql_file:
     sql_querry = sql_file.read()
 
 # --------------------------------  SQL  ---------------------------------------
-sql_answer = pd.read_sql_query(sql_querry, sql_connect.sql_cnx())
+sql_answer = pd.read_sql_query(sql_querry, sql_connect.connect())
 
 # -------------------------------- EXCEL ---------------------------------------
 pe_00_to_excel.run(path_to_file, sql_answer)

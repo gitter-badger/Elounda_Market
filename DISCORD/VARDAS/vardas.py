@@ -39,8 +39,8 @@ def run():
         date = date.strftime('%Y-%m-%d')
         x.append(date)
 
-    poliseis = pd.read_sql_query(sql.get_vardas_sale(tuple(x)), sql_connect.sql_cnx())
-    pistotika = pd.read_sql_query(sql.pistotiko(), sql_connect.sql_cnx())
+    poliseis = pd.read_sql_query(sql.get_vardas_sale(tuple(x)), sql_connect.connect())
+    pistotika = pd.read_sql_query(sql.pistotiko(), sql_connect.connect())
 
     price = 0.06
     money_back = round(sum(pistotika['NET VALUE']), 2)

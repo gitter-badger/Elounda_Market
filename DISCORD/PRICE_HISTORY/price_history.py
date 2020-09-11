@@ -17,7 +17,7 @@ import os
 # Δέχομαι την τιμή {BARCODE} ως είσοδο στην function μου.
 
 def run():
-    query = pd.read_sql(sql.get_codes(), sql_connect.sql_cnx())
+    query = pd.read_sql(sql.get_codes(), sql_connect.connect())
     folder = query.DocumentCode.unique()
     for document in folder:
         # ----------------DIRECTORY PATH ----------------------------
@@ -39,7 +39,7 @@ def run():
             percent = int((100 * (i + 1)) / len(target.BarCode))
             filler = "█" * (percent // 2)
             remaining = '-' * ((100 - percent) // 2)
-            df = pd.read_sql(sql.get_product_cost(barcode), sql_connect.sql_cnx())
+            df = pd.read_sql(sql.get_product_cost(barcode), sql_connect.connect())
             plot.run(df, barcode, directory_path)
             print(f'\rDONE:[{filler}{remaining}]{percent}%', end='', flush=True)
         slack.run(document)

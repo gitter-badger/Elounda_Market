@@ -21,7 +21,7 @@ path_to_file = BASE_DIR / f'A_DAILY_ΠΟΡΕΙΑ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ_ΠΩ
 start_timestamp = dt.now().strftime('%d-%m %H:%M:%S')
 
 # -------------------- ΔΙΑΒΑΖΩ ΤΟΝ ΤΙΜΟΚΑΤΑΛΟΓΟ SQL DB--------------------
-timokatalogos = pd.read_sql_query(sql_select.get_ending_pricelist_products(to_date), sql_connect.sql_cnx())
+timokatalogos = pd.read_sql_query(sql_select.get_ending_pricelist_products(to_date), sql_connect.connect())
 
 # -------------OPEN FILE | WRITE ----------------------------
 end_of_pricelist_excel_export.export(path_to_file, timokatalogos[['ΠΕΡΙΓΡΑΦΗ', 'ΚΩΔΙΚΟΣ', 'BRAND']])

@@ -16,7 +16,7 @@ def run():
             return 'ΛΑΤΟ 03 (ΑΓ. ΙΩΑΝΝΗΣ 29)'
 
 
-    answer_01 = pd.read_sql_query(sql.available_orders(), sql_connect.sql_cnx())
+    answer_01 = pd.read_sql_query(sql.available_orders(), sql_connect.connect())
     answer_01['Store'] = answer_01['PdaId'].apply(katastima)
     if len(answer_01)==0:
         return 'ΔΕΝ ΥΠΑΡΧΟΥΝ ΕΓΓΡΑΦΕΣ (ΠΑΡΑΓΓΕΛΙΕΣ)'

@@ -27,9 +27,9 @@ def run(input_param):
             return 'ΛΑΤΟ 03 (ΑΓ. ΙΩΑΝΝΗΣ 29)'
 
     # -------------ANSWERS----------------------------
-    answer_01 = pd.read_sql_query(sql.sql_query(input_param, type_of_forma), sql_connect.sql_cnx())
+    answer_01 = pd.read_sql_query(sql.sql_query(input_param, type_of_forma), sql_connect.connect())
     # print(answer_01, end='\n')
-    answer_02 = pd.read_sql_query(sql.data_query(input_param, type_of_forma), sql_connect.sql_cnx())
+    answer_02 = pd.read_sql_query(sql.data_query(input_param, type_of_forma), sql_connect.connect())
     # print(answer_02, end='\n')
     supplier = answer_02.Name[0]
 
@@ -38,7 +38,7 @@ def run(input_param):
     name = f'Νέα Παραγγελία: {store}'
 
     # -------------DATAFRAME ΤΟΥ ΠΡΟΜΗΘΕΥΤΗ ΜΑΙΛ - ΤΗΛΕΦΩΝΟ ----------------------------
-    person = pd.read_sql_query(sql.extract_mail(input_param, type_of_forma), sql_connect.sql_cnx())
+    person = pd.read_sql_query(sql.extract_mail(input_param, type_of_forma), sql_connect.connect())
 
     # -------------ΒΡΕΣ ΤΟ ΤΗΛΕΦΩΝΟ ΤΟΥ ΠΡΟΜΗΘΕΥΤΗ ----------------------------
     phone_number = person.Telephone1[0]

@@ -27,8 +27,8 @@ def run(input_param, get_year):
             return 'ΛΑΤΟ 03 (ΑΓ. ΙΩΑΝΝΗΣ 29)'
 
     # ------------- ANSWERS ----------------------------
-    answer_01 = pd.read_sql_query(sql_select.sql_query(input_param, order_type), sql_connect.sql_cnx())
-    answer_02 = pd.read_sql_query(sql_select.data_querry(input_param, order_type), sql_connect.sql_cnx())
+    answer_01 = pd.read_sql_query(sql_select.sql_query(input_param, order_type), sql_connect.connect())
+    answer_02 = pd.read_sql_query(sql_select.data_querry(input_param, order_type), sql_connect.connect())
 
     # -------------------- BARCODES --------------------
     barcodes = answer_01['BarCode']
@@ -48,16 +48,16 @@ def run(input_param, get_year):
         print(f'\r01: CHECKING BARCODE: [{barcode}] \t{counter + 1}/{len(barcodes)} \tComplete:[{filler}{remaining}]{percent}%',
               end='', flush=True)
         if order_type == 'ΑΠ_ΜΟΒ':
-            temp = pd.read_sql_query(sql_select.get_product_cost_with_no_name(barcode, get_year), sql_connect.sql_cnx())
+            temp = pd.read_sql_query(sql_select.get_product_cost_with_no_name(barcode, get_year), sql_connect.connect())
             if temp.empty:
                 temp = pd.read_sql_query(sql_select.get_product_cost_with_no_name(barcode, dt.now().year),
-                                         sql_connect.sql_cnx())
+                                         sql_connect.connect())
             answer_03 = answer_03.append(temp)
         else:
-            temp = pd.read_sql_query(sql_select.get_product_cost_with_no_name(barcode, get_year), sql_connect.sql_cnx())
+            temp = pd.read_sql_query(sql_select.get_product_cost_with_no_name(barcode, get_year), sql_connect.connect())
             if temp.empty:
                 temp = pd.read_sql_query(sql_select.get_product_cost_with_no_name(barcode, dt.now().year),
-                                         sql_connect.sql_cnx())
+                                         sql_connect.connect())
             answer_03 = answer_03.append(temp)
 
     # -------------------- MERGE RESULTS --------------------

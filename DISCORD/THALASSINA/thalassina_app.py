@@ -8,9 +8,9 @@ from DISCORD.THALASSINA import sql, excel, slack, plot
 def run():
     file_path = '/Users/kommas/OneDrive/Business_Folder/Slack/Private_Analytics/Θαλασσινά.xlsx'
     # -------------Pandas GET Answer ------------
-    answer = pd.read_sql_query(sql.query_01(), sql_connect.sql_cnx())
-    answer_2 = pd.read_sql_query(sql.query_02(), sql_connect.sql_cnx())
-    answer_3 = pd.read_sql_query(sql.query_03(), sql_connect.sql_cnx())
+    answer = pd.read_sql_query(sql.query_01(), sql_connect.connect())
+    answer_2 = pd.read_sql_query(sql.query_02(), sql_connect.connect())
+    answer_3 = pd.read_sql_query(sql.query_03(), sql_connect.connect())
     pl = answer_3.values.min()
 
     # ------------- PLOT ------------

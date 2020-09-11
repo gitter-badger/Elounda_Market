@@ -20,7 +20,7 @@ with open('HTML/2. Import || Antoulatos.html', 'r') as html_file:
 
 
 # -------------------- Assign the SQL Query Answer --------------------
-sql_answer = pd.read_sql_query(sql_import_report.private_database_query(main_name), sql_connect.sql_cnx())
+sql_answer = pd.read_sql_query(sql_import_report.private_database_query(main_name), sql_connect.connect())
 
 
 # -------------------- ASSIGN VALUES HERE MARKUP / QUARTILES --------------------
