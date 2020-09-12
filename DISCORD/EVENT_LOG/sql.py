@@ -5,7 +5,7 @@ def run():
     return """
     SELECT 
     DATEPART(yyyy, EDATE)   AS 'YEAR',
-    count(*)                AS 'ΔΕΝ ΒΡΕΘΗΚΕ ΤΟ ΕΙΔΟΣ'
+    count(*)                AS 'ΚΑΤΑΜΕΤΡΗΣΗ'
     from ES00EventLog
     where ID = 'NO_ITEM_CODE_FOUND'
     GROUP BY DATEPART(yyyy, EDATE)

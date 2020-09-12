@@ -2,6 +2,7 @@
 import asyncio
 import os
 import discord
+from DISCORD.EVENT_LOG import no_item_found
 from Private import discord_app
 from DISCORD.DELETE import delete_slack_chat
 from DISCORD.BARCODE import double_barcode_check
@@ -119,6 +120,12 @@ async def on_message(message):
         # (+) DELETE DISCORD -------------------------------------------------------
         if message.content.lower().startswith('rm -rf'):
             await message.channel.purge(limit=100)
+
+        # (+) ΣΤΑΤΙΣΤΙΚΗ DISCORD -------------------------------------------------------
+        if message.content.lower().startswith('statistics'):
+            delete_slack_chat.run(7)
+            no_item_found.run()
+            await message.channel.send('STATISTICS: "ΣΦΑΛΜΑ ΣΤΟ ΤΑΜΕΙΟ" COMPLETE')
 
 
 # ---------------------------------------------------------------------------------------------------------------------
