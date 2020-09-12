@@ -6,11 +6,11 @@ import numpy as np
 
 
 def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_ranges,
-        tziros_per_day, quantity_per_day):
+        tziros_per_day, quantity_per_day, tim_id):
     # -------------------- PLOT --------------------
     plt.figure(figsize=(16, 8), dpi=150)
     plt.subplot(2, 1, 1,
-                title=f'ΕΝΕΡΓΕΙΑ: {id}η || {choose_pricelist.comments} || [ΕΝΑΡΞΗ: {from_date.strftime("%d-%m")} - ΛΗΞΗ: {to_date.strftime("%d-%m")}]')
+                title=f'ΕΝΕΡΓΕΙΑ: {tim_id}η || {choose_pricelist.comments} || [ΕΝΑΡΞΗ: {from_date.strftime("%d-%m")} - ΛΗΞΗ: {to_date.strftime("%d-%m")}]')
     plt.bar(brand_sales.BRAND, brand_sales.Turnover, alpha=0.5, color='red', label='ΤΖΙΡΟΣ')
     plt.plot(brand_sales.BRAND, brand_sales.SalesQuantity, alpha=0.5, color='blue', label='ΠΟΣΟΤΗΤΑ', marker='o',
              linestyle="None")

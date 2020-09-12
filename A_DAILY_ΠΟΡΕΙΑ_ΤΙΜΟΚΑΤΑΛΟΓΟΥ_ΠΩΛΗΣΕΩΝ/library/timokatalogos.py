@@ -5,8 +5,8 @@ from datetime import datetime
 
 # Create Class Here
 class Timokatalogos:
-    def __init__(self, id, start, end, comments):
-        self.id = id
+    def __init__(self, tim_id, start, end, comments):
+        self.tim_id = tim_id
         self.start = start
         self.end = end
         self.comments = comments
@@ -105,4 +105,4 @@ lista_2020 = [january_2020_02, nestle_2020, feb_2020, kinder_2020, xtapodi_2020,
               sep_2020]
 
 for i in lista_2020:
-    print(i.id, i.comments)
+    print(i.tim_id, i.comments)

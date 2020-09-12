@@ -21,12 +21,13 @@ choose_pricelist = timokatalogos.lista_2020[-1]
 # for choose_pricelist in timokatalogos.lista_2020:
 from_date = choose_pricelist.start
 to_date = choose_pricelist.end
-id = choose_pricelist.id
+tim_id = choose_pricelist.tim_id
+tim_id = choose_pricelist.tim_id
 dates_ranges = pd.date_range(from_date, to_date)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parents[1]
-path_to_file = BASE_DIR / f'A_DAILY_ΠΟΡΕΙΑ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ_ΠΩΛΗΣΕΩΝ/excel/{id}.xlsx'
+path_to_file = BASE_DIR / f'A_DAILY_ΠΟΡΕΙΑ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ_ΠΩΛΗΣΕΩΝ/excel/{tim_id}.xlsx'
 
 # -------------------- TAKE TIMESTAMP --------------------
 start_timestamp = dt.now().strftime('%d-%m %H:%M:%S')
@@ -81,14 +82,14 @@ while True:
 
         # -------------------- PLOT --------------------
         plot.run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_ranges,
-        tziros_per_day, quantity_per_day)
+                 tziros_per_day, quantity_per_day, tim_id)
 
         # -------------------- READ VERSION OF PRICELIST IN TXT --------------------
         with open('version.txt', 'r') as file:
             version = int(file.read())
 
         # -------------------- CHECK IF WE GOT NEW VERSION --------------------
-        if version == id:
+        if version == tim_id:
 
             # -------------------- SLACK BOT DELETE (4 OLD POSTS) --------------------
             x = (slack_app.history(slack_app.channels_id[0]))
@@ -99,14 +100,14 @@ while True:
 
             # -------------------- FILE WRITE NEW ID --------------------
             with open('version.txt', 'w') as file:
-                file.write(f'{id}')
+                file.write(f'{tim_id}')
 
         choose_pricelist.quantity = round(final_result.SalesQuantity.sum(), 2)
         choose_pricelist.turn_over = round(final_result.Turnover.sum(), 2)
 
         # -------------------- SLACK BOT ADD TEXT --------------------
         price_list_slack.run(final_result, from_date, to_date, quantity_per_day, tziros_per_day,
-                             choose_pricelist, brand_sales, path_to_file, id)
+                             choose_pricelist, brand_sales, path_to_file, tim_id)
     else:
 
         # -------------------- ΕΚΤΥΠΩΝΩ STATEMENT --------------------

@@ -1,6 +1,6 @@
 #   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 from Private import sql_connect
-from DISCORD.EVENT_LOG import sql, slack, plot
+from DISCORD.STATISTISCS_NEW_ITEMS import sql, slack, plot
 import pandas as pd
 
 
@@ -11,3 +11,5 @@ def run():
     plot.run(df)
     # SLACK
     slack.run(df)
+
+

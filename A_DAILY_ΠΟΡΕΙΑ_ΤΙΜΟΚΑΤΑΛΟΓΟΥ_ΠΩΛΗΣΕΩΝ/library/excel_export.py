@@ -2,6 +2,7 @@
 
 import pandas as pd
 
+
 def export(path_to_file, final_result):
     # -------------------- IMPORT DATA TO EXCEL --------------------
     with pd.ExcelWriter(path_to_file, engine='xlsxwriter', datetime_format='dd - mm - yyyy') as writer:
