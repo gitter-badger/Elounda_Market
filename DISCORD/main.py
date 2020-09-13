@@ -43,7 +43,7 @@ async def on_member_join(member):
 async def on_message(message):
     if message.author == client.user:
         return
-    if str(message.channel) == 'bot-commands-list':
+    if str(message.channel) == 'business-bot':
         # (-) (+) DAILY -------------------------------------------------------
         if message.content.lower().startswith('refresh daily'):
             delete_slack_chat.run(1)
@@ -246,9 +246,6 @@ async def on_message(message):
 
             await message.channel.send("""
             :white_check_mark: ΤΑ ΑΠΟΤΕΛΕΣΜΑΤΑ ΘΑ ΤΑ ΒΡΕΙΣ ΣΤΗΝ ΕΦΑΡΜΟΓΗ SLACK ΣΤΟ ΚΑΝΑΛΙ #προ κοστολογηση 
-            """)
-
-            await message.channel.send("""
             :information_source: ΓΙΑ ΠΕΡΙΣΣΟΤΕΡΕΣ ΠΛΗΡΟΦΟΡΙΕΣ ΠΑΡΑΚΑΛΩ ΕΠΙΚΟΙΝΩΝΗΣΤΕ ΣΤΟ::link: johnkommas@hotmail.com
             """)
 

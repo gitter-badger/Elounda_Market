@@ -45,3 +45,4 @@ def retail():
 
 "select * from ES00HistoryLog where FieldID = 'RetailPrice'"
 "select * from esfiitem where GID = '0428F2A6-06C0-4907-A082-E205C6E5331E'"
+

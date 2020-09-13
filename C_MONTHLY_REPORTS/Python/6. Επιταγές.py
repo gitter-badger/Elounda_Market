@@ -18,8 +18,7 @@ with open("../SQL/epitages.sql", 'r')as sql_file:
 data = pd.read_sql(sql, sql_connect.connect())
 
 # -------------------------------- EXCEL ---------------------------------------
-epitages_to_excel.run(path_to_file,data)
-quit()
+epitages_to_excel.run(path_to_file, data)
 
 # -------------------------------- MAIL ---------------------------------------
 send_mail.send_mail(mail_lst, mail_names, word, output_file, output_file)
