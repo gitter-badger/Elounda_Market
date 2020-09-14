@@ -144,6 +144,16 @@ async def on_message(message):
             :information_source: ΓΙΑ ΠΕΡΙΣΣΟΤΕΡΕΣ ΠΛΗΡΟΦΟΡΙΕΣ ΠΛΗΚΤΡΟΛΟΓΗΣΤΕ :arrow_right:  help κενό COMMAND
             """)
 
+        if message.content.lower() == 'help delete pre cost':
+            await message.channel.send("""
+                        :one: __ΤΙ__ __ΘΑ__ __ΓΙΝΕΙ__ __ΑΝ__ __ΠΛΗΚΤΡΟΛΟΓΗΣΩ__ DELETE PRE COST :question:""")
+            await message.channel.send("""
+            :white_check_mark: ΠΡΟΣΟΧΗ: ΌΛΕΣ Οι Εγγραφές που έχουν γίνει στην Εφαρμογή Slack
+            Στο Κανάλι προ_κοστολόγηση θα ΔΙΑΓΡΑΦΟΥΝ """)
+            await message.channel.send(""" 
+            :information_source: ΓΙΑ ΠΕΡΙΣΣΟΤΕΡΕΣ ΠΛΗΡΟΦΟΡΙΕΣ ΠΑΡΑΚΑΛΩ ΕΠΙΚΟΙΝΩΝΗΣΤΕ ΣΤΟ::link: johnkommas@hotmail.com
+            """)
+
         # (+) (+) DOCUMENTATION -------------------------------------------------------
         if message.content.lower() == 'help add pre cost':
             await message.channel.send("""
@@ -174,9 +184,7 @@ async def on_message(message):
             :white_check_mark: ΓΙΑ ΤΟ ΠΑΡΑΣΤΑΤΙΚΟ ΠΟΥ ΘΕΛΟΥΜΕ ΝΑ ΚΑΝΟΥΜΕ ΠΡΟ ΚΟΣΤΟΛΟΓΗΣΗ
             ΘΑ ΔΗΜΙΟΥΡΓΗΘΕΙ ΕΝΑ ΑΡΧΕΙΟ EXCEL.
             """)
-
             await message.channel.send(':five: __TI__ __ΠΕΡΙΕΧΕΙ__ __ΤΟ__ __EXCEL__ :question:')
-
             await message.channel.send(""" 
             :white_check_mark: ΠΕΡΙΕΧΕΙ ΤΙΣ ΕΞΗΣ ΠΛΗΡΟΦΟΡΙΕΣ:
             :blue_circle: BARCODE
@@ -188,62 +196,46 @@ async def on_message(message):
             :blue_circle: ΠΡΟΜΗΘΕΥΤΗΣ
             :blue_circle: SUM
             """)
-
             await message.channel.send(':six: __ΑΝ__ __ΕΧΩ__ __ΣΚΑΝΑΡΕΙ__ __ΤΟ__ __ΕΙΔΟΣ__ __2__ __ΦΟΡΕΣ__ :question:')
-
             await message.channel.send(""" 
             :white_check_mark: ΓΙΝΕΤΕ ΣΥΜΠΤΥΞΗ ΑΥΤΟΜΑΤΑ ΚΑΙ ΟΙ ΠΟΣΟΤΗΤΕΣ ΑΘΡΟΙΖΟΝΤΑΙ
             ΕΤΣΙ Ο ΚΩΔΙΚΟΣ ΕΙΝΑΙ ΜΟΝΑΔΙΚΟΣ
             """)
-
             await message.channel.send("""
             :seven: __ΑΝ__ __ΕΧΩ__ __ΑΓΟΡΑΣΕΙ__ __ΤΟ__ __ΕΙΔΟΣ__ __ΑΠΟ__ __ΠΟΛΛΑΠΛΟΥΣ__ __ΠΡΟΜΗΘΕΥΤΕΣ__ :question:""")
-
             await message.channel.send(""" 
             :white_check_mark: ΔΕΝ ΜΑΣ ΕΠΗΡΕΑΖΕΙ ΚΑΘΩΣ ΚΑΤΑ ΤΗΝ ΑΝΑΖΗΤΗΣΗ ΕΧΟΥΜΕ ΦΡΟΝΤΙΣΕΙ
             ΝΑ ΜΑΣ ΦΕΡΕΙ ΤΙΣ ΑΓΟΡΕΣ ΓΙΑ ΤΟΝ ΠΡΟΜΗΘΕΥΤΗ ΠΟΥ ΘΑ ΕΠΙΣΤΡΕΨΟΥΜΕ ΤΑ ΕΙΔΗ
             """)
-
             await message.channel.send(':eight: __ΑΝ__ __ΕΧΩ__ __ΠΑΡΕΙ__ __ΔΩΡΑ__ __ΣΤΟ__ __ΕΤΟΣ__ :question:')
-
             await message.channel.send(""" 
             :white_check_mark: ΔΕΝ ΜΑΣ ΕΠΗΡΕΑΖΕΙ ΚΑΘΩΣ ΤΑ ΔΩΡΑ ΕΞΑΙΡΟΥΝΤΑΙ ΑΠΟ ΤΗΝ ΑΝΑΖΗΤΗΣΗ
             """)
-
             await message.channel.send("""
             :nine: __ΑΝ__ __ΚΑΤΑ__ __ΤΗΝ__ __ΔΙΑΡΚΕΙΑ__ __ΤΟΥ__ __ΕΤΟΥΣ__ __ΠΟΥ__ __ΑΝΑΖΗΤΩ__ __ΕΧΩ__ __ΑΓΟΡΑΣΕΙ__ __ΠΟΛΛΕΣ__ __ΦΟΡΕΣ__ :question:""")
-
             await message.channel.send(""" 
             :white_check_mark: Η ΤΙΜΗ ΑΓΟΡΑΣ ΠΡΕΠΕΙ ΝΑ ΕΙΝΑΙ ΜΙΑ, ΔΕΝ ΜΠΟΡΕΙ ΝΑ ΕΙΝΑΙ ΜΕΣΗ ΤΙΜΗ
             ΔΕΝ ΜΠΟΡΕΙ ΝΑ ΕΙΝΑΙ Η ΧΑΜΗΛΟΤΕΡΗ, ΔΕΝ ΜΠΟΡΕΙ ΝΑ ΕΙΝΑΙ Η ΥΨΗΛΟΤΕΡΗ, ΘΑ ΕΙΝΑΙ ΠΑΝΤΑ 
             Η ΤΕΛΕΥΤΑΙΑ ΤΙΜΗ ΑΓΟΡΑΣ ΓΙΑ ΤΟ ΕΤΟΣ ΠΟΥ ΜΑΣ ΕΝΔΙΑΦΕΡΕΙ
             """)
-
             await message.channel.send("""
             :one: :zero: __ΑΝ__ __ΓΙΑ__ __ΤΟ__ __ΕΤΟΣ__ __ΔΕΝ__ __ΥΠΑΡΧΕΙ__ __ΑΓΟΡΑ__ :question:""")
-
             await message.channel.send(""" 
             :white_check_mark: ΣΕ ΑΥΤΗΝ ΤΗΝ ΠΕΡΙΠΤΩΣΗ ΘΑ ΨΑΞΕΙ ΝΑ ΒΡΕΙ ΑΓΟΡΑ ΑΠΟ ΠΡΟΗΓΟΥΜΕΝΑ ΕΤΗ
             """)
-
             await message.channel.send("""
             :one: :one: __ΑΝ__ __ΚΑΙ__ __ΠΑΛΙ__ __ΔΕΝ__ __ΒΡΕΘΕΙ__ __ΠΑΡΑΣΤΑΤΙΚΟ__ __ΑΓΟΡΑΣ__ :question:""")
-
             await message.channel.send(""" 
             :white_check_mark: ΤΟΤΕ ΕΙΜΑΣΤΕ ΣΙΓΟΥΡΟΙ ΟΤΙ ΤΟ ΕΙΔΟΣ ΕΙΝΑΙ ΝΕΟΤΕΡΟ ΤΟΥ ΕΤΟΥΣ 
             ΠΟΥ ΑΝΑΖΗΤΟΥΜΕ ΚΑΙ ΘΑ ΨΑΞΕΙ ΝΑ ΒΡΕΙ ΤΗΝ ΤΕΛΕΥΤΑΙΑ (ΠΙΟ ΠΡΟΣΦΑΤΗ ΤΙΜΗ ΑΓΟΡΑΣ)
             """)
-
             await message.channel.send(':one: :two: __ΤΙ__ __ΠΡΕΠΕΙ__ __ΝΑ__ __ΚΑΝΩ__ :question:')
-
             await message.channel.send("""
             :white_check_mark: ΑΠΟ ΤΗΝ ΛΙΣΤΑ PICKING LIST ΒΡΙΣΚΕΙΣ ΤΟΝ ΚΩΔΙΚΟ ΤΟΥ ΠΑΡΑΣΤΑΤΙΚΟΥ
             ΚΑΙ ΕΙΣΑΓΕΙΣ ΤΟ ΕΤΟΣ ΠΟΥ ΕΠΙΘΥΜΕΙΣ ΝΑ ΠΑΡΕΙΣ ΚΟΣΤΟΣ ΑΓΟΡΑΣ  
             ΜΕΤΑ ΤΡΕΧΕΙΣ ΤΟΝ ΚΩΔΙΚΑ {ADD PRE COST CODE YEAR} ΕΔΩ ΚΑΙ ΠΕΡΙΜΕΝΕΙΣ ΛΙΓΟ.
             """)
-
             await message.channel.send(':one: :three: __ΤΑ__ __ΑΠΟΤΕΛΕΣΜΑΤΑ__ __ΠΟΥ__ __ΕΜΦΑΝΙΖΟΝΤΑΙ__ :question:')
-
             await message.channel.send("""
             :white_check_mark: ΤΑ ΑΠΟΤΕΛΕΣΜΑΤΑ ΘΑ ΤΑ ΒΡΕΙΣ ΣΤΗΝ ΕΦΑΡΜΟΓΗ SLACK ΣΤΟ ΚΑΝΑΛΙ #προ κοστολογηση 
             :information_source: ΓΙΑ ΠΕΡΙΣΣΟΤΕΡΕΣ ΠΛΗΡΟΦΟΡΙΕΣ ΠΑΡΑΚΑΛΩ ΕΠΙΚΟΙΝΩΝΗΣΤΕ ΣΤΟ::link: johnkommas@hotmail.com
@@ -253,15 +245,12 @@ async def on_message(message):
         if message.content.lower() == 'help add bazaar':
             await message.channel.send("""
             :one: __ΤΙ__ __ΘΑ__ __ΓΙΝΕΙ__ __ΑΝ__ __ΠΛΗΚΤΡΟΛΟΓΗΣΩ__ ADD BAZAAR :question:""")
-            # await asyncio.sleep(2)
             await message.channel.send(""" 
             :white_check_mark: ΓΙΑ ΚΑΘΕ ΠΑΡΑΣΤΑΤΙΚΟ ΤΥΠΟΥ ΑΤΔ
             ΜΕ ΒΗΜΑ "ΣΕ ΠΡΟΕΤΟΙΜΑΣΙΑ" ΤΟΥ ΠΡΟΜΗΘΕΥΤΗ BAZAAR
             ΘΑ ΔΗΜΙΟΥΡΓΗΣΩ ΕΝΑ EXCEL ΑΡΧΕΙΟ ΚΑΙ ΕΝΑ ΓΡΑΦΗΜΑ
             """)
-            # await asyncio.sleep(10)
             await message.channel.send(':two: __TI__ __ΠΕΡΙΕΧΕΙ__ __ΤΟ__ __EXCEL__ :question:')
-            # await asyncio.sleep(2)
             await message.channel.send(""" 
             :white_check_mark: ΠΕΡΙΕΧΕΙ ΤΙΣ ΕΞΗΣ ΠΛΗΡΟΦΟΡΙΕΣ:
             :blue_circle: BARCODE
@@ -276,30 +265,23 @@ async def on_message(message):
             ΕΧΕΙ ΓΙΝΕΙ ΟΜΑΔΟΠΟΙΗΣΗ ΜΕ ΒΑΣΗ ΤΟ BRAND NAME ΤΩΝ ΕΙΔΩΝ
             ΕΧΕΙ ΓΙΝΕΙ ΔΕΥΤΕΡΗ ΟΜΑΔΟΠΟΙΗΣΗ ΜΕ ΒΑΣΗ ΤΗΝ ΠΕΡΙΓΡΑΦΗ
             """)
-            # await asyncio.sleep(10)
             await message.channel.send(':three: __TI__ __ΠΕΡΙΕΧΕΙ__ __ΤΟ__ __ΓΡΑΦΗΜΑ__ :question:')
-            # await asyncio.sleep(2)
             await message.channel.send(""" 
             :white_check_mark: ΤΟ ΓΡΑΦΗΜΑ ΣΥΓΚΡΙΝΕΙ ΤΙΣ ΤΙΜΕΣ ΜΑΣ ΣΕ ΣΧΕΣΗ ΜΕ ΤΙΣ ΤΙΜΕΣ ΤΟΥ [BAZAAR]:
             :blue_circle: ΣΤΟΝ ΑΞΟΝΑ Χ ΒΡΙΣΚΟΝΤΑΙ ΤΑ ΕΙΔΗ
             :blue_circle: ΣΤΟΝ ΑΞΟΝΑ Υ ΕΙΝΑΙ Η ΤΙΜΗ (ΑΓΟΡΑΣ - ΛΙΑΝΙΚΗΣ - ΑΝΤΑΓΩΝΙΣΤΗ)
             ΕΧΕΙ ΓΙΝΕΙ ΟΜΑΔΟΠΟΙΗΣΗ ΜΕ ΒΑΣΗ ΤΗΝ ΤΙΜΗ ΑΓΟΡΑΣ
             """)
-            # await asyncio.sleep(10)
             await message.channel.send(':four: __ΤΙ__ __ΠΡΕΠΕΙ__ __ΝΑ__ __ΚΑΝΩ__ :question:')
-            # await asyncio.sleep(2)
             await message.channel.send("""
             :white_check_mark: ΑΦΟΥ ΒΡΗΚΕΣ ΤΟ ΤΙΜΟΛΟΓΙΟ ΤΟΥ BAZAAR ΠΟΥ ΣΕ ΕΝΔΙΑΦΕΡΕΙ
             ΑΛΛΑΞΕ ΤΟ ΒΗΜΑ ΤΟΥ ΣΕ "ΣΕ ΠΡΟΕΤΟΙΜΑΣΙΑ" ΚΑΙ ΑΠΟΘΗΚΕΥΣΕ
             ΜΕΤΑ ΤΡΕΧΕΙΣ ΤΟΝ ΚΩΔΙΚΑ {ADD BAZAAR} ΕΔΩ ΚΑΙ ΠΕΡΙΜΕΝΕΙΣ ΛΙΓΟ.  
             """)
-            # await asyncio.sleep(10)
             await message.channel.send(':five: __ΤΑ__ __ΑΠΟΤΕΛΕΣΜΑΤΑ__ __ΠΟΥ__ __ΕΜΦΑΝΙΖΟΝΤΑΙ__ :question:')
-            # await asyncio.sleep(2)
             await message.channel.send("""
             :white_check_mark: ΤΑ ΑΠΟΤΕΛΕΣΜΑΤΑ ΘΑ ΤΑ ΒΡΕΙΣ ΣΤΗΝ ΕΦΑΡΜΟΓΗ SLACK ΣΤΟ ΚΑΝΑΛΙ #bazaar 
             """)
-            # await asyncio.sleep(2)
             await message.channel.send("""
             :information_source: ΓΙΑ ΠΕΡΙΣΣΟΤΕΡΕΣ ΠΛΗΡΟΦΟΡΙΕΣ ΠΑΡΑΚΑΛΩ ΕΠΙΚΟΙΝΩΝΗΣΤΕ ΣΤΟ::link: johnkommas@hotmail.com
             """)
@@ -308,38 +290,30 @@ async def on_message(message):
         if message.content.lower() == 'help history':
             await message.channel.send("""
             :one: __ΤΙ__ __ΘΑ__ __ΓΙΝΕΙ__ __ΑΝ__ __ΠΛΗΚΤΡΟΛΟΓΗΣΩ__ HISTORY :question:""")
-            # await asyncio.sleep(2)
             await message.channel.send(""" 
             :white_check_mark: ΓΙΑ ΚΑΘΕ ΠΑΡΑΣΤΑΤΙΚΟ ΤΥΠΟΥ ΑΤΔ ή ΑΤΠ
             ΜΕ ΒΗΜΑ "ΑΠΟΔΟΣΗ" ΘΑ ΔΗΜΙΟΥΡΓΗΣΩ ΕΝΑΝ ΦΑΚΕΛΟ
             ΜΕΤΑ ΣΕ ΚΑΘΕ ΦΑΚΕΛΟ ΚΑΙ ΓΙΑ ΚΑΘΕ ΚΩΔΙΚΟ ΠΟΥ ΥΠΑΡΧΕΙ ΣΤΟ ΤΙΜΟΛΟΓΙΟ
             ΘΑ ΔΗΜΙΟΥΡΓΗΣΩ ΤΑ ΓΡΑΦΗΜΑΤΑ
             """)
-            # await asyncio.sleep(10)
             await message.channel.send(':two: __TI__ __ΑΠΕΙΚΟΝΙΖΟΥΝ__ __ΤΑ__ __ΓΡΑΦΗΜΑΤΑ__ :question:')
-            # await asyncio.sleep(2)
             await message.channel.send("""
             :white_check_mark: ΤΑ ΓΡΑΦΗΜΑΤΑ ΣΤΟΝ ΑΞΟΝΑ Χ ΕΙΝΑΙ Ο ΧΡΟΝΟΣ
             ΚΑΙ ΣΤΟΝ ΑΞΟΝΑ Υ ΕΙΝΑΙ Η ΤΙΜΗ ΑΓΟΡΑΣ
             ΕΤΣΙ ΑΠΕΙΚΟΝΙΖΕΤΑΙ Η ΤΙΜΗ ΤΟΥΣ ΣΤΟ ΠΕΡΑΣΜΑ ΤΟΥ ΧΡΟΝΟΥ 
             """)
-            # await asyncio.sleep(10)
             await message.channel.send(':three: __ΤΙ__ __ΠΡΕΠΕΙ__ __ΝΑ__ __ΚΑΝΩ__ :question:')
-            # await asyncio.sleep(2)
             await message.channel.send("""
             :white_check_mark: ΑΦΟΥ ΒΡΗΚΕΣ ΤΟ ΤΙΜΟΛΟΓΙΟ ΠΟΥ ΣΕ ΕΝΔΙΑΦΕΡΕΙ
             ΑΛΛΑΞΕ ΤΟ ΒΗΜΑ ΤΟΥ ΣΕ "ΑΠΟΔΟΣΗ" ΚΑΙ ΑΠΟΘΗΚΕΥΣΕ
             ΜΕΤΑ ΤΡΕΧΕΙΣ ΤΟΝ ΚΩΔΙΚΑ {HISTORY} ΕΔΩ ΚΑΙ ΠΕΡΙΜΕΝΕΙΣ ΛΙΓΟ.  
             """)
-            # await asyncio.sleep(10)
             await message.channel.send(':four: __ΤΑ__ __ΑΠΟΤΕΛΕΣΜΑΤΑ__ __ΠΟΥ__ __ΕΜΦΑΝΙΖΟΝΤΑΙ__ :question:')
-            # await asyncio.sleep(2)
             await message.channel.send("""
             :white_check_mark: ΤΑ ΑΠΟΤΕΛΕΣΜΑΤΑ ΘΑ ΤΑ ΒΡΕΙΣ ΣΤΗΝ ΠΑΡΑΚΑΤΩ ΔΙΑΔΡΟΜΗ:
             :open_file_folder: OneDrive/Supplier_Check/history/{ΚΩΔΙΚΟΣ ΤΙΜΟΛΟΓΙΟΥ}/{ΕΔΩ ΕΙΝΑΙ ΤΑ ΑΡΧΕΙΑ}
             :e_mail: ΜΠΟΡΕΙΣ ΝΑ ΖΗΤΗΣΕΙΣ ΝΑ ΣΟΥ ΤΑ ΣΤΕΙΛΟΥΜΕ ΜΕ E-MAIL 
             """)
-            # await asyncio.sleep(2)
             await message.channel.send("""
             :information_source: ΓΙΑ ΠΕΡΙΣΣΟΤΕΡΕΣ ΠΛΗΡΟΦΟΡΙΕΣ ΠΑΡΑΚΑΛΩ ΕΠΙΚΟΙΝΩΝΗΣΤΕ ΣΤΟ::link: johnkommas@hotmail.com
             """)
@@ -348,17 +322,14 @@ async def on_message(message):
         if message.content.lower() == 'help rm -rf':
             await message.channel.send("""
             :one: __ΤΙ__ __ΘΑ__ __ΓΙΝΕΙ__ __ΑΝ__ __ΠΛΗΚΤΡΟΛΟΓΗΣΩ__ RM -RF :question:""")
-            # await asyncio.sleep(2)
             await message.channel.send("""
             :white_check_mark: ΘΑ ΔΙΑΓΡΑΦΟΥΝ ΟΛΕΣ ΟΙ ΕΓΓΡΑΦΕΣ ΠΟΥ ΒΡΙΣΚΟΝΤΑΙ ΣΕ ΑΥΤΟ ΤΟ ΚΑΝΑΛΙ ΣΤΟ DISCORD 
             """)
-            # await asyncio.sleep(5)
             await message.channel.send("""
             :information_source: ΓΙΑ ΠΕΡΙΣΣΟΤΕΡΕΣ ΠΛΗΡΟΦΟΡΙΕΣ ΠΑΡΑΚΑΛΩ ΕΠΙΚΟΙΝΩΝΗΣΤΕ ΣΤΟ::link: johnkommas@hotmail.com
             """)
 # ---------------------------------------------------------------------------------------------------------------------
 
-    # general-chat  -------------------------------------------------------
     elif str(message.channel) == 'general-chat':
 
         # (+) DELETE DISCORD MESSAGES -------------------------------------------------------
@@ -369,5 +340,13 @@ async def on_message(message):
             await asyncio.sleep(3)
             await message.channel.send('Επικοινωνήστε με τον Διαχειριστή')
 
+    elif str(message.channel) == 'welcome':
+        # (+) DELETE DISCORD MESSAGES -------------------------------------------------------
+        if message.content.lower().startswith('sudo rm -rf'):
+            await message.channel.purge(limit=100)
+        if message.content.lower().startswith('help'):
+            await message.channel.send('Απαγορευμένη Ενέργεια')
+            await asyncio.sleep(3)
+            await message.channel.send('Επικοινωνήστε με τον Διαχειριστή')
 
 client.run(TOKEN)

@@ -3,7 +3,7 @@
 import matplotlib.pyplot as plt
 
 
-def run(df):
+def run(df, name):
     X = df['USER']
     y = df['ΝΕΑ ΕΙΔΗ']
     plt.figure(figsize=(15, 9))
@@ -20,7 +20,7 @@ def run(df):
                      xytext=(0, 10),  # distance from text to points (x,y)
                      ha='center')  # horizontal alignment can be left, right or center
     plt.grid(True, alpha=0.5)
-    plt.savefig('images/new_items_per_user.png')
+    plt.savefig(f'images/new_items_per_user.png')
     # plt.show()
     plt.close()
 #   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved

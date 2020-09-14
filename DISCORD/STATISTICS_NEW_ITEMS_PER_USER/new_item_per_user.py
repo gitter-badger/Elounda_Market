@@ -7,7 +7,11 @@ import pandas as pd
 def run():
     # DATAFRAME
     df = pd.read_sql(sql.run(), sql_connect.connect())
+    df2 = pd.read_sql(sql.run2(), sql_connect.connect())
     #PLOT
-    plot.run(df)
+    name1 = 'images/new_items_per_user.png'
+    name2 = 'images/new_items_per_user_all.png'
+    plot.run(df, name1 )
+    plot.run(df2, name2)
     # SLACK
-    slack.run(df)
+    slack.run()
