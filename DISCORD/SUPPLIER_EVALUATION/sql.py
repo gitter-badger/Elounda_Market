@@ -1,9 +1,9 @@
 #   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 
-def private_database_query(name, year):
+def run(name, year):
     return f"""
 SELECT 
-        ESGOSites.Description,
+        ESGOSites.Description                                               AS 'ΥΠΟΚΑΤΑΣΤΗΜΑ',
        ESFIItemEntry_ESFIItemPeriodics.DocumentCode                         AS 'ΠΑΡΑΣΤΑΤΙΚA',
         count(FK_ESFIItemEntry_ESFIItem.BarCode)                            AS 'ΓΡΑΜΜΕΣ',
         sum(ESFIItemEntry_ESFIItemPeriodics.Quantity)                       AS 'ΠΟΣΟΤΗΤΑ',
@@ -18,7 +18,7 @@ isnull( case when datename(dw, ESFIItemEntry_ESFIItemPeriodics.RegistrationDate)
 
 
 FROM ESFIItemEntry_ESFIItemPeriodics AS ESFIItemEntry_ESFIItemPeriodics
-        
+
          LEFT JOIN ESFIItem AS FK_ESFIItemEntry_ESFIItemPeriodics_ESFIItem
                    ON ESFIItemEntry_ESFIItemPeriodics.fItemGID = FK_ESFIItemEntry_ESFIItemPeriodics_ESFIItem.GID
          LEFT JOIN ESFIItem AS FK_ESFIItemEntry_ESFIItem

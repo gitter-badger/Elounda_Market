@@ -19,13 +19,13 @@ def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_r
             quant_type = 'TEM'
         else:
             quant_type = 'ΚΙΛ'
-        label = "{:.2f} {}".format(y, quant_type)
+        label = "{:.2f}\n{}".format(y, quant_type)
 
         # this method is called for each point
         plt.annotate(label,  # this is the text
                      (x, y),  # this is the point to label
                      textcoords="offset points",  # how to position the text
-                     xytext=(0, 2),  # distance from text to points (x,y)
+                     xytext=(0, 4),  # distance from text to points (x,y)
                      ha='center')  # horizontal alignment can be left, right or center
     plt.xticks(rotation=20)
     plt.grid(True, alpha=0.8)
@@ -41,13 +41,13 @@ def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_r
              marker='o',
              linestyle="None")
     for x, y in zip(dates_ranges.strftime('%a \n%d/%m'), quantity_per_day):
-        label = "{:.2f} TEM".format(y)
+        label = "{:.2f}\nTEM".format(y)
 
         # this method is called for each point
         plt.annotate(label,  # this is the text
                      (x, y),  # this is the point to label
                      textcoords="offset points",  # how to position the text
-                     xytext=(0, 10),  # distance from text to points (x,y)
+                     xytext=(0, 12),  # distance from text to points (x,y)
                      ha='center')  # horizontal alignment can be left, right or center
     plt.axhline(y=round(np.mean(tziros_per_day), 2), xmin=0, xmax=1, linestyle='-.',
                 label=f'Μ.Ο. ΤΖΙΡΟΥ: ({round(np.mean(tziros_per_day), 2)} EUR)',
