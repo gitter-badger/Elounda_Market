@@ -124,7 +124,7 @@ async def on_message(message):
             await message.channel.purge(limit=100)
 
         # (+) ΣΤΑΤΙΣΤΙΚΗ DISCORD -------------------------------------------------------
-        if message.content.lower().startswith('statistics'):
+        if message.content.lower().startswith('stats'):
             delete_slack_chat.run(7)
             no_item_found.run()
             await message.channel.send('STATISTICS: ΣΦΑΛΜΑ ΣΤΟ ΤΑΜΕΙΟ / ΕΤΟΣ: COMPLETE')

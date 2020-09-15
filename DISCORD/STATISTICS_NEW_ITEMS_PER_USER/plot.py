@@ -3,11 +3,11 @@
 import matplotlib.pyplot as plt
 
 
-def run(df, name):
+def run(df, name, year):
     X = df['USER']
     y = df['ΝΕΑ ΕΙΔΗ']
     plt.figure(figsize=(15, 9))
-    plt.subplot(xlabel='ΧΡΗΣΤΗΣ', ylabel='ΝΕΑ ΕΙΔΗ', title='ΝΕΑ ΕΙΔΗ / ΧΡΗΣΤΗ')
+    plt.subplot(xlabel='ΧΡΗΣΤΗΣ', ylabel='ΝΕΑ ΕΙΔΗ', title=f'ΝΕΑ ΕΙΔΗ / ΧΡΗΣΤΗ / {year}')
     colors = [plt.cm.Spectral(i / float(len(X))) for i in range(len(X))]
     plt.bar(X, y, alpha=0.9, color=colors)
     for a, b in zip(X, y):
