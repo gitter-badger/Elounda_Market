@@ -22,7 +22,6 @@ choose_pricelist = timokatalogos.lista_2020[-1]
 from_date = choose_pricelist.start
 to_date = choose_pricelist.end
 tim_id = choose_pricelist.tim_id
-tim_id = choose_pricelist.tim_id
 dates_ranges = pd.date_range(from_date, to_date)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.

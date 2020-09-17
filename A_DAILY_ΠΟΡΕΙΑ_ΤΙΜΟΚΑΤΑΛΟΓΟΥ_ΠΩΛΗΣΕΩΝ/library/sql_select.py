@@ -22,6 +22,7 @@ and     '{to_date}' = ValidToDate
 order by 3,4,5
 """
 
+
 def get_sales(from_date, to_date, barcode_list):
     return f"""
     SELECT

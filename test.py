@@ -22,3 +22,5 @@ print(round(katanalosi_low), round(katanalosi_high))
 
 print(487 *0.11028)
 print(487 *0.063)
+
+
