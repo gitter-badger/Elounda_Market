@@ -34,16 +34,16 @@ def export(path_to_file, sql_answer):
                 "font_name": "Avenir Next"})
 
             worksheet.set_column('A:A', 0, normal)  # ΠΑΡΑΣΤΑΤΙΚΟ
-            worksheet.set_column('B:B', 15, normal)  # BARCODE
-            worksheet.set_column('C:C', 70, normal)  # ΠΕΡΙΓΡΑΦΗ
+            worksheet.set_column('B:B', 13, normal)  # BARCODE
+            worksheet.set_column('C:C', 40, normal)  # ΠΕΡΙΓΡΑΦΗ
             worksheet.set_column('D:D', 0, normal)  # ΥΠΟΚΑΤΗΓΟΡΙΑ
             worksheet.set_column('E:E', 10, normal)  # ΠΟΣΟΤΗΤΑ
             worksheet.set_column('F:F', 12, number)  # ΚΑΘΑΡΗ ΤΙΜΗ
             worksheet.set_column('G:G', 12, number)  # ΤΙΜΗ ΛΙΑΝΙΚΗΣ
-            worksheet.set_column('H:H', 15, percent)  # ΚΕΡΔΟΦΟΡΙΑ
-            worksheet.set_column('I:I', 20, number)  # ΤΙΜΗ BAZAAR
-            worksheet.set_column('J:J', 20, number)  # TIMH ΒΑΣΙΛΟΠΟΥΛΟΣ
-            worksheet.set_column('K:K', 20, number)  # TIMH Care Market
+            worksheet.set_column('H:H', 10, percent)  # ΚΕΡΔΟΦΟΡΙΑ
+            worksheet.set_column('I:I', 12, number)  # ΤΙΜΗ BAZAAR
+            worksheet.set_column('J:J', 18, number)  # TIMH ΒΑΣΙΛΟΠΟΥΛΟΣ
+            worksheet.set_column('K:K', 18, number)  # TIMH Care Market
 
             # Conditional Formating
             worksheet.conditional_format('H1:H1500', {'type': '3_color_scale'})

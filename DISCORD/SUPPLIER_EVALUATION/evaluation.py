@@ -37,7 +37,7 @@ def run(name, year):
 xreosi_per_year = []
 for i in range(2012, 2021):
     print(f'ETOS: {i}')
-    xreosi_per_year.append(run('Bazaar A.E.', i))
+    xreosi_per_year.append(run('Μακριδάκη Α.- Γ.Μακατουνάκης Ο.Ε', i))
 print(xreosi_per_year)
 
 plot.plot_sum_values(range(2012, 2021), xreosi_per_year, 'ert')

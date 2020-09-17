@@ -22,14 +22,14 @@ from DISCORD.VARDAS import vardas
 from DISCORD.PRE_COST_CALCULATION import pre_cost_calc
 from DISCORD.PENDING import pendings
 from DISCORD.PRICE_HISTORY import price_history
-
+from datetime import datetime as dt
 TOKEN = discord_app.token()
 client = discord.Client()
 
 
 @client.event
 async def on_ready():
-    print(f'{client.user.name} has connected to Discord!')
+    print(f'{client.user.name} has connected to Discord! {dt.now().strftime("%H:%M:%S")}')
 
 
 @client.event
