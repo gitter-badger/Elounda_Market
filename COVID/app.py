@@ -1,5 +1,6 @@
 #   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
-from COVID import plot,slack
+from COVID import plot, slack
+from DISCORD.DELETE import delete_slack_chat
 import pandas as pd
 import requests
 
@@ -38,4 +39,5 @@ covid_data_greece = covid_data[covid_data['location'] == 'Greece']
 plot.plot_greece_graph(covid_data_greece)
 
 # -------------------- SLACK --------------------
+delete_slack_chat.run(8)
 slack.run()

@@ -1,7 +1,7 @@
 #   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 
 # η πραγματική μου διαφορά είναι 610
-x =610
+x = 610
 # η χρέωση μου είναι 0.063 / 0.11
 a = .063
 b = .11
@@ -17,11 +17,10 @@ for i in logariasmoi:
     katanalosi_low += i / a
     katanalosi_high += i / b
 
-
 print(round(katanalosi_low), round(katanalosi_high))
 
-print(487 *0.11028)
-print(487 *0.063)
+print(487 * 0.11028)
+print(487 * 0.063)
 
 """
 alphabet                                    αλφάβητο
@@ -41,3 +40,21 @@ pencil case                                 μολυβοθήκη
 glue                                        κόλλα   
 
 """
+x = (1, 2, 3, 4, 5)
+print(sum((1, 2, 3, 4, 5)))
+print(*range(5))
+
+def fare(age):
+    return cost if age in range(12, 61) else 0
+
+
+compute_fare = 0
+passengers = int(input('How many passengers?'))
+
+cost = float(input('Cost of Fair: '))
+for i in range(passengers):
+    compute_fare +=fare(int(input(f'Passenger: {i+1} AGE:')))
+
+
+print(compute_fare)
+
