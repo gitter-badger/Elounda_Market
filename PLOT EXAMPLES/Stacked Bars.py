@@ -1,5 +1,6 @@
 #   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 
+
 from matplotlib import pyplot as plt
 import numpy as np
 
@@ -13,8 +14,17 @@ Fs = [1, 0, 0, 3, 0]
 x = range(5)
 
 c_bottom = np.add(As, Bs)
-#create d_bottom and f_bottom here
+d_bottom = np.add(c_bottom, Cs)
+f_bottom = np.add(d_bottom, Ds)
 
-#create your plot here
-
+plt.figure(figsize=(10,8))
+ax = plt.subplot(title='Grade Distribution', xlabel='Unit', ylabel='Number of Students')
+plt.bar(range(len(unit_topics)), As)
+plt.bar(range(len(unit_topics)), Bs, bottom= As)
+plt.bar(range(len(unit_topics)), Cs, bottom= c_bottom)
+plt.bar(range(len(unit_topics)), Ds, bottom= d_bottom)
+plt.bar(range(len(unit_topics)), Fs, bottom= f_bottom)
+ax.set_xticks(range(len(unit_topics)))
+ax.set_xticklabels(unit_topics)
+plt.savefig('images/my_stacked_bar.png')
 plt.show()
