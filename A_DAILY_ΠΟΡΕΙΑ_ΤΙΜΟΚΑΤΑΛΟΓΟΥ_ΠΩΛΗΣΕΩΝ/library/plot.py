@@ -90,3 +90,12 @@ def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_r
         print('ΑΛΛΟ ΣΦΑΛΜΑ ΣΤΟ TREE MAP')
     finally:
         plt.close()
+
+    # -------------------- PIE --------------------
+    x = brand_sales.Turnover
+    y = brand_sales.BRAND
+    plt.figure(figsize=(16, 8), dpi=150)
+    plt.subplot(title='ΠΙΤΑ ΤΖΙΡΟΣ')
+    plt.pie(x, labels=y, autopct='%.1f%%')
+    plt.axis('equal')
+    plt.savefig('images/pricelist_pie.png')

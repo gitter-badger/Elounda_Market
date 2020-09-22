@@ -92,7 +92,7 @@ while True:
 
             # -------------------- SLACK BOT DELETE (4 OLD POSTS) --------------------
             x = (slack_app.history(slack_app.channels_id[0]))
-            for i in range(4):
+            for i in range(5):
                 timer = (x['messages'][i]['ts'])
                 slack_app.delete(slack_app.channels_id[0], timer)
         else:
