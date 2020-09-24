@@ -34,9 +34,10 @@ print(covid_data_world.new_deaths.sum())
 
 # -------------------- SELECT GREECE --------------------
 covid_data_greece = covid_data[covid_data['location'] == 'Greece']
+covid_data_italy = covid_data[covid_data.location == 'Italy']
 
 # -------------------- PLOT GREECE --------------------
-plot.plot_greece_graph(covid_data_greece)
+plot.plot_greece_graph(covid_data_greece, covid_data_italy)
 
 # -------------------- SLACK --------------------
 delete_slack_chat.run(8)

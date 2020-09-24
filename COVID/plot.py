@@ -2,11 +2,14 @@
 import matplotlib.pyplot as plt
 
 
-def plot_greece_graph(df):
+def plot_greece_graph(gr, it):
     plt.figure(figsize=(15, 9))
     plt.subplot(xlabel='ACTIVE DAYS', ylabel='DEATHS', title='Greece COVID DEATHS GRAPHS / TIME')
-    plt.plot(range(len(df.total_deaths[df.total_deaths > 0])),
-             df.total_deaths[df.total_deaths > 0], label='GREECE')
+    plt.plot(range(len(gr.total_deaths[gr.total_deaths > 0])),
+             gr.total_deaths[gr.total_deaths > 0], label=f'{gr.location.unique()}')
+    # plt.plot(range(len(it.total_deaths[it.total_deaths > 0])),
+    #          it.total_deaths[it.total_deaths > 0], label=f'{it.location.unique()}')
+
     plt.grid(True, alpha=0.2)
     plt.legend()
     # plt.show()
