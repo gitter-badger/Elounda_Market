@@ -19,41 +19,6 @@ print(cost)
 sales_cost = pd.merge(left=sales, right=cost, left_on='BARCODE', right_on='BARCODE').sort_values(
     by=['BARCODE']).reset_index()
 
-# sales_cost['S ELOUNDA MARKET'] = sales_cost['SALES ELOUNDA MARKET'].astype(str) + 'EUR - ' + \
-#                                  sales_cost['COST ELOUNDA MARKET'].astype(str) + 'EUR'
-#
-# sales_cost['Q ELOUNDA MARKET'] = sales_cost['Q ELOUNDA MARKET'].astype(str) + 'TEM - ' + \
-#                                  sales_cost['COST Q ELOUNDA MARKET'].astype(str) + 'TEM'
-#
-# sales_cost['S LATO 01'] = sales_cost['SALES LATO 01'].astype(str) + 'EUR - ' + \
-#                           sales_cost['COST LATO 01'].astype(str) + 'EUR'
-#
-# sales_cost['Q LATO 01'] = sales_cost['Q LATO 01'].astype(str) + 'TEM - ' + \
-#                           sales_cost['COST Q LATO 01'].astype(str) + 'TEM'
-#
-# sales_cost['S LATO 02'] = sales_cost['SALES LATO 02'].astype(str) + 'EUR - ' + \
-#                           sales_cost['COST LATO 02'].astype(str) + 'EUR'
-#
-# sales_cost['Q LATO 02'] = sales_cost['Q LATO 02'].astype(str) + 'TEM - ' + \
-#                           sales_cost['COST Q LATO 02'].astype(str) + 'TEM'
-#
-# sales_cost['S LATO 03'] = sales_cost['SALES LATO 03'].astype(str) + 'EUR - ' + \
-#                           sales_cost['COST LATO 03'].astype(str) + 'EUR'
-#
-# sales_cost['Q LATO 03'] = sales_cost['Q LATO 03'].astype(str) + 'TEM - ' + \
-#                           sales_cost['COST Q LATO 03'].astype(str) + 'TEM'
-#
-# sales_cost['S LATO 04'] = sales_cost['SALES LATO 04'].astype(str) + 'EUR - ' + \
-#                           sales_cost['COST LATO 04'].astype(str) + 'EUR'
-#
-# sales_cost['Q LATO 04'] = sales_cost['Q LATO 04'].astype(str) + 'TEM - ' + \
-#                           sales_cost['COST Q LATO 04'].astype(str) + 'TEM'
-#
-# sales_cost['ΠΩΛΗΣΕΙΣ / ΑΓΟΡΕΣ (ΤΖΙΡΟΣ)'] = sales_cost['TurnOver'].astype(str) + 'EUR - ' + \
-#                                            sales_cost['SUM COST'].astype(str) + 'EUR'
-#
-# sales_cost['ΠΩΛΗΣΕΙΣ / ΑΓΟΡΕΣ (ΠΟΣΟΤΗΤΑ)'] = sales_cost['Sales_Quantity'].astype(str) + 'TEM - ' + \
-#                                              sales_cost['COST QUANTITY'].astype(str) + 'TEM'
 output = sales_cost[['BARCODE',
                      'DESCRIPTION',
                      'ΑΓΟΡΕΣ',

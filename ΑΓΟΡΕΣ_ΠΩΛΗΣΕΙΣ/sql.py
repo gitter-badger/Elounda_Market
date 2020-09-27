@@ -4,12 +4,13 @@ def sales(brands =('Aphrodite', 'Aphrodite') , year=2019):
         SELECT
     IsNull(FK_ESFIItemPeriodics_ESFIItem.BarCode,'') AS BARCODE
     ,ISNULL(FK_ESFIItemPeriodics_ESFIItem.Description, '') AS DESCRIPTION
-    ,Sum(ESFIItemPeriodics.TurnOver) AS TurnOver
-    ,isnull(sum(case when FK_ESFIItemPeriodics_ESGOSites.Code = 1  then TurnOver end), 0) AS 'SALES ELOUNDA MARKET'
-    ,isnull(sum(case when FK_ESFIItemPeriodics_ESGOSites.Code = 3  then TurnOver end), 0) AS 'SALES LATO 01'
-    ,isnull(sum(case when FK_ESFIItemPeriodics_ESGOSites.Code = 5  then TurnOver end), 0) AS 'SALES LATO 02'
-    ,isnull(sum(case when FK_ESFIItemPeriodics_ESGOSites.Code = 6  then TurnOver end), 0) AS 'SALES LATO 03'
-    ,isnull(sum(case when FK_ESFIItemPeriodics_ESGOSites.Code = 7  then TurnOver end), 0) AS 'SALES LATO 04'
+    ,Sum(ESFIItemPeriodics.TurnOver) AS 'ΤΖΙΡΟΣ'
+    ,isnull(sum(case when FK_ESFIItemPeriodics_ESGOSites.Code = 1  then TurnOver end), 0) AS 'ΤΖΙΡΟΣ EM'
+    ,isnull(sum(case when FK_ESFIItemPeriodics_ESGOSites.Code = 3  then TurnOver end), 0) AS 'ΤΖΙΡΟΣ L1'
+    ,isnull(sum(case when FK_ESFIItemPeriodics_ESGOSites.Code = 5  then TurnOver end), 0) AS 'ΤΖΙΡΟΣ L2'
+    ,isnull(sum(case when FK_ESFIItemPeriodics_ESGOSites.Code = 6  then TurnOver end), 0) AS 'ΤΖΙΡΟΣ L3'
+    ,isnull(sum(case when FK_ESFIItemPeriodics_ESGOSites.Code = 7  then TurnOver end), 0) AS 'ΤΖΙΡΟΣ L4'
+
     ,Sum(ESFIItemPeriodics.SalesQty) AS 'ΠΩΛΗΣΕΙΣ'
     ,isnull(sum(case when FK_ESFIItemPeriodics_ESGOSites.Code = 1  then SalesQty end), 0) AS 'ΠΩΛΗΣΕΙΣ EM'
     ,isnull(sum(case when FK_ESFIItemPeriodics_ESGOSites.Code = 3  then SalesQty end), 0) AS 'ΠΩΛΗΣΕΙΣ L1'
@@ -46,12 +47,13 @@ def cost(brands, year):
     return f"""
            SELECT
            FK_ESFIItemEntry_ESFIItem.BarCode                                                                    AS 'BARCODE'
-           ,Sum(ESFIItemEntry_ESFIItemPeriodics.NetValue) AS 'SUM COST'
-            ,isnull(sum(case when ESGOSites.Code = 1  then ESFIItemEntry_ESFIItemPeriodics.NetValue end), 0) AS 'COST ELOUNDA MARKET'
-            ,isnull(sum(case when ESGOSites.Code = 3  then ESFIItemEntry_ESFIItemPeriodics.NetValue end), 0) AS 'COST LATO 01'
-            ,isnull(sum(case when ESGOSites.Code = 5  then ESFIItemEntry_ESFIItemPeriodics.NetValue end), 0) AS 'COST LATO 02'
-            ,isnull(sum(case when ESGOSites.Code = 6  then ESFIItemEntry_ESFIItemPeriodics.NetValue end), 0) AS 'COST LATO 03'
-            ,isnull(sum(case when ESGOSites.Code = 7  then ESFIItemEntry_ESFIItemPeriodics.NetValue end), 0) AS 'COST LATO 04'
+           ,Sum(ESFIItemEntry_ESFIItemPeriodics.NetValue) AS 'ΚΟΣΤΟΣ'
+            ,isnull(sum(case when ESGOSites.Code = 1  then ESFIItemEntry_ESFIItemPeriodics.NetValue end), 0) AS 'ΚΟΣΤΟΣ ΕΜ'
+            ,isnull(sum(case when ESGOSites.Code = 3  then ESFIItemEntry_ESFIItemPeriodics.NetValue end), 0) AS 'ΚΟΣΤΟΣ L1'
+            ,isnull(sum(case when ESGOSites.Code = 5  then ESFIItemEntry_ESFIItemPeriodics.NetValue end), 0) AS 'ΚΟΣΤΟΣ L2'
+            ,isnull(sum(case when ESGOSites.Code = 6  then ESFIItemEntry_ESFIItemPeriodics.NetValue end), 0) AS 'ΚΟΣΤΟΣ L3'
+            ,isnull(sum(case when ESGOSites.Code = 7  then ESFIItemEntry_ESFIItemPeriodics.NetValue end), 0) AS 'ΚΟΣΤΟΣ L4'
+
             ,Sum(ESFIItemEntry_ESFIItemPeriodics.Quantity) AS 'ΑΓΟΡΕΣ'
             ,isnull(sum(case when ESGOSites.Code = 1  then ESFIItemEntry_ESFIItemPeriodics.Quantity end), 0) AS 'ΑΓΟΡΕΣ EM'
             ,isnull(sum(case when ESGOSites.Code = 3  then ESFIItemEntry_ESFIItemPeriodics.Quantity end), 0) AS 'ΑΓΟΡΕΣ L1'
