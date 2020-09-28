@@ -99,6 +99,10 @@ sep_2020 = Timokatalogos(17,
                          datetime(2020, 9, 1),
                          datetime(2020, 9, 30),
                          'Αφορά: 1+1 ΔΩΡΑ')
+oct_2020 = Timokatalogos(18,
+                         datetime(2020, 10, 1),
+                         datetime(2020, 10, 31),
+                         'ΕΠΕΚΤΑΣΗ: 1+1 ΔΩΡΑ')
 
 lista_2020 = [january_2020_02, nestle_2020, feb_2020, kinder_2020, xtapodi_2020, nescafe_2020, march_2020, april_2020,
               alevri_2020, may_2020, may_2020_b, nuvoleta_2020, june_2020, june_extra_2020, jule_2020, jule_2020_b,
