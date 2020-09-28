@@ -95,7 +95,7 @@ def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_r
     x = brand_sales.Turnover
     y = brand_sales.BRAND
     plt.figure(figsize=(16, 8), dpi=150)
-    plt.subplot(title='ΠΙΤΑ ΤΖΙΡΟΣ')
+    plt.subplot(title=f'ΑΠΕΙΚΟΝΙΣΗ: ΤΖΙΡΟΣ / BRAND || ΕΝΕΡΓΕΙΑ: {tim_id}η || {choose_pricelist.comments} || [ΕΝΑΡΞΗ: {from_date.strftime("%d-%m")} - ΛΗΞΗ: {to_date.strftime("%d-%m")}]')
     plt.pie(x, labels=y, autopct='%.1f%%')
     plt.axis('equal')
     plt.savefig('images/pricelist_pie.png')
