@@ -99,3 +99,4 @@ def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_r
     plt.pie(x, labels=y, autopct='%.1f%%')
     plt.axis('equal')
     plt.savefig('images/pricelist_pie.png')
+    plt.close()

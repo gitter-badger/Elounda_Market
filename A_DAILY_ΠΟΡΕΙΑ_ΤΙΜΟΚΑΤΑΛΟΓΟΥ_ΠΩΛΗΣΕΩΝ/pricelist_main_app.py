@@ -5,6 +5,7 @@ from A_DAILY_ΠΟΡΕΙΑ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ_ΠΩΛΗΣΕΩΝ.library im
 from Private import sql_connect, slack_app
 import time
 from datetime import datetime as dt
+import sys
 
 # ---------------- MAKE DF REPORT VIEWABLE ----------------------------
 pd.set_option('display.max_columns', 500)
@@ -123,4 +124,8 @@ while True:
     print(f'{dt.now().strftime("%d-%m %H:%M:%S")} :5 MINUTES PAUSE')
 
     # -------------------- ADD SLEEP TIMER --------------------
-    time.sleep(300)  # 5 minutes
+    try:
+        time.sleep(300)  # 5 minutes
+    except KeyboardInterrupt:
+        print('EXIT REQUESTED BY: Ioannis E. Kommas')
+        sys.exit(1)

@@ -34,6 +34,7 @@ print(covid_data_world.new_deaths.sum())
 
 # -------------------- SELECT GREECE --------------------
 covid_data_greece = covid_data[covid_data['location'] == 'Greece']
+# -------------------- SELECT ITALY --------------------
 covid_data_italy = covid_data[covid_data.location == 'Italy']
 
 # -------------------- PLOT GREECE --------------------
