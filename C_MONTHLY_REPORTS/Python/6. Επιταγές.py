@@ -21,4 +21,4 @@ data = pd.read_sql(sql, sql_connect.connect())
 epitages_to_excel.run(path_to_file, data)
 
 # -------------------------------- MAIL ---------------------------------------
-send_mail.send_mail(mail_lst, mail_names, word, output_file, output_file)
+send_mail.send_mail(mail_lst, mail_names, word, path_to_file, output_file)
