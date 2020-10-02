@@ -2,7 +2,6 @@
 
 import matplotlib.pyplot as plt
 import seaborn as sns
-import numpy as np
 from Private import sql_connect
 import pandas as pd
 from PLOT_EXAMPLES import sql

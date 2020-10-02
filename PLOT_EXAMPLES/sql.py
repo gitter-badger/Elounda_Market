@@ -14,8 +14,8 @@ SELECT
        ON ESFIItemPeriodics.fSiteGID = FK_ESFIItemPeriodics_ESGOSites.GID
      LEFT JOIN ESGOFiscalPeriod AS FK_ESFIItemPeriodics_ESGOFiscalPeriod
        ON ESFIItemPeriodics.fFiscalPeriodGID = FK_ESFIItemPeriodics_ESGOFiscalPeriod.GID
-     --WHERE
-      --  (FK_ESFIItemPeriodics_ESGOSites.Code = '1')
+     WHERE
+        (FK_ESFIItemPeriodics_ESGOSites.Code = '1')
 GROUP BY
 
        format(FK_ESFIItemPeriodics_ESGOFiscalPeriod.BeginDate, 'yyyy'),
