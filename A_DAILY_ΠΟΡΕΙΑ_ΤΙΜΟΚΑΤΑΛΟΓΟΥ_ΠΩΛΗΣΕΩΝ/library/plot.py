@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from datetime import datetime as dt
 import squarify
 import numpy as np
+import seaborn as sns
 
 
 def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_ranges,
@@ -100,3 +101,5 @@ def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_r
     plt.axis('equal')
     plt.savefig('images/pricelist_pie.png')
     plt.close()
+
+

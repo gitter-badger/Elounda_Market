@@ -7,6 +7,7 @@ import time
 from datetime import datetime as dt
 import sys
 
+
 # ---------------- MAKE DF REPORT VIEWABLE ----------------------------
 pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
