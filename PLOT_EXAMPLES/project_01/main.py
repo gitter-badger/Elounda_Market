@@ -14,3 +14,12 @@ f, ax = plt.subplots(figsize=(25, 10))
 ax = sns.barplot(data=df, x='Year', y='Total Goals')
 ax.set_title
 plt.show()
+
+df_goals = pd.read_csv('goals.csv')
+sns.set_style('whitegrid')
+sns.set_context('notebook', font_scale=1.25)
+sns.set_palette("Spectral")
+f, ax2 = plt.subplots(figsize=(12,7))
+ax2 = sns.boxplot(data=df_goals, x='year', y='goals')
+ax2.set_title('Goal Distribution / Year')
+plt.show()
