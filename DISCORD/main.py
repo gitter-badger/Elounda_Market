@@ -46,6 +46,8 @@ async def on_message(message):
     if str(message.channel) == 'business-bot':
         # (-) (+) DAILY -------------------------------------------------------
         if message.content.lower().startswith('refresh daily'):
+            response = ':green_apple: Starting '
+            await message.channel.send(response)
             delete_slack_chat.run(1)
             double_barcode_check.run()
             elounda.run()
@@ -61,6 +63,8 @@ async def on_message(message):
 
         # (-) (+) MONTHLY -------------------------------------------------------
         if message.content.lower().startswith('refresh monthly'):
+            response = ':green_apple: Starting '
+            await message.channel.send(response)
             delete_slack_chat.run(4)
             pendings.run()
             vardas.run()
@@ -74,12 +78,16 @@ async def on_message(message):
 
         # (-) ORDERS -------------------------------------------------------
         if message.content.lower().startswith('delete orders'):
+            response = ':green_apple: Starting '
+            await message.channel.send(response)
             delete_slack_chat.run(3)
             response = 'ΔΙΑΓΡΑΦΗ ΚΑΝΑΛΙ: ΠΑΡΑΓΓΕΛΙΕΣ: COMPLETE'
             await message.channel.send(response)
 
         # (+) ORDERS -------------------------------------------------------
         if message.content.lower().startswith('add order'):
+            response = ':green_apple: Starting '
+            await message.channel.send(response)
             try:
                 order_id = message.content.split(' ')[2]
             except IndexError:
@@ -91,12 +99,16 @@ async def on_message(message):
 
         # (-) PRE COST CALC -------------------------------------------------------
         if message.content.lower().startswith('delete pre cost'):
+            response = ':green_apple: Starting '
+            await message.channel.send(response)
             delete_slack_chat.run(6)
             response = 'ΔΙΑΓΡΑΦΗ ΚΑΝΑΛΙ: ΠΡΟ ΚΟΣΤΟΛΟΓΗΣΗ: COMPLETE'
             await message.channel.send(response)
 
         # (+) PRE COST CALC -------------------------------------------------------
         if message.content.lower().startswith('add pre cost'):
+            response = ':green_apple: Starting '
+            await message.channel.send(response)
             try:
                 pcc_id = message.content.split(' ')[3]
                 pcc_year = message.content.split(' ')[4]
@@ -109,6 +121,8 @@ async def on_message(message):
 
         # (-) (+) BAZAAR -------------------------------------------------------
         if message.content.lower().startswith('add bazaar'):
+            response = ':green_apple: Starting '
+            await message.channel.send(response)
             delete_slack_chat.run(5)
             bazaar.run()
             response = 'ΚΑΤΑΧΩΡΗΣΗ ΤΙΜΟΛΟΓΙΩΝ BAZAAR: COMPLETE'
@@ -116,22 +130,28 @@ async def on_message(message):
 
         # (+) PRICE HISTORY PLOT -------------------------------------------------------
         if message.content.lower().startswith('history'):
+            response = ':green_apple: Starting '
+            await message.channel.send(response)
             price_history.run()
             await message.channel.send('ΔΗΜΙΟΥΡΓΙΑ ΙΣΤΟΡΙΚΟΥ ΤΙΜΩΝ: COMPLETE')
 
         # (+) DELETE DISCORD -------------------------------------------------------
         if message.content.lower().startswith('rm -rf'):
+            response = ':green_apple: Starting '
+            await message.channel.send(response)
             await message.channel.purge(limit=100)
 
         # (+) ΣΤΑΤΙΣΤΙΚΗ DISCORD -------------------------------------------------------
         if message.content.lower().startswith('stats'):
+            response = ':green_apple: Starting '
+            await message.channel.send(response)
             delete_slack_chat.run(7)
             no_item_found.run()
             await message.channel.send('STATISTICS: ΣΦΑΛΜΑ ΣΤΟ ΤΑΜΕΙΟ / ΕΤΟΣ: COMPLETE')
             new_items.run()
             await message.channel.send('STATISTICS: ΝΕΑ ΕΙΔΗ / ΕΤΟΣ: COMPLETE')
             new_item_per_user.run()
-            await message.channel.send('STATISTICS: ΝΕΑ ΕΙΔΗ / ΧΡΗΣΤΗ: COMPLETE')
+            await message.channel.send('STATISTICS: ΝΕΑ ΕΙΔΗ / ΧΡΗΣΤΗ: COMPLETE /END')
 
 
 # ---------------------------------------------------------------------------------------------------------------------
