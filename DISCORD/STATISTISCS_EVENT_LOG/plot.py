@@ -1,9 +1,9 @@
 #   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 
 import matplotlib.pyplot as plt
+import seaborn as sns
 
-
-def run(df):
+def run(df, df2):
     X = df['YEAR']
     y = df['ΚΑΤΑΜΕΤΡΗΣΗ']
     plt.figure(figsize=(15, 9))
@@ -22,4 +22,10 @@ def run(df):
     plt.grid(True, alpha=0.5)
     plt.savefig('images/no_item_found.png')
     # plt.show()
+    plt.close()
+
+    plt.figure(figsize=(15, 9))
+    g4 = sns.FacetGrid(df2, col="STORE", col_wrap=3, height=4)
+    g4 = (g4.map(plt.bar, "DATE", "COUNT").add_legend())
+    plt.savefig('images/detailed.png')
     plt.close()
