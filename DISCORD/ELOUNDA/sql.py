@@ -145,3 +145,88 @@ GROUP BY FK_ESFITradeAccountPeriodics_ESFITradeAccount.Name
 order by 4  desc
     """.format(input)
     return q
+
+def elounda_market_sales():
+    return """
+SELECT
+    format(ESGOFiscalPeriod.BeginDate, 'yyyy') as 'YEAR'
+  ,format(ESGOFiscalPeriod.BeginDate, 'MM-MMM') AS 'MONTH'
+  ,Sum(ESFIItemPeriodics.TurnOver) AS TurnOver
+
+ FROM ESFIItemPeriodics
+     LEFT JOIN ESGOSites 
+       ON ESFIItemPeriodics.fSiteGID = ESGOSites.GID
+     LEFT JOIN ESGOFiscalPeriod 
+       ON ESFIItemPeriodics.fFiscalPeriodGID = ESGOFiscalPeriod.GID
+     WHERE
+        (ESGOSites.Code = '1')
+GROUP BY
+
+        format(ESGOFiscalPeriod.BeginDate, 'yyyy'),
+        format(ESGOFiscalPeriod.BeginDate, 'MM-MMM')
+order by
+        format(ESGOFiscalPeriod.BeginDate, 'yyyy')
+"""
+
+def sales_per_brand():
+    return """
+
+        SELECT
+           IsNull(FK_ESFIItemPeriodics_ESFIItem.fItemSubCategoryCode,'') 
+            AS SubCategory
+            ,Sum(ESFIItemPeriodics.TurnOver) AS TurnOver
+        ,YEAR(FK_ESFIItemPeriodics_ESGOFiscalPeriod.BeginDate) as 'YEAR'
+        
+
+
+        FROM ESFIItemPeriodics 
+         LEFT JOIN ESFIItem AS FK_ESFIItemPeriodics_ESFIItem
+           ON ESFIItemPeriodics.fItemGID = FK_ESFIItemPeriodics_ESFIItem.GID
+         LEFT JOIN ESGOSites AS FK_ESFIItemPeriodics_ESGOSites
+           ON ESFIItemPeriodics.fSiteGID = FK_ESFIItemPeriodics_ESGOSites.GID
+         LEFT JOIN ESGOFiscalPeriod AS FK_ESFIItemPeriodics_ESGOFiscalPeriod
+           ON ESFIItemPeriodics.fFiscalPeriodGID = FK_ESFIItemPeriodics_ESGOFiscalPeriod.GID
+         LEFT JOIN ESFIZItemSubCategory AS FK_ESFIItem_ESFIZItemSubCategory
+           ON FK_ESFIItemPeriodics_ESFIItem.fItemSubCategoryCode = FK_ESFIItem_ESFIZItemSubCategory.Code 
+           AND FK_ESFIItemPeriodics_ESFIItem.fCompanyCode = FK_ESFIItem_ESFIZItemSubCategory.fCompanyCode
+         WHERE
+               (FK_ESFIItemPeriodics_ESFIItem.AssemblyType <> 1) --όχι τα σετ
+           AND (FK_ESFIItemPeriodics_ESFIItem.ItemType <> 6) -- όχι εγγυοδοσία
+           AND (FK_ESFIItemPeriodics_ESFIItem.ItemClass = 1)  -- Κλάση Είδη Αποθήκης (1)
+           AND (FK_ESFIItemPeriodics_ESGOSites.Code = 1) -- Υποκατάστημα (1) Κεντρικά Έδρας
+
+        GROUP BY
+        YEAR(FK_ESFIItemPeriodics_ESGOFiscalPeriod.BeginDate),
+        IsNull(FK_ESFIItemPeriodics_ESFIItem.fItemSubCategoryCode,'')  --  (Brand Name group)
+
+    """
+
+
+def sales_from_pricelist(date, code):
+    return f"""
+        SELECT 
+       year(ESFIItemEntry_ESFIItemPeriodics.RegistrationDate) AS 'YEAR',
+       format(ESFIItemEntry_ESFIItemPeriodics.RegistrationDate, 'MM-MMM') AS 'MONTH',
+       Sum(ESFIItemEntry_ESFIItemPeriodics.ESFIItemPeriodics_SalesQty) AS 'QUANTITY'
+       
+
+FROM ESFIItemEntry_ESFIItemPeriodics AS ESFIItemEntry_ESFIItemPeriodics
+
+     LEFT JOIN ESFIItem AS FK_ESFIItemEntry_ESFIItemPeriodics_ESFIItem
+       ON ESFIItemEntry_ESFIItemPeriodics.fItemGID = FK_ESFIItemEntry_ESFIItemPeriodics_ESFIItem.GID
+     LEFT JOIN ESGOSites AS FK_ESFIItemEntry_ESGOSites_Site
+       ON ESFIItemEntry_ESFIItemPeriodics.fSiteGID = FK_ESFIItemEntry_ESGOSites_Site.GID
+     LEFT JOIN ESFISalesPerson AS FK_ESFIItemEntry_ESFISalesPerson
+       ON ESFIItemEntry_ESFIItemPeriodics.fSalesPersonGID = FK_ESFIItemEntry_ESFISalesPerson.GID
+WHERE  ESFIItemEntry_ESFIItemPeriodics.RegistrationDate in {date}
+       AND (ESFIItemEntry_ESFIItemPeriodics.ESFIItemPeriodics_SalesQty <> 0)
+        AND FK_ESFIItemEntry_ESFIItemPeriodics_ESFIItem.BarCode in {code}
+
+GROUP BY 
+year(ESFIItemEntry_ESFIItemPeriodics.RegistrationDate),
+format(ESFIItemEntry_ESFIItemPeriodics.RegistrationDate, 'MM-MMM')
+
+
+
+
+        """

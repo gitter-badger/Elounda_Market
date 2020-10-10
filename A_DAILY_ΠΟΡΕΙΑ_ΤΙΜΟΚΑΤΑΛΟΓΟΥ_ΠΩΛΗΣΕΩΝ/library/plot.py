@@ -9,7 +9,7 @@ import seaborn as sns
 def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_ranges,
         tziros_per_day, quantity_per_day, tim_id):
     # -------------------- PLOT --------------------
-    plt.figure(figsize=(16, 8), dpi=150)
+    plt.figure(figsize=(25, 9), dpi=150)
     plt.subplot(2, 1, 1,
                 title=f'ΕΝΕΡΓΕΙΑ: {tim_id}η || {choose_pricelist.comments} || [ΕΝΑΡΞΗ: {from_date.strftime("%d-%m")} - ΛΗΞΗ: {to_date.strftime("%d-%m")}]')
     plt.bar(brand_sales.BRAND, brand_sales.Turnover, alpha=0.5, color='red', label='ΤΖΙΡΟΣ')
@@ -60,7 +60,7 @@ def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_r
     plt.legend()
     plt.tight_layout()
     plt.savefig('images/views.png')
-    # plt.show()
+    plt.show()
     plt.close()
 
     # -------------------- TREE MAP --------------------
@@ -75,7 +75,7 @@ def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_r
         colors = [plt.cm.Spectral(i / float(len(labels))) for i in range(len(labels))]
 
         # Draw Plot
-        plt.figure(figsize=(16, 8), dpi=150)
+        plt.figure(figsize=(25, 9), dpi=150)
         squarify.plot(sizes=sizes, label=labels, color=colors, alpha=.8)
 
         # Decorate
@@ -83,7 +83,7 @@ def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_r
             f"ΠΩΛΗΣΕΙΣ ΠΟΣΟΤΗΤΑ || ΣΥΝΟΛΑ: {round(final_result.SalesQuantity.sum(), 2)}TEM / {round(final_result.Turnover.sum(), 2)}€  ")
         plt.axis('off')
         plt.savefig('images/tree_map_quantity.png')
-        # plt.show()
+        plt.show()
         plt.close()
     except ZeroDivisionError:
         print('ΣΦΑΛΜΑ ZeroDivisionError ΣΤΟ TREE MAP')
@@ -95,11 +95,12 @@ def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_r
     # -------------------- PIE --------------------
     x = brand_sales.Turnover
     y = brand_sales.BRAND
-    plt.figure(figsize=(16, 8), dpi=150)
+    plt.figure(figsize=(25, 9), dpi=150)
     plt.subplot(title=f'ΑΠΕΙΚΟΝΙΣΗ: ΤΖΙΡΟΣ / BRAND || ΕΝΕΡΓΕΙΑ: {tim_id}η || {choose_pricelist.comments} || [ΕΝΑΡΞΗ: {from_date.strftime("%d-%m")} - ΛΗΞΗ: {to_date.strftime("%d-%m")}]')
     plt.pie(x, labels=y, autopct='%.1f%%')
     plt.axis('equal')
     plt.savefig('images/pricelist_pie.png')
+    plt.show()
     plt.close()
 
 
