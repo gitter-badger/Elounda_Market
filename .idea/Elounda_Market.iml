@@ -10,6 +10,7 @@
       <excludeFolder url="file://$MODULE_DIR$/A_DAILY_ΠΟΡΕΙΑ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ_ΠΩΛΗΣΕΩΝ/images" />
       <excludeFolder url="file://$MODULE_DIR$/DISCORD/ELOUNDA/images" />
       <excludeFolder url="file://$MODULE_DIR$/DISCORD/images" />
+      <excludeFolder url="file://$MODULE_DIR$/Private" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
     <orderEntry type="inheritedJdk" />

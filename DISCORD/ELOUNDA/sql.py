@@ -225,8 +225,5 @@ WHERE  ESFIItemEntry_ESFIItemPeriodics.RegistrationDate in {date}
 GROUP BY 
 year(ESFIItemEntry_ESFIItemPeriodics.RegistrationDate),
 format(ESFIItemEntry_ESFIItemPeriodics.RegistrationDate, 'MM-MMM')
-
-
-
-
         """
+

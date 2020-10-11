@@ -27,3 +27,5 @@ SELECT ReferenceNumber                AS 'ΑΡΙΘΜΟΣ ΕΠΙΤΑΓΗΣ',
             WHERE
             DATEPART(yyyy, IssueDate) = DATEPART(yyyy, getdate())
        ORDER BY 1
+
+
