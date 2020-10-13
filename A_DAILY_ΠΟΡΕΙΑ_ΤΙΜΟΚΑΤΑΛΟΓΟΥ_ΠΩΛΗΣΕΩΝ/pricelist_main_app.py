@@ -75,6 +75,7 @@ while True:
             quantity_per_day.append(sales_per_day.SalesQuantity.sum())
             tziros_per_day.append(round(sales_per_day.Turnover.sum(), 2))
 
+
         # -------------------- ADD +=1 TO THE COUNTER --------------------
         found_changes_counter += 1
 

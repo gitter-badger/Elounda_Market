@@ -28,79 +28,80 @@ names = ['COCA COLA 3E', 'Pepsico - HBH', 'Κρι Κρι', 'ΟΛΥΜΠΟΣ Γα�
                      'Κονσερβοοπιια Βορειου Αιγαιου Α.Ε.Β.Ε.', 'Sonel A.E. Loreal Hellas S.A.'
                      ]
 
-coca_cola = (
-    'AMITA', 'AVRA', 'Coca-Cola', 'Fanta', 'Frulite', 'Monster', 'Nestea', 'Powerade', 'Schweppes', 'Sprite', 'Λυττός')
-pepsico = ('7up', 'Lipton', 'Pepsi', 'RockStar', 'Ήβη')
-kri_kri = ('Κρι Κρι', 'Κρι Κρι')
-olympos = ('Tyras', 'Όλυμπος')
-delta = ('Life', 'Wibe', 'Βλάχας', 'Δέλτα')
-hellenic = ('Kanaki', 'Mimikos')
-olympiaki = ('Corona', 'Fix', 'Guinness', 'Henninger', 'Kaiser', 'Magners', 'Mythos', 'Somersby', 'Tuborg')
-athinaiki = ('Alfa', 'Amstel', 'Buckler', 'Desperados', 'Fisher', 'Heineken', 'Sol', 'Strongbow')
-tasty = ('Cheetos', 'Doritos', 'Quaker', 'Tasty')
-vardas = ('Βάρδας', 'Βάρδας')
-bdf = ('nivea', 'nivea')
-karamolegkos = ('Καραμολεγκος', 'Κατσελης')
-papadopoulos = ('Papadopoulou', 'Papadopoulou')
-zaros = ('Ζάρος', 'Ζάρος')
-zargianakis = ('Σητειακό', 'Σητειακό')
-bothilia = ('Σεληνάρι', 'Σεληνάρι')
-procter = ('Always', 'Ariel', 'Camay', 'Clairol', 'Crest', 'Essex', 'Fairy', 'Gillette', 'Head&Shoulders',
+coca_cola = ['Amita', 'Avra', 'Coca-Cola', 'Fanta', 'Frulite', 'Monster', 'Nestea', 'Powerade', 'Schweppes', 'Sprite',
+    'Λυττός']
+pepsico = ['7up', 'Lipton', 'Pepsi', 'RockStar', 'Ήβη']
+kri_kri = ['Κρι Κρι']
+olympos = ['Tyras', 'Όλυμπος']
+delta = ['Life', 'Wibe', 'Βλάχας', 'Δέλτα']
+hellenic = ['Kanaki', 'Mimikos']
+olympiaki = ['Corona', 'Fix', 'Guinness', 'Henninger', 'Kaiser', 'Magners', 'Mythos', 'Somersby', 'Tuborg']
+athinaiki = ['Alfa', 'Amstel', 'Buckler', 'Desperados', 'Fisher', 'Heineken', 'Sol', 'Strongbow']
+tasty = ['Cheetos', 'Doritos', 'Quaker', 'Tasty']
+vardas = ['Βάρδας']
+bdf = ['Nivea']
+karamolegkos = ['Καραμολεγκος', 'Κατσελης']
+papadopoulos = ['Papadopoulou']
+zaros = ['Ζάρος']
+zargianakis = ['Σητειακό']
+bothilia = ['Σεληνάρι']
+procter = ['Always', 'Ariel', 'Camay', 'Clairol', 'Crest', 'Essex', 'Fairy', 'Gillette', 'Head&Shoulders',
            'Herbal Essences', 'Lenor', 'Oral B', 'Pampers', 'Pantene', 'Rol', 'Swiffer', 'Tampax', 'Tide',
-           'Viakal', 'Wash&Go', 'Wella', 'Wellaflex')
-giotis = ('Fytro', 'Hemo', 'Άνθος', 'Γιώτης')
-barilla = ('Barilla', 'Misko', 'Wasa')
-ifantis = ('Υφαντής', 'Υφαντής')
-atlanta = ('Kelloggs', 'Twinings', 'Ατλάντα')
-frieslandCampina = ('Fina', 'Frisolac', 'Milner', 'Nounou', 'Βλάχας')
-makatounis = ('Elli Spices', 'Elli Spices')
-ellinikes_farmes = ('Hellenic', 'Hellenic')
-fage = ('Φάγε', 'Φάγε')
-metaxa = ('Metaxa', 'Metaxa')
-siligardos = ('Αγνότης', 'Συλλιγάρδος')
-sintixakis = ('Συντιχάκης', 'Συντιχάκης')
-diageo = ('Johnnie Walker', 'Haig', 'Dimple', 'Cardhu', 'J&B', 'Classic Malts', 'Smirnoff', 'Cîroc', 'Ketel One',
+           'Viakal', 'Wash&Go', 'Wella', 'Wellaflex']
+giotis = ['Fytro', 'Hemo', 'Άνθος', 'Γιώτης']
+barilla = ['Barilla', 'Misko', 'Wasa']
+ifantis = ['Υφαντής']
+atlanta = ['Kelloggs', 'Twinings', 'Ατλάντα']
+frieslandCampina = ['Fina', 'Frisolac', 'Milner', 'Nounou', 'Βλάχας']
+makatounis = ['Elli Spices']
+ellinikes_farmes = ['Hellenic']
+fage = ['Φάγε']
+metaxa = ['Metaxa']
+siligardos = ['Αγνότης', 'Συλλιγάρδος']
+sintixakis = ['Συντιχάκης']
+diageo = ['Johnnie Walker', 'Haig', 'Dimple', 'Cardhu', 'J&B', 'Classic Malts', 'Smirnoff', 'Cîroc', 'Ketel One',
           'Gordons', 'Gordon Space', 'Tanqueray', 'Captain Morgan', 'Pampero', 'Baileys', 'Grand Marnier',
-          'Veuve Clicquot Ponsardin', 'Veuve De Fraince')
-nestle = ('Felix', 'Fitness', 'Friskies', 'Gourmet', 'Maggi', 'Nescafe', 'Nesquik', 'Nestle', 'Perrier', 'Purina',
-          'Smarties', 'Παπαγάλος')
-lyrakis = ('Lyrarakis', 'Lyrarakis')
-aia = ('Aia Wudy', 'Gran Podere')
-arla = ('Arla', 'Buko', 'Castello', 'Lurpack')
-bacardi_hellas = ('Bacardi', 'Bacardi')
-bahlsen = ('Bahlsen', 'Bahlsen')
-bic = ('Bic', 'Bic')
-bingo = ('Amaretti', 'Champion', 'Koukou Roukou', 'Serenata', 'Tottis', 'Τοττης')
-bolton = ('Borotalco', 'Fornet', 'Merito', 'Neutro Roberts', 'Omino Bianco', 'Overlay', 'Rio Mare', 'Softex', 'WC Net')
-bristol = ('Depon', 'Depon')
-cadbury = ('Bassetts', 'Cadbury')
-candia = ('Candia Nuts', 'Melibar', 'Μίνως')
-chipita = ('7 Days', 'Chipita', 'Extra', 'Fineti', 'Molto', 'Recor')
-colgate = ('Azax', 'Colgate', 'Fabuloso', 'Palmolive', 'Soupline')
-cpw = ('Cheerios', 'Clusters', 'Fitness', 'Nesquik')
-craft = ('Dentyne', 'Energizer', 'Fonzies', 'Halls', 'Jacobs', 'Kraft', 'Maxwell', 'Milka', 'Mondelez', 'Nabisco',
-         'Philadelphia', 'Tassimo', 'Toblerone', 'Trident', 'V6', 'Παυλίδης')
-cretamel = ('Cretamel', 'Orino')
-croco = ('Croco', 'Croco')
-danone = ('Actimel', 'Activia', 'Danone')
-diana = ('Attiva', 'Diana', 'Diana Ottima', 'Flert', 'Ottima')
-dimak = ('Delta Plast', 'Dimak Plast', 'Viomes', 'Viosarp')
-elbisco = ('Elite', 'Forma', 'Rollers', 'Αλλατίνη', 'Κρις-Κρις', 'Μανα')
-mars = ('Bounty', 'Catisfactions', 'Catsan', 'Dolmio', 'Kitekat', 'Maltesers', 'Mars', 'Milky Way', 'Orbit',
-        'Pedigree', 'Perfect Fit', 'Sheba', 'Snickers', 'Twix', 'Uncle Bens', 'Whiskas', 'Wringleys')
-numil = ('Aptamil', 'Milupa', 'Nutricia')
-olympic = ('Olympic', 'Olympic')
-optima = ('Adoro', 'Dirollo', 'Ήπειρος', 'Ταλαγάνι')
-pallas = ('Pallas', 'Λάβδας')
-perfeti = ('Chupa Chups', 'Fruittella', 'Mentos', 'Vivident')
-propharm = ('Olive Touch', 'Propharm', 'Tantra Beauty')
-reckit = ('Airwick', 'Brasso', 'Calgon', 'Cilit Bang', 'Clearasil', 'Dettol', 'Dr Scoll', 'Finish',
-          'Harpic', 'Quanto', 'Silvo', 'Vanish', 'Veet', 'Vitroglen', 'Woolite')
-johnson = ('Autan', 'Baygon', 'Bio Shout', 'Duck', 'Glade', 'Mr Muscle', 'Pronto', 'Raid')
-kalamarakis = ('Midland', 'Tulip', 'Ήρα', 'Κάλας', 'Φιλικές')
-sca_hygiene = ('Libero', 'Libresse', 'Tena', 'Zewa')
-conserva = ('Dakor', 'Flokos', 'Trata')
-sonel = ('Ambre Solaire', 'Dermo', 'Elvive', 'Fructis', 'Garnier', 'Loreal', 'minerals', 'Studio', 'Studio FX')
+          'Veuve Clicquot Ponsardin', 'Veuve De Fraince', 'Veuve Clicquot Ponsa']
+nestle = ['Felix', 'Fitness', 'Friskies', 'Gourmet', 'Maggi', 'Nescafe', 'Nesquik', 'Nestle', 'Perrier', 'Purina',
+          'Smarties', 'Παπαγάλος']
+lyrakis = ['Lyrarakis']
+aia = ['Aia Wudy', 'Gran Podere']
+arla = ['Arla', 'Buko', 'Castello', 'Lurpack']
+bacardi_hellas = ['Bacardi']
+bahlsen = ['Bahlsen']
+bic = ['Bic']
+bingo = ['Amaretti', 'Champion', 'Koukou Roukou', 'Serenata', 'Tottis', 'Τοττης']
+bolton = [
+'Borotalco', 'Fornet', 'Merito', 'Neutro Roberts', 'Omino Bianco', 'Overlay', 'Rio Mare', 'Softex', 'WC Net']
+bristol = ['Depon']
+cadbury = ["Bassett's", 'Cadbury']
+candia = ['Candia Nuts', 'Melibar', 'Μίνως']
+chipita = ['7 Days', 'Chipita', 'Extra', 'Fineti', 'Molto', 'Recor']
+colgate = ['Azax', 'Colgate', 'Fabuloso', 'Palmolive', 'Soupline']
+cpw = ['Cheerios', 'Clusters', 'Fitness', 'Nesquik']
+craft = ['Dentyne', 'Energizer', 'Fonzies', 'Halls', 'Jacobs', 'Kraft', 'Maxwell', 'Milka', 'Mondelez', 'Nabisco',
+         'Philadelphia', 'Tassimo', 'Toblerone', 'Trident', 'V6', 'Παυλίδης']
+cretamel = ['Cretamel', 'Orino']
+croco = ['Croco']
+danone = ['Actimel', 'Activia', 'Danone']
+diana = ['Attiva', 'Diana', 'Diana Ottima', 'Flert', 'Ottima']
+dimak = ['Delta Plast', 'Dimak Plast', 'Viomes', 'Viosarp']
+elbisco = ['Elite', 'Forma', 'Rollers', 'Αλλατίνη', 'Κρις-Κρις', 'Μανα']
+mars = ['Bounty', 'Catisfactions', 'Catsan', 'Dolmio', 'Kitekat', 'Maltesers', 'Mars', 'Milky Way', 'Orbit',
+        'Pedigree', 'Perfect Fit', 'Sheba', 'Snickers', 'Twix', 'Uncle Bens', 'Whiskas', 'Wringleys']
+numil = ['Aptamil', 'Milupa', 'Nutricia']
+olympic = ['Olympic']
+optima = ['Adoro', 'Dirollo', 'Ήπειρος', 'Ταλαγάνι']
+pallas = ['Pallas', 'Λάβδας']
+perfeti = ['Chupa Chups', 'Fruittella', 'Mentos', 'Vivident']
+propharm = ['Olive Touch', 'Propharm', 'Tantra Beauty']
+reckit = ['Airwick', 'Brasso', 'Calgon', 'Cilit Bang', 'Clearasil', 'Dettol', 'Dr Scoll', 'Finish',
+          'Harpic', 'Quanto', 'Silvo', 'Vanish', 'Veet', 'Vitroglen', 'Woolite']
+johnson = ['Autan', 'Baygon', 'Bio Shout', 'Duck', 'Glade', 'Mr Muscle', 'Pronto', 'Raid']
+kalamarakis = ['Midland', 'Tulip', 'Ήρα', 'Κάλας', 'Φιλικές']
+sca_hygiene = ['Libero', 'Libresse', 'Tena', 'Zewa']
+conserva = ['Dakor', 'Flokos', 'Trata']
+sonel = ['Ambre Solaire', 'Dermo', 'Elvive', 'Fructis', 'Garnier', 'Loreal', 'minerals', 'Studio', 'Studio FX']
 
 brands = [coca_cola, pepsico, kri_kri, olympos, delta, hellenic, olympiaki, athinaiki, tasty, vardas, bdf, karamolegkos,
      papadopoulos, zaros, zargianakis, bothilia, procter, giotis, barilla, ifantis, atlanta, frieslandCampina,
@@ -137,6 +138,7 @@ def run():
     # ------- CONSTRUCTORS -----------
     emspb = pd.read_sql_query(sql.sales_per_brand(), sql_connect.connect())
     for name, brand in zip(names, brands):
+        print(f'checking: {name}')
         df = emspb[emspb.SubCategory.isin(brand)]
         df_pivot = df.pivot(index='SubCategory', columns='YEAR', values='TurnOver')
         df_pivot = df_pivot.fillna(0)

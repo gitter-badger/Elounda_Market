@@ -96,11 +96,21 @@ def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_r
     x = brand_sales.Turnover
     y = brand_sales.BRAND
     plt.figure(figsize=(25, 9), dpi=150)
-    plt.subplot(title=f'ΑΠΕΙΚΟΝΙΣΗ: ΤΖΙΡΟΣ / BRAND || ΕΝΕΡΓΕΙΑ: {tim_id}η || {choose_pricelist.comments} || [ΕΝΑΡΞΗ: {from_date.strftime("%d-%m")} - ΛΗΞΗ: {to_date.strftime("%d-%m")}]')
+    plt.subplot(
+        title=f'ΑΠΕΙΚΟΝΙΣΗ: ΤΖΙΡΟΣ / BRAND || ΕΝΕΡΓΕΙΑ: {tim_id}η || {choose_pricelist.comments} || [ΕΝΑΡΞΗ: {from_date.strftime("%d-%m")} - ΛΗΞΗ: {to_date.strftime("%d-%m")}]')
     plt.pie(x, labels=y, autopct='%.1f%%')
     plt.axis('equal')
     plt.savefig('images/pricelist_pie.png')
     plt.show()
     plt.close()
 
+    # -------------------- HEAT MAP --------------------
 
+
+def heatmap(df, name):
+    f, ax = plt.subplots(figsize=(15, 9))
+    cmap = sns.diverging_palette(133, 10, as_cmap=True)
+    sns.heatmap(df, annot=True, fmt='.2f', linewidths=.5, ax=ax, cmap=cmap).set(title=f'{name}')
+    plt.savefig('images/heatmap.png')
+    # plt.show()
+    plt.close()

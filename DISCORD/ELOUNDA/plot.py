@@ -57,7 +57,7 @@ def heatmap(df):
 
 def box(df):
     fig = plt.subplots(figsize=(15, 9))
-    sns.boxplot(data=df, x='YEAR', y='TurnOver', palette="light:#5A9")
+    sns.boxplot(data=df, x='YEAR', y='TurnOver', palette="light:#5A9").set(title='ELOUNDA MARKET')
     plt.savefig('images/box.png')
     # plt.show()
     plt.close()
@@ -65,7 +65,7 @@ def box(df):
 
 def heatmap_blue(df, name):
     f, ax = plt.subplots(figsize=(15, 9))
-    cmap="YlGnBu"
+    cmap = sns.diverging_palette(133, 10, as_cmap=True)
     sns.heatmap(df, annot=True, fmt='.2f', linewidths=.5, ax=ax, cmap=cmap).set(title=f'{name}')
     plt.savefig('images/heatmap.png')
     # plt.show()
