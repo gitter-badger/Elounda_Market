@@ -7,7 +7,7 @@ from DISCORD.ELOUNDA import slack, excel, sql, plot
 # ------ΛΙΣΤΕΣ------------
 
 
-kataskevastes_lst = ['COCA COLA 3E', 'Pepsico - HBH', 'Κρι Κρι', 'ΟΛΥΜΠΟΣ Γαλακτοβιομηχανία Λαρίσης Α.Ε.',
+names = ['COCA COLA 3E', 'Pepsico - HBH', 'Κρι Κρι', 'ΟΛΥΜΠΟΣ Γαλακτοβιομηχανία Λαρίσης Α.Ε.',
                      'Δέλτα Τρόφιμα Α.Ε.', 'Hellenic Quality Foods A.E.', 'Ολυμπιακή Ζυθοποιία Α.Ε.',
                      'Αθηναϊκή Ζυθοποιία Α.Ε.', 'Tasty Foods ΑΒΓE', 'ΕΜΜΑΝΟΥΗΛ ΒΑΡΔΑΣ & ΣΙΑ Ο.Ε. ΑΡΤΟΠΟΙΕΙΟ',
                      'BDF - Beiersdorf Hellas A.E.', 'Καραμολέγκος ΑΕ', 'Παπαδοπουλος Ε.Ι. Α.Ε.', 'Βότομος Α.Ε. Ζαρος',
@@ -102,7 +102,7 @@ sca_hygiene = ('Libero', 'Libresse', 'Tena', 'Zewa')
 conserva = ('Dakor', 'Flokos', 'Trata')
 sonel = ('Ambre Solaire', 'Dermo', 'Elvive', 'Fructis', 'Garnier', 'Loreal', 'minerals', 'Studio', 'Studio FX')
 
-c = [coca_cola, pepsico, kri_kri, olympos, delta, hellenic, olympiaki, athinaiki, tasty, vardas, bdf, karamolegkos,
+brands = [coca_cola, pepsico, kri_kri, olympos, delta, hellenic, olympiaki, athinaiki, tasty, vardas, bdf, karamolegkos,
      papadopoulos, zaros, zargianakis, bothilia, procter, giotis, barilla, ifantis, atlanta, frieslandCampina,
      makatounis, ellinikes_farmes, fage, metaxa, siligardos, sintixakis, diageo, nestle, lyrakis, aia, arla,
      bacardi_hellas, bahlsen, bic, bingo, bolton, bristol, cadbury, candia, chipita, colgate, cpw, craft, cretamel,
@@ -110,97 +110,40 @@ c = [coca_cola, pepsico, kri_kri, olympos, delta, hellenic, olympiaki, athinaiki
      kalamarakis, sca_hygiene, conserva, sonel
      ]
 
-# print('Κατασκευαστές Σύνολο: {}'.format(len(c)))
-
-# ------- ΠΡΟΜΗΘΕΥΤΕΣ -----------
-
-compo1 = (
-    'Μακριδάκη Α.- Γ.Μακατουνάκης Ο.Ε', 'CANDIA NUTS', 'ΠΕΡΝΙΕΝΤΑΚΗΣ Δ. Α.Ε.Β.Ε. ΑΝΤΙΠΡΟΣΩΠΙΕΣ - ΔΙΑΝΟΜΕΣ - ΕΜΠΟΡΙΟ')
-compo2 = ('ΣΙΓΑΝΟΣ Α.Ε. - ΑΝΤΙΠΡΟΣΩΠΕΙΣ - ΕΜΠΟΡΙΟ ΠΟΤΩΝ', 'Bazaar A.E.', 'ΕΜΠΟΡΙΚΗ ΤΡΟΦΟΔΟΤΙΚΗ Α.Ε.')
-
-
-
 
 def run():
-    # ------- OUTPUT FILE -----------
-    output_file = "/Users/kommas/OneDrive/Business_Folder/Slack/Private_Analytics/EM.xlsx"
-    # -------------ANSWERS----------------------------
-    answer_00 = pd.read_sql_query(sql.query_00(), sql_connect.connect())
-    print(' 00: Προμηθευτές: SQL Ερώτημα για το σύνολο των Προμηθευτών -> --> Ολοκληρώθηκε:  {}'.format(
-        datetime.now().strftime("%H:%M:%S")))
-    x = ()
-    for i in range(len(answer_00)):
-        percent = int((100 * (i + 1)) / len(answer_00))
-        filler = "█" * percent
-        remaining = '-' * (100 - percent)
-        x = x + (answer_00['NAME'][i],)
-        print(f'\r 00: Adding {answer_00["NAME"][i]} Done:[{filler}{percent}%{remaining}]', end='', flush=True)
+    # ------- ELOUNDA MARKET -----------
+    ems= pd.read_sql_query(sql.elounda_market_sales(), sql_connect.connect())
+    print(f' 01: Προμηθευτές: SQL Ερώτημα: ELOUNDA MARKET SALES: Ολοκληρώθηκε: {datetime.now().strftime("%H:%M:%S")}')
 
-    answer_01 = pd.read_sql_query(sql.query_01(), sql_connect.connect())
-    print(f'\n 02: SQL QUERY DONE: {datetime.now().strftime("%H:%M:%S")}', end='')
+    ems_pivot = ems.pivot(index='YEAR', columns='MONTH', values='TurnOver')
+    ems_pivot = ems_pivot.fillna(0)
+    print(f' 02: Δημιουργία Dataframe: Ολοκληρώθηκε: {datetime.now().strftime("%H:%M:%S")}')
 
-    prod_per_year = answer_01.groupby(['YEAR'])['TurnOver'].sum().reset_index()
-    print(f'\n 03: GROUPING DONE: {datetime.now().strftime("%H:%M:%S")}', end='')
+    plot.heatmap(ems_pivot)
+    print(f' 03: PLOT HEATMAP: Ολοκληρώθηκε: {datetime.now().strftime("%H:%M:%S")}')
 
-    # ------------- PLOT ----------------------------
-    plot.run_01(prod_per_year)
+    plot.box(ems)
+    print(f' 04: PLOT BOX: Ολοκληρώθηκε: {datetime.now().strftime("%H:%M:%S")}')
 
-    print(f'\n 04: Plot DONE: {datetime.now().strftime("%H:%M:%S")}')
+    ems_pivot['ΣΥΝΟΛΑ'] = ems_pivot.sum(axis=1)
+    plot.elounda_market_sales(ems, ems_pivot)
+    print(f' 05: PLOT BAR: Ολοκληρώθηκε: {datetime.now().strftime("%H:%M:%S")}')
 
-    answer = []
-    answer_sum = []
-    answer_count = []
-    answer_quant = []
-    year_2012 = []
-    year_2013 = []
-    year_2014 = []
-    year_2015 = []
-    year_2016 = []
-    year_2017 = []
-    year_2018 = []
-    year_2019 = []
-    year_2020 = []
-    for i in range(len(c)):
-        percent = int((100 * (i + 1)) / len(c))
-        filler = "█" * percent
-        remaining = '-' * (100 - percent)
+    ems_pivot.loc['ΣΥΝΟΛΑ'] = ems_pivot.sum(axis=0)
+    print(f' 06: ADD PIVOT SUMS: Ολοκληρώθηκε: {datetime.now().strftime("%H:%M:%S")}')
+    slack.run(ems_pivot)
 
-        answer.append(pd.read_sql_query(sql.query(c[i]), sql_connect.connect()))
-        answer_sum.append(sum(answer[i].TurnOver))
-        answer_count.append(len(answer[i]))
-        answer_quant.append(pd.read_sql_query(sql.count_query(c[i]), sql_connect.connect()))
-        year_2012.append(sum(answer[i].f2012))
-        year_2013.append(sum(answer[i].f2013))
-        year_2014.append(sum(answer[i].f2014))
-        year_2015.append(sum(answer[i].f2015))
-        year_2016.append(sum(answer[i].f2016))
-        year_2017.append(sum(answer[i].f2017))
-        year_2018.append(sum(answer[i].f2018))
-        year_2019.append(sum(answer[i].f2019))
-        year_2020.append(sum(answer[i].f2020))
-        print(f'\r 05: Doing SUMS with counter Done:[{filler}{percent}%{remaining}]', end='', flush=True)
+    # ------- CONSTRUCTORS -----------
+    emspb = pd.read_sql_query(sql.sales_per_brand(), sql_connect.connect())
+    for name, brand in zip(names, brands):
+        df = emspb[emspb.SubCategory.isin(brand)]
+        df_pivot = df.pivot(index='SubCategory', columns='YEAR', values='TurnOver')
+        df_pivot = df_pivot.fillna(0)
+        plot.heatmap_blue(df_pivot, name)
+        df_pivot['ΣΥΝΟΛΑ'] = df_pivot.sum(axis=1)
+        df_pivot.loc['ΣΥΝΟΛΑ'] = df_pivot.sum(axis=0)
+        ccplot = df.groupby('YEAR').sum().reset_index()
+        plot.kataskevastes(ccplot, name)
+        slack.kat_run(df_pivot, name)
 
-    promi8eutes_list = [compo1, compo2, x]
-    print()
-
-    #  ------------- ΠΡΟΜΗΘΕΥΤΕΣ -------------
-    answer_prom = []
-    answer_prom_count = []
-    for i in range(len(promi8eutes_list)):
-        percent = int((100 * (i + 1)) / len(promi8eutes_list))
-        filler = "█" * percent
-        remaining = '-' * (100 - percent)
-
-        answer_prom.append(pd.read_sql_query(sql.querry_suppliers(promi8eutes_list[i]), sql_connect.connect()))
-        answer_prom_count.append(len(answer_prom[i]))
-        print(f'\r 06: looping with counter {i} Done:[{filler}{percent}%{remaining}]', end='', flush=True)
-
-    # ------------- EXCEL ----------------------------
-    excel.run(output_file, answer, answer_01, answer_count, c, promi8eutes_list, answer_prom, answer_prom_count,
-              kataskevastes_lst, answer_quant, answer_sum, year_2012, year_2013, year_2014, year_2015, year_2016,
-              year_2017, year_2018, year_2019, year_2020)
-    # ------------- PLOT ----------------------------
-    plot.run_02(year_2012, year_2013, year_2014, year_2015, year_2016, year_2017, year_2018, year_2019, year_2020,
-                kataskevastes_lst, c)
-    # ------------- SLACK ----------------------------
-    slack.run(output_file)
