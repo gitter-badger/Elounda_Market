@@ -49,6 +49,9 @@ async def on_message(message):
             response = ':green_apple: Starting '
             await message.channel.send(response)
             delete_slack_chat.run(1)
+            delete_slack_chat.run(1)
+            delete_slack_chat.run(1)
+            delete_slack_chat.run(1)
             double_barcode_check.run()
             elounda.run()
             internet.run()
