@@ -6,6 +6,8 @@ from Private import sql_connect, slack_app
 import time
 from datetime import datetime as dt
 import sys
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 # ---------------- MAKE DF REPORT VIEWABLE ----------------------------
 pd.set_option('display.max_columns', 500)
@@ -50,6 +52,7 @@ while True:
     timokatalogos = pd.read_sql_query(sql_select.get_products_in_the_period(from_date, to_date), sql_connect.connect())
     barcodes = tuple(timokatalogos['ΚΩΔΙΚΟΣ'].values)
 
+
     # -------------------- READ SALES SQL DB --------------------
     sales = pd.read_sql_query(sql_select.get_sales(from_date, to_date, tuple(timokatalogos['ΚΩΔΙΚΟΣ'].values)),
                               sql_connect.connect())
@@ -73,6 +76,8 @@ while True:
         sales_pivot = rich_details.pivot_table(index='BRAND', columns='DATE', values='QUANTITY')
         sales_pivot = sales_pivot.fillna(0)
         plot.heatmap(sales_pivot, 'ΠΟΣΟΤΗΤΑ ΠΩΛΗΣΕΩΝ')
+
+
 
         # -------------------- READ SALES QUANTITY AND TurnOver PER DAY PER SQL DB --------------------
         quantity_per_day = []

@@ -101,7 +101,7 @@ def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_r
     x = brand_sales.Turnover
     y = brand_sales.BRAND
     plt.figure(figsize=(15, 9))
-    explode = (0, 0.1, 0.2, 0.1, 0.0, 0.0, 0.1, .2, .1, .0, .0, .1, .2, .1, .0, .1)
+    explode = (0, .1, 0, 0, .1, 0, .1, 0, .1, 0, 0, .1, 0, .1, 0, .1)
     colors = [plt.cm.Spectral(i / float(len(x))) for i in range(len(x))]
     e = tuple(explode[:len(x)])
     plt.subplot(
@@ -118,8 +118,17 @@ def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_r
 def heatmap(df, name):
     f, ax = plt.subplots(figsize=(15, 9))
     cmap = sns.diverging_palette(133, 10, as_cmap=True)
-    sns.heatmap(df, annot=True, fmt='.2f', linewidths=.5, ax=ax, cmap=cmap).set(title=f'{name}')
+    sns.heatmap(df, annot=True, fmt='.2f', linewidths=.5, ax=ax, cmap='YlGnBu').set(title=f'{name}')
     plt.savefig('images/heatmap.png')
+    plt.box(False)
+    # plt.show()
+    plt.close()
+
+
+def sea_boxplot(data, name):
+    f, ax = plt.subplots(figsize=(15, 9))
+    sns.boxplot(data=data, x='BRAND', y='QUANTITY', palette="light:#5A9").set(title=f'{name}')
+    plt.savefig('images/boxplot.png')
     plt.box(False)
     # plt.show()
     plt.close()
