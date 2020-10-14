@@ -155,14 +155,9 @@ def get_ending_pricelist_products(to_date):
 def get_rich_details(dates, barcode_list):
     return f"""
     SELECT
-                       Sum(ESFIItemEntry_ESFIItemPeriodics.ESFIItemPeriodics_SalesQty) AS QUANTITY,
-                       Sum(ESFIItemEntry_ESFIItemPeriodics.ESFIItemPeriodics_TurnOver) AS TURNOVER,
-                        format(RegistrationDate, 'dd/MM/yyyy') as 'DATE',
-                        ESFIitem.BarCode AS 'BARCODE',
+                       Sum(ESFIItemEntry_ESFIItemPeriodics.ESFIItemPeriodics_SalesQty) AS 'QUANTITY',
+                        format(RegistrationDate, 'dd/MM/yyyy') AS 'DATE',
                         ESFIitem.fItemSubcategoryCode AS 'BRAND'
-
-
-                      -- ,day(ESFIItemEntry_ESFIItemPeriodics.RegistrationDate)
 
                 FROM ESFIItemEntry_ESFIItemPeriodics
 
@@ -179,9 +174,9 @@ def get_rich_details(dates, barcode_list):
                        OR (ESFIItemEntry_ESFIItemPeriodics.ESFIItemPeriodics_TurnOver <> 0))
 
 
-GROUP BY ESFIItemEntry_ESFIItemPeriodics.fItemGID,format(RegistrationDate, 'dd/MM/yyyy'),ESFIitem.BarCode,
-                        ESFIitem.fItemSubcategoryCode,
-
-                        ESFIItemEntry_ESFIItemPeriodics.fSiteGID
+GROUP BY 
+ESFIitem.fItemSubcategoryCode,
+format(RegistrationDate, 'dd/MM/yyyy')
+                     
     """
 

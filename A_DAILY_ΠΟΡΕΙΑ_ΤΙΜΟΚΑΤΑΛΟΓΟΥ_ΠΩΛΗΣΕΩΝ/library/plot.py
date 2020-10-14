@@ -65,7 +65,7 @@ def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_r
     plt.tight_layout()
     plt.box(False)
     plt.savefig('images/daily.png')
-    plt.show()
+    # plt.show()
     plt.close()
 
     # -------------------- TREE MAP --------------------
@@ -88,7 +88,7 @@ def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_r
             f"ΠΩΛΗΣΕΙΣ ΠΟΣΟΤΗΤΑ || ΣΥΝΟΛΑ: {round(final_result.SalesQuantity.sum(), 2)}TEM / {round(final_result.Turnover.sum(), 2)}€  ")
         plt.axis('off')
         plt.savefig('images/tree_map_quantity.png')
-        plt.show()
+        # plt.show()
         plt.close()
     except ZeroDivisionError:
         print('ΣΦΑΛΜΑ ZeroDivisionError ΣΤΟ TREE MAP')
@@ -102,10 +102,6 @@ def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_r
     y = brand_sales.BRAND
     plt.figure(figsize=(15, 9))
     explode = (0, 0.1, 0.2, 0.1, 0.0, 0.0, 0.1, .2, .1, .0, .0, .1, .2, .1, .0, .1)
-    # colors = ['#191970', '#001CF0', '#0038E2', '#0055D4', '#0071C6', '#008DB8', '#00AAAA', '#00C69C', '#00E28E',
-    #           '#00FF80', ]
-    # c = colors[:len(x)-1]
-
     colors = [plt.cm.Spectral(i / float(len(x))) for i in range(len(x))]
     e = tuple(explode[:len(x)])
     plt.subplot(
@@ -113,7 +109,7 @@ def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_r
     plt.pie(x, labels=y, autopct='%.1f%%', explode=e, colors=colors)
     plt.axis('equal')
     plt.savefig('images/pricelist_pie.png')
-    plt.show()
+    # plt.show()
     plt.close()
 
     # -------------------- HEAT MAP --------------------
@@ -125,5 +121,5 @@ def heatmap(df, name):
     sns.heatmap(df, annot=True, fmt='.2f', linewidths=.5, ax=ax, cmap=cmap).set(title=f'{name}')
     plt.savefig('images/heatmap.png')
     plt.box(False)
-    plt.show()
+    # plt.show()
     plt.close()
