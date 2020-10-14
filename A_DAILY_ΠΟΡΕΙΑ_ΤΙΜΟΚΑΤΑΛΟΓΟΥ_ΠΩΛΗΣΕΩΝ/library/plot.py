@@ -9,8 +9,8 @@ import seaborn as sns
 def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_ranges,
         tziros_per_day, quantity_per_day, tim_id):
     # -------------------- PLOT --------------------
-    plt.figure(figsize=(25, 9), dpi=150)
-    plt.subplot(2, 1, 1,
+    plt.figure(figsize=(15, 9))
+    plt.subplot(
                 title=f'ΕΝΕΡΓΕΙΑ: {tim_id}η || {choose_pricelist.comments} || [ΕΝΑΡΞΗ: {from_date.strftime("%d-%m")} - ΛΗΞΗ: {to_date.strftime("%d-%m")}]')
     plt.bar(brand_sales.BRAND, brand_sales.Turnover, alpha=0.5, color='red', label='ΤΖΙΡΟΣ')
     plt.plot(brand_sales.BRAND, brand_sales.SalesQuantity, alpha=0.5, color='blue', label='ΠΟΣΟΤΗΤΑ', marker='o',
@@ -30,9 +30,13 @@ def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_r
                      ha='center')  # horizontal alignment can be left, right or center
     plt.xticks(rotation=20)
     plt.grid(True, alpha=0.8)
+    plt.box(False)
     plt.legend()
+    plt.savefig('images/bar.png')
+    plt.close()
 
-    plt.subplot(212, xlabel=f'ΗΜΕΡΟΜΗΝΙΕΣ (EΝΗΜΕΡΩΘΗΚΕ:{dt.now().strftime("%d/%m %H:%M:%S")})',
+    plt.figure(figsize=(15, 9))
+    plt.subplot(xlabel=f'ΗΜΕΡΟΜΗΝΙΕΣ (EΝΗΜΕΡΩΘΗΚΕ:{dt.now().strftime("%d/%m %H:%M:%S")})',
                 title=f"""
     ΠΩΛΗΣΕΙΣ ΑΝΑ ΗΜΕΡΑ || ΣΥΝΟΛΑ: {round(final_result.SalesQuantity.sum(), 2)}TEM / {round(final_result.Turnover.sum(), 2)}€  
     """)
@@ -59,7 +63,8 @@ def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_r
     plt.grid(True, alpha=0.2)
     plt.legend()
     plt.tight_layout()
-    plt.savefig('images/views.png')
+    plt.box(False)
+    plt.savefig('images/daily.png')
     plt.show()
     plt.close()
 
@@ -75,7 +80,7 @@ def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_r
         colors = [plt.cm.Spectral(i / float(len(labels))) for i in range(len(labels))]
 
         # Draw Plot
-        plt.figure(figsize=(25, 9), dpi=150)
+        plt.figure(figsize=(15, 9))
         squarify.plot(sizes=sizes, label=labels, color=colors, alpha=.8)
 
         # Decorate
@@ -95,10 +100,17 @@ def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_r
     # -------------------- PIE --------------------
     x = brand_sales.Turnover
     y = brand_sales.BRAND
-    plt.figure(figsize=(25, 9), dpi=150)
+    plt.figure(figsize=(15, 9))
+    explode = (0, 0.1, 0.2, 0.1, 0.0, 0.0, 0.1, .2, .1, .0, .0, .1, .2, .1, .0, .1)
+    # colors = ['#191970', '#001CF0', '#0038E2', '#0055D4', '#0071C6', '#008DB8', '#00AAAA', '#00C69C', '#00E28E',
+    #           '#00FF80', ]
+    # c = colors[:len(x)-1]
+
+    colors = [plt.cm.Spectral(i / float(len(x))) for i in range(len(x))]
+    e = tuple(explode[:len(x)])
     plt.subplot(
         title=f'ΑΠΕΙΚΟΝΙΣΗ: ΤΖΙΡΟΣ / BRAND || ΕΝΕΡΓΕΙΑ: {tim_id}η || {choose_pricelist.comments} || [ΕΝΑΡΞΗ: {from_date.strftime("%d-%m")} - ΛΗΞΗ: {to_date.strftime("%d-%m")}]')
-    plt.pie(x, labels=y, autopct='%.1f%%')
+    plt.pie(x, labels=y, autopct='%.1f%%', explode=e, colors=colors)
     plt.axis('equal')
     plt.savefig('images/pricelist_pie.png')
     plt.show()
@@ -112,5 +124,6 @@ def heatmap(df, name):
     cmap = sns.diverging_palette(133, 10, as_cmap=True)
     sns.heatmap(df, annot=True, fmt='.2f', linewidths=.5, ax=ax, cmap=cmap).set(title=f'{name}')
     plt.savefig('images/heatmap.png')
-    # plt.show()
+    plt.box(False)
+    plt.show()
     plt.close()

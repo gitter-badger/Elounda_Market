@@ -24,7 +24,10 @@ def run(final_result, from_date, to_date, quantity_per_day,
 
     # -------------------- SLACK BOT ADD FILES --------------------
     slack_app.send_files(f'{tim_id}.xlsx', path_to_file, 'xlsx', slack_app.channels[0])
-    slack_app.send_files('views.png', 'images/views.png', 'png', slack_app.channels[0])
+    slack_app.send_files('bar.png', 'images/bar.png', 'png', slack_app.channels[0])
+    slack_app.send_files('daily.png', 'images/daily.png', 'png', slack_app.channels[0])
     slack_app.send_files('tree_map_quantity.png', 'images/tree_map_quantity.png', 'png', slack_app.channels[0])
     slack_app.send_files('pricelist_pie.png', 'images/pricelist_pie.png', 'png', slack_app.channels[0])
+    # slack_app.send_files('heatmap.png', 'images/heatmap.png', 'png', slack_app.channels[0])
+
 

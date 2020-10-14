@@ -1,12 +1,11 @@
 #   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
 import pandas as pd
 from pathlib import Path
-from A_DAILY_ΠΟΡΕΙΑ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ_ΠΩΛΗΣΕΩΝ.library import sql_select, timokatalogos, excel_export, plot, price_list_slack
+from A_DAILY_ΠΟΡΕΙΑ_ΤΙΜΟΚΑΤΑΛΟΓΟΥ_ΠΩΛΗΣΕΩΝ.library import sql_select, timokatalogos, excel_export, plot, slack
 from Private import sql_connect, slack_app
 import time
 from datetime import datetime as dt
 import sys
-
 
 # ---------------- MAKE DF REPORT VIEWABLE ----------------------------
 pd.set_option('display.max_columns', 500)
@@ -49,6 +48,7 @@ while True:
 
     # -------------------- ΔΙΑΒΑΖΩ ΤΟΝ ΤΙΜΟΚΑΤΑΛΟΓΟ SQL DB --------------------
     timokatalogos = pd.read_sql_query(sql_select.get_products_in_the_period(from_date, to_date), sql_connect.connect())
+    barcodes = tuple(timokatalogos['ΚΩΔΙΚΟΣ'].values)
 
     # -------------------- READ SALES SQL DB --------------------
     sales = pd.read_sql_query(sql_select.get_sales(from_date, to_date, tuple(timokatalogos['ΚΩΔΙΚΟΣ'].values)),
@@ -65,6 +65,15 @@ while True:
     # -------------------- ΕΝΑΡΞΗ ΕΛΕΓΧΟΥ --------------------
     if tziros != round(final_result.Turnover.sum(), 2):
 
+        # -------------------- GET RICH DETAILS  --------------------
+
+        date = [i.strftime('%Y-%m-%d') for i in dates_ranges]
+
+        rich_details = pd.read_sql_query(sql_select.get_rich_details(tuple(date), barcodes), sql_connect.connect())
+        sales_pivot = rich_details.pivot_table(index='DATE', columns='BRAND', values='QUANTITY')
+        sales_pivot = sales_pivot.fillna(0)
+        plot.heatmap(sales_pivot, 'ΠΟΣΟΤΗΤΑ ΠΩΛΗΣΕΩΝ')
+
         # -------------------- READ SALES QUANTITY AND TurnOver PER DAY PER SQL DB --------------------
         quantity_per_day = []
         tziros_per_day = []
@@ -74,7 +83,6 @@ while True:
                 sql_connect.connect())
             quantity_per_day.append(sales_per_day.SalesQuantity.sum())
             tziros_per_day.append(round(sales_per_day.Turnover.sum(), 2))
-
 
         # -------------------- ADD +=1 TO THE COUNTER --------------------
         found_changes_counter += 1
@@ -95,7 +103,7 @@ while True:
 
             # -------------------- SLACK BOT DELETE (4 OLD POSTS) --------------------
             x = (slack_app.history(slack_app.channels_id[0]))
-            for i in range(5):
+            for i in range(6):
                 timer = (x['messages'][i]['ts'])
                 slack_app.delete(slack_app.channels_id[0], timer)
         else:
@@ -108,8 +116,8 @@ while True:
         choose_pricelist.turn_over = round(final_result.Turnover.sum(), 2)
 
         # -------------------- SLACK BOT ADD TEXT --------------------
-        price_list_slack.run(final_result, from_date, to_date, quantity_per_day, tziros_per_day,
-                             choose_pricelist, brand_sales, path_to_file, tim_id)
+        slack.run(final_result, from_date, to_date, quantity_per_day, tziros_per_day,
+                  choose_pricelist, brand_sales, path_to_file, tim_id)
     else:
 
         # -------------------- ΕΚΤΥΠΩΝΩ STATEMENT --------------------

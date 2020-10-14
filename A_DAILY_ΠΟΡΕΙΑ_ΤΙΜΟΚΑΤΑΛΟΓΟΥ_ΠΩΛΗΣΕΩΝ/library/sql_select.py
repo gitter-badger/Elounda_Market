@@ -151,3 +151,37 @@ def get_ending_pricelist_products(to_date):
          '{to_date}' = ValidToDate 
     order by 3,4,5
     """
+
+def get_rich_details(dates, barcode_list):
+    return f"""
+    SELECT
+                       Sum(ESFIItemEntry_ESFIItemPeriodics.ESFIItemPeriodics_SalesQty) AS QUANTITY,
+                       Sum(ESFIItemEntry_ESFIItemPeriodics.ESFIItemPeriodics_TurnOver) AS TURNOVER,
+                        format(RegistrationDate, 'dd/MM/yyyy') as 'DATE',
+                        ESFIitem.BarCode AS 'BARCODE',
+                        ESFIitem.fItemSubcategoryCode AS 'BRAND'
+
+
+                      -- ,day(ESFIItemEntry_ESFIItemPeriodics.RegistrationDate)
+
+                FROM ESFIItemEntry_ESFIItemPeriodics
+
+                     LEFT JOIN ESGOSites
+                       ON ESFIItemEntry_ESFIItemPeriodics.fSiteGID = ESGOSites.GID
+                     LEFT JOIN ESFISalesPerson
+                       ON ESFIItemEntry_ESFIItemPeriodics.fSalesPersonGID = ESFISalesPerson.GID
+                     LEFT JOIN  ESFIitem
+                        ON ESFIItemEntry_ESFIItemPeriodics.fItemGID = ESFIitem.GID
+
+                WHERE ESFIItemEntry_ESFIItemPeriodics.RegistrationDate in {dates}
+                       AND ESFIitem.BarCode in {barcode_list}
+                        AND ((ESFIItemEntry_ESFIItemPeriodics.ESFIItemPeriodics_SalesQty <> 0)
+                       OR (ESFIItemEntry_ESFIItemPeriodics.ESFIItemPeriodics_TurnOver <> 0))
+
+
+GROUP BY ESFIItemEntry_ESFIItemPeriodics.fItemGID,format(RegistrationDate, 'dd/MM/yyyy'),ESFIitem.BarCode,
+                        ESFIitem.fItemSubcategoryCode,
+
+                        ESFIItemEntry_ESFIItemPeriodics.fSiteGID
+    """
+
