@@ -11,7 +11,7 @@ def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_r
     # -------------------- PLOT --------------------
     plt.figure(figsize=(15, 9))
     plt.subplot(
-                title=f'ΕΝΕΡΓΕΙΑ: {tim_id}η || {choose_pricelist.comments} || [ΕΝΑΡΞΗ: {from_date.strftime("%d-%m")} - ΛΗΞΗ: {to_date.strftime("%d-%m")}]')
+        title=f'ΕΝΕΡΓΕΙΑ: {tim_id}η || {choose_pricelist.comments} || [ΕΝΑΡΞΗ: {from_date.strftime("%d-%m")} - ΛΗΞΗ: {to_date.strftime("%d-%m")}]')
     plt.bar(brand_sales.BRAND, brand_sales.Turnover, alpha=0.5, color='red', label='ΤΖΙΡΟΣ')
     plt.plot(brand_sales.BRAND, brand_sales.SalesQuantity, alpha=0.5, color='blue', label='ΠΟΣΟΤΗΤΑ', marker='o',
              linestyle="None")
@@ -124,6 +124,8 @@ def heatmap(df, name):
     # plt.show()
     plt.close()
 
+
+# -------------------- BOX PLOT --------------------
 
 def sea_boxplot(data, name):
     f, ax = plt.subplots(figsize=(15, 9))

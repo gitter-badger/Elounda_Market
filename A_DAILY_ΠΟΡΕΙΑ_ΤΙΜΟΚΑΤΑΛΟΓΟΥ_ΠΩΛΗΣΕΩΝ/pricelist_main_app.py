@@ -52,7 +52,6 @@ while True:
     timokatalogos = pd.read_sql_query(sql_select.get_products_in_the_period(from_date, to_date), sql_connect.connect())
     barcodes = tuple(timokatalogos['ΚΩΔΙΚΟΣ'].values)
 
-
     # -------------------- READ SALES SQL DB --------------------
     sales = pd.read_sql_query(sql_select.get_sales(from_date, to_date, tuple(timokatalogos['ΚΩΔΙΚΟΣ'].values)),
                               sql_connect.connect())
@@ -75,9 +74,8 @@ while True:
         rich_details = pd.read_sql_query(sql_select.get_rich_details(tuple(date), barcodes), sql_connect.connect())
         sales_pivot = rich_details.pivot_table(index='BRAND', columns='DATE', values='QUANTITY')
         sales_pivot = sales_pivot.fillna(0)
-        plot.heatmap(sales_pivot, 'ΠΟΣΟΤΗΤΑ ΠΩΛΗΣΕΩΝ')
-
-
+        plot.heatmap(sales_pivot, '(SEABORN HEAT MAP) / ΠΟΣΟΤΗΤΑ ΠΩΛΗΣΕΩΝ')
+        plot.sea_boxplot(rich_details, '(SEABORN BOX PLOT) / ΠΟΣΟΤΗΤΑ ΠΩΛΗΣΕΩΝ')
 
         # -------------------- READ SALES QUANTITY AND TurnOver PER DAY PER SQL DB --------------------
         quantity_per_day = []
@@ -108,7 +106,7 @@ while True:
 
             # -------------------- SLACK BOT DELETE (4 OLD POSTS) --------------------
             x = (slack_app.history(slack_app.channels_id[0]))
-            for i in range(7):
+            for i in range(8):
                 timer = (x['messages'][i]['ts'])
                 slack_app.delete(slack_app.channels_id[0], timer)
         else:
