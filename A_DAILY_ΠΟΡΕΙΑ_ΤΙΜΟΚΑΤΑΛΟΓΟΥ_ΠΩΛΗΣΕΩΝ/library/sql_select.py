@@ -156,6 +156,7 @@ def get_rich_details(dates, barcode_list):
     return f"""
     SELECT
                        Sum(ESFIItemEntry_ESFIItemPeriodics.ESFIItemPeriodics_SalesQty) AS 'QUANTITY',
+                       Sum(ESFIItemEntry_ESFIItemPeriodics.ESFIItemPeriodics_TurnOver) AS TURNOVER,
                         format(RegistrationDate, 'dd/MM/yyyy') AS 'DATE',
                         ESFIitem.fItemSubcategoryCode AS 'BRAND'
 

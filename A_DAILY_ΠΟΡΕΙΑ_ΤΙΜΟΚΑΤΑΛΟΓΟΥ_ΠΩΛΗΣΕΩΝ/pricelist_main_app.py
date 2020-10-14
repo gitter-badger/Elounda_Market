@@ -6,8 +6,7 @@ from Private import sql_connect, slack_app
 import time
 from datetime import datetime as dt
 import sys
-import seaborn as sns
-import matplotlib.pyplot as plt
+
 
 # ---------------- MAKE DF REPORT VIEWABLE ----------------------------
 pd.set_option('display.max_columns', 500)
@@ -72,10 +71,17 @@ while True:
         date = [i.strftime('%Y-%m-%d') for i in dates_ranges]
 
         rich_details = pd.read_sql_query(sql_select.get_rich_details(tuple(date), barcodes), sql_connect.connect())
+
         sales_pivot = rich_details.pivot_table(index='BRAND', columns='DATE', values='QUANTITY')
         sales_pivot = sales_pivot.fillna(0)
+
+        turnover_pivot = rich_details.pivot_table(index='BRAND', columns='DATE', values='TURNOVER')
+        turnover_pivot = turnover_pivot.fillna(0)
+
         plot.heatmap(sales_pivot, '(SEABORN HEAT MAP) / ΠΟΣΟΤΗΤΑ ΠΩΛΗΣΕΩΝ')
+        plot.heatmap_02(turnover_pivot, '(SEABORN HEAT MAP) / TΖΙΡΟΣ ΠΩΛΗΣΕΩΝ')
         plot.sea_boxplot(rich_details, '(SEABORN BOX PLOT) / ΠΟΣΟΤΗΤΑ ΠΩΛΗΣΕΩΝ')
+        plot.sea_violinplot(rich_details, '(SEABORN VIOLIN PLOT) / TΖΙΡΟΣ ΠΩΛΗΣΕΩΝ')
 
         # -------------------- READ SALES QUANTITY AND TurnOver PER DAY PER SQL DB --------------------
         quantity_per_day = []
@@ -104,9 +110,9 @@ while True:
         # -------------------- CHECK IF WE GOT NEW VERSION --------------------
         if version == tim_id:
 
-            # -------------------- SLACK BOT DELETE (4 OLD POSTS) --------------------
+            # -------------------- SLACK BOT DELETE (10 OLD POSTS) --------------------
             x = (slack_app.history(slack_app.channels_id[0]))
-            for i in range(8):
+            for i in range(10):
                 timer = (x['messages'][i]['ts'])
                 slack_app.delete(slack_app.channels_id[0], timer)
         else:

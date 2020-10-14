@@ -1,5 +1,16 @@
 #   Copyright (c) 2020. Ioannis E. Kommas. All Rights Reserved
-explode = (0, 0, 0, 0.1, 0.1, 0.2, 0.3, 0.4, 0.6)
-e = tuple(explode[:4])
-print(e)
+from PyPDF2 import PdfFileMerger
+
+path1 = '/Users/kommas/Downloads/1.pdf'
+path2 = '/Users/kommas/Downloads/2.pdf'
+
+pdfs = [path1, path2]
+
+merger = PdfFileMerger()
+
+for pdf in pdfs:
+    merger.append(pdf)
+
+merger.write('/Users/kommas/Downloads/result.pdf')
+merger.close()
 

@@ -6,7 +6,7 @@ import numpy as np
 def run(final_result, from_date, to_date, quantity_per_day,
         tziros_per_day, choose_pricelist, brand_sales, path_to_file, tim_id):
     report = f"""
->:python: : ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ
+>:python: : ΗΜΕΡΗΣΙΟ ΔΗΜΟΣΙΕΥΜΑ : :fbwow:
 >ΠΟΡΕΙΑ ΠΩΛΗΣΕΩΝ ΓΙΑ ΤΙΣ ΠΡΟΣΦΟΡΕΣ:
 >ΣΥΜΜΕΤΕΧΟΥΝ: \t {len(final_result)} ΠΡΟΪΟΝΤΑ 
 >DATERANGE: \t ΑΠΟ: {from_date.strftime("%d-%m-%Y")} \t ΕΩΣ: {to_date.strftime("%d-%m-%Y")} 
@@ -16,8 +16,7 @@ def run(final_result, from_date, to_date, quantity_per_day,
 > M.O. / ΗΜΕΡΑ : \t {round(np.mean(tziros_per_day), 2)} EUR 
 > Α/Α ΕΝΕΡΓΕΙΑ: {choose_pricelist.tim_id}
 > {choose_pricelist.comments}
-```{brand_sales}```
-> :fbwow: 
+```{brand_sales}``` 
             """
 
     slack_app.send_text(report, slack_app.channels[0])
@@ -29,6 +28,8 @@ def run(final_result, from_date, to_date, quantity_per_day,
     slack_app.send_files('tree_map_quantity.png', 'images/tree_map_quantity.png', 'png', slack_app.channels[0])
     slack_app.send_files('pricelist_pie.png', 'images/pricelist_pie.png', 'png', slack_app.channels[0])
     slack_app.send_files('heatmap.png', 'images/heatmap.png', 'png', slack_app.channels[0])
+    slack_app.send_files('heatmap_turnover.png', 'images/heatmap_turnover.png', 'png', slack_app.channels[0])
     slack_app.send_files('boxplot.png', 'images/boxplot.png', 'png', slack_app.channels[0])
+    slack_app.send_files('violin.png', 'images/violin.png', 'png', slack_app.channels[0])
 
 
