@@ -70,7 +70,7 @@ while True:
         date = [i.strftime('%Y-%m-%d') for i in dates_ranges]
 
         rich_details = pd.read_sql_query(sql_select.get_rich_details(tuple(date), barcodes), sql_connect.connect())
-        sales_pivot = rich_details.pivot_table(index='DATE', columns='BRAND', values='QUANTITY')
+        sales_pivot = rich_details.pivot_table(index='BRAND', columns='DATE', values='QUANTITY')
         sales_pivot = sales_pivot.fillna(0)
         plot.heatmap(sales_pivot, 'ΠΟΣΟΤΗΤΑ ΠΩΛΗΣΕΩΝ')
 
@@ -103,7 +103,7 @@ while True:
 
             # -------------------- SLACK BOT DELETE (4 OLD POSTS) --------------------
             x = (slack_app.history(slack_app.channels_id[0]))
-            for i in range(6):
+            for i in range(7):
                 timer = (x['messages'][i]['ts'])
                 slack_app.delete(slack_app.channels_id[0], timer)
         else:
