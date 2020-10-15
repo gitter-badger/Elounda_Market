@@ -130,6 +130,7 @@ WHERE
 
     """
 
+
 def get_ending_pricelist_products(to_date):
     return f"""
     SELECT ESFIPricelist.Code                         as 'ΤΙΜΟΚΑΤΑΛΟΓΟΣ',
@@ -151,6 +152,7 @@ def get_ending_pricelist_products(to_date):
          '{to_date}' = ValidToDate 
     order by 3,4,5
     """
+
 
 def get_rich_details(dates, barcode_list):
     return f"""
@@ -180,4 +182,3 @@ ESFIitem.fItemSubcategoryCode,
 format(RegistrationDate, 'dd/MM/yyyy')
                      
     """
-

@@ -102,8 +102,9 @@ def run(choose_pricelist, from_date, to_date, brand_sales, final_result, dates_r
     y = brand_sales.BRAND
     plt.figure(figsize=(15, 9))
     explode = (
-    0, .1, 0, 0, .1, 0, .1, 0, .1, 0, 0, .1, 0, .1, 0, .1, 0, 0, .1, 0, 0, .1, 0, 0, .1, 0, .1, 0, .1, 0, 0, .1, 0, .1,
-    0, .1, 0, 0, .1, 0, 0, .1)
+        0, .1, 0, 0, .1, 0, .1, 0, .1, 0, 0, .1, 0, .1, 0, .1, 0, 0, .1, 0, 0, .1, 0, 0, .1, 0, .1, 0, .1, 0, 0, .1, 0,
+        .1,
+        0, .1, 0, 0, .1, 0, 0, .1)
     colors = [plt.cm.Spectral(i / float(len(x))) for i in range(len(x))]
     e = tuple(explode[:len(x)])
     plt.subplot(
@@ -146,6 +147,7 @@ def sea_boxplot(data, name):
     plt.box(False)
     # plt.show()
     plt.close()
+
 
 # -------------------- Violin PLOT --------------------
 
